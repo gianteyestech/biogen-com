@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* ============================================================
+   IDEAL DRY FRUIT — Design System
+   Color palette extracted from official logo (ideal-logo.png)
+   - Background:   #0D0D0D  (deep rich black)
+   - Surface:      #181818  (raised card black)
+   - Gold Primary: #C9A84C  (metallic burnished gold)
+   - Gold Bright:  #F0C040  (highlight/text gold)
+   - Gold Border:  #B8922B  (antique frame gold)
+   - Cream:        #F5ECD7  (off-white elegant text)
+============================================================ */
+
+@theme inline {
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+
+  --color-brand-bg:          #0D0D0D;
+  --color-brand-surface:     #181818;
+  --color-brand-surface-lt:  #222222;
+  --color-brand-gold:        #C9A84C;
+  --color-brand-gold-hi:     #F0C040;
+  --color-brand-gold-border: #B8922B;
+  --color-brand-cream:       #F5ECD7;
+}
+
+/* Global reset to logo palette */
+html {
+  scroll-behavior: smooth;
+  background-color: #F0F0F0;
+  color: #111111;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #F0F0F0;
+  color: #111111;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Premium custom scrollbar — gold on black */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #111111; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #F0C040; }
+
+/* Gold text gradient utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F0C040 0%, #C9A84C 40%, #B8922B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold border glow utility */
+.gold-glow {
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.35), 0 0 32px rgba(201, 168, 76, 0.12);
+}
+
+/* Subtle black card border */
+.card-border {
+  border: 1px solid rgba(201, 168, 76, 0.22);
+}
+
+/* Central Reusable Container System */
+.global-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .global-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
