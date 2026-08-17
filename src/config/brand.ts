@@ -1,42 +1,45 @@
 /**
- * Ideal Dry Fruit — Brand & Contact Configuration
+ * Biogen Pharma — Brand & Contact Configuration
  * Single source of truth for all operational contact parameters.
  */
 export const BRAND = {
-  name: "Ideal Dry Fruit",
-  tagline: "Premium Quality | 100% Natural",
-  city: "Lahore, Pakistan",
-  established: 1998,
+  name: "Biogen Pharma",
+  tagline: "Enhancing Lives Through Quality Healthcare & Medical Supplies",
+  city: "The Gambia & Sierra Leone",
+  established: 2018,
 
   /**
-   * Color palette extracted directly from the official Ideal Dry Fruit logo.
-   *   bg       = Deep black background  (#0D0D0D)
-   *   gold     = Primary metallic gold  (#C9A84C)
-   *   goldHi   = Bright highlight gold  (#F0C040)
-   *   border   = Antique gold frame     (#B8922B)
-   *   cream    = Off-white text         (#F5ECD7)
-   *   dark     = Rich near-black text   (#1A1A1A)
+   * Color palette tailored for Biogen Pharma healthcare & clinical excellence.
    */
   colors: {
-    bg: "#0D0D0D",
-    surface: "#181818",
-    surfaceLight: "#222222",
-    gold: "#C9A84C",
-    goldHi: "#F0C040",
-    goldBorder: "#B8922B",
-    cream: "#F5ECD7",
-    darkText: "#1A1A1A",
+    bg: "#0A0F1D",
+    surface: "#111827",
+    surfaceLight: "#1F2937",
+    primary: "#0072CE",
+    primaryLight: "#00A3E0",
+    accent: "#70BA28",
+    accentHi: "#86D634",
+    border: "#1E293B",
+    cream: "#F8FAFC",
+    darkText: "#0F172A",
+    gold: "#0072CE",
+    goldHi: "#70BA28",
+    goldBorder: "#005EA6",
   },
 
   contact: {
-    rawNumber: "+923013060173",
-    formattedNumber: "0301-3060173",
+    rawNumber: "+23275011616",
+    formattedNumber: "+232 75 011616",
+    email: "contact@biogenpharma.site",
+    altEmail: "info.biogen@gianteyetech.com",
+    addressHead: "C8WF+ CWC New Jeshwang, WestField, The Gambia",
+    addressBranch: "20 Garrison Street, Free Town, Sierra Leone",
     /** WhatsApp Click-to-Chat base URL — append encoded message as ?text=... */
-    whatsappBase: "https://wa.me/923013060173",
+    whatsappBase: "https://wa.me/23275011616",
   },
 
   shipping: {
-    freeThreshold: 3000,    // Rs.
-    standardCost: 200,       // Rs.
+    freeThreshold: 500,
+    standardCost: 50,
   },
 } as const;

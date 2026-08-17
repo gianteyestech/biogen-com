@@ -1,191 +1,171 @@
 {
   "brand": {
-    "name": "Ideal Dry Fruit",
-    "tagline": "Premium Quality | 100% Natural",
-    "established": 1998,
-    "logoUrl": "/ideal-logo.png",
-    "address": "Ideal Dry Fruit University Road near Chen One Tower, Sargodha, Punjab",
-    "email": "info@idealdryfruit.com",
-    "phone": "0301-3060173",
-    "whatsapp": "https://wa.me/923013060173"
+    "name": "Biogen Pharma",
+    "tagline": "Enhancing Lives Through Quality Healthcare",
+    "established": 2018,
+    "logoUrl": "https://assets.idealdryfruit.com/uploads/site/2026/08/biogen_official_logo.png",
+    "address": "Head Office: C8WF+ CWC New Jeshwang, WestField, The Gambia | 2nd Branch: 20 Garrison Street, Free Town, Sierra Leone",
+    "email": "contact@biogenpharma.site",
+    "phone": "+232 75 011616",
+    "whatsapp": "https://wa.me/23275011616"
   },
   "shipping": {
-    "freeThreshold": 3000,
-    "standardCost": 200,
-    "freeThresholdDisplay": "Rs.3,000"
+    "freeThreshold": 500,
+    "standardCost": 50,
+    "freeThresholdDisplay": "$500"
   },
   "promoBanners": [
     {
       "id": "promo-1",
-      "bg": "#1a1a2e",
-      "color": "#C9A84C",
-      "label": "Premium Gift Boxes",
-      "sub": "For every occasion",
-      "catId": "gift-box"
+      "bg": "#0f172a",
+      "color": "#38bdf8",
+      "label": "Surgical Instruments",
+      "sub": "Precision & ISO/GMP Certified Quality",
+      "catId": "surgical-instruments"
     },
     {
       "id": "promo-2",
-      "bg": "#1a2e1a",
-      "color": "#F0C040",
-      "label": "New Arrivals",
-      "sub": "Fresh stock daily",
-      "catId": "new"
+      "bg": "#064e3b",
+      "color": "#34d399",
+      "label": "Essential Healthcare",
+      "sub": "Medicines & Clinical Supplies",
+      "catId": "medicines"
     }
   ],
   "trustFeatures": [
     {
       "id": "feat-1",
-      "icon": "Truck",
-      "title": "Shipped in 1–3 Days",
-      "sub": "TCS & Leopards"
+      "icon": "ShieldCheck",
+      "title": "ISO & GMP Certified",
+      "sub": "Strict Quality Standards"
     },
     {
       "id": "feat-2",
-      "icon": "RotateCcw",
-      "title": "Free 7-Day Return",
-      "sub": "Quality guaranteed"
+      "icon": "Truck",
+      "title": "Reliable Global Delivery",
+      "sub": "West Africa & International"
     },
     {
       "id": "feat-3",
       "icon": "Headphones",
-      "title": "Phone & Email Support",
-      "sub": "24/7 available"
+      "title": "Clinical Support",
+      "sub": "24/7 Dedicated Assistance"
     },
     {
       "id": "feat-4",
-      "icon": "Tag",
-      "title": "Get Latest Offers",
-      "sub": "Subscribe & save"
+      "icon": "Award",
+      "title": "100% Genuine Supplies",
+      "sub": "Direct from Verified Labs"
     },
     {
       "id": "feat-5",
-      "icon": "Truck",
-      "title": "Free Shipping",
-      "sub": "Orders above Rs.5,000"
+      "icon": "PackageCheck",
+      "title": "Secure Logistics",
+      "sub": "Cold-Chain & Tamper-Proof"
     }
   ],
   "promoCode": {
-    "code": "WELCOME10",
+    "code": "BIOGEN10",
     "discountPercent": 10,
-    "minOrderAmount": 10000,
-    "description": "Get 10% OFF on Purchase of Rs. 10,000"
+    "minOrderAmount": 500,
+    "description": "Get 10% OFF on Orders above $500"
   },
   "footer": {
     "quickLinks": [
       "Home",
-      "Shop 10% OFF",
-      "New Arrivals Hot",
+      "Medicines",
+      "Surgical Instruments",
+      "Eye Care & Loupes",
+      "Hospital Furniture",
       "All Products",
-      "Collection",
-      "Account",
       "Track Order"
     ],
     "moreLinks": [
-      "Order Return",
+      "About Us",
+      "Contact Us",
       "Track Your Order",
       "FAQs",
       "Terms & Conditions",
       "Privacy Policy",
-      "Delivery Information",
+      "Shipping Policy",
       "Refund & Return Policy"
     ],
     "social": [
       {
         "label": "WA",
-        "href": "https://wa.me/923013060173"
+        "href": "https://wa.me/23275011616"
       },
       {
         "label": "FB",
-        "href": "#"
+        "href": "https://facebook.com/biogenpharma"
       },
       {
         "label": "IG",
-        "href": "#"
+        "href": "https://instagram.com/biogenpharma"
       },
       {
-        "label": "TK",
-        "href": "#"
-      },
-      {
-        "label": "YT",
-        "href": "#"
+        "label": "LI",
+        "href": "https://linkedin.com/company/biogenpharma"
       }
     ],
-    "newsletterTitle": "GET THE LATEST DEALS",
-    "newsletterSub": "2% Discount and receive coupon for first shopping",
-    "copyrightText": "All Rights Reserved. Premium quality across Pakistan 🇵🇰"
+    "newsletterTitle": "JOIN THE BIOGEN HEALTH NETWORK",
+    "newsletterSub": "Subscribe for healthcare updates, clinical catalogs, and institutional offers",
+    "copyrightText": "All Rights Reserved. Biogen Pharma — Enhancing Lives Through Healthcare"
   },
   "seo": {
-    "siteName": "Ideal Dry Fruit",
-    "defaultTitle": "Ideal Dry Fruit — Premium Quality Nuts & Dry Fruits in Pakistan",
-    "defaultDescription": "Buy premium quality almonds, cashews, pistachios, dates, and more at Ideal Dry Fruit. Fresh stock, fast delivery across Pakistan.",
-    "keywords": "dry fruit pakistan, almonds, cashews, dates, pistachios, pine nuts, sargodha, lahore, faisalabad, islamabad, karachi"
+    "siteName": "Biogen Pharma",
+    "defaultTitle": "Biogen Pharma — Pharmaceuticals, Surgical Instruments & Healthcare Supplies",
+    "defaultDescription": "Biogen Pharma is a trusted provider of high-quality pharmaceuticals, precision surgical instruments, eye care, and hospital equipment in West Africa and globally.",
+    "keywords": "biogen pharma, pharmaceuticals, surgical instruments, medical supplies, gambia pharmacy, sierra leone medical supplies, hospital furniture, eye vision, surgical loupes, medicines"
   },
   "paymentMethods": [
     {
       "id": "cod",
       "enabled": true,
-      "label": "Cash on Delivery (COD)",
-      "description": "Pay cash when your order arrives at your doorstep",
+      "label": "Cash on Delivery / Pay on Pickup",
+      "description": "Pay upon receiving or inspecting your medical supplies",
       "icon": "💵",
       "details": []
     },
     {
       "id": "bank_transfer",
       "enabled": true,
-      "label": "Bank Transfer",
-      "description": "Direct bank transfer — send screenshot via WhatsApp",
+      "label": "Direct Bank / Wire Transfer",
+      "description": "Direct institutional wire transfer — send invoice receipt via WhatsApp or Email",
       "icon": "🏦",
       "details": [
         {
           "label": "Bank Name",
-          "value": "HBL"
+          "value": "Ecobank / Standard Chartered"
         },
         {
           "label": "Account Title",
-          "value": "Ideal Dry Fruit"
+          "value": "Biogen Pharma Ltd"
         },
         {
           "label": "Account Number",
-          "value": "0123456789"
+          "value": "0023456789"
         },
         {
-          "label": "IBAN",
-          "value": "PK00HBL0000000123456789"
+          "label": "SWIFT / IBAN",
+          "value": "ECOBGMXXXXX"
         }
       ]
     },
     {
-      "id": "jazzcash",
-      "enabled": false,
-      "label": "JazzCash",
-      "description": "Pay via JazzCash mobile wallet",
+      "id": "mobile_money",
+      "enabled": true,
+      "label": "Orange Money / Afrimoney",
+      "description": "Pay via Mobile Money wallet in The Gambia & Sierra Leone",
       "icon": "📱",
       "details": [
         {
           "label": "Account Name",
-          "value": "Ideal Dry Fruit"
+          "value": "Biogen Pharma"
         },
         {
           "label": "Mobile Number",
-          "value": "0301-3060173"
-        }
-      ]
-    },
-    {
-      "id": "easypaisa",
-      "enabled": false,
-      "label": "Easypaisa",
-      "description": "Pay via Easypaisa mobile wallet",
-      "icon": "📱",
-      "details": [
-        {
-          "label": "Account Name",
-          "value": "Ideal Dry Fruit"
-        },
-        {
-          "label": "Mobile Number",
-          "value": "0301-3060173"
+          "value": "+232 75 011616"
         }
       ]
     }

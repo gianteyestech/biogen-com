@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     }
 
     const htmlContent = generateOrderConfirmationHTML({
-      id: orderId || `IDF-${Date.now().toString().slice(-6)}`,
+      id: orderId || `BG-${Date.now().toString().slice(-6)}`,
       customerName: customerName || "Valued Customer",
       totalAmount: Number(totalAmount),
       items: items || [],
@@ -23,15 +23,15 @@ export async function POST(req: Request) {
     // 1. Send confirmation email to customer
     const customerEmailResult = await sendEmail({
       to: customerEmail,
-      subject: `Order Confirmation #${orderId || "IDF-STORE"} — Ideal Dry Fruit`,
+      subject: `Order Confirmation #${orderId || "BG-STORE"} — Biogen`,
       html: htmlContent,
     });
 
     // 2. Send notification email to admin email
-    const adminEmail = process.env.ADMIN_EMAIL || "info@idealdryfruit.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
     const adminEmailResult = await sendEmail({
       to: adminEmail,
-      subject: `🚨 New Order Alert #${orderId || "IDF-STORE"} (Rs. ${totalAmount})`,
+      subject: `🚨 New Order Alert #${orderId || "BG-STORE"} (Rs. ${totalAmount})`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2>New Order Received on Store!</h2>

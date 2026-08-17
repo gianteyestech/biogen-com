@@ -1,18 +1,15 @@
 {
   "sections": [
-    { "id": "trust-features-bar","title": "Trust Features Bar",  "type": "trust-features", "categoryId": "", "visible": true, "order": 1 },
-    { "id": "featured-products", "title": "Featured Products",     "type": "featured", "categoryId": "",        "visible": true, "order": 2 },
-    { "id": "shop-by-category",  "title": "Shop By Category",     "type": "circles",  "categoryId": "",        "visible": true, "order": 3 },
-    { "id": "top-selling",       "title": "Top Selling Products", "type": "top-selling", "categoryId": "",   "visible": true, "order": 4 },
-    { "id": "deal-of-the-day",   "title": "Deal of the Day",      "type": "deal",     "categoryId": "",        "visible": true, "order": 5 },
-    { "id": "mini-lists",        "title": "New, Rated & Best",    "type": "mini-lists", "categoryId": "",      "visible": true, "order": 6 },
-    { "id": "new-arrivals",      "title": "New Arrivals",         "type": "new",      "categoryId": "",        "visible": true, "order": 7 },
-    { "id": "cashews",           "title": "Cashew Nuts",          "type": "category", "categoryId": "cashews", "visible": true, "order": 8 },
-    { "id": "dates",             "title": "Dates Collection",     "type": "category", "categoryId": "dates",   "visible": true, "order": 9 },
-    { "id": "almonds",           "title": "Almonds",              "type": "category", "categoryId": "almonds", "visible": true, "order": 10 },
-    { "id": "pistachios",        "title": "Pistachios",           "type": "category", "categoryId": "pistachios", "visible": true, "order": 11 },
-    { "id": "gift-boxes",        "title": "Gift Boxes & Hampers", "type": "category", "categoryId": "gift-box",   "visible": true, "order": 12 },
-    { "id": "raisins",           "title": "Raisins",              "type": "category", "categoryId": "raisins",    "visible": true, "order": 13 },
-    { "id": "seeds",             "title": "Seeds & Nuts",         "type": "category", "categoryId": "seeds",       "visible": true, "order": 14 }
+    { "id": "trust-features-bar",  "title": "Trust Features Bar",           "type": "trust-features", "categoryId": "",                      "visible": true, "order": 1 },
+    { "id": "featured-products",   "title": "Featured Medical Supplies",   "type": "featured",       "categoryId": "",                      "visible": true, "order": 2 },
+    { "id": "shop-by-category",    "title": "Browse By Department",        "type": "circles",        "categoryId": "",                      "visible": true, "order": 3 },
+    { "id": "top-selling",         "title": "Clinical Top Sellers",        "type": "top-selling",    "categoryId": "",                      "visible": true, "order": 4 },
+    { "id": "deal-of-the-day",     "title": "Institutional Spotlight",     "type": "deal",           "categoryId": "",                      "visible": true, "order": 5 },
+    { "id": "mini-lists",          "title": "New, Rated & Essential",      "type": "mini-lists",     "categoryId": "",                      "visible": true, "order": 6 },
+    { "id": "medicines",           "title": "Medicines & Pharmaceuticals", "type": "category",       "categoryId": "medicines",             "visible": true, "order": 7 },
+    { "id": "surgical-instruments","title": "Surgical Instruments",         "type": "category",       "categoryId": "surgical-instruments", "visible": true, "order": 8 },
+    { "id": "eye-vision",          "title": "Eye Care & Surgical Loupes",  "type": "category",       "categoryId": "eye-vision",            "visible": true, "order": 9 },
+    { "id": "surgical-furniture",  "title": "Hospital & Clinic Furniture",  "type": "category",       "categoryId": "surgical-furniture",   "visible": true, "order": 10 },
+    { "id": "nutrition-supplements","title": "Vitamins & Supplements",      "type": "category",       "categoryId": "nutrition-supplements", "visible": true, "order": 11 }
   ]
 }

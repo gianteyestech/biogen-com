@@ -1,722 +1,179 @@
 [
   {
-    "id": "khajoor-dates-rectangle-4-portion-regular-box",
-    "name": "Khajoor (Dates) Rectangle 4 Portion Regular Box",
+    "id": "allergy-relief-tablets",
+    "name": "Allergy Relief Tablets (Antihistamine)",
     "urduName": "",
-    "category": "dates",
-    "description": "Product Description: Enjoy a classic presentation with our Khajoor (Dates) Rectangle 4 Portion Regular Box, designed in a sleek rectangular shape for a modern, elegant look. This premium selection features a rich mix of Saudi dates, Sukri dates, Ajwa dates, Mabroom dates, and Kalma dates, carefully arranged to offer a delightful variety in every box.From naturally sweet Sukri to the bold, traditional flavors of Ajwa, Mabroom, Saudi, and Kalma, this assortment delivers a satisfying balance of taste and texture. Ideal for gifting on special occasions or enjoying as a premium everyday treat.Key Features:Sleek rectangular 4-portion boxPremium assortment of Saudi, Sukri, Ajwa, Mabroom & Kalma datesRich variety of authentic flavorsElegant presentation for giftingPerfect for personal enjoyment or special occasionsNet Weight: 1000 – 1050g (Approx.)",
-    "rating": 4.5,
-    "reviewsCount": 5,
-    "imageUrl": "https://media.idealdryfruit.com/uploads//file-000000008810823086e75dd0a-byuf.webp",
+    "category": "medicines",
+    "description": "Fast-acting, non-drowsy multi-symptom allergy relief. Helps alleviate sneezing, runny nose, itchy watery eyes, and nasal congestion caused by environmental and seasonal allergens. Manufactured under strict GMP certified pharmaceutical conditions.",
+    "rating": 4.9,
+    "reviewsCount": 84,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/allergy_relief.webp",
     "prices": {
-      "500g": 300,
-      "1kg": 600
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "almonds-rewari-250gm",
-    "name": "Almonds",
-    "urduName": "",
-    "category": "almonds",
-    "description": "Almonds Rewari 250gm/500gm/1kg",
-    "rating": 4.5,
-    "reviewsCount": 33,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785816913_45808_800x.webp",
-    "prices": {
-      "250g": 850,
-      "500g": 1700,
-      "1kg": 3400
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "raw-pista-giri-250g-pure-premium",
-    "name": "Pista giri",
-    "urduName": "",
-    "category": "pistachios",
-    "description": " Pista Giri – Pure & Premium! Enjoy the natural goodness of Raw Pista Giri – perfect for desserts, snacking, or garnishing your favorite dishes. Fresh, flavorful, and full of nutrients!",
-    "rating": 4.5,
-    "reviewsCount": 37,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785817411_45726_800x.webp",
-    "prices": {
-      "250g": 2000,
-      "500g": 4000,
-      "1kg": 8000
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "cashew-nuts-with-sell-250gm",
-    "name": "Cashew Nuts 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "cashews",
-    "description": "✨ Product Description: Premium Roasted Cashew Nuts (With Shell)Enjoy the rich taste and irresistible crunch of our Premium Roasted Cashew Nuts With Shell — carefully selected from high-quality harvests and roasted to perfection. Each cashew is packed with natural flavor, offering a delightful snacking experience that is both wholesome and satisfying.These shell-on cashews preserve their original aroma, giving you the joy of cracking each nut open for maximum freshness and fun. Whether you enjoy them with evening tea, serve them to guests, or gift them in a premium dry fruit box, these roasted cashews promise pure quality in every bite.🌟 Key FeaturesPremium Quality: Hand-picked, large-sized cashews for superior taste.Roasted to Perfection: Lightly roasted to enhance natural flavor without overpowering it.Fresh & Crunchy: The shell keeps the cashews naturally fresh and aromatic.Healthy Snack: Rich in protein, fiber, and healthy fats — great for energy and nutrition.Perfect for Gifting: An ideal choice for premium gifting, winter treats, and dry fruit hampers.🍽️ Why You’ll Love ItExperience the classic charm of shell-on cashews, a traditional favorite known for their rich taste and addictive crunch. Each nut is bursting with natural goodness, making it a perfect snack for all ages.📦 PackagingAvailable in premium, airtight packaging to maintain freshness, aroma, and crunch.",
-    "rating": 4.5,
-    "reviewsCount": 41,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785816225_45744_800x.webp",
-    "prices": {
-      "250g": 900,
-      "500g": 1800,
-      "1kg": 3600
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "mazafati-date-box-iranian-dates",
-    "name": "Mazafati Date Box Iranian Dates weight around 480gm  to  540gm",
-    "urduName": "",
-    "category": "dates",
-    "description": "Mazafati Date Box Iranian Dates\r\nWeight box around 480gm  to 540gm",
-    "rating": 4.5,
-    "reviewsCount": 37,
-    "imageUrl": "/images/products/mazafati-date-box-iranian-dates.webp",
-    "prices": {
-      "500gm": 500
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "alsi-flax-seed-250gm",
-    "name": "Alsi (Flax Seed) 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "seeds",
-    "description": "Alsi (Flax Seed): 250gBoost your health with the incredible benefits of Alsi (flax seed)! This 250-gram pack of premium flax seeds is packed with essential nutrients and offers a nutty flavour that’s perfect for a variety of recipes.✔ Rich in Omega-3: A great source of plant-based omega-3 fatty acids for heart health.✔ High in Fibre: Supports digestion and promotes a healthy gut.✔ Packed with Nutrients: Full of antioxidants, vitamins, and minerals that support overall well-being.✔ Versatile Use: Add to smoothies, cereals, salads, or bake into breads and muffins.Make Flax Seed a part of your daily routine for a tasty and nutritious boost! 🌿✨",
-    "rating": 5,
-    "reviewsCount": 43,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785825313_45759_800x.webp",
-    "prices": {
-      "250g": 150,
-      "500g": 300,
-      "1kg": 600
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "desi-kishmish-250gm-green-raisins",
-    "name": "Desi Kishmish 250gm  - Green Raisins",
-    "urduName": "",
-    "category": "raisins",
-    "description": "Desi Kishmish (Green Raisins): 250gEnjoy the natural sweetness and wholesome goodness of our Desi Kishmish (green raisins), carefully sourced for their rich flavour and health benefits. These sun-dried, premium-quality green raisins are a great addition to your diet, offering essential nutrients and a perfect balance of taste and health.Product Features:✔ 100% Natural & Pure—No preservatives or additives✔ Sweet, Tangy Flavour: A perfect balance of sweetness with a hint of tartness✔ Rich in Nutrients: Packed with vitamins, minerals, and antioxidants✔ Versatile Use: Ideal for snacking, adding to desserts, cereals, or salads✔ Hygienically Packed: Ensures long-lasting freshness and qualityHealth Benefits:🌿 Boosts Immunity: Rich in antioxidants, vitamins, and minerals🌿 Aids Digestion: High in fiber for better digestive health🌿 Promotes Heart Health: Contains natural compounds that support cardiovascular health🌿 Improves Skin Health: Antioxidants help promote healthy, glowing skin🌿 Supports Bone Health A good source of calcium for stronger bonesHow to Use:🍇 As a snack, eat a handful for a natural energy boost🍨 In Desserts: Add to cakes, puddings, and sweets for a delightful taste🥗 In Salads & Cereal: Toss into fruit salads, yogurt, or breakfast cerealsTreat yourself to the sweet and healthy goodness of Desi Kishmish (Green Raisins). Order now for a nutritious snack that supports your well-being! 🍇✨",
-    "rating": 5,
-    "reviewsCount": 31,
-    "imageUrl": "/images/products/desi-kishmish-250gm-green-raisins.webp",
-    "prices": {
-      "250g": 530,
-      "500g": 1030,
-      "1kg": 2010
+      "10 Tablets Pack": 15,
+      "30 Tablets Box": 38,
+      "100 Tablets Clinic Pack": 110
     },
     "originalPrices": {
-      "250g": 530,
-      "500g": 1030,
-      "1kg": 2010
+      "30 Tablets Box": 45,
+      "100 Tablets Clinic Pack": 130
     },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "chia-seeds-250gm",
-    "name": "Chia Seeds  100gm/250gm/500gm/1kg",
-    "urduName": "",
-    "category": "seeds",
-    "description": "Chia Seeds: 250gBoost your nutrition with our premium chia seeds, packed with protein, fibre, omega-3 fatty acids, and essential minerals. These tiny superfoods are perfect for a healthy lifestyle, offering numerous health benefits and versatile uses in meals and beverages.Product Features:✔ 100% Natural & Premium Quality—No additives or preservatives✔ Rich in Omega-3, Protein & Fibre—supports overall wellness✔ Mild & Nutty Flavour: Perfect for smoothies, yogurt, and baking✔ Easy to Use: Can be soaked, blended, or sprinkled on food✔ Hygienically Packed: Ensures long-lasting freshness and purityHealth Benefits:🌿 Supports Heart Health High in omega-3 fatty acids🌿 Aids Digestion: Rich in fiber for improved gut health🌿 Boosts Energy & Metabolism—Ideal for weight management🌿 Enhances Skin & Hair Health—Packed with antioxidants and essential mineralsIncorporate chia seeds into your daily routine for a nutritious and healthy lifestyle. Order now and enjoy the benefits of this superfood! 🌿✨",
-    "rating": 5,
-    "reviewsCount": 43,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785825549_45748_800x.webp",
-    "prices": {
-      "100gm": 240,
-      "250gm": 600,
-      "500gm": 1200,
-      "1kg": 2400
-    },
-    "originalPrices": {},
     "inStock": true,
     "featured": true,
     "isNew": true,
-    "badge": ""
+    "badge": "Top Seller"
   },
   {
-    "id": "sesame-seed-till-250gm",
-    "name": "Sesame Seed  100gm/250gm/500gm/1kg",
-    "urduName": "سفیدتل ",
-    "category": "seeds",
-    "description": "Sesame Seeds Enhance your diet with the pure goodness of our premium sesame seeds (Til), rich in essential nutrients and a delightful nutty flavour. Sourced from high-quality crops, these tiny yet powerful seeds are packed with protein, fibre, and healthy fats, making them a perfect addition to various recipes.Product Features:✔ 100% Natural & Fresh—No artificial additives or preservatives✔ Rich in Protein, Fiber & Healthy Fats: Supports overall well-being✔ Delicate Nutty Flavour: Enhances both sweet and savory dishes✔ Versatile Use: Ideal for baking, cooking, garnishing, or making tahini✔ Hygienically Packed: Ensures freshness and long shelf lifeHealth Benefits:🌿 Supports Heart Health: Rich in healthy fats and antioxidants🌿 Aids Digestion: High fiber content promotes gut health🌿 Boosts Immunity: Packed with essential minerals like calcium and iron🌿 Strengthens Bones: A natural source of calcium for bone healthAdd a nutrient-rich touch to your meals with our premium sesame seeds. Order now and experience the finest quality for a healthier lifestyle!",
-    "rating": 4.5,
-    "reviewsCount": 17,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785824601_45762_800x.webp",
-    "prices": {
-      "100gm": 80,
-      "250gm": 200,
-      "500gm": 400,
-      "1kg": 800
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "roasted-chana-250gm-without-shell-maghz-chana",
-    "name": "Roasted-Chana 250gm Without Shell Maghz chana",
+    "id": "painkillers-extra-strength",
+    "name": "Painkillers Extra Strength (Analgesic & Antipyretic)",
     "urduName": "",
-    "category": "snack",
-    "description": "Roasted Chana (Maghz Chana) Without Shell, 250gEnjoy the crunchy goodness of our premium Roasted Chana (Maghz Chana) Without Shell, a powerhouse of nutrition and taste. Rich in protein, fibre, and essential minerals, this healthy snack keeps you energised throughout the day.Key Features:✔ 100% Natural & Fresh—No additives or preservatives✔ High in Protein & Fibre: Supports digestion and muscle health✔ Crispy & Flavourful: A satisfying, guilt-free snack✔ Versatile Use: Enjoy as a snack or add to salads and dishes✔ Hygienically Packed: Ensures long-lasting freshnessHealth Benefits:🔹 Supports weight management with high fiber content🔹 Boosts energy and keeps you full for longer🔹 Aids digestion and promotes gut health🔹 Helps maintain blood sugar levelsA perfect snack for health-conscious individuals! Order now and enjoy the natural crunch of Roasted Chana anytime, anywhere. 🌿✨",
-    "rating": 5,
-    "reviewsCount": 23,
-    "imageUrl": "/images/products/roasted-chana-250gm-without-shell-maghz-chana.webp",
+    "category": "medicines",
+    "description": "Clinical strength pain relief for tension headaches, muscle aches, post-operative discomfort, back pain, and fever reduction. Rapid absorption formula designed for dependable and gentle pain management.",
+    "rating": 4.8,
+    "reviewsCount": 112,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/painkillers.webp",
     "prices": {
-      "250g": 330,
-      "500g": 640,
-      "1kg": 1250
+      "20 Tablets": 18,
+      "50 Tablets": 40,
+      "Hospital Dispenser (200 Tablets)": 145
     },
     "originalPrices": {
-      "250g": 330,
-      "500g": 640,
-      "1kg": 1250
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "phool-makhana-250gm-lotus-seeds",
-    "name": "Phool Makhana  100gm/250gm/500gm/1kg",
-    "urduName": "",
-    "category": "seeds",
-    "description": "Phool Makhana 250gm (Premium Lotus Seeds)Discover the exceptional quality of Phool Makhana (lotus seeds)—a nutrient-dense superfood known for its light, crispy texture and numerous health benefits. Carefully sourced and hygienically packed, this 250-gram pack ensures purity and freshness, making it an excellent choice for a healthy lifestyle.Key Features & Benefits:✔ Rich in Nutrients: packed with protein, fibre, and essential minerals like calcium and magnesium.✔ Supports Heart Health Low in cholesterol, fat, and sodium, making it a heart-friendly snack.✔ Aids in Weight Management: A light, low-calorie option that keeps you full for longer.✔ Good for Skin & Anti-Ageing: Contains antioxidants that promote healthy, youthful skin.✔ Versatile & Easy to Use: Enjoy roasted as a crunchy snack, add to curries, or use in desserts.Ideal for health-conscious individuals, Phool Makhana is a perfect guilt-free snack that blends taste with nutrition.",
-    "rating": 5,
-    "reviewsCount": 27,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785825809_45873_800x.webp",
-    "prices": {
-      "100g": 560,
-      "250g": 1400,
-      "500g": 2800,
-      "1kg": 5600
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "dry-fruit-gur-250gm-premium-quality",
-    "name": "Dry Fruit Gur 250gm Premium Quality",
-    "urduName": "",
-    "category": "snack",
-    "description": "Dry Fruit Gur 250gm (Premium Quality)Indulge in the rich, natural sweetness of Dry Fruit Gur, packed in a 250gm size. This premium-quality blend of dried fruits and jaggery (gur) is a nutritious and delicious treat, perfect for snacking or adding to your recipes.Premium Quality: Made with the finest dried fruits and pure jaggery to provide a wholesome, rich flavour.Natural Sweetness: The combination of jaggery and dried fruits delivers a deliciously sweet and slightly tangy taste, without refined sugars.Nutrient-rich: packed with essential vitamins, minerals, and antioxidants from the dried fruits and the natural benefits of jaggery, such as iron and fibre.Versatile Treat: Ideal for snacking on its own, adding to desserts, or mixing into smoothies, porridges, and more.100% Natural: Free from preservatives, artificial colours, and additives, ensuring you enjoy a pure, healthy treat.Enjoy the goodness of Dry Fruit Gur—a perfect blend of nature's best, offering a sweet and nutritious snack for any time of day.",
-    "rating": 5,
-    "reviewsCount": 35,
-    "imageUrl": "https://www.khandryfruits.com/storage/app/public/product/thumbnail/2025-01-24-67935cf6bf6fe.webp",
-    "prices": {
-      "250g": 1050,
-      "500g": 2040,
-      "1kg": 3990
-    },
-    "originalPrices": {
-      "250g": 1050,
-      "500g": 2040,
-      "1kg": 3990
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "dried-coconut-250gm",
-    "name": "Dried Coconut 250gm",
-    "urduName": "",
-    "category": "baking",
-    "description": "Dried Coconut 250gmAdd a tropical touch to your snacks and meals with dried coconut, packed in a 250-gram size. Made from high-quality dried coconut, this product offers a rich, sweet coconut flavour that enhances both sweet and savoury dishes.Premium Quality: Made from finely shredded, dried coconut to preserve its natural flavour and texture.Rich in Nutrients: A good source of healthy fats, fibre, and essential vitamins and minerals that promote heart health and energy.Naturally Sweet: No added sugars or preservatives, offering the pure, delicious taste of coconut in every bite.Versatile Use: Perfect for snacking, baking, adding to smoothies, sprinkling over cereals, or using in savoury dishes like curries and salads.100% Natural: Free from artificial colours, flavours, or additives, ensuring a wholesome, pure product.Savour the tropical flavour of dried coconut—a healthy and versatile ingredient that adds richness and flavour to your culinary creations.",
-    "rating": 4.5,
-    "reviewsCount": 37,
-    "imageUrl": "/images/products/dried-coconut-250gm.webp",
-    "prices": {
-      "250g": 330,
-      "500g": 640,
-      "1kg": 1250
-    },
-    "originalPrices": {
-      "250g": 330,
-      "500g": 640,
-      "1kg": 1250
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "irani-muzafati-dates-250g-mazafati-khajoor-khajur",
-    "name": "Irani Muzafati Dates",
-    "urduName": "",
-    "category": "dates",
-    "description": "Irani Muzafati Dates 500gm (Mazafati Khajoor/Khajur)Experience the rich, melt-in-your-mouth sweetness of Irani Muzafati Dates, also known as Mazafati Khajoor, packed These dates are famous for their soft, moist texture and luxurious flavour, making them a delightful and healthy treat.Premium Quality: Sourced from Iran, these dates are known for their superior freshness, natural sweetness, and velvety texture.Rich & Moist: Soft, juicy dates with a deep caramel-like flavour, perfect for satisfying your sweet cravings.Nutrient-Packed: High in natural energy, fibre, vitamins, and minerals such as potassium and magnesium, promoting overall health and vitality.Versatile Use: Ideal for snacking, pairing with nuts, or adding to smoothies, desserts, and traditional recipes.100% Natural: Free from preservatives, artificial additives, and added sugars, ensuring pure, wholesome goodness.Treat yourself to the indulgent taste and nutritional benefits of Irani Muzafati Dates—a perfect combination of flavour and health.",
-    "rating": 4.5,
-    "reviewsCount": 17,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785822951_45738_800x.webp",
-    "prices": {
-      "500gm": 500,
-      "1kg": 1000
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "dried-munakka-250gm",
-    "name": "Dried Munakka 250gm",
-    "urduName": "",
-    "category": "raisins",
-    "description": "Dried Munakka 250gmExperience the natural sweetness and health benefits of dried munakka, packed in a 250-gram size. These raisins, also known as dried black grapes, are sun-dried to perfection to preserve their rich flavour and nutritional value.Premium Quality: Handpicked and carefully dried to ensure optimal flavour and texture.Naturally Sweet: Enjoy the rich, deep sweetness of Munakka without any added sugar or preservatives.Nutrient-rich: Packed with fibre, vitamins, minerals, and antioxidants, Munakka supports digestion, boosts immunity, and promotes healthy skin.Versatile Use: Ideal for snacking, adding to smoothies, yoghurt, salads, or incorporating into your favourite dishes and desserts.100% Natural: Free from artificial colours, flavours, and preservatives, ensuring a wholesome snacking experience.Indulge in the nutritious goodness of dried munakka—a delicious and healthy choice for any time of the day.",
-    "rating": 5,
-    "reviewsCount": 35,
-    "imageUrl": "/images/products/dried-munakka-250gm.webp",
-    "prices": {
-      "250g": 480,
-      "500g": 930,
-      "1kg": 1820
-    },
-    "originalPrices": {
-      "250g": 530,
-      "500g": 1030,
-      "1kg": 2010
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "medium-size-anjeer-250gm-dry-figs",
-    "name": "Medium- Size Anjeer 250gm Dry figs",
-    "urduName": "",
-    "category": "dried-fig",
-    "description": "Medium-Size Anjeer 250gm (Dry Figs)Relish the natural sweetness and chewy texture of Medium-Size Anjeer (Dry Figs), packed in a 250gm size. These figs are carefully dried to retain their flavor and nutrients, making them a healthy and delicious snack for all ages.Premium Quality: Handpicked medium-sized figs, perfectly dried to maintain their soft and chewy texture.Naturally Sweet: Delight in their rich, natural sweetness without any added sugar.Nutrient-Dense: A rich source of dietary fiber, calcium, potassium, and antioxidants, supporting digestion, bone health, and overall wellness.Versatile Use: Enjoy as a standalone snack, add to cereals, smoothies, desserts, or use in baking.100% Natural: Free from preservatives, artificial colors, and additives, ensuring a wholesome and pure product.Treat yourself to the delightful taste and nutritional benefits of Medium-Size Anjeer (Dry Figs)—a perfect addition to your healthy lifestyle!",
-    "rating": 4.5,
-    "reviewsCount": 37,
-    "imageUrl": "/images/products/medium-size-anjeer-250gm-dry-figs.webp",
-    "prices": {
-      "250g": 950,
-      "500g": 1850,
-      "1kg": 3610
-    },
-    "originalPrices": {
-      "250g": 950,
-      "500g": 1850,
-      "1kg": 3610
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "dried-apricots-gol-khubani-250gm",
-    "name": "Dried Apricots Gol Khubani 250gm",
-    "urduName": "",
-    "category": "apricots",
-    "description": "Dried Apricots Gol Khubani 250gmSavour the naturally sweet and tangy flavour of Dried Apricots Gol Khubani, packed in a 250-gram pack. These apricots are carefully sun-dried to preserve their rich taste and nutritional value, offering a healthy and delicious snack option.Premium Quality: Handpicked and dried to perfection, retaining their full flavour and rich texture.Naturally Sweet & Tangy: Enjoy the balanced sweetness with a slight tartness that makes these apricots a delightful treat.Rich in Nutrients: A great source of vitamins, fibre, and antioxidants that promote healthy digestion, skin, and overall well-being.Versatile Snack: Perfect for snacking, adding to smoothies, baking, or garnishing salads and desserts.100% Natural: Free from preservatives, artificial flavours, and additives, ensuring a pure, wholesome experience.Treat yourself to the delightful, nutrient-packed goodness of Gol Khubani Dried Apricots—a perfect balance of taste and health in every bite.",
-    "rating": 5,
-    "reviewsCount": 7,
-    "imageUrl": "/images/products/dried-apricots-gol-khubani-250gm.webp",
-    "prices": {
-      "250g": 430,
-      "500g": 830,
-      "1kg": 1630
-    },
-    "originalPrices": {
-      "250g": 430,
-      "500g": 830,
-      "1kg": 1630
+      "Hospital Dispenser (200 Tablets)": 165
     },
     "inStock": true,
     "featured": true,
     "isNew": false,
-    "badge": ""
+    "badge": "Essential"
   },
   {
-    "id": "organic-dry-figs-anjeer-250gm-premium-quality",
-    "name": "Organic Dry Figs Anjeer 250gm Premium Quality",
+    "id": "examination-couch-square-pipe",
+    "name": "Examination Couch Square Pipe (Hospital Grade)",
     "urduName": "",
-    "category": "dried-fig",
-    "description": "Organic Dry Figs (Anjeer) 250gm – Premium QualityExperience the natural sweetness and health benefits of our organic dry figs (Anjeer). Sourced from premium farms, these figs are carefully selected, sun-dried, and hygienically packed to deliver unmatched quality and taste.Product HighlightsWeight: 250gmPremium Quality: Naturally sun-dried and free from additives or preservatives.Nutrient-rich: high in fibre, calcium, and antioxidants, supporting digestion and overall health.Versatile Use: Perfect as a healthy snack, dessert topping, or a flavourful ingredient in your recipes.Why Choose Organic Dry Figs?Our figs are organically grown and packed to retain their natural flavour, texture, and nutrition. Their soft, chewy texture and rich sweetness make them an excellent choice for health-conscious individuals.Enjoy the goodness of nature with our Organic Dry Figs—a premium treat for your well-being!",
-    "rating": 4.5,
-    "reviewsCount": 21,
-    "imageUrl": "/images/products/organic-dry-figs-anjeer-250gm-premium-quality.webp",
-    "prices": {
-      "250g": 1400,
-      "500g": 2730,
-      "1kg": 5320
-    },
-    "originalPrices": {
-      "250g": 1400,
-      "500g": 2730,
-      "1kg": 5320
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "roasted-chana-250gm",
-    "name": "Roasted Chana 250gm",
-    "urduName": "",
-    "category": "snack",
-    "description": "Roasted Chana 250 gCrunchy, delicious, and packed with nutrition, roasted chana is the perfect snack for health-conscious individuals. Made from premium-quality chickpeas, these roasted delights are a guilt-free way to satisfy your cravings while boosting your energy.Why Choose Our Roasted Chana?Premium Quality: Made from handpicked chickpeas, roasted to perfection for an irresistible crunch.Rich in Nutrients: High in protein, fibre, and essential vitamins like B6 and folate.Low-calorie snack: perfect for weight management without compromising on taste.Versatile Delight: Enjoy it on its own, mix with spices, or add to your favourite recipes.Freshly Packed: Comes in a hygienic 250-gram resealable pouch to maintain freshness and flavour.Health Benefits:Supports Weight Loss: High in fibre and protein, keeping you full for longer.Boosts Energy: A natural source of plant-based protein for sustained energy.Heart-Healthy: Low in fat and rich in essential nutrients for cardiovascular wellness.Whether you're at work, home, or on the go, Roasted Chana (250 g) is the ultimate healthy snacking companion. Crunch into goodness today!Let me know if you'd like further adjustments! 😊",
-    "rating": 5,
-    "reviewsCount": 27,
-    "imageUrl": "/images/products/roasted-chana-250gm.webp",
-    "prices": {
-      "250g": 280,
-      "500g": 540,
-      "1kg": 1060
-    },
-    "originalPrices": {
-      "250g": 280,
-      "500g": 540,
-      "1kg": 1060
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "jumbo-size-roasted-cashews-250g",
-    "name": " Roasted Cashews 250g/500gm/1kg",
-    "urduName": "",
-    "category": "cashews",
-    "description": " Roasted Cashews, 250g/500gm/1kgProduct Overview:Enjoy the rich, crunchy delight of Jumbo Roasted Cashews, expertly roasted to perfection. This 250-gram pack offers premium-quality cashews with a satisfying, nutty flavour and a crisp texture that’s sure to elevate your snacking experience.Key Features:Weight: 250gType: Jumbo roasted cashewsFlavor: Perfectly roasted with a rich, slightly salty tasteNutritional Benefits: A great source of healthy fats, protein, vitamins, and minerals, supporting overall wellness and energy.Versatility: Ideal for snacking, adding to salads, stir-fries, baking, or enjoying with your favourite drinks.Why Choose Our Jumbo Roasted Cashews?Premium Quality: Handpicked and roasted to perfection for the best taste and texture.Nutrient-Dense: Rich in heart-healthy fats and essential nutrients for a balanced diet.Convenient & Ready to Enjoy: Perfectly roasted, ready to snack or use in your culinary creations.Storage Tips:For best freshness, store in an airtight container in a cool, dry place.Indulge in the irresistible crunch of Jumbo Roasted Cashews—a healthy, delicious treat that adds flavour and nourishment to your day!",
-    "rating": 4.5,
-    "reviewsCount": 41,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785816772_45810_800x.webp",
-    "prices": {
-      "250g": 900,
-      "500g": 1800,
-      "1kg": 3600
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "premium-slated-pistachio-pista-250gm",
-    "name": "Premium Slated Pistachio Pista 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "pistachios",
-    "description": "Premium Slated Pistachio Pista 250gm",
-    "rating": 5,
-    "reviewsCount": 15,
-    "imageUrl": "https://media.idealdryfruit.com/uploads//products/2026/08/1785815480_45809_800x.webp",
-    "prices": {
-      "250gm": 1200,
-      "500gm": 2400,
-      "1kg": 4800
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "desi-kishmish-soghi-desi-mewa-meva-dry-raisin-250gm",
-    "name": "Desi Kishmish / Soghi Desi Mewa / Meva Dry Raisin 250gm",
-    "urduName": "",
-    "category": "raisins",
-    "description": "Desi Kishmish (Soghi) – 250g PackNaturally Sweet and Nutrient-RichRelish the traditional flavour of Desi Kishmish (Soghi), a naturally dried raisin known for its delightful sweetness and wholesome goodness. Sourced from the finest farms, this premium-quality dried fruit is a perfect addition to your healthy lifestyle.Key Features:Premium Quality: 100% natural desi kishmish with a soft texture and rich, sweet flavour.Nutritional Value: High in natural sugars, fibre, antioxidants, and essential vitamins.Versatile Use: Ideal for snacking, baking, garnishing desserts, or adding to your favourite dishes.Chemical-Free: Free from preservatives and artificial additives, ensuring pure and authentic taste.Health Benefits:Boosts energy and stamina naturallyPromotes digestion and gut health with dietary fiberSupports heart health and lowers cholesterolStrengthens immunity with antioxidants and vitaminsWhy Choose Our Desi Kishmish?Our desi kishmish is handpicked and carefully processed to ensure freshness and superior quality. This 250-gram pack is perfect for those seeking a natural, healthy, and delicious treat.Storage Instructions:Store in an airtight container in a cool, dry place to maintain freshness and prevent moisture.Indulge in the wholesome sweetness of Desi Kishmish (Soghi) 250g Pack, a must-have for your kitchen and a perfect companion for your healthy diet",
-    "rating": 4.5,
-    "reviewsCount": 17,
-    "imageUrl": "/images/products/desi-kishmish-soghi-desi-mewa-meva-dry-raisin-250gm.webp",
-    "prices": {
-      "250g": 430,
-      "500g": 830,
-      "1kg": 1630
-    },
-    "originalPrices": {
-      "250g": 530,
-      "500g": 1030,
-      "1kg": 2010
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "pine-nuts-chilgoza-afghani-premium-quality-250gm",
-    "name": "Pine Nuts Chilgoza Afghani Premium Quality 250gm",
-    "urduName": "",
-    "category": "pine-nuts-chilghoza",
-    "description": "Pine Nuts (Chilgoza) Afghani – Premium Quality 250gExquisite Taste from AfghanistanSavor the authentic flavor of our Afghani Pine Nuts (Chilgoza), celebrated worldwide for their rich taste and superior quality. Carefully sourced and handpicked, these nuts are a luxurious treat packed with nutrition and freshness.Key Highlights:Premium Quality: 100% natural Afghani Chilgoza, known for its distinct flavor and texture.Nutritional Powerhouse: High in protein, healthy fats, antioxidants, and essential vitamins.Rich Aroma & Flavor: Perfect for enhancing the taste of your favorite recipes or as a gourmet snack.Ideal for All Occasions: Whether for cooking, baking, or gifting, this 250g pack is versatile and convenient.Health Benefits:Supports heart health with omega-3 fatty acidsBoosts energy and staminaStrengthens immunity with essential nutrientsPromotes healthy skin and hairStorage Instructions:Keep in an airtight container in a cool, dry place to maintain freshness and flavor.Why Choose Afghani Chilgoza?Known for their superior quality, Afghani pine nuts stand out for their size, taste, and aroma. This 250g pack ensures you enjoy a premium experience with every bite.Elevate your snacking or cooking experience with our Pine Nuts (Chilgoza) Afghani – Premium Quality and discover the true essence of nature’s finest!",
-    "rating": 4.5,
+    "category": "surgical-furniture",
+    "description": "Heavy-duty medical examination couch manufactured with reinforced square steel piping, anti-corrosion epoxy powder coating, and high-density medical-grade antimicrobial faux-leather upholstery. Features adjustable headrest and paper roll holder.",
+    "rating": 5.0,
     "reviewsCount": 29,
-    "imageUrl": "/images/products/pine-nuts-chilgoza-afghani-premium-quality-250gm.webp",
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/examination_couch.webp",
     "prices": {
-      "250gm": 4200,
-      "500gm": 4200,
-      "1kg": 15960
+      "Standard (180cm x 60cm)": 280,
+      "Deluxe Hydraulic (190cm x 70cm)": 450
     },
     "originalPrices": {
-      "250gm": 5250,
-      "500gm": 5250,
-      "1kg": 19950
+      "Deluxe Hydraulic (190cm x 70cm)": 520
+    },
+    "inStock": true,
+    "featured": true,
+    "isNew": true,
+    "badge": "Hospital Grade"
+  },
+  {
+    "id": "foerster-sponge-forceps",
+    "name": "Foerster Sponge Forceps (Straight / Curved)",
+    "urduName": "",
+    "category": "surgical-instruments",
+    "description": "Precision medical surgical instrument constructed from German stainless steel. Features serrated jaws and ratchet lock mechanism for secure grip during surgical swabs, sponges, and dressing procedures. Autoclavable & corrosion-resistant.",
+    "rating": 4.9,
+    "reviewsCount": 47,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/foerster_forceps.webp",
+    "prices": {
+      "Straight 18cm": 35,
+      "Straight 25cm": 45,
+      "Curved 25cm": 48
+    },
+    "originalPrices": {
+      "Straight 25cm": 55,
+      "Curved 25cm": 60
+    },
+    "inStock": true,
+    "featured": true,
+    "isNew": false,
+    "badge": "ISO Certified"
+  },
+  {
+    "id": "surgical-loupes-glasses",
+    "name": "Surgical Loupes Glasses (3.5x Optical Magnification)",
+    "urduName": "",
+    "category": "eye-vision",
+    "description": "Professional surgical loupes with high-resolution Galilean optics, multi-layer anti-reflective coating, and ultra-light titanium frame. Provides wide field of view and generous depth of field for precision surgical and dental operations.",
+    "rating": 4.9,
+    "reviewsCount": 63,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/surgical_loupes.webp",
+    "prices": {
+      "2.5x Magnification": 190,
+      "3.5x Magnification + LED Headlight": 280
+    },
+    "originalPrices": {
+      "3.5x Magnification + LED Headlight": 340
+    },
+    "inStock": true,
+    "featured": true,
+    "isNew": true,
+    "badge": "Precision"
+  },
+  {
+    "id": "surgical-protective-glasses",
+    "name": "Surgical Protective Glasses (Anti-Fog & UV400)",
+    "urduName": "",
+    "category": "eye-vision",
+    "description": "Ergonomic medical protective eyewear designed for operating theaters, laboratory personnel, and clinical environments. Features crystal-clear polycarbonate lenses, side splash shields, and anti-fog technology.",
+    "rating": 4.7,
+    "reviewsCount": 78,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/surgical_glasses.webp",
+    "prices": {
+      "Single Pack": 12,
+      "Box of 10": 95,
+      "Clinic Carton (50 Pairs)": 420
+    },
+    "originalPrices": {
+      "Box of 10": 110
     },
     "inStock": true,
     "featured": false,
     "isNew": false,
-    "badge": ""
+    "badge": "Clinical Safety"
   },
   {
-    "id": "pine-nuts-chilgoza-without-shell-250gm-pack",
-    "name": "Pine Nuts Chilgoza Without Shell 250gm Pack",
+    "id": "broad-spectrum-antibiotics-pack",
+    "name": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)",
     "urduName": "",
-    "category": "pine-nuts-chilghoza",
-    "description": "Pine Nuts (Chilgoza) Without Shell, 250g PackPremium Quality for a Healthy LifestyleIndulge in the finest, handpicked Pine Nuts (Chilgoza) without shell, sourced from premium regions to bring you unparalleled taste and nutrition. Packed with essential nutrients, these nuts are the perfect choice for health-conscious individuals.Key Features:Superior Quality: Carefully selected, de-shelled pine nuts to ensure freshness and premium quality.Nutrient-rich: A powerhouse of vitamins, minerals, antioxidants, and healthy fats to support overall well-being.Convenient & Ready-to-Eat: No shell, no hassle—enjoy directly as a snack or add to your favourite dishes.Versatile Usage: Perfect for cooking, baking, garnishing, or simply snacking.Why Choose Us?Our pine nuts are rigorously quality-checked to ensure you get only the best. This 250-gram pack is designed for your convenience, offering a resealable option to maintain freshness and flavour for longer.Nutritional Benefits:Supports heart healthBoosts energy levelsEnhances brain functionStrengthens immunityStorage Instructions:Store in a cool, dry place. Reseal after opening to preserve freshness.Experience the rich taste and premium quality of our Pine Nuts (Chilgoza). Whether you’re a gourmet chef or a snack enthusiast, this 250g pack is the perfect addition to your pantry!",
-    "rating": 5,
-    "reviewsCount": 31,
-    "imageUrl": "/images/products/pine-nuts-chilgoza-without-shell-250gm-pack.webp",
+    "category": "medicines",
+    "description": "High-purity broad-spectrum antibiotic formulation for bacterial infection treatment. Formulated in compliance with WHO essential medicine guidelines.",
+    "rating": 4.8,
+    "reviewsCount": 51,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/antibiotics.webp",
     "prices": {
-      "250gm": 5500,
-      "500gm": 5500,
-      "1kg": 20900
+      "500mg (20 Caps)": 24,
+      "625mg (20 Caps)": 32,
+      "1000mg (14 Tabs)": 36
     },
     "originalPrices": {
-      "250gm": 6500,
-      "500gm": 6500,
-      "1kg": 24700
+      "625mg (20 Caps)": 38
     },
     "inStock": true,
     "featured": false,
-    "isNew": false,
-    "badge": ""
+    "isNew": true,
+    "badge": "Prescription"
   },
   {
-    "id": "fresh-nimco-hight-quality-250gm",
-    "name": "Fresh Nimco Hight Quality 250gm",
+    "id": "daily-multivitamin-mineral-complex",
+    "name": "Daily Multivitamin & Mineral Complex (Immune Defense)",
     "urduName": "",
-    "category": "snack",
-    "description": "Fresh Nimco High Quality (250gm)Enjoy the perfect blend of crispy, spicy, and savoury flavours with our Fresh Nimco (250 g) pack. Made with high-quality ingredients, this snack is freshly prepared to ensure great taste and crunch. Ideal for teatime, gatherings, or as an everyday treat. Packed hygienically to retain freshness and flavour. Delivered across Pakistan with a satisfaction guarantee!",
-    "rating": 4.5,
-    "reviewsCount": 33,
-    "imageUrl": "/images/products/fresh-nimco-hight-quality-250gm.webp",
+    "category": "nutrition-supplements",
+    "description": "Comprehensive nutritional formula containing 24 essential vitamins and minerals including Vitamin C, Vitamin D3, Zinc, Magnesium, and B-Complex to support overall vitality, immune health, and cellular repair.",
+    "rating": 4.9,
+    "reviewsCount": 96,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/multivitamin.webp",
     "prices": {
-      "250gm": 280,
-      "500gm": 280,
-      "1kg": 1060
+      "60 Capsules (1 Month)": 22,
+      "120 Capsules (2 Months)": 38,
+      "Family Value Pack (360 Capsules)": 98
     },
     "originalPrices": {
-      "250gm": 280,
-      "500gm": 280,
-      "1kg": 1060
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "mix-dry-fruits-vip-250gm",
-    "name": "Mix Dry Fruits VIP 250gm",
-    "urduName": "",
-    "category": "mix-dry-fruit",
-    "description": "Mix Dry Fruits VIP (250 g)Indulge in a premium blend of almonds, cashews, pistachios, walnuts, and hazel nuts. Packed with nutrients, this 250-gram mix is perfect for snacking, gifting, or enhancing recipes. Handpicked for freshness and quality, it’s a healthy and delicious treat. Conveniently packed and delivered across Pakistan. Enjoy the perfect balance of taste and nutrition!",
-    "rating": 5,
-    "reviewsCount": 35,
-    "imageUrl": "/images/products/mix-dry-fruits-vip-250gm.webp",
-    "prices": {
-      "250gm": 1100,
-      "500gm": 1100,
-      "1kg": 4180
-    },
-    "originalPrices": {
-      "250gm": 1100,
-      "500gm": 1100,
-      "1kg": 4180
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "gol-irani-dry-figs-250gm",
-    "name": "Gol irani Dry Figs 250gm",
-    "urduName": "",
-    "category": "dried-fig",
-    "description": "Discover the sweetness of Gol irani Dry Figs, a true taste of nature.These sun-ripened figs are naturally dried to preserve their rich flavor and chewy texture.Enjoy them as a healthy snack, add them to salads, or use them in baking.\nA delicious and nutritious treat for the whole family",
-    "rating": 4.5,
-    "reviewsCount": 37,
-    "imageUrl": "/images/products/gol-irani-dry-figs-250gm.webp",
-    "prices": {
-      "250gm": 1600,
-      "500gm": 1600,
-      "1kg": 6080
-    },
-    "originalPrices": {
-      "250gm": 1600,
-      "500gm": 1600,
-      "1kg": 6080
-    },
-    "inStock": true,
-    "featured": false,
-    "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "american-akhrot-giri-250gm-pack",
-    "name": "Akhrot Giri 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "walnuts",
-    "description": "American Akhrot Giri (Walnut Kernels) - 250g PackExperience the premium quality and rich flavour of American Akhrot Giri, a delightful and nutritious snack that adds a touch of luxury to your everyday diet.",
-    "rating": 4.5,
-    "reviewsCount": 5,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785815930_45732_800x.webp",
-    "prices": {
-      "250gm": 800,
-      "500gm": 1600,
-      "1kg": 3200
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "dried-figs-anjeer-250gm",
-    "name": "Dried Figs Anjeer 250gm",
-    "urduName": "",
-    "category": "dried-fig",
-    "description": "Dried Figs (Anjeer) – 250gEnjoy the natural sweetness of our premium Dried Figs (Anjeer). Packed with fiber, calcium, and antioxidants, these soft, chewy figs are perfect for snacking, baking, or adding to your favorite dishes. Securely packed for lasting freshness, this 250g pack is a delicious and healthy treat for any time of day!",
-    "rating": 5,
-    "reviewsCount": 7,
-    "imageUrl": "/images/products/dried-figs-anjeer-250gm.webp",
-    "prices": {
-      "250gm": 1600,
-      "500gm": 1600,
-      "1kg": 6080
-    },
-    "originalPrices": {
-      "250gm": 1600,
-      "500gm": 1600,
-      "1kg": 6080
+      "120 Capsules (2 Months)": 45,
+      "Family Value Pack (360 Capsules)": 120
     },
     "inStock": true,
     "featured": true,
     "isNew": false,
-    "badge": ""
-  },
-  {
-    "id": "almonds",
-    "name": "Almonds 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "almonds",
-    "description": "",
-    "rating": 4.5,
-    "reviewsCount": 5,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785817019_45808_800x.webp",
-    "prices": {
-      "250gm": 950,
-      "500gm": 1900,
-      "1kg": 3800
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "pumpkin-seeds",
-    "name": "Pumpkin seeds ",
-    "urduName": "",
-    "category": "seeds",
-    "description": "Pumpkin seeds",
-    "rating": 4.5,
-    "reviewsCount": 20,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785824092_45717_800x.webp",
-    "prices": {
-      "84gm": 200,
-      "250gm": 600,
-      "500gm": 1200,
-      "1kg": 2400
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "rabi-dates",
-    "name": "Irani Rabi dates 250gm/500gm/1kg",
-    "urduName": "",
-    "category": "dates",
-    "description": "Irani rabi dates",
-    "rating": 4.5,
-    "reviewsCount": 19,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785826330_45870_800x.webp",
-    "prices": {
-      "250gm": 300,
-      "500gm": 600,
-      "1kg": 1200
-    },
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
-  },
-  {
-    "id": "irani-dates",
-    "name": "Irani Zahedi Dates 500gm/1kg",
-    "urduName": "",
-    "category": "dates",
-    "description": "Irani Zahedi Dates 500gm/1kg",
-    "rating": 4.5,
-    "reviewsCount": 17,
-    "imageUrl": "https://media.idealdryfruit.com/uploads/products/2026/08/1785826545_45771_800x.webp",
-    "prices": {},
-    "originalPrices": {},
-    "inStock": true,
-    "featured": true,
-    "isNew": true,
-    "badge": ""
+    "badge": "Wellness"
   }
 ]

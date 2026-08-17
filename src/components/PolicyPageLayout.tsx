@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, Truck, RotateCcw, Headphones, Tag, Send } from "lucide-react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import type { CMSSiteConfig } from "@/lib/cms-types";
 import { getFooterLinkHref } from "@/lib/link-utils";
@@ -117,86 +118,7 @@ export default function PolicyPageLayout({ title, siteConfig, children }: Policy
       </div>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-[#1a1a1a] text-white pt-12 pb-6">
-        <div className="global-container">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-10">
-            <div className="col-span-2 sm:col-span-3 lg:col-span-2">
-              <div className="flex items-center gap-3.5 mb-4 select-none">
-                <div className="w-[78px] h-[78px] rounded-full overflow-hidden border-2 border-[#C9A227]/40 p-0.5 bg-[#F8F7F2] shadow-md flex items-center justify-center flex-shrink-0">
-                  <img src={brand.logoUrl} alt={brand.name} className="w-full h-full object-contain" />
-                </div>
-                <div className="leading-none flex flex-col justify-center">
-                  <span className="font-serif font-black tracking-wide text-white text-xl sm:text-2xl">
-                    IDEAL
-                  </span>
-                  <span className="font-sans tracking-[0.25em] text-[#C9A227] font-bold uppercase text-[10px] mt-1">
-                    DRY FRUIT
-                  </span>
-                </div>
-              </div>
-              <p className="text-sm text-white/80 leading-relaxed mb-4">
-                {brand.name} delivers fresh, premium quality nuts and dry fruits all over Pakistan. Every product is handpicked and quality-checked by our QC team.
-              </p>
-              <div className="font-sans text-xs font-bold uppercase tracking-wider mb-3 text-white">LOCATION</div>
-              <div className="space-y-2 text-sm text-white/80">
-                <p className="flex items-start gap-2">{brand.address}</p>
-                <p className="flex items-center gap-2">{brand.phone}</p>
-                <p className="flex items-center gap-2">{brand.email}</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-sans text-sm font-extrabold uppercase tracking-wider mb-4 text-white">QUICK LINKS</h4>
-              <ul className="space-y-2 text-sm text-white/80">
-                {footer.quickLinks.map((l) => (
-                  <li key={l}>
-                    <Link href={getFooterLinkHref(l)} className="hover:text-[#C9A84C] transition-colors">{l}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-sans text-sm font-extrabold uppercase tracking-wider mb-4 text-white">MORE LINKS</h4>
-              <ul className="space-y-2 text-sm text-white/80">
-                {footer.moreLinks.map((l) => (
-                  <li key={l}>
-                    <Link href={getFooterLinkHref(l)} className="hover:text-[#C9A84C] transition-colors">{l}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="col-span-2 sm:col-span-1">
-              <h4 className="font-sans text-sm font-extrabold uppercase tracking-wider mb-3 text-white">{footer.newsletterTitle}</h4>
-              <p className="text-xs text-white/80 mb-3">{footer.newsletterSub}</p>
-              <div className="flex gap-0">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="flex-1 h-10 w-full min-w-0 px-3 bg-[#2a2a2a] border border-[#C9A84C] rounded-l-lg text-xs text-white placeholder-gray-400 outline-none focus:border-white"
-                />
-                <button className="h-10 px-3.5 rounded-r-lg bg-[#C9A84C] text-[#111] flex items-center justify-center flex-shrink-0 hover:bg-white transition-colors">
-                  <Send size={14} />
-                </button>
-              </div>
-              <div className="flex gap-2 mt-4">
-                {footer.social.map(({ label, href }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs bg-[#C9A84C] text-[#111] hover:bg-white transition-colors">
-                    {label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-[#C9A84C] pt-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/60">
-            <p>© {new Date().getFullYear()} {brand.name}. All Rights Reserved.</p>
-            <p>Delivering premium quality across Pakistan 🇵🇰</p>
-          </div>
-        </div>
-      </footer>
+      <Footer siteConfig={siteConfig} />
 
       {/* WhatsApp Floating Button */}
       <a

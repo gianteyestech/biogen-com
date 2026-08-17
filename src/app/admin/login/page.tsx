@@ -128,7 +128,7 @@ export default function AdminLoginPage() {
           <div className="bg-[#181818] border border-[#C9A84C]/30 rounded-2xl max-w-sm w-full p-6 space-y-4">
             <h3 className="text-lg font-bold text-white">Reset Admin Password</h3>
             <p className="text-xs text-gray-400">
-              Enter your registered admin email address (<span className="text-white font-mono">admin@idealdryfruit.com</span>) to receive a password reset link.
+              Enter your registered admin email address (<span className="text-white font-mono">admin.biogen@gianteyetech.com</span>) to receive a password reset link.
             </p>
 
             {forgotStatus && (
@@ -139,7 +139,7 @@ export default function AdminLoginPage() {
 
             <input
               type="email"
-              placeholder="admin@idealdryfruit.com"
+              placeholder="admin.biogen@gianteyetech.com"
               value={resetEmail}
               onChange={(e) => setResetEmail(e.target.value)}
               className="w-full px-4 py-3 bg-[#111] border border-gray-700 rounded-xl text-white outline-none focus:border-[#C9A84C] text-sm"

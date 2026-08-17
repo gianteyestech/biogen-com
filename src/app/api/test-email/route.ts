@@ -3,12 +3,12 @@ import { sendEmail } from "@/lib/email";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const targetEmail = searchParams.get("to") || "admin@idealdryfruit.com";
+  const targetEmail = searchParams.get("to") || "admin.biogen@gianteyetech.com";
 
   try {
     const result = await sendEmail({
       to: targetEmail,
-      subject: "Test Email from Ideal Dry Fruit CMS",
+      subject: "Test Email from Biogen CMS",
       html: `<div style="padding:20px; font-family:Arial;">
         <h2>SMTP Connection Test</h2>
         <p>If you receive this email, your Hostinger Webmail SMTP is working 100%!</p>

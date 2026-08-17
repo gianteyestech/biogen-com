@@ -49,18 +49,13 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
       <div className="relative z-10 w-80 max-w-[85vw] bg-[#111111] border-r border-[#C9A227]/20 h-full flex flex-col shadow-2xl animate-in slide-in-from-left duration-300 overflow-y-auto">
         
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-5 py-5 border-b border-[#C9A227]/15 flex-shrink-0 bg-gradient-to-r from-[#181818] to-[#111111]">
-          <div>
-            <h3 className="font-serif text-sm font-bold tracking-wide text-white">
-              IDEAL DRY FRUIT
-            </h3>
-            <span className="font-sans text-[8px] tracking-[0.2em] text-[#C9A227] font-semibold uppercase">
-              Royal Selection
-            </span>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#0072CE]/20 flex-shrink-0 bg-[#0F172A]">
+          <div className="h-[38px] bg-white px-3 py-1.5 rounded-lg flex items-center justify-center">
+            <img src="/biogen-logo.png" alt="Biogen Pharma" className="h-full w-auto object-contain" />
           </div>
           <button 
             onClick={onClose} 
-            className="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#C9A227] transition-all duration-300"
+            className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#0072CE] transition-all duration-300"
             aria-label="Close menu"
           >
             <X size={16} />
@@ -75,23 +70,23 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
             Shop Collections
           </span>
 
-          {/* All Products shortcut card (Warm Ivory / Gold style) */}
+          {/* All Products shortcut card */}
           <button
             onClick={() => handleCategoryClick("all")}
             className={`w-full flex items-center gap-3.5 p-4 rounded-xl text-left transition-all duration-300 border mb-4 shadow-sm ${
               selectedCategory === "all"
-                ? "bg-[#C9A227] border-[#C9A227] text-black font-extrabold"
-                : "bg-[#F8F7F2] border-gray-200 text-gray-800 hover:border-[#C9A227]/40"
+                ? "bg-[#0072CE] border-[#0072CE] text-white font-extrabold"
+                : "bg-[#F8F7F2] border-gray-200 text-gray-800 hover:border-[#0072CE]/40"
             }`}
           >
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              selectedCategory === "all" ? "bg-black/10" : "bg-white border border-gray-100"
+              selectedCategory === "all" ? "bg-white/20" : "bg-white border border-gray-100"
             }`}>
-              <ShoppingBag size={16} className={selectedCategory === "all" ? "text-black" : "text-[#C9A227]"} />
+              <ShoppingBag size={16} className={selectedCategory === "all" ? "text-white" : "text-[#0072CE]"} />
             </div>
             <div className="leading-tight">
               <span className="text-xs uppercase tracking-wider block font-bold">
-                All Products
+                All Supplies
               </span>
               <span className="text-[9px] opacity-75">Browse entire range</span>
             </div>
@@ -109,7 +104,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
                   key={cat.id} 
                   className={`rounded-xl border transition-all duration-300 overflow-hidden ${
                     isExpanded 
-                      ? "bg-[#181818] border-[#C9A227]/30 shadow-md" 
+                      ? "bg-[#181818] border-[#0072CE]/30 shadow-md" 
                       : "bg-[#F8F7F2] border-gray-200"
                   }`}
                 >
@@ -123,7 +118,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
                         <CategoryIcon id={cat.id} icon={cat.icon} />
                       </div>
                       <span className={`text-xs font-bold uppercase tracking-wide transition-colors ${
-                        isExpanded ? "text-white" : "text-gray-800 hover:text-[#C9A227]"
+                        isExpanded ? "text-white" : "text-gray-800 hover:text-[#0072CE]"
                       }`}>
                         {cat.name}
                       </span>
@@ -138,7 +133,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
                         }}
                         className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
                           isExpanded 
-                            ? "text-[#C9A227] hover:bg-white/5" 
+                            ? "text-[#0072CE] hover:bg-white/5" 
                             : "text-gray-400 hover:bg-black/5 hover:text-gray-700"
                         }`}
                         aria-label="Expand category options"
@@ -153,15 +148,15 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
 
                   {/* Subcategories Panel */}
                   {hasSubs && isExpanded && (
-                    <div className="bg-black/40 border-t border-[#C9A227]/10 py-1.5 px-3">
+                    <div className="bg-black/40 border-t border-[#0072CE]/10 py-1.5 px-3">
                       <div className="grid grid-cols-1 gap-1">
                         {cat.subcategories.map((sub) => (
                           <button
                             key={sub.id}
                             onClick={() => handleCategoryClick(cat.id)}
-                            className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[11px] font-medium text-gray-400 hover:text-[#C9A227] hover:bg-white/5 rounded-lg transition-all"
+                            className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[11px] font-medium text-gray-400 hover:text-[#0072CE] hover:bg-white/5 rounded-lg transition-all"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227]/40 flex-shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0072CE]/40 flex-shrink-0" />
                             <span>{sub.name}</span>
                           </button>
                         ))}
@@ -176,9 +171,9 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
         </div>
 
         {/* Drawer Footer */}
-        <div className="px-5 py-5 border-t border-[#C9A227]/10 flex-shrink-0 bg-[#0d0d0d] text-center">
-          <p className="text-[9px] text-[#C9A227]/40 font-sans uppercase tracking-[0.2em]">
-            Ideal Dry Fruit • Pure Quality
+        <div className="px-5 py-5 border-t border-[#0284C7]/10 flex-shrink-0 bg-[#0d0d0d] text-center">
+          <p className="text-[9px] text-[#0284C7]/60 font-sans uppercase tracking-[0.2em]">
+            Biogen Pharma • Healthcare Excellence
           </p>
         </div>
 

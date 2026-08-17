@@ -1,13 +1,24 @@
 [
   {
     "id": "slide-1",
-    "title": "Ideal dry fruit banner 1",
-    "subtitle": "",
-    "bg": "",
-    "accent": "",
-    "img": "/images/products/ideal-dry-fruit-banner-1.webp",
-    "promoText": "",
-    "promoLabel": "",
-    "ctaText": ""
+    "title": "Precision Surgical Instruments & Essential Medicines",
+    "subtitle": "Trusted Healthcare Partner in West Africa & Globally",
+    "bg": "#0A0F1D",
+    "accent": "#0284C7",
+    "img": "https://assets.idealdryfruit.com/uploads/products/2026/08/biogen_hero_banner1.webp",
+    "promoText": "GMP & ISO Certified Quality",
+    "promoLabel": "Certified Medical Excellence",
+    "ctaText": "Explore Supplies"
+  },
+  {
+    "id": "slide-2",
+    "title": "Hospital Furniture & Advanced Clinical Loupes",
+    "subtitle": "Complete Clinical & Hospital Equipment Solutions",
+    "bg": "#064E3B",
+    "accent": "#10B981",
+    "img": "https://assets.idealdryfruit.com/uploads/products/2026/08/biogen_hero_banner2.webp",
+    "promoText": "Direct Institutional Wholesale",
+    "promoLabel": "Hospital Supplies",
+    "ctaText": "View Equipment"
   }
 ]

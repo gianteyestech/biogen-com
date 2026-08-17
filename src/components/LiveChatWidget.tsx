@@ -131,7 +131,7 @@ export default function LiveChatWidget() {
                 <Headset size={20} />
               </div>
               <div>
-                <p className="text-xs font-bold text-white leading-none">Ideal Dry Fruit Support</p>
+                <p className="text-xs font-bold text-white leading-none">Biogen Pharma Clinical Support</p>
                 <p className="text-[10px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online · Typically replies in seconds
                 </p>
@@ -149,8 +149,8 @@ export default function LiveChatWidget() {
           {!isRegistered ? (
             <form onSubmit={handleRegister} className="flex-1 p-6 flex flex-col justify-center gap-4 bg-[#141414]">
               <div className="text-center space-y-1 mb-2">
-                <h3 className="text-sm font-bold text-white">Start a Conversation</h3>
-                <p className="text-xs text-gray-400">Please enter your name to connect with our support agent.</p>
+                <h3 className="text-sm font-bold text-white">Start a Medical Inquiry</h3>
+                <p className="text-xs text-gray-400">Please enter your name to connect with a clinical support agent.</p>
               </div>
 
               <div>
@@ -160,10 +160,10 @@ export default function LiveChatWidget() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Usman Malik"
+                  placeholder="e.g. Dr. John / Clinic Name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-[#1f1f23] border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A84C]"
+                  className="w-full px-3.5 py-2.5 bg-[#1f1f23] border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#0284C7]"
                 />
               </div>
 
@@ -173,16 +173,16 @@ export default function LiveChatWidget() {
                 </label>
                 <input
                   type="email"
-                  placeholder="e.g. usman@example.com"
+                  placeholder="e.g. clinic@example.com"
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-[#1f1f23] border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A84C]"
+                  className="w-full px-3.5 py-2.5 bg-[#1f1f23] border border-gray-700 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#0284C7]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#C9A84C] text-black font-bold text-xs rounded-xl hover:bg-[#d8b555] transition-all uppercase tracking-wider mt-2"
+                className="w-full py-3 bg-[#0284C7] text-white font-bold text-xs rounded-xl hover:bg-[#0369a1] transition-all uppercase tracking-wider mt-2"
               >
                 Start Chat →
               </button>
@@ -193,11 +193,11 @@ export default function LiveChatWidget() {
               <div className="flex-1 p-4 overflow-y-auto space-y-3">
                 {/* Default Greeting */}
                 <div className="flex gap-2 items-start">
-                  <div className="w-7 h-7 rounded-full bg-[#C9A84C]/20 border border-[#C9A84C] flex items-center justify-center text-[#C9A84C] text-xs flex-shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-[#0284C7]/20 border border-[#0284C7] flex items-center justify-center text-[#0284C7] text-xs flex-shrink-0">
                     <Headset size={14} />
                   </div>
                   <div className="bg-[#1f1f23] border border-gray-800 p-3 rounded-2xl rounded-tl-none max-w-[80%] text-xs text-gray-200 leading-relaxed">
-                    👋 Hello <strong>{customerName}</strong>! Welcome to Ideal Dry Fruit. How can we help you today?
+                    👋 Hello <strong>{customerName}</strong>! Welcome to Biogen Pharma. How can our medical team assist you today?
                   </div>
                 </div>
 

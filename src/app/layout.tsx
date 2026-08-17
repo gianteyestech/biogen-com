@@ -18,8 +18,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Ideal Dry Fruit | Premium Quality 100% Natural",
-  description: "Pakistan's finest selection of premium organic dry fruits, nuts, dates & natural seeds. Hand-sorted, vacuum-sealed, and delivered fresh.",
+  title: "Biogen Pharma | Pharmaceuticals, Surgical Instruments & Medical Supplies",
+  description: "Biogen Pharma is a trusted provider of high-quality pharmaceuticals, precision surgical instruments, eye care, and hospital equipment in West Africa and globally.",
 };
 
 import LiveChatWidget from "@/components/LiveChatWidget";
@@ -35,6 +35,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${jakarta.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#F0F0F0] text-gray-900 font-sans" suppressHydrationWarning>

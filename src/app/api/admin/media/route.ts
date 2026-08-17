@@ -19,8 +19,8 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
     }
 
-    const hostingerMediaUrl = process.env.HOSTINGER_MEDIA_URL || "https://media.idealdryfruit.com/upload.php";
-    const uploadSecret = process.env.HOSTINGER_UPLOAD_SECRET || "";
+    const hostingerMediaUrl = process.env.HOSTINGER_MEDIA_URL || "https://assets.idealdryfruit.com/bg_upload.php";
+    const uploadSecret = process.env.HOSTINGER_UPLOAD_SECRET || "biogen_media_secret_2026_change_me";
 
     try {
       const remoteRes = await fetch(hostingerMediaUrl, {

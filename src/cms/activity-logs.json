@@ -1,0 +1,11 @@
+[
+  {
+    "id": "log_1786998788758_wenwk",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-17T20:33:08.758Z",
+    "user": "Admin"
+  }
+]

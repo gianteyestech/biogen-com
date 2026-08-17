@@ -103,7 +103,7 @@ export async function POST(req: Request) {
     }
 
     const uniqueId = `ord_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
-    const orderNumber = `IDF-${Math.floor(100000 + Math.random() * 900000)}`;
+    const orderNumber = `BG-${Math.floor(100000 + Math.random() * 900000)}`;
 
     const connection = await pool.getConnection();
 
@@ -160,14 +160,14 @@ export async function POST(req: Request) {
 
       await sendEmail({
         to: customerEmail,
-        subject: `Order Confirmation #${orderNumber} — Ideal Dry Fruit`,
+        subject: `Order Confirmation #${orderNumber} — Biogen`,
         html: emailHtml,
         channel: "orders",
       }).catch((e) => console.error("Customer Email Error:", e));
     }
 
     // Admin Alert Email
-    const adminEmail = process.env.ADMIN_EMAIL || "admin@idealdryfruit.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
     await sendEmail({
       to: adminEmail,
       subject: `🚨 New Order ${orderNumber} (Rs. ${serverTotalAmount})`,

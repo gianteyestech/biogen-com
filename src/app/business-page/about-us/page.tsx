@@ -3,8 +3,8 @@ import AboutUsClient from "./AboutUsClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Ideal Dry Fruit",
-  description: "Learn more about Ideal Dry Fruit, Pakistan's premier selection of organic nuts, dry fruits, dates, and natural seeds since 1998.",
+  title: "About Us - Biogen Pharma",
+  description: "Learn more about Biogen Pharma, a trusted provider of high-quality pharmaceuticals, surgical instruments, and medical supplies in West Africa and globally.",
 };
 
 export default async function AboutUsPage() {

@@ -7,7 +7,7 @@ export function getFooterLinkHref(label: string): string {
   if (norm.includes("cancellation") || norm.includes("cancel")) return "/business-page/cancellation-policy";
   if (norm.includes("shipping") || norm.includes("delivery")) return "/business-page/shipping-policy";
   if (norm.includes("about")) return "/business-page/about-us";
-  if (norm.includes("faq")) return "/business-page/about-us";
+  if (norm.includes("faq")) return "/business-page/faqs";
   if (norm.includes("track") || norm.includes("order")) return "/";
   if (norm.includes("shop") || norm.includes("product") || norm.includes("collection") || norm.includes("new")) return "/";
   if (norm.includes("home")) return "/";

@@ -3,15 +3,15 @@ import nodemailer from "nodemailer";
 
 import pool from "./db";
 
-const SMTP_HOST = process.env.SMTP_HOST || "smtp.hostinger.com";
+const SMTP_HOST = process.env.SMTP_HOST || "business176.web-hosting.com";
 const SMTP_PORT = Number(process.env.SMTP_PORT) || 465;
 
 // Fallback Defaults
-const DEFAULT_ORDERS_USER = process.env.ORDERS_SMTP_USER || process.env.SMTP_USER || "orders@idealdryfruit.com";
-const DEFAULT_ORDERS_PASS = process.env.ORDERS_SMTP_PASS || process.env.SMTP_PASS || "Abubakar1@026";
+const DEFAULT_ORDERS_USER = process.env.ORDERS_SMTP_USER || process.env.SMTP_USER || "orders.biogen@gianteyetech.com";
+const DEFAULT_ORDERS_PASS = process.env.ORDERS_SMTP_PASS || process.env.SMTP_PASS || "GetEmail@026";
 
-const DEFAULT_ADMIN_USER = process.env.ADMIN_SMTP_USER || "admin@idealdryfruit.com";
-const DEFAULT_ADMIN_PASS = process.env.ADMIN_SMTP_PASS || "AbubakarAdmin@026";
+const DEFAULT_ADMIN_USER = process.env.ADMIN_SMTP_USER || "admin.biogen@gianteyetech.com";
+const DEFAULT_ADMIN_PASS = process.env.ADMIN_SMTP_PASS || "GetEmail@026";
 
 /**
  * Fetch dynamic SMTP settings from Hostinger MySQL Database if configured
@@ -60,7 +60,7 @@ export interface SendEmailOptions {
 export async function sendEmail({ to, subject, html, text, channel = "admin" }: SendEmailOptions) {
   const creds = await getSmtpCredentials(channel);
   const targetTransporter = getTransporter(creds.user, creds.pass);
-  const fromAddress = `"Ideal Dry Fruit" <${creds.user}>`;
+  const fromAddress = `"Biogen" <${creds.user}>`;
 
   try {
     const info = await targetTransporter.sendMail({
@@ -106,7 +106,7 @@ export function generateOrderConfirmationHTML(order: {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;">
       <div style="background-color: #0A0A0A; padding: 24px; text-align: center; color: #C9A84C;">
-        <h1 style="margin: 0; font-size: 24px;">Ideal Dry Fruit</h1>
+        <h1 style="margin: 0; font-size: 24px;">Biogen</h1>
         <p style="margin: 4px 0 0 0; color: #A1A1AA; font-size: 14px;">Order Confirmation #${order.id}</p>
       </div>
       
@@ -133,7 +133,7 @@ export function generateOrderConfirmationHTML(order: {
       </div>
       
       <div style="background-color: #f4f4f5; padding: 16px; text-align: center; font-size: 12px; color: #71717A;">
-        If you have any questions, contact us at info@idealdryfruit.com or WhatsApp.
+        If you have any questions, contact us at info.biogen@gianteyetech.com or WhatsApp.
       </div>
     </div>
   `;

@@ -2,1134 +2,228 @@
   "categories": [
     {
       "id": "all",
-      "name": "All Products",
-      "icon": "🛍️"
+      "name": "All Supplies",
+      "icon": "📦"
     },
     {
-      "id": "pistachios",
-      "name": "Pistachios",
-      "icon": "💚"
+      "id": "medicines",
+      "name": "Medicines",
+      "icon": "💊"
     },
     {
-      "id": "dried-fruits",
-      "name": "Dried Fruits",
-      "icon": "🍇"
+      "id": "surgical-instruments",
+      "name": "Surgical Instruments",
+      "icon": "🔬"
     },
     {
-      "id": "cashews",
-      "name": "Cashews",
-      "icon": "🥜"
+      "id": "eye-vision",
+      "name": "Eye Care & Loupes",
+      "icon": "👓"
     },
     {
-      "id": "dry-prunes",
-      "name": "Dry Prunes",
-      "icon": "🫐"
+      "id": "surgical-furniture",
+      "name": "Hospital Furniture",
+      "icon": "🏥"
     },
     {
-      "id": "almonds",
-      "name": "Almonds",
-      "icon": "🌰"
-    },
-    {
-      "id": "walnuts",
-      "name": "Walnuts",
-      "icon": "🪨"
-    },
-    {
-      "id": "dried-fig",
-      "name": "Dried Fig",
+      "id": "nutrition-supplements",
+      "name": "Vitamins & Nutrition",
       "icon": "🌿"
     },
     {
-      "id": "gift-box",
-      "name": "Gift Box",
-      "icon": "🎁"
-    },
-    {
-      "id": "apricots",
-      "name": "Apricots",
-      "icon": "🍑"
-    },
-    {
-      "id": "dates",
-      "name": "Dates",
-      "icon": "🌴"
-    },
-    {
-      "id": "raisins",
-      "name": "Raisins",
-      "icon": "🍇"
-    },
-    {
-      "id": "nuts-seeds-02",
-      "name": "Nuts & seeds",
-      "icon": "🛍️"
-    },
-    {
-      "id": "mix-dry-fruit",
-      "name": "Mix Dry Fruit",
-      "icon": "🥣"
-    },
-    {
-      "id": "snack",
-      "name": "Snack",
-      "icon": "🍿"
-    },
-    {
-      "id": "pine-nuts-chilghoza",
-      "name": "Pine Nuts Chilghoza",
-      "icon": "🌲"
-    },
-    {
-      "id": "peanuts",
-      "name": "Peanuts",
-      "icon": "🥜"
-    },
-    {
-      "id": "dried-berries",
-      "name": "Dried Berries",
-      "icon": "🍓"
-    },
-    {
-      "id": "chakwal-rewari-02",
-      "name": "Chakwal Rewari",
-      "icon": "🍬"
-    },
-    {
-      "id": "baking",
-      "name": "Baking",
-      "icon": "🧁"
-    },
-    {
-      "id": "murabba-jaat",
-      "name": "Murabba Jaat",
-      "icon": "🍯"
-    },
-    {
-      "id": "seeds",
-      "name": "Seeds",
-      "icon": "🌱"
-    },
-    {
-      "id": "spicy-masala",
-      "name": "Spicy Masala",
-      "icon": "🌶️"
-    },
-    {
-      "id": "grocery",
-      "name": "Grocery",
-      "icon": "🛍️"
-    },
-    {
-      "id": "himalayan-shilajit",
-      "name": "Himalayan Shilajit",
-      "icon": "🏔️"
-    },
-    {
-      "id": "honey",
-      "name": "Honey",
-      "icon": "🍯"
-    },
-    {
-      "id": "organic-natural-foods",
-      "name": "Organic & Natural Foods",
-      "icon": "🥗"
-    }
-  ],
-  "megaMenu": [
-    {
-      "id": "pistachios",
-      "name": "Pistachios",
-      "icon": "💚",
-      "img": "/images/categories/2024-12-30-677273ab42c66.webp",
-      "subcategories": [
-        {
-          "id": "pista-giri",
-          "name": "Pista Giri"
-        },
-        {
-          "id": "raw-pistachio",
-          "name": "Raw Pistachio"
-        },
-        {
-          "id": "roasted-pistachio",
-          "name": "Roasted Pistachio"
-        },
-        {
-          "id": "slated-pistachio",
-          "name": "Slated Pistachio"
-        }
-      ]
-    },
-    {
-      "id": "dried-fruits",
-      "name": "Dried Fruits",
-      "icon": "🍇",
-      "img": "/images/categories/2024-12-30-67726ccecfe0e.webp",
-      "subcategories": [
-        {
-          "id": "dried-banana-chips",
-          "name": "Dried Banana Chips"
-        },
-        {
-          "id": "dried-cherries",
-          "name": "Dried Cherries"
-        },
-        {
-          "id": "dried-coconut",
-          "name": "Dried Coconut"
-        },
-        {
-          "id": "dried-kiwi-slices",
-          "name": "Dried Kiwi Slices"
-        },
-        {
-          "id": "dried-lemon-slices",
-          "name": "Dried Lemon Slices"
-        },
-        {
-          "id": "dried-mango-slices",
-          "name": "Dried Mango Slices"
-        },
-        {
-          "id": "dried-papaya",
-          "name": "Dried Papaya"
-        },
-        {
-          "id": "dried-peach",
-          "name": "Dried Peach"
-        },
-        {
-          "id": "dried-pineapple",
-          "name": "Dried Pineapple"
-        },
-        {
-          "id": "dried-plums",
-          "name": "Dried Plums"
-        },
-        {
-          "id": "freeze-dried-bananas",
-          "name": "Freeze-Dried Bananas"
-        },
-        {
-          "id": "mix-dried-fruit",
-          "name": "Mix Dried Fruit"
-        }
-      ]
-    },
-    {
-      "id": "cashews",
-      "name": "Cashews",
-      "icon": "🥜",
-      "img": "/images/categories/2024-12-30-67727330c1a9c.webp",
-      "subcategories": [
-        {
-          "id": "raw-cashew",
-          "name": "Raw Cashew"
-        },
-        {
-          "id": "roasted-cashew",
-          "name": "Roasted Cashew"
-        }
-      ]
-    },
-    {
-      "id": "dry-prunes",
-      "name": "Dry Prunes",
-      "icon": "🫐",
-      "img": "/images/categories/2024-12-30-677275714e51e.webp",
-      "subcategories": [
-        {
-          "id": "prune-without-seed",
-          "name": "Prune Without Seed"
-        }
-      ]
-    },
-    {
-      "id": "almonds",
-      "name": "Almonds",
-      "icon": "🌰",
-      "img": "/images/categories/2024-12-30-67725e064e8ff.webp",
-      "subcategories": [
-        {
-          "id": "american-almond",
-          "name": "American Almond"
-        },
-        {
-          "id": "australian-almond",
-          "name": "Australian Almond"
-        },
-        {
-          "id": "gurbandi-almond",
-          "name": "Gurbandi Almond"
-        },
-        {
-          "id": "iranian-almond",
-          "name": "Iranian Almond"
-        },
-        {
-          "id": "mamra-almond",
-          "name": "Mamra Almond"
-        },
-        {
-          "id": "roasted-almond",
-          "name": "Roasted Almond"
-        },
-        {
-          "id": "soft-shell-almond",
-          "name": "Soft Shell Almond"
-        }
-      ]
-    },
-    {
-      "id": "walnuts",
-      "name": "Walnuts",
-      "icon": "🪨",
-      "img": "/images/categories/2024-12-30-67725f377ad9b.webp",
-      "subcategories": [
-        {
-          "id": "american-walnuts",
-          "name": "American Walnuts"
-        },
-        {
-          "id": "china-walnut",
-          "name": "China Walnut"
-        },
-        {
-          "id": "desi-akhroot-giri",
-          "name": "Desi Akhroot Giri"
-        },
-        {
-          "id": "soft-shell-walnut",
-          "name": "Soft Shell Walnut"
-        }
-      ]
-    },
-    {
-      "id": "dried-fig",
-      "name": "Dried Fig",
-      "icon": "🌿",
-      "img": "/images/categories/2024-12-30-677261ff984fa.webp",
-      "subcategories": [
-        {
-          "id": "afghani-figs",
-          "name": "Afghani Figs"
-        },
-        {
-          "id": "iranian-figs",
-          "name": "Iranian Figs"
-        },
-        {
-          "id": "turkish-figs",
-          "name": "Turkish Figs"
-        }
-      ]
-    },
-    {
-      "id": "gift-box",
-      "name": "Gift Box",
-      "icon": "🎁",
-      "img": "/images/categories/2024-12-30-677262dd75fe7.webp",
-      "subcategories": [
-        {
-          "id": "dates-gift-box",
-          "name": "Dates Gift Box"
-        },
-        {
-          "id": "dates-gifts-box",
-          "name": "Dates Gifts Box"
-        },
-        {
-          "id": "empty-gift-box",
-          "name": "Empty Gift Box"
-        },
-        {
-          "id": "glass-box",
-          "name": "Glass Box"
-        },
-        {
-          "id": "wooden-box",
-          "name": "Wooden Box"
-        }
-      ]
-    },
-    {
-      "id": "apricots",
-      "name": "Apricots",
-      "icon": "🍑",
-      "img": "/images/categories/2024-12-30-6772646f35838.webp",
-      "subcategories": [
-        {
-          "id": "gol-apricot",
-          "name": "Gol Apricot"
-        },
-        {
-          "id": "seed-less-apricot",
-          "name": "Seed less Apricot"
-        },
-        {
-          "id": "stick-apricot",
-          "name": "Stick Apricot"
-        }
-      ]
-    },
-    {
-      "id": "dates",
-      "name": "Dates",
-      "icon": "🌴",
-      "img": "/images/categories/2024-12-30-677265890eae0.webp",
-      "subcategories": [
-        {
-          "id": "ajwa-dates",
-          "name": "Ajwa Dates"
-        },
-        {
-          "id": "dry-chuara",
-          "name": "Dry Chuara"
-        },
-        {
-          "id": "dry-irani-dates",
-          "name": "Dry Irani Dates"
-        },
-        {
-          "id": "irani-mabroom",
-          "name": "Irani Mabroom"
-        },
-        {
-          "id": "kalmi-dates",
-          "name": "Kalmi Dates"
-        },
-        {
-          "id": "mabroom-dates",
-          "name": "Mabroom Dates"
-        },
-        {
-          "id": "mazafati-date-box",
-          "name": "Mazafati Date Box"
-        },
-        {
-          "id": "pakistani-dates",
-          "name": "Pakistani Dates"
-        },
-        {
-          "id": "saudi-arabian-dates",
-          "name": "Saudi Arabian Dates"
-        },
-        {
-          "id": "sukkri-dates",
-          "name": "Sukkri Dates"
-        }
-      ]
-    },
-    {
-      "id": "raisins",
-      "name": "Raisins",
-      "icon": "🍇",
-      "img": "/images/categories/2024-12-30-6772672219e6f.webp",
-      "subcategories": [
-        {
-          "id": "afghani-raisins",
-          "name": "Afghani Raisins"
-        },
-        {
-          "id": "desi-kishmish",
-          "name": "Desi Kishmish"
-        },
-        {
-          "id": "green-raisins",
-          "name": "Green Raisins"
-        },
-        {
-          "id": "irani-raisins",
-          "name": "Irani Raisins"
-        },
-        {
-          "id": "sundarkhani-raisin",
-          "name": "Sundarkhani Raisin"
-        }
-      ]
-    },
-    {
-      "id": "nuts-seeds-02",
-      "name": "Nuts & seeds",
-      "icon": "🛍️",
-      "img": "/images/categories/2024-12-30-67726a997c3e9.webp",
-      "subcategories": [
-        {
-          "id": "brazil-nuts",
-          "name": "Brazil Nuts"
-        },
-        {
-          "id": "hazelnut",
-          "name": "Hazelnut"
-        },
-        {
-          "id": "macadamia-nuts",
-          "name": "Macadamia Nuts"
-        },
-        {
-          "id": "pecans-nuts",
-          "name": "Pecans Nuts"
-        }
-      ]
-    },
-    {
-      "id": "mix-dry-fruit",
-      "name": "Mix Dry Fruit",
-      "icon": "🥣",
-      "img": "/images/categories/2024-12-30-677275cd69dd8.webp",
-      "subcategories": [
-        {
-          "id": "mix-nuts",
-          "name": "Mix Nuts"
-        }
-      ]
-    },
-    {
-      "id": "snack",
-      "name": "Snack",
-      "icon": "🍿",
-      "img": "/images/categories/2024-12-30-67726c05ce548.webp",
-      "subcategories": [
-        {
-          "id": "chips-crisps",
-          "name": "Chips & Crisps"
-        },
-        {
-          "id": "chocolates-candies",
-          "name": "Chocolates & Candies"
-        },
-        {
-          "id": "cookies-biscuits",
-          "name": "Cookies & Biscuits"
-        },
-        {
-          "id": "crackers",
-          "name": "Crackers"
-        },
-        {
-          "id": "fresh-nimco",
-          "name": "Fresh Nimco"
-        },
-        {
-          "id": "gourmet-snacks",
-          "name": "Gourmet Snacks"
-        },
-        {
-          "id": "healthy-snacks",
-          "name": "Healthy Snacks"
-        },
-        {
-          "id": "nuts-seeds",
-          "name": "Nuts & Seeds"
-        },
-        {
-          "id": "pakorian",
-          "name": "Pakorian"
-        },
-        {
-          "id": "peshawari-gur",
-          "name": "Peshawari Gur"
-        },
-        {
-          "id": "popcorn-puffs",
-          "name": "Popcorn & Puffs"
-        },
-        {
-          "id": "roasted-chana",
-          "name": "Roasted Chana"
-        },
-        {
-          "id": "savory-snacks",
-          "name": "Savory Snacks"
-        },
-        {
-          "id": "stone-chocolate",
-          "name": "Stone chocolate"
-        },
-        {
-          "id": "sweet-treats",
-          "name": "Sweet Treats"
-        },
-        {
-          "id": "tea-peshawari-kahwa",
-          "name": "Tea & Peshawari Kahwa"
-        },
-        {
-          "id": "trail-mix",
-          "name": "Trail Mix"
-        }
-      ]
-    },
-    {
-      "id": "pine-nuts-chilghoza",
-      "name": "Pine Nuts Chilghoza",
-      "icon": "🌲",
-      "img": "/images/categories/2024-12-30-6772773eee509.webp",
-      "subcategories": [
-        {
-          "id": "afghani-chighoza",
-          "name": "Afghani Chighoza"
-        },
-        {
-          "id": "chilgoza-without-shell",
-          "name": "Chilgoza Without Shell"
-        },
-        {
-          "id": "pine-nuts",
-          "name": "Pine Nuts"
-        }
-      ]
-    },
-    {
-      "id": "peanuts",
-      "name": "Peanuts",
-      "icon": "🥜",
-      "img": "/images/categories/2024-12-30-6772740fcdc3a.webp",
-      "subcategories": [
-        {
-          "id": "raw-peanuts",
-          "name": "Raw Peanuts"
-        },
-        {
-          "id": "roasted-peanuts",
-          "name": "Roasted Peanuts"
-        },
-        {
-          "id": "salted-peanuts",
-          "name": "Salted Peanuts"
-        },
-        {
-          "id": "shll-peanut",
-          "name": "Shll Peanut"
-        }
-      ]
-    },
-    {
-      "id": "dried-berries",
-      "name": "Dried Berries",
-      "icon": "🍓",
-      "img": "/images/categories/2025-01-23-67921a0c858e9.webp",
-      "subcategories": [
-        {
-          "id": "black-currants",
-          "name": "Black Currants"
-        },
-        {
-          "id": "dried-blackberries",
-          "name": "Dried Blackberries"
-        },
-        {
-          "id": "dried-blueberries",
-          "name": "Dried Blueberries"
-        },
-        {
-          "id": "dried-cranberries",
-          "name": "Dried Cranberries"
-        },
-        {
-          "id": "dried-strawberries",
-          "name": "Dried Strawberries"
-        },
-        {
-          "id": "goji-berries",
-          "name": "Goji Berries"
-        },
-        {
-          "id": "mulberries",
-          "name": "Mulberries"
-        }
-      ]
-    },
-    {
-      "id": "chakwal-rewari-02",
-      "name": "Chakwal Rewari",
-      "icon": "🍬",
-      "img": "/images/categories/2024-12-30-677274b869be6.webp",
-      "subcategories": [
-        {
-          "id": "chakwal-rewari",
-          "name": "Chakwal Rewari"
-        },
-        {
-          "id": "peanuts-rewari",
-          "name": "Peanuts Rewari"
-        },
-        {
-          "id": "pehlwan-rewari",
-          "name": "Pehlwan Rewari"
-        }
-      ]
-    },
-    {
-      "id": "baking",
-      "name": "Baking",
-      "icon": "🧁",
-      "img": "/images/categories/2024-12-30-67726d5cb20d4.webp",
-      "subcategories": [
-        {
-          "id": "dry-coconut",
-          "name": "Dry Coconut"
-        }
-      ]
-    },
-    {
-      "id": "murabba-jaat",
-      "name": "Murabba Jaat",
-      "icon": "🍯",
-      "img": "/images/categories/2025-01-24-6793afecafaf3.webp",
-      "subcategories": [
-        {
-          "id": "amla-murabba",
-          "name": "Amla Murabba"
-        },
-        {
-          "id": "apple-murabba",
-          "name": "Apple Murabba"
-        },
-        {
-          "id": "bahi-murabba",
-          "name": "Bahi Murabba"
-        },
-        {
-          "id": "carrot-murabba",
-          "name": "Carrot Murabba"
-        },
-        {
-          "id": "hareer-murabba",
-          "name": "Hareer Murabba"
-        },
-        {
-          "id": "mango-murabba",
-          "name": "Mango Murabba"
-        }
-      ]
-    },
-    {
-      "id": "seeds",
-      "name": "Seeds",
-      "icon": "🌱",
-      "img": "/images/categories/2024-12-30-6772696900eef.webp",
-      "subcategories": [
-        {
-          "id": "cardamom",
-          "name": "Cardamom"
-        },
-        {
-          "id": "chia-seeds",
-          "name": "Chia Seeds"
-        },
-        {
-          "id": "fennel-seeds",
-          "name": "Fennel seeds"
-        },
-        {
-          "id": "flaxseed",
-          "name": "Flaxseed"
-        },
-        {
-          "id": "gond-katira",
-          "name": "Gond Katira"
-        },
-        {
-          "id": "melon-seeds",
-          "name": "Melon Seeds)"
-        },
-        {
-          "id": "nigella-seed",
-          "name": "Nigella seed"
-        },
-        {
-          "id": "poppy-seed",
-          "name": "Poppy seed"
-        },
-        {
-          "id": "pumpkin-seeds",
-          "name": "Pumpkin seeds"
-        },
-        {
-          "id": "sesame-seed",
-          "name": "Sesame Seed"
-        },
-        {
-          "id": "sunflower-seeds",
-          "name": "Sunflower Seeds"
-        }
-      ]
-    },
-    {
-      "id": "spicy-masala",
-      "name": "Spicy Masala",
-      "icon": "🌶️",
-      "img": "/images/categories/2025-01-24-6793a490808a9.webp",
-      "subcategories": [
-        {
-          "id": "achari-masala",
-          "name": "Achari Masala"
-        },
-        {
-          "id": "ajwain-carom-seeds",
-          "name": "Ajwain (Carom Seeds)"
-        },
-        {
-          "id": "allspice",
-          "name": "Allspice"
-        },
-        {
-          "id": "asafoetida",
-          "name": "Asafoetida"
-        },
-        {
-          "id": "bay-leaf",
-          "name": "Bay Leaf"
-        },
-        {
-          "id": "biryani-masala",
-          "name": "Biryani Masala"
-        },
-        {
-          "id": "black-cardamom",
-          "name": "Black Cardamom"
-        },
-        {
-          "id": "black-pepper",
-          "name": "Black Pepper"
-        },
-        {
-          "id": "black-salt-kala-namak",
-          "name": "Black Salt (Kala Namak) -"
-        },
-        {
-          "id": "black-sesame",
-          "name": "Black Sesame"
-        },
-        {
-          "id": "caraway",
-          "name": "Caraway"
-        },
-        {
-          "id": "cardamom",
-          "name": "Cardamom"
-        },
-        {
-          "id": "celery-seeds",
-          "name": "Celery Seeds"
-        },
-        {
-          "id": "chaat-masala",
-          "name": "Chaat Masala"
-        },
-        {
-          "id": "cinnamon",
-          "name": "Cinnamon"
-        },
-        {
-          "id": "clove",
-          "name": "Clove"
-        },
-        {
-          "id": "coriander",
-          "name": "Coriander"
-        },
-        {
-          "id": "cumin",
-          "name": "Cumin"
-        },
-        {
-          "id": "curry-powder",
-          "name": "Curry Powder -"
-        },
-        {
-          "id": "curry-tree",
-          "name": "Curry Tree"
-        },
-        {
-          "id": "dill-seeds",
-          "name": "Dill Seeds"
-        },
-        {
-          "id": "dried-ginger",
-          "name": "Dried Ginger"
-        },
-        {
-          "id": "dried-mint",
-          "name": "Dried Mint"
-        },
-        {
-          "id": "dry-mango-powder-amchur",
-          "name": "Dry Mango Powder (Amchur)"
-        },
-        {
-          "id": "fennel",
-          "name": "Fennel"
-        },
-        {
-          "id": "fenugreek",
-          "name": "Fenugreek"
-        },
-        {
-          "id": "fish-masala",
-          "name": "Fish Masala"
-        },
-        {
-          "id": "garam-masala",
-          "name": "Garam Masala"
-        },
-        {
-          "id": "garlic",
-          "name": "Garlic"
-        },
-        {
-          "id": "ginger-powder",
-          "name": "Ginger Powder"
-        },
-        {
-          "id": "green-chili",
-          "name": "Green Chili"
-        },
-        {
-          "id": "kasuri-methi-dried-fenugreek-leaves",
-          "name": "Kasuri Methi (Dried Fenugreek Leaves) -"
-        },
-        {
-          "id": "mace",
-          "name": "Mace"
-        },
-        {
-          "id": "mustard-seed",
-          "name": "Mustard Seed"
-        },
-        {
-          "id": "nigella-seed-kalonji",
-          "name": "Nigella Seed (Kalonji)"
-        },
-        {
-          "id": "nutmeg",
-          "name": "Nutmeg"
-        },
-        {
-          "id": "paprika",
-          "name": "Paprika"
-        },
-        {
-          "id": "poppy-seeds",
-          "name": "Poppy Seeds"
-        },
-        {
-          "id": "red-chili",
-          "name": "Red Chili"
-        },
-        {
-          "id": "rock-salt",
-          "name": "Rock Salt"
-        },
-        {
-          "id": "rose-petals",
-          "name": "Rose Petals"
-        },
-        {
-          "id": "saffron",
-          "name": "Saffron"
-        },
-        {
-          "id": "sesame-seed",
-          "name": "Sesame Seed"
-        },
-        {
-          "id": "star-anise",
-          "name": "Star Anise"
-        },
-        {
-          "id": "tamarind",
-          "name": "Tamarind"
-        },
-        {
-          "id": "turmeric",
-          "name": "Turmeric"
-        },
-        {
-          "id": "turmeric-powder",
-          "name": "Turmeric Powder"
-        },
-        {
-          "id": "white-pepper",
-          "name": "White Pepper"
-        }
-      ]
-    },
-    {
-      "id": "grocery",
-      "name": "Grocery",
-      "icon": "🛍️",
-      "img": "/images/categories/2024-12-30-67726e47e3869.webp",
-      "subcategories": []
-    },
-    {
-      "id": "himalayan-shilajit",
-      "name": "Himalayan Shilajit",
-      "icon": "🏔️",
-      "img": "/images/categories/2025-06-10-6848247c35604.webp",
-      "subcategories": []
-    },
-    {
-      "id": "honey",
-      "name": "Honey",
-      "icon": "🍯",
-      "img": "/images/categories/2024-12-30-6772682e48546.webp",
-      "subcategories": [
-        {
-          "id": "palosa-honey-acacia",
-          "name": "Palosa Honey (Acacia)"
-        },
-        {
-          "id": "sidr-beri-honey",
-          "name": "Sidr (Beri) Honey"
-        }
-      ]
-    },
-    {
-      "id": "organic-natural-foods",
-      "name": "Organic & Natural Foods",
-      "icon": "🥗",
-      "img": "/images/categories/2025-10-08-68e61856654b9.webp",
-      "subcategories": [
-        {
-          "id": "organic-desi-ghee",
-          "name": "Organic Desi Ghee"
-        }
-      ]
+      "id": "diagnostics",
+      "name": "Diagnostic Devices",
+      "icon": "🩺"
     }
   ],
   "circleCats": [
     {
-      "id": "pistachios",
-      "name": "Pistachios",
-      "img": "/images/categories/2024-12-30-677273ab42c66.webp"
+      "id": "medicines",
+      "name": "Medicines",
+      "icon": "💊",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/medicines_cat.webp"
     },
     {
-      "id": "dried-fruits",
-      "name": "Dried Fruits",
-      "img": "/images/categories/2024-12-30-67726ccecfe0e.webp"
+      "id": "surgical-instruments",
+      "name": "Surgical Tools",
+      "icon": "🔬",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/surgical_cat.webp"
     },
     {
-      "id": "cashews",
-      "name": "Cashews",
-      "img": "/images/categories/2024-12-30-67727330c1a9c.webp"
+      "id": "eye-vision",
+      "name": "Surgical Loupes",
+      "icon": "👓",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/glasses_cat.webp"
     },
     {
-      "id": "dry-prunes",
-      "name": "Dry Prunes",
-      "img": "/images/categories/2024-12-30-677275714e51e.webp"
+      "id": "surgical-furniture",
+      "name": "Clinic Furniture",
+      "icon": "🏥",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/furniture_cat.webp"
     },
     {
-      "id": "almonds",
-      "name": "Almonds",
-      "img": "/images/categories/2024-12-30-67725e064e8ff.webp"
+      "id": "nutrition-supplements",
+      "name": "Supplements",
+      "icon": "🌿",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/nutrition_cat.webp"
     },
     {
-      "id": "walnuts",
-      "name": "Walnuts",
-      "img": "/images/categories/2024-12-30-67725f377ad9b.webp"
+      "id": "diagnostics",
+      "name": "Diagnostics",
+      "icon": "🩺",
+      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/diagnostics_cat.webp"
+    }
+  ],
+  "megaMenu": [
+    {
+      "id": "medicines",
+      "name": "Medicines & Healthcare",
+      "slug": "medicines",
+      "icon": "💊",
+      "featured": true,
+      "subcategories": [
+        {
+          "id": "allergy-relief",
+          "name": "Allergy Relief",
+          "slug": "allergy-relief"
+        },
+        {
+          "id": "pain-killers",
+          "name": "Pain Killers & Analgesics",
+          "slug": "pain-killers"
+        },
+        {
+          "id": "antibiotics",
+          "name": "Essential Antibiotics",
+          "slug": "antibiotics"
+        },
+        {
+          "id": "cardiovascular",
+          "name": "Cardiovascular Care",
+          "slug": "cardiovascular"
+        },
+        {
+          "id": "gastrointestinal",
+          "name": "Gastrointestinal Medicines",
+          "slug": "gastrointestinal"
+        }
+      ]
     },
     {
-      "id": "dried-fig",
-      "name": "Dried Fig",
-      "img": "/images/categories/2024-12-30-677261ff984fa.webp"
+      "id": "surgical-instruments",
+      "name": "Surgical Instruments",
+      "slug": "surgical-instruments",
+      "icon": "🔬",
+      "featured": true,
+      "subcategories": [
+        {
+          "id": "forceps",
+          "name": "Foerster Sponge Forceps & Clamps",
+          "slug": "forceps"
+        },
+        {
+          "id": "scissors-scalpels",
+          "name": "Surgical Scissors & Scalpels",
+          "slug": "scissors-scalpels"
+        },
+        {
+          "id": "retractors",
+          "name": "Retractors & Speculums",
+          "slug": "retractors"
+        },
+        {
+          "id": "needle-holders",
+          "name": "Needle Holders & Suture Kits",
+          "slug": "needle-holders"
+        },
+        {
+          "id": "sterilization",
+          "name": "Sterilization Trays & Cassettes",
+          "slug": "sterilization"
+        }
+      ]
     },
     {
-      "id": "gift-box",
-      "name": "Gift Box",
-      "img": "/images/categories/2024-12-30-677262dd75fe7.webp"
+      "id": "eye-vision",
+      "name": "Eye Care & Surgical Loupes",
+      "slug": "eye-vision",
+      "icon": "👓",
+      "featured": true,
+      "subcategories": [
+        {
+          "id": "surgical-loupes",
+          "name": "Surgical Loupes Glasses",
+          "slug": "surgical-loupes"
+        },
+        {
+          "id": "protective-glasses",
+          "name": "Surgical Protective Eyewear",
+          "slug": "protective-glasses"
+        },
+        {
+          "id": "optical-magnifiers",
+          "name": "Optical Headlight Magnifiers",
+          "slug": "optical-magnifiers"
+        },
+        {
+          "id": "eyewash-solutions",
+          "name": "Clinical Eyewash & Sterile Drops",
+          "slug": "eyewash-solutions"
+        }
+      ]
     },
     {
-      "id": "apricots",
-      "name": "Apricots",
-      "img": "/images/categories/2024-12-30-6772646f35838.webp"
+      "id": "surgical-furniture",
+      "name": "Hospital & Surgical Furniture",
+      "slug": "surgical-furniture",
+      "icon": "🏥",
+      "featured": true,
+      "subcategories": [
+        {
+          "id": "examination-couches",
+          "name": "Examination Couch Square Pipe",
+          "slug": "examination-couches"
+        },
+        {
+          "id": "hospital-beds",
+          "name": "Adjustable Hospital Beds",
+          "slug": "hospital-beds"
+        },
+        {
+          "id": "medical-trolleys",
+          "name": "Instrument & Medicine Trolleys",
+          "slug": "medical-trolleys"
+        },
+        {
+          "id": "operating-stools",
+          "name": "Doctor & Surgeon Clinic Stools",
+          "slug": "operating-stools"
+        }
+      ]
     },
     {
-      "id": "dates",
-      "name": "Dates",
-      "img": "/images/categories/2024-12-30-677265890eae0.webp"
-    },
-    {
-      "id": "raisins",
-      "name": "Raisins",
-      "img": "/images/categories/2024-12-30-6772672219e6f.webp"
-    },
-    {
-      "id": "nuts-seeds-02",
-      "name": "Nuts & seeds",
-      "img": "/images/categories/2024-12-30-67726a997c3e9.webp"
-    },
-    {
-      "id": "mix-dry-fruit",
-      "name": "Mix Dry Fruit",
-      "img": "/images/categories/2024-12-30-677275cd69dd8.webp"
-    },
-    {
-      "id": "snack",
-      "name": "Snack",
-      "img": "/images/categories/2024-12-30-67726c05ce548.webp"
-    },
-    {
-      "id": "pine-nuts-chilghoza",
-      "name": "Pine Nuts Chilghoza",
-      "img": "/images/categories/2024-12-30-6772773eee509.webp"
-    },
-    {
-      "id": "peanuts",
-      "name": "Peanuts",
-      "img": "/images/categories/2024-12-30-6772740fcdc3a.webp"
-    },
-    {
-      "id": "dried-berries",
-      "name": "Dried Berries",
-      "img": "/images/categories/2025-01-23-67921a0c858e9.webp"
-    },
-    {
-      "id": "chakwal-rewari-02",
-      "name": "Chakwal Rewari",
-      "img": "/images/categories/2024-12-30-677274b869be6.webp"
-    },
-    {
-      "id": "baking",
-      "name": "Baking",
-      "img": "/images/categories/2024-12-30-67726d5cb20d4.webp"
-    },
-    {
-      "id": "murabba-jaat",
-      "name": "Murabba Jaat",
-      "img": "/images/categories/2025-01-24-6793afecafaf3.webp"
-    },
-    {
-      "id": "seeds",
-      "name": "Seeds",
-      "img": "/images/categories/2024-12-30-6772696900eef.webp"
-    },
-    {
-      "id": "spicy-masala",
-      "name": "Spicy Masala",
-      "img": "/images/categories/2025-01-24-6793a490808a9.webp"
-    },
-    {
-      "id": "grocery",
-      "name": "Grocery",
-      "img": "/images/categories/2024-12-30-67726e47e3869.webp"
-    },
-    {
-      "id": "himalayan-shilajit",
-      "name": "Himalayan Shilajit",
-      "img": "/images/categories/2025-06-10-6848247c35604.webp"
-    },
-    {
-      "id": "honey",
-      "name": "Honey",
-      "img": "/images/categories/2024-12-30-6772682e48546.webp"
-    },
-    {
-      "id": "organic-natural-foods",
-      "name": "Organic & Natural Foods",
-      "img": "/images/categories/2025-10-08-68e61856654b9.webp"
+      "id": "nutrition-supplements",
+      "name": "Nutrition & Vitamins",
+      "slug": "nutrition-supplements",
+      "icon": "🌿",
+      "featured": false,
+      "subcategories": [
+        {
+          "id": "multivitamins",
+          "name": "Daily Multivitamins",
+          "slug": "multivitamins"
+        },
+        {
+          "id": "immune-boosters",
+          "name": "Immune & Wellness Boosters",
+          "slug": "immune-boosters"
+        },
+        {
+          "id": "minerals",
+          "name": "Calcium, Zinc & Iron Minerals",
+          "slug": "minerals"
+        }
+      ]
     }
   ]
 }

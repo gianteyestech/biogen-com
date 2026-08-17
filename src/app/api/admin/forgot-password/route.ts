@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { email } = body;
 
-    const adminEmail = process.env.ADMIN_EMAIL || "info@idealdryfruit.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
 
     if (!email || email.toLowerCase().trim() !== adminEmail.toLowerCase().trim()) {
       // Security practice: Return same generic response to prevent email enumeration
@@ -26,17 +26,17 @@ export async function POST(req: Request) {
 
     resetTokensStore.set(token, { email, expires });
 
-    const origin = req.headers.get("origin") || "https://idealdryfruit.com";
+    const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_SITE_URL || "https://biogen.com";
     const resetUrl = `${origin}/admin/reset-password?token=${token}`;
 
     // Send email using Hostinger Webmail SMTP
     const emailResult = await sendEmail({
       to: adminEmail,
-      subject: "🔒 Admin Password Reset — Ideal Dry Fruit",
+      subject: "🔒 Admin Password Reset — Biogen",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; border: 1px solid #e0e0e0; border-radius: 12px;">
           <h2 style="color: #0A0A0A; margin-top: 0;">Password Reset Request</h2>
-          <p>We received a request to reset your CMS Admin password for <strong>Ideal Dry Fruit</strong>.</p>
+          <p>We received a request to reset your CMS Admin password for <strong>Biogen</strong>.</p>
           <p>Click the button below to set a new password. This link is valid for <strong>15 minutes</strong>.</p>
           
           <div style="text-align: center; margin: 30px 0;">

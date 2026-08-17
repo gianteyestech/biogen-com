@@ -15,46 +15,46 @@ import Sidebar from "./Sidebar";
 
 // Emojis mapping for announcements
 const ANNOUNCEMENTS = [
-  { text: "Free Delivery on Orders Above Rs. 3,000", icon: "🚚" },
-  { text: "100% Natural Premium Dry Fruits", icon: "🌿" },
-  { text: "Luxury Gift Packaging Available", icon: "🎁" },
-  { text: "Secure Payments & Cash on Delivery", icon: "🔒" },
-  { text: "WhatsApp Support 24/7", icon: "💬" }
+  { text: "WHO, GMP & ISO Certified Pharmaceutical Supplies", icon: "💊" },
+  { text: "Precision German Stainless Steel Surgical Instruments", icon: "🔬" },
+  { text: "Hospital Grade Examination Furniture & Clinical Equipment", icon: "🏥" },
+  { text: "Cold-Chain Logistics Across West Africa & Internationally", icon: "🚚" },
+  { text: "24/7 Clinical & Institutional Support (+232 75 011616)", icon: "💬" }
 ];
 
 const POPULAR_SEARCHES = [
-  "Pistachio Giri",
-  "Mabroom Dates",
-  "Himalayan Shilajit",
-  "Almond Giri",
-  "Organic Honey",
-  "Gift Box"
+  "Allergy Relief",
+  "Painkillers",
+  "Examination Couch",
+  "Foerster Forceps",
+  "Surgical Loupes",
+  "Antibiotics"
 ];
 
 const NAV_LINKS = [
   { label: "Home", id: "all", href: "/" },
-  { label: "Shop", id: "all", href: "/" },
-  { label: "Gift Boxes", id: "gift-box", href: "/" },
-  { label: "Dry Fruits", id: "dried-fruits", href: "/" },
-  { label: "Dates", id: "dates", href: "/" },
-  { label: "Seeds", id: "seeds", href: "/" },
-  { label: "About", id: "about", href: "/business-page/about-us" },
+  { label: "Medicines", id: "medicines", href: "/" },
+  { label: "Surgical Instruments", id: "surgical-instruments", href: "/" },
+  { label: "Eye Care & Loupes", id: "eye-vision", href: "/" },
+  { label: "Hospital Furniture", id: "surgical-furniture", href: "/" },
+  { label: "Vitamins & Nutrition", id: "nutrition-supplements", href: "/" },
+  { label: "About Us", id: "about", href: "/business-page/about-us" },
   { label: "FAQs", id: "faqs", href: "/business-page/faqs" },
-  { label: "Contact", id: "contact", href: "/business-page/contact-us" }
+  { label: "Contact Us", id: "contact", href: "/business-page/contact-us" }
 ];
 
 interface HeaderProps {
-  searchTerm: string;
-  setSearchTerm: (t: string) => void;
-  selectedCategory: string;
-  setSelectedCategory: (c: string) => void;
+  searchTerm?: string;
+  setSearchTerm?: (t: string) => void;
+  selectedCategory?: string;
+  setSelectedCategory?: (c: string) => void;
 }
 
 export default function Header({ 
-  searchTerm, 
-  setSearchTerm, 
-  selectedCategory, 
-  setSelectedCategory 
+  searchTerm = "", 
+  setSearchTerm = () => {}, 
+  selectedCategory = "all", 
+  setSelectedCategory = () => {} 
 }: HeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -318,35 +318,23 @@ export default function Header({
           >
           <div className="global-container h-full flex items-center justify-between gap-4 md:gap-8 lg:gap-10">
             
-            {/* Logo area - Original circular logo badge format */}
+            {/* Logo area - Official Biogen Pharma Logo */}
             <div 
               className="flex-shrink-0 cursor-pointer select-none py-1 mr-2 md:mr-6"
               onClick={handleLogoClick}
             >
-              <div className="flex items-center gap-3 group">
-                <div className={`rounded-full overflow-hidden border border-gray-100 p-0.5 bg-[#F8F7F2] transition-all duration-300 shadow-sm group-hover:border-[#C9A227]/40 flex items-center justify-center ${
-                  isScrolled ? "w-[50px] h-[50px]" : "w-[64px] h-[64px]"
+              <div className="flex items-center group">
+                <div className={`transition-all duration-300 flex items-center justify-center ${
+                  isScrolled ? "h-[36px]" : "h-[44px] sm:h-[50px]"
                 }`}>
                   <Image
-                    src="/ideal-logo.png"
-                    alt="Ideal Dry Fruit Logo"
-                    width={100}
-                    height={100}
-                    className="object-contain w-full h-full"
+                    src="/biogen-logo.png"
+                    alt="Biogen Pharma"
+                    width={200}
+                    height={55}
+                    className="h-full w-auto object-contain transition-transform group-hover:scale-105"
                     priority
                   />
-                </div>
-                <div className="leading-none flex flex-col justify-center select-none">
-                  <span className={`font-serif font-black tracking-wide text-[#111111] transition-all duration-300 group-hover:text-[#C9A227] ${
-                    isScrolled ? "text-base" : "text-lg sm:text-xl"
-                  }`}>
-                    IDEAL
-                  </span>
-                  <span className={`font-sans tracking-[0.25em] text-[#C9A227] font-bold uppercase transition-all duration-300 mt-0.5 ${
-                    isScrolled ? "text-[8px]" : "text-[9px]"
-                  }`}>
-                    DRY FRUIT
-                  </span>
                 </div>
               </div>
             </div>
@@ -681,28 +669,28 @@ export default function Header({
                         </div>
                       </div>
 
-                      {/* Column 3: Featured Promo Banner (Luxury styled) */}
+                      {/* Column 3: Featured Promo Banner (Medical styled) */}
                       <div>
-                        <div className="relative rounded-2xl overflow-hidden bg-[#111111] h-full flex flex-col justify-end p-5 border border-[#C9A227]/30 text-white min-h-[220px]">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+                        <div className="relative rounded-2xl overflow-hidden bg-[#0F172A] h-full flex flex-col justify-end p-5 border border-[#0284C7]/30 text-white min-h-[220px]">
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/70 to-transparent z-10" />
                           <img 
-                            src="/images/banners/2024-12-30-677262dd75fe7.webp" 
-                            alt="Luxury boxes" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-60 z-0" 
+                            src="/images/banners/biogen_banner_1.webp" 
+                            alt="Surgical Instruments" 
+                            className="absolute inset-0 w-full h-full object-cover opacity-70 z-0" 
                           />
                           <div className="relative z-20">
-                            <span className="text-[#C9A227] font-sans text-[8px] font-black uppercase tracking-[0.25em] block mb-1">
-                              ROYAL COLLECTION
+                            <span className="text-[#38BDF8] font-sans text-[8px] font-black uppercase tracking-[0.25em] block mb-1">
+                              CERTIFIED QUALITY
                             </span>
                             <h5 className="font-serif font-bold text-sm tracking-wide mb-1.5 leading-snug text-white">
-                              Luxury Gifting Made Elegant
+                              Precision Surgical &amp; Clinical Gear
                             </h5>
                             <p className="text-[10px] text-gray-300 leading-relaxed mb-3">
-                              Perfect premium selections for corporate and family occasions.
+                              Autoclavable German stainless steel instruments &amp; essential medicines.
                             </p>
                             <button
-                              onClick={() => handleCategorySelect("gift-box")}
-                              className="text-[9px] font-bold uppercase tracking-wider bg-[#C9A227] hover:bg-white text-black hover:text-black py-1.5 px-3.5 rounded-lg transition-all duration-300"
+                              onClick={() => handleCategorySelect("surgical-instruments")}
+                              className="text-[9px] font-bold uppercase tracking-wider bg-[#0284C7] hover:bg-white text-white hover:text-black py-1.5 px-3.5 rounded-lg transition-all duration-300"
                             >
                               Explore
                             </button>

@@ -36,7 +36,7 @@ const FAQ_DATA: FAQItem[] = [
     id: "faq-3",
     category: "Orders & Payments",
     question: "Can I place a wholesale or corporate bulk gift order?",
-    answer: "Absolutely. We specialize in custom corporate gifting boxes, wedding giveaways, and bulk dry fruit supplies. Contact our team directly via email at info@idealdryfruit.com or through our Contact Helpdesk for discounted bulk rates."
+    answer: "Absolutely. Contact our team directly via email at info.biogen@gianteyetech.com or through our Contact Helpdesk for discounted bulk rates."
   },
   {
     id: "faq-4",

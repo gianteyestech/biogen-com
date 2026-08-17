@@ -105,8 +105,8 @@ export async function POST(req: Request) {
     const filename = `${epochSec}_${cleanSlug}_${sizeTag}${finalExt}`;
 
     // 5. Save to Hostinger Subdomain or Local Storage
-    const hostingerMediaUrl = process.env.HOSTINGER_MEDIA_URL || "https://media.idealdryfruit.com/upload.php";
-    const uploadSecret = process.env.HOSTINGER_UPLOAD_SECRET || "idealdryfruit_media_secret_2026_change_me";
+    const hostingerMediaUrl = process.env.HOSTINGER_MEDIA_URL || "https://assets.idealdryfruit.com/bg_upload.php";
+    const uploadSecret = process.env.HOSTINGER_UPLOAD_SECRET || "biogen_media_secret_2026_change_me";
 
     let publicUrl = `/uploads/${filename}`;
 
@@ -136,14 +136,14 @@ export async function POST(req: Request) {
         const errText = await hostingerRes.text();
         console.error("Hostinger media upload failed:", hostingerRes.status, errText);
         return NextResponse.json(
-          { error: `Hostinger Storage Error (${hostingerRes.status}): ${errText || "Make sure upload.php is placed in media.idealdryfruit.com folder"}` },
+          { error: `Hostinger Storage Error (${hostingerRes.status}): ${errText || "Make sure bg_upload.php is placed in assets.idealdryfruit.com folder"}` },
           { status: 500 }
         );
       }
     } catch (remoteErr: any) {
       console.error("Failed to reach Hostinger media endpoint:", remoteErr);
       return NextResponse.json(
-        { error: `Hostinger Subdomain Unreachable (https://media.idealdryfruit.com/upload.php): ${remoteErr.message}` },
+        { error: `Hostinger Subdomain Unreachable (https://assets.idealdryfruit.com/bg_upload.php): ${remoteErr.message}` },
         { status: 500 }
       );
     }

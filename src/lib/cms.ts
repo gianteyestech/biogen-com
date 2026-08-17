@@ -400,7 +400,7 @@ export async function verifyAdminCredentials(passwordInput: string): Promise<boo
     if (!rows || rows.length === 0) {
       // Seed default admin user into DB if empty
       const defaultHash = await bcrypt.hash(defaultAdminPass, 10);
-      const defaultEmail = process.env.ADMIN_EMAIL || "admin@idealdryfruit.com";
+      const defaultEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
       await pool.query(
         "INSERT INTO admin_users (email, password_hash, name) VALUES (?, ?, ?)",
         [defaultEmail, defaultHash, "Super Admin"]
@@ -438,7 +438,7 @@ export async function updateAdminPassword(currentPassword: string, newPassword: 
     if (rows && rows.length > 0) {
       await pool.query("UPDATE admin_users SET password_hash = ? WHERE id = ?", [newHash, rows[0].id]);
     } else {
-      const defaultEmail = process.env.ADMIN_EMAIL || "admin@idealdryfruit.com";
+      const defaultEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
       await pool.query("INSERT INTO admin_users (email, password_hash, name) VALUES (?, ?, ?)", [
         defaultEmail,
         newHash,
@@ -470,7 +470,7 @@ export async function resetAdminPasswordDirect(newPassword: string): Promise<{ s
     if (rows && rows.length > 0) {
       await pool.query("UPDATE admin_users SET password_hash = ? WHERE id = ?", [newHash, rows[0].id]);
     } else {
-      const defaultEmail = process.env.ADMIN_EMAIL || "info@idealdryfruit.com";
+      const defaultEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
       await pool.query("INSERT INTO admin_users (email, password_hash, name) VALUES (?, ?, ?)", [
         defaultEmail,
         newHash,
