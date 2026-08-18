@@ -2,7 +2,7 @@
   {
     "id": "allergy-relief-tablets",
     "name": "Allergy Relief Tablets (Antihistamine)",
-    "urduName": "",
+    "urduName": "Cetirizine HCl 10mg",
     "category": "medicines",
     "description": "Fast-acting, non-drowsy multi-symptom allergy relief. Helps alleviate sneezing, runny nose, itchy watery eyes, and nasal congestion caused by environmental and seasonal allergens. Manufactured under strict GMP certified pharmaceutical conditions.",
     "rating": 4.9,
@@ -25,7 +25,7 @@
   {
     "id": "painkillers-extra-strength",
     "name": "Painkillers Extra Strength (Analgesic & Antipyretic)",
-    "urduName": "",
+    "urduName": "Paracetamol & Ibuprofen Complex",
     "category": "medicines",
     "description": "Clinical strength pain relief for tension headaches, muscle aches, post-operative discomfort, back pain, and fever reduction. Rapid absorption formula designed for dependable and gentle pain management.",
     "rating": 4.8,
@@ -45,9 +45,31 @@
     "badge": "Essential"
   },
   {
+    "id": "broad-spectrum-antibiotics-pack",
+    "name": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)",
+    "urduName": "Amoxicillin Trihydrate 500mg",
+    "category": "medicines",
+    "description": "High-purity broad-spectrum antibiotic formulation for bacterial infection treatment. Formulated in compliance with WHO essential medicine guidelines.",
+    "rating": 4.8,
+    "reviewsCount": 51,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/antibiotics.webp",
+    "prices": {
+      "500mg (20 Caps)": 24,
+      "625mg (20 Caps)": 32,
+      "1000mg (14 Tabs)": 36
+    },
+    "originalPrices": {
+      "625mg (20 Caps)": 38
+    },
+    "inStock": true,
+    "featured": false,
+    "isNew": true,
+    "badge": "Prescription"
+  },
+  {
     "id": "examination-couch-square-pipe",
     "name": "Examination Couch Square Pipe (Hospital Grade)",
-    "urduName": "",
+    "urduName": "Medical Examination Bed",
     "category": "surgical-furniture",
     "description": "Heavy-duty medical examination couch manufactured with reinforced square steel piping, anti-corrosion epoxy powder coating, and high-density medical-grade antimicrobial faux-leather upholstery. Features adjustable headrest and paper roll holder.",
     "rating": 5.0,
@@ -68,7 +90,7 @@
   {
     "id": "foerster-sponge-forceps",
     "name": "Foerster Sponge Forceps (Straight / Curved)",
-    "urduName": "",
+    "urduName": "German Stainless Steel Forceps",
     "category": "surgical-instruments",
     "description": "Precision medical surgical instrument constructed from German stainless steel. Features serrated jaws and ratchet lock mechanism for secure grip during surgical swabs, sponges, and dressing procedures. Autoclavable & corrosion-resistant.",
     "rating": 4.9,
@@ -91,7 +113,7 @@
   {
     "id": "surgical-loupes-glasses",
     "name": "Surgical Loupes Glasses (3.5x Optical Magnification)",
-    "urduName": "",
+    "urduName": "Galilean Surgical Optics",
     "category": "eye-vision",
     "description": "Professional surgical loupes with high-resolution Galilean optics, multi-layer anti-reflective coating, and ultra-light titanium frame. Provides wide field of view and generous depth of field for precision surgical and dental operations.",
     "rating": 4.9,
@@ -112,7 +134,7 @@
   {
     "id": "surgical-protective-glasses",
     "name": "Surgical Protective Glasses (Anti-Fog & UV400)",
-    "urduName": "",
+    "urduName": "Clinical Eye Protection",
     "category": "eye-vision",
     "description": "Ergonomic medical protective eyewear designed for operating theaters, laboratory personnel, and clinical environments. Features crystal-clear polycarbonate lenses, side splash shields, and anti-fog technology.",
     "rating": 4.7,
@@ -132,31 +154,51 @@
     "badge": "Clinical Safety"
   },
   {
-    "id": "broad-spectrum-antibiotics-pack",
-    "name": "Broad-Spectrum Antibiotics (Amoxicillin / Clavulanate)",
-    "urduName": "",
-    "category": "medicines",
-    "description": "High-purity broad-spectrum antibiotic formulation for bacterial infection treatment. Formulated in compliance with WHO essential medicine guidelines.",
-    "rating": 4.8,
-    "reviewsCount": 51,
-    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/antibiotics.webp",
+    "id": "digital-blood-pressure-monitor",
+    "name": "Digital Upper Arm Blood Pressure Monitor (Hospital Accuracy)",
+    "urduName": "Clinical Oscillometric Sphygmomanometer",
+    "category": "diagnostics",
+    "description": "Clinical grade digital blood pressure monitor with dual-user memory, arrhythmia detection, and wide-range comfort cuff. Calibrated for medical clinics and intensive monitoring.",
+    "rating": 4.9,
+    "reviewsCount": 67,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/bp_monitor.webp",
     "prices": {
-      "500mg (20 Caps)": 24,
-      "625mg (20 Caps)": 32,
-      "1000mg (14 Tabs)": 36
+      "Standard Unit (with Adult Cuff)": 55,
+      "Clinic Kit (Standard + XL Cuff + AC Adapter)": 78
     },
     "originalPrices": {
-      "625mg (20 Caps)": 38
+      "Clinic Kit (Standard + XL Cuff + AC Adapter)": 95
+    },
+    "inStock": true,
+    "featured": true,
+    "isNew": true,
+    "badge": "Clinical Grade"
+  },
+  {
+    "id": "pulse-oximeter-fingertip",
+    "name": "Fingertip Pulse Oximeter (SpO2 & Pulse Rate)",
+    "urduName": "High-Precision Photoplethysmograph",
+    "category": "diagnostics",
+    "description": "Non-invasive SpO2 oxygen saturation and pulse rate monitor with multi-directional OLED display and plethysmograph waveform indicator. Fast 5-second reading.",
+    "rating": 4.8,
+    "reviewsCount": 92,
+    "imageUrl": "https://assets.idealdryfruit.com/uploads/products/2026/08/pulse_oximeter.webp",
+    "prices": {
+      "Single Unit": 22,
+      "Hospital Box (10 Units)": 190
+    },
+    "originalPrices": {
+      "Hospital Box (10 Units)": 220
     },
     "inStock": true,
     "featured": false,
     "isNew": true,
-    "badge": "Prescription"
+    "badge": "Fast Reading"
   },
   {
     "id": "daily-multivitamin-mineral-complex",
     "name": "Daily Multivitamin & Mineral Complex (Immune Defense)",
-    "urduName": "",
+    "urduName": "24 Essential Micro-Nutrients",
     "category": "nutrition-supplements",
     "description": "Comprehensive nutritional formula containing 24 essential vitamins and minerals including Vitamin C, Vitamin D3, Zinc, Magnesium, and B-Complex to support overall vitality, immune health, and cellular repair.",
     "rating": 4.9,
