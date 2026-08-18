@@ -10,8 +10,6 @@ interface ProductSectionProps {
   onViewAll?: () => void;
 }
 
-const goldGrad = "linear-gradient(135deg, #F0C040 0%, #C9A84C 55%, #B8922B 100%)";
-
 export default function ProductSection({ title, products, onViewAll }: ProductSectionProps) {
   if (products.length === 0) return null;
 
@@ -20,24 +18,23 @@ export default function ProductSection({ title, products, onViewAll }: ProductSe
       {/* Section header */}
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="font-sans text-xl font-extrabold text-[#F5ECD7] uppercase tracking-wide">
+          <h2 className="font-sans text-xl font-extrabold text-slate-900 uppercase tracking-wide">
             {title}
           </h2>
-          <div className="mt-1.5 h-0.5 w-16 rounded-full" style={{ background: goldGrad }} />
+          <div className="mt-1.5 h-1 w-16 rounded-full bg-[#0072CE]" />
         </div>
         {onViewAll && (
           <button
             onClick={onViewAll}
-            className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider transition-colors hover:underline"
-            style={{ background: goldGrad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+            className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#0072CE] transition-colors hover:underline"
           >
-            View All <ArrowRight size={13} className="text-[#C9A84C]" />
+            View All <ArrowRight size={14} className="text-[#0072CE]" />
           </button>
         )}
       </div>
 
       {/* 4-column product grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
         {products.slice(0, 8).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

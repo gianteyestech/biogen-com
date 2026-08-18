@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-      <h2 className="text-4xl font-black mb-2 text-[#C9A84C]">404</h2>
-      <p className="text-xl mb-6">Page Not Found</p>
+    <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 font-sans">
+      <h2 className="text-4xl font-black mb-2 text-[#0072CE]">404</h2>
+      <p className="text-lg text-slate-700 mb-6 font-semibold">Medical Page / Resource Not Found</p>
       <Link
         href="/"
-        className="px-6 py-3 bg-[#C9A84C] text-[#0D0D0D] font-bold rounded-lg hover:opacity-90 transition"
+        className="px-6 py-3 bg-[#0072CE] text-white font-bold rounded-xl hover:bg-[#005EA6] transition text-xs uppercase tracking-wider shadow-sm"
       >
-        Return Home
+        ← Return to Medical Catalog
       </Link>
     </div>
   );

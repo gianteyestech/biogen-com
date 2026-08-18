@@ -13,13 +13,14 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <div className="min-h-[50vh] flex flex-col items-center justify-center text-center px-4">
-      <h2 className="text-2xl font-black mb-4">Something went wrong!</h2>
+    <div className="min-h-[50vh] flex flex-col items-center justify-center text-center px-4 font-sans">
+      <h2 className="text-2xl font-bold text-slate-900 mb-2">Service Temporarily Unavailable</h2>
+      <p className="text-xs text-slate-500 mb-4">An unexpected error occurred while loading medical records.</p>
       <button
         onClick={() => reset()}
-        className="px-6 py-2 bg-[#C9A84C] text-[#0D0D0D] font-bold rounded-lg"
+        className="px-6 py-2.5 bg-[#0072CE] hover:bg-[#005EA6] text-white font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-sm"
       >
-        Try again
+        Retry Operation
       </button>
     </div>
   );

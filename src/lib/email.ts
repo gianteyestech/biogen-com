@@ -97,7 +97,7 @@ export function generateOrderConfirmationHTML(order: {
     <tr>
       <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.name} (${item.weight})</td>
       <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: center;">${item.qty}</td>
-      <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: right;">Rs. ${item.price * item.qty}</td>
+      <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: right;">$${(item.price * item.qty).toLocaleString()}</td>
     </tr>
   `
     )
@@ -105,18 +105,18 @@ export function generateOrderConfirmationHTML(order: {
 
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;">
-      <div style="background-color: #0A0A0A; padding: 24px; text-align: center; color: #C9A84C;">
-        <h1 style="margin: 0; font-size: 24px;">Biogen</h1>
-        <p style="margin: 4px 0 0 0; color: #A1A1AA; font-size: 14px;">Order Confirmation #${order.id}</p>
+      <div style="background-color: #0A0F1D; padding: 24px; text-align: center; color: #ffffff;">
+        <h1 style="margin: 0; font-size: 22px; color: #00A3E0;">Biogen Pharma</h1>
+        <p style="margin: 4px 0 0 0; color: #94A3B8; font-size: 13px;">Medical Requisition Confirmation #${order.id}</p>
       </div>
       
-      <div style="padding: 24px; color: #333;">
-        <h2 style="font-size: 18px; margin-top: 0;">Thank you for your order, ${order.customerName}!</h2>
-        <p>We have received your order and are getting it ready for shipment.</p>
+      <div style="padding: 24px; color: #1E293B;">
+        <h2 style="font-size: 16px; margin-top: 0; color: #0F172A;">Thank you for your order, ${order.customerName}!</h2>
+        <p style="font-size: 13px; color: #475569;">We have received your pharmaceutical / medical supply requisition and our logistics team is preparing cold-chain dispatch.</p>
         
-        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 13px;">
           <thead>
-            <tr style="background-color: #f8f8f8; text-align: left;">
+            <tr style="background-color: #F1F5F9; text-align: left;">
               <th style="padding: 10px;">Item</th>
               <th style="padding: 10px; text-align: center;">Qty</th>
               <th style="padding: 10px; text-align: right;">Total</th>
@@ -127,13 +127,13 @@ export function generateOrderConfirmationHTML(order: {
           </tbody>
         </table>
         
-        <div style="margin-top: 20px; text-align: right; font-size: 18px; font-weight: bold; color: #0A0A0A;">
-          Grand Total: <span style="color: #C9A84C;">Rs. ${order.totalAmount}</span>
+        <div style="margin-top: 20px; text-align: right; font-size: 16px; font-weight: bold; color: #0F172A;">
+          Total Payable: <span style="color: #0072CE;">$${order.totalAmount?.toLocaleString()}</span>
         </div>
       </div>
       
-      <div style="background-color: #f4f4f5; padding: 16px; text-align: center; font-size: 12px; color: #71717A;">
-        If you have any questions, contact us at info.biogen@gianteyetech.com or WhatsApp.
+      <div style="background-color: #F8FAFC; padding: 16px; text-align: center; font-size: 12px; color: #64748B; border-top: 1px solid #E2E8F0;">
+        For clinical inquiries or logistics tracking, contact us at contact@biogenpharma.site or WhatsApp.
       </div>
     </div>
   `;

@@ -94,7 +94,7 @@ export async function POST(req: Request) {
     }
 
     if (!cleanSlug || cleanSlug.length < 3 || cleanSlug.startsWith("whatsapp") || cleanSlug.startsWith("img-")) {
-      cleanSlug = "ideal-dry-fruit";
+      cleanSlug = "biogen-pharma";
     }
 
     cleanSlug = cleanSlug.slice(0, 20).replace(/-+$/g, "");

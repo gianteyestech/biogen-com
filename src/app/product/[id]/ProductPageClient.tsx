@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Star, ShoppingBag, ChevronRight, Minus, Plus, CheckCircle2, Package, Truck, Shield } from "lucide-react";
+import { Star, ShoppingBag, ChevronRight, Minus, Plus, CheckCircle2, Package, Truck, ShieldCheck, FileText, Send } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { BRAND } from "@/config/brand";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import ProductCard from "@/components/ProductCard";
 import { getSavePercent } from "@/lib/cms-types";
@@ -17,12 +18,6 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
-
-const goldGrad = "linear-gradient(135deg, #F0C040 0%, #C9A84C 55%, #B8922B 100%)";
-const goldText: React.CSSProperties = {
-  background: goldGrad, WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent", backgroundClip: "text",
-};
 
 interface ProductPageClientProps {
   product: CMSProduct | null;
@@ -39,13 +34,16 @@ export default function ProductPageClient({ product, related }: ProductPageClien
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#F0F0F0]">
+      <div className="min-h-screen bg-[#F8FAFC]">
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <CartSlider />
         <div className="global-container py-24 text-center">
           <p className="text-5xl mb-4">🔍</p>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Product not found</h1>
-          <Link href="/" className="inline-block px-6 py-3 rounded-xl font-bold text-sm uppercase text-[#0D0D0D]" style={{ background: goldGrad }}>← Back to Shop</Link>
+          <h1 className="text-2xl font-bold text-slate-800 mb-2">Medical Product Not Found</h1>
+          <p className="text-xs text-slate-500 mb-6">The requested pharmaceutical item or surgical equipment does not exist.</p>
+          <Link href="/" className="inline-block px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6]">
+            ← Return to Medical Catalog
+          </Link>
         </div>
       </div>
     );
@@ -53,121 +51,158 @@ export default function ProductPageClient({ product, related }: ProductPageClien
 
   const weights = Object.keys(product.prices);
   const activeWeight = selectedWeight || weights[0] || "";
-  const currentPrice = product.prices[activeWeight];
+  const currentPrice = product.prices[activeWeight] || 0;
   const originalPrice = product.originalPrices?.[activeWeight];
   const savePercent = getSavePercent(product, activeWeight);
 
-  const handleBuyNow = () => addToCart(product, activeWeight, quantity);
-
-  const handleWhatsApp = () => {
+  const handleWhatsAppInquiry = () => {
     const total = currentPrice * quantity;
     const msg = [
-      `🛒 *Order from Ideal Dry Fruit*`,
-      ``, `• ${product.name}`,
-      `  Weight: ${activeWeight} | Qty: ${quantity} | Rs. ${total.toLocaleString()}`,
-      ``, `💰 *Total:* Rs. ${total.toLocaleString()}`,
-      `📦 *Payment:* Cash on Delivery (COD)`,
-      ``, `Please confirm my order. Thank you! 🙏`,
+      `🏥 *Medical Requisition Inquiry — Biogen Pharma*`,
+      ``,
+      `• *Product:* ${product.name}`,
+      `• *Specification/Pack:* ${activeWeight}`,
+      `• *Quantity:* ${quantity} Units`,
+      `• *Estimated Total:* $${total.toLocaleString()}`,
+      ``,
+      `Please provide institutional pricing / quotation & delivery timeline for our facility.`,
     ].join("\n");
-    window.open(`${BRAND.contact.whatsappBase}&text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`${BRAND.contact.whatsappBase}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F0F0] font-sans">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans antialiased">
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <CartSlider />
 
-      <div className="global-container py-5">
-        <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6">
-          <Link href="/" className="hover:text-[#C9A84C] transition-colors">Home</Link>
+      <div className="global-container py-6">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+          <Link href="/" className="hover:text-[#0072CE] transition-colors">Catalog</Link>
           <ChevronRight size={13} />
-          <span className="text-[#C9A84C] font-semibold line-clamp-1">{product.name}</span>
+          <span className="text-[#0072CE] font-semibold line-clamp-1">{product.name}</span>
         </nav>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Image */}
+        {/* Product Card Container */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            
+            {/* Product Image Area */}
             <div>
-              <div className="relative rounded-2xl overflow-hidden bg-[#111111] aspect-square max-h-[480px]">
+              <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 aspect-square max-h-[480px] p-6 flex items-center justify-center">
                 {savePercent && (
-                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-lg text-[#0D0D0D] text-xs font-extrabold" style={{ background: goldGrad }}>
-                    SAVE {savePercent}%
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-md text-white text-xs font-bold bg-[#70BA28] shadow-sm">
+                    Save {savePercent}%
                   </div>
                 )}
-                <div className="absolute top-4 right-4 z-10 bg-[#0D0D0D]/70 border border-[#C9A84C]/40 px-2.5 py-1 rounded-lg">
-                  <span className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-wide">HIGH QUALITY</span>
+                <div className="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-xs border border-white/20 text-white px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-bold tracking-wider">
+                  <ShieldCheck size={13} className="text-[#00A3E0]" />
+                  <span>GMP CERTIFIED</span>
                 </div>
-                <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
+                <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
               </div>
             </div>
 
-            {/* Details */}
+            {/* Product Details & Actions */}
             <div className="flex flex-col gap-5">
               <div className="flex items-start justify-between gap-4">
-                <h1 className="font-sans text-xl sm:text-2xl font-extrabold text-gray-900 leading-tight flex-1">{product.name}</h1>
+                <div>
+                  <span className="text-[11px] font-bold text-[#0072CE] uppercase tracking-wider">Medical Grade &amp; Certified</span>
+                  <h1 className="font-sans text-xl sm:text-2xl font-black text-slate-900 leading-tight mt-1">{product.name}</h1>
+                </div>
                 {product.inStock && (
-                  <span className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 text-green-700 text-xs font-bold rounded-full">
-                    <CheckCircle2 size={11} /> IN STOCK
+                  <span className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold rounded-full">
+                    <CheckCircle2 size={12} /> IN STOCK
                   </span>
                 )}
               </div>
 
+              {/* Rating */}
               <div className="flex items-center gap-2">
-                <div className="flex">{[...Array(5)].map((_, i) => (<Star key={i} size={15} className={i < Math.floor(product.rating) ? "fill-[#C9A84C] text-[#C9A84C]" : "fill-gray-200 text-gray-200"} />))}</div>
-                <span className="text-sm text-gray-500">{product.reviewsCount} reviews</span>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} className={i < Math.floor(product.rating) ? "fill-amber-400 text-amber-400" : "fill-slate-200 text-slate-200"} />
+                  ))}
+                </div>
+                <span className="text-xs text-slate-500 font-medium">({product.reviewsCount} verified hospital &amp; clinical reviews)</span>
               </div>
 
+              {/* Pricing */}
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-black" style={goldText}>Rs. {(currentPrice ?? 0).toLocaleString()}</span>
-                {originalPrice && <span className="text-lg text-gray-400 line-through">Rs. {originalPrice.toLocaleString()}</span>}
+                <span className="text-3xl font-black text-[#0072CE]">${(currentPrice ?? 0).toLocaleString()}</span>
+                {originalPrice && <span className="text-base text-slate-400 line-through font-medium">${originalPrice.toLocaleString()}</span>}
               </div>
 
-              <hr className="border-gray-100" />
+              {/* Description */}
+              {product.description && (
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  {product.description}
+                </p>
+              )}
 
+              {/* Packaging / Variant Selection */}
               <div>
-                <p className="font-sans text-xs font-extrabold uppercase tracking-widest text-gray-500 mb-3">SELECT WEIGHT</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-2.5">
+                  Select Packaging / Dosage Size:
+                </p>
                 <div className="flex flex-wrap gap-2.5">
                   {weights.map((w) => {
                     const sp = getSavePercent(product, w);
                     const isActive = activeWeight === w;
                     const priceForWeight = product.prices[w] ?? 0;
                     return (
-                      <button key={w} onClick={() => setSelectedWeight(w)}
-                        className={`relative flex flex-col items-center px-5 py-3 rounded-xl border-2 transition-all font-sans text-sm font-bold ${isActive ? "border-[#C9A84C] bg-[#FFF8E7]" : "border-gray-200 hover:border-[#C9A84C]/50 bg-white"}`}>
-                        {sp && <span className="absolute -top-2.5 -right-2 text-[8px] font-extrabold px-1.5 py-0.5 rounded text-[#0D0D0D]" style={{ background: goldGrad }}>SAVE {sp}%</span>}
-                        <span className={isActive ? "text-[#1a1a1a]" : "text-gray-600"}>{w}</span>
-                        <span className="text-xs font-semibold" style={isActive ? goldText : { color: "#9ca3af" }}>Rs. {priceForWeight.toLocaleString()}</span>
+                      <button
+                        key={w}
+                        onClick={() => setSelectedWeight(w)}
+                        className={`relative flex flex-col items-start px-4 py-2.5 rounded-xl border-2 transition-all text-xs font-semibold ${
+                          isActive
+                            ? "border-[#0072CE] bg-blue-50/50 text-[#0072CE]"
+                            : "border-slate-200 hover:border-slate-300 bg-white text-slate-700"
+                        }`}
+                      >
+                        {sp && (
+                          <span className="absolute -top-2 -right-1.5 text-[8px] font-extrabold px-1.5 py-0.5 rounded text-white bg-[#70BA28]">
+                            -{sp}%
+                          </span>
+                        )}
+                        <span>{w}</span>
+                        <span className="text-[11px] font-bold mt-0.5">${priceForWeight.toLocaleString()}</span>
                       </button>
                     );
                   })}
                 </div>
               </div>
 
+              {/* Quantity */}
               <div>
-                <p className="font-sans text-xs font-extrabold uppercase tracking-widest text-gray-500 mb-3">QUANTITY</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-2">Requisition Quantity:</p>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center border-2 border-gray-200 rounded-xl overflow-hidden">
-                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-4 py-3 text-gray-600 hover:bg-gray-50"><Minus size={14} /></button>
-                    <span className="px-5 py-3 font-bold text-gray-900 min-w-[48px] text-center">{quantity}</span>
-                    <button onClick={() => setQuantity(quantity + 1)} className="px-4 py-3 text-gray-600 hover:bg-gray-50"><Plus size={14} /></button>
+                  <div className="flex items-center border border-slate-300 rounded-xl overflow-hidden bg-slate-50">
+                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-3.5 py-2 text-slate-600 hover:bg-slate-200 transition-colors">
+                      <Minus size={13} />
+                    </button>
+                    <span className="px-4 py-2 font-bold text-xs text-slate-900 bg-white min-w-[40px] text-center">
+                      {quantity}
+                    </span>
+                    <button onClick={() => setQuantity(quantity + 1)} className="px-3.5 py-2 text-slate-600 hover:bg-slate-200 transition-colors">
+                      <Plus size={13} />
+                    </button>
                   </div>
-                  <span className="text-xs text-green-600 font-semibold flex items-center gap-1"><CheckCircle2 size={12} /> In Stock</span>
+                  <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                    <CheckCircle2 size={13} /> Ready for Fast Institutional Dispatch
+                  </span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 text-[10px]">
-                {["Premium Quality", "Fresh Stock", "100% Natural", "QC Verified"].map((t) => (
-                  <span key={t} className="flex items-center gap-1 bg-[#FFF8E7] border border-[#C9A84C]/30 text-[#C9A84C] px-3 py-1 rounded-full font-semibold">✓ {t}</span>
-                ))}
-              </div>
-
+              {/* Notice */}
               {addedNotice && (
-                <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 animate-fadeIn">
-                  <CheckCircle2 size={16} /> Added {quantity}x {product.name} ({activeWeight}) to your cart!
+                <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 animate-fadeIn">
+                  <CheckCircle2 size={16} /> Added {quantity}x {product.name} ({activeWeight}) to your medical requisition!
                 </div>
               )}
 
-              <div className="flex gap-3">
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   onClick={() => {
                     addToCart(product, activeWeight, quantity);
@@ -175,54 +210,64 @@ export default function ProductPageClient({ product, related }: ProductPageClien
                     setAddedNotice(true);
                     setTimeout(() => setAddedNotice(false), 3000);
                   }}
-                  className="flex-1 py-3.5 rounded-xl font-sans text-sm font-extrabold uppercase tracking-wider bg-[#111111] text-white hover:bg-black transition-all active:scale-95 shadow-md flex items-center justify-center gap-2 border border-gray-800"
+                  className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-slate-900 text-white hover:bg-black transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
                 >
-                  <ShoppingBag size={16} /> ADD TO CART
+                  <ShoppingBag size={16} /> Add to Requisition
                 </button>
                 <button
-                  onClick={() => {
-                    addToCart(product, activeWeight, quantity);
-                    window.location.href = "/checkout";
-                  }}
-                  className="flex-1 py-3.5 rounded-xl font-sans text-sm font-extrabold uppercase tracking-wider text-[#0D0D0D] hover:opacity-90 transition-all active:scale-95 shadow-lg flex items-center justify-center gap-2"
-                  style={{ background: goldGrad }}
+                  onClick={handleWhatsAppInquiry}
+                  className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
                 >
-                  BUY NOW
+                  <WhatsAppIcon size={16} /> WhatsApp Bulk Quote
                 </button>
               </div>
 
-              <div className="bg-[#F8F8F8] rounded-xl p-4 grid grid-cols-3 gap-3 border border-gray-100">
-                {[{ icon: Package, text: "COD Available" }, { icon: Truck, text: "1–3 Day Delivery" }, { icon: Shield, text: "7-Day Return" }].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex flex-col items-center gap-1 text-center">
-                    <Icon size={18} className="text-[#C9A84C]" />
-                    <span className="text-[10px] font-semibold text-gray-600">{text}</span>
-                  </div>
-                ))}
+              {/* Institutional Assurance */}
+              <div className="bg-slate-50 rounded-xl p-4 grid grid-cols-3 gap-3 border border-slate-200 text-center">
+                <div className="flex flex-col items-center gap-1">
+                  <ShieldCheck size={18} className="text-[#0072CE]" />
+                  <span className="text-[10px] font-bold text-slate-700">GMP &amp; ISO Certified</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <Truck size={18} className="text-[#0072CE]" />
+                  <span className="text-[10px] font-bold text-slate-700">Cold-Chain Logistics</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <FileText size={18} className="text-[#0072CE]" />
+                  <span className="text-[10px] font-bold text-slate-700">COA &amp; Batch Traceability</span>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
 
+        {/* Related Products */}
         {related.length > 0 && (
-          <div className="mt-8 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="font-sans text-xl font-extrabold text-gray-900 uppercase tracking-wide">Related Products</h2>
-              <Link href="/" className="text-xs font-bold uppercase tracking-wider flex items-center gap-1" style={goldText}>
-                View All <ChevronRight size={13} className="text-[#C9A84C]" />
+          <div className="mt-10 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+            <div className="flex items-center justify-between mb-6 pb-2 border-b border-slate-100">
+              <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Related Medical Supplies</h2>
+              <Link href="/" className="text-xs font-bold uppercase tracking-wider text-[#0072CE] hover:underline flex items-center gap-1">
+                View Catalog <ChevronRight size={13} />
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
               {related.map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </div>
         )}
       </div>
 
-      <a href={BRAND.contact.whatsappBase} target="_blank" rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform"
-        style={{ background: "#25D366", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }} aria-label="Live Chat">
-        <WhatsAppIcon size={28} />
-      </a>
+      <Footer siteConfig={{
+        brand: {
+          name: BRAND.name,
+          tagline: BRAND.tagline,
+          logoUrl: "/biogen-logo.png",
+          address: BRAND.contact.addressHead,
+          phone: BRAND.contact.formattedNumber,
+          email: BRAND.contact.email,
+        }
+      } as any} />
     </div>
   );
 }
