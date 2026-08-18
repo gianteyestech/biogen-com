@@ -28,7 +28,7 @@ export default async function TermsPage() {
       <ul className="list-disc pl-5 space-y-1">
         <li>All pharmaceutical items, medical devices, and surgical consumables are subject to active batch availability.</li>
         <li>Batch certificates of analysis (CoA) are available upon request for institutional clinical consignments.</li>
-        <li>Upon order submission, a formal requisition confirmation is issued via email and WhatsApp clinical desk.</li>
+        <li>Upon order submission, a formal requisition confirmation is issued via email and Biogen Chat.</li>
       </ul>
 
       <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">3. Commercial Pricing &amp; Settlement</h2>

@@ -132,7 +132,7 @@ export default function LiveChatWidget() {
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-[#0072CE] animate-pulse" />
         </div>
         <span className="text-xs font-bold uppercase tracking-wider hidden sm:inline text-white">
-          Clinical Desk
+          Biogen Chat
         </span>
       </button>
 
@@ -199,7 +199,7 @@ export default function LiveChatWidget() {
                 type="submit"
                 className="w-full py-3 bg-[#0072CE] text-white font-bold text-xs rounded-xl hover:bg-[#005EA6] transition-all uppercase tracking-wider mt-2 shadow-sm"
               >
-                Connect With Clinical Desk →
+                Start Biogen Chat →
               </button>
             </form>
           ) : (

@@ -132,7 +132,7 @@ export default function AdminSitePage() {
                 <input value={config.brand.phone} onChange={e => set("brand.phone", e.target.value)} className={inputCls} placeholder="+232 75 011616" />
               </div>
               <div><label className={labelCls}>Official Inquiries Email</label><input value={config.brand.email} onChange={e => set("brand.email", e.target.value)} className={inputCls} /></div>
-              <div><label className={labelCls}>WhatsApp Clinical Desk URL</label><input value={config.brand.whatsapp} onChange={e => set("brand.whatsapp", e.target.value)} className={inputCls} /></div>
+              <div><label className={labelCls}>WhatsApp Biogen Chat URL</label><input value={config.brand.whatsapp} onChange={e => set("brand.whatsapp", e.target.value)} className={inputCls} /></div>
               <div><label className={labelCls}>Primary Operational Address (Gambia/Sierra Leone)</label><input value={config.brand.address} onChange={e => set("brand.address", e.target.value)} className={inputCls} /></div>
               <div className="col-span-1 sm:col-span-2">
                 <ImageUploader

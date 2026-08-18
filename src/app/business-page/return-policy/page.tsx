@@ -34,7 +34,7 @@ export default async function ReturnPolicyPage() {
 
       <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">How to File a Return Claim</h2>
       <ol className="list-decimal pl-5 space-y-2 text-xs">
-        <li><strong>Notify our Clinical Desk within 7 days</strong> of delivery.</li>
+        <li><strong>Notify our team via Biogen Chat or phone within 7 days</strong> of delivery.</li>
         <li>Provide the <strong>Requisition ID (#BGP-XXXXXX)</strong>, batch number, and high-resolution photo/log verification.</li>
         <li>Our <strong>Quality Assurance Unit</strong> reviews the claim within <strong>24–48 hours</strong>.</li>
       </ol>
@@ -52,7 +52,7 @@ export default async function ReturnPolicyPage() {
         <li>Institutional Procurement Support &amp; Volume Discounts</li>
       </ul>
 
-      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Clinical Desk Contact</h2>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Biogen Support &amp; Contact</h2>
       <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-1 mt-2">
         <p><strong>Headquarters:</strong> {brand.address}</p>
         <p><strong>Hotline:</strong> {brand.phone}</p>

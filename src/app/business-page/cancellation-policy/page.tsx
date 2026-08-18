@@ -28,7 +28,7 @@ export default async function CancellationPolicyPage() {
         A healthcare facility may cancel or modify an unfulfilled requisition <strong>without surcharge</strong> if the batch has not yet been packed into temperature-controlled cold-chain containers for courier dispatch.
       </p>
       <p className="mt-2 text-xs">
-        To cancel an order before dispatch, contact our Clinical Desk with your <strong>Requisition ID (#BGP-XXXXXX)</strong>.
+        To cancel an order before dispatch, contact our team via Biogen Chat or phone with your <strong>Requisition ID (#BGP-XXXXXX)</strong>.
       </p>
 
       <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Post-Dispatch Protocols</h2>
@@ -42,7 +42,7 @@ export default async function CancellationPolicyPage() {
         <li>Confirmation documentation is automatically dispatched to your accounts payable desk.</li>
       </ul>
 
-      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Clinical Procurement Desk</h2>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Biogen Procurement Support</h2>
       <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-1 mt-2">
         <p><strong>Headquarters:</strong> {brand.address}</p>
         <p><strong>Hotline:</strong> {brand.phone}</p>

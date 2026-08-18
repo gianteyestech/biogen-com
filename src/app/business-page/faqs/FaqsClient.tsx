@@ -25,7 +25,7 @@ const FAQ_DATA: FAQItem[] = [
     id: "faq-1",
     category: "Orders & Procurement",
     question: "How do clinics, hospitals, and pharmacies place orders on Biogen Pharma?",
-    answer: "Healthcare facilities and practitioners can browse our medical catalog, select required packaging/quantities, and submit an online order or requisition. You can also request official quotation invoices or place bulk orders directly via our WhatsApp Clinical Desk."
+    answer: "Healthcare facilities and practitioners can browse our medical catalog, select required packaging/quantities, and submit an online order or requisition. You can also request official quotation invoices or place bulk orders directly via Biogen Chat or WhatsApp."
   },
   {
     id: "faq-2",
@@ -228,7 +228,7 @@ export default function FaqsClient({ siteConfig }: FaqsClientProps) {
                   rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-sm"
                 >
-                  <MessageSquare size={16} /> WhatsApp Clinical Desk
+                  <MessageSquare size={16} /> Biogen WhatsApp Chat
                 </a>
                 <Link
                   href="/business-page/contact-us"
