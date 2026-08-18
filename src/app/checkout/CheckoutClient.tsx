@@ -12,7 +12,7 @@ const FREE_DELIVERY_THRESHOLD = BRAND.shipping.freeThreshold || 500;
 const SHIPPING_FEE_STANDARD = BRAND.shipping.standardCost || 50;
 
 export default function CheckoutClient() {
-  const { cart, cartTotal, clearCart } = useCart();
+  const { cart, cartTotal, clearCart, mounted } = useCart();
   const paymentMethods = usePaymentMethods();
 
   const [formData, setFormData] = useState({
@@ -78,6 +78,14 @@ export default function CheckoutClient() {
       setSubmitting(false);
     }
   };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center px-4">
+        <Loader2 className="w-8 h-8 text-[#0072CE] animate-spin" />
+      </div>
+    );
+  }
 
   if (cart.length === 0) {
     return (

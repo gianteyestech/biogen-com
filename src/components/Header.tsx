@@ -65,7 +65,7 @@ export default function Header({
   const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
   const router = useRouter();
   const pathname = usePathname();
-  const { setIsCartOpen, cartCount, cartTotal } = useCart();
+  const { setIsCartOpen, cartCount, cartTotal, mounted } = useCart();
 
   // Component States
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -521,7 +521,7 @@ export default function Header({
                   >
                     <ShoppingBag size={20} className="transition-transform duration-300 group-hover:scale-110" />
                     <span className="absolute -top-1 -right-1 bg-[#0072CE] text-white text-[9px] font-black min-w-[17px] min-h-[17px] flex items-center justify-center rounded-full shadow-sm">
-                      {cartCount}
+                      {mounted ? cartCount : 0}
                     </span>
                   </button>
                   <div className="hidden lg:flex flex-col leading-none">
@@ -529,9 +529,11 @@ export default function Header({
                       {isCatalogue ? "REQUISITION" : "MY CART"}
                     </span>
                     <span className="text-xs font-black text-slate-900 group-hover:text-[#0072CE] transition-colors mt-0.5">
-                      {isCatalogue && hidePrices
-                        ? `${cartCount} Items`
-                        : `$${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                      {mounted
+                        ? (isCatalogue && hidePrices
+                            ? `${cartCount} Items`
+                            : `$${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`)
+                        : (isCatalogue && hidePrices ? "0 Items" : "$0.00")}
                     </span>
                   </div>
                 </div>

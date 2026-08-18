@@ -1,13 +1,9 @@
 {
-  "siteMode": "ecommerce",
-  "hidePricesInCatalogue": false,
-  "catalogueInquiryText": "Request Official Quotation & CoA",
-  "catalogueAction": "chat",
   "brand": {
     "name": "Biogen Pharma",
     "tagline": "Enhancing Lives Through Quality Healthcare",
     "established": 2018,
-    "logoUrl": "https://assets.idealdryfruit.com/uploads/site/2026/08/biogen_official_logo.png",
+    "logoUrl": "https://assets.idealdryfruit.com/uploads/site/2026/08/1786998773_biogen-africa-logo_800x.webp",
     "address": "Head Office: C8WF+ CWC New Jeshwang, WestField, The Gambia | 2nd Branch: 20 Garrison Street, Free Town, Sierra Leone",
     "email": "contact@biogenpharma.site",
     "phone": "+232 75 011616",
@@ -173,5 +169,7 @@
         }
       ]
     }
-  ]
+  ],
+  "siteMode": "catalogue",
+  "hidePricesInCatalogue": true
 }

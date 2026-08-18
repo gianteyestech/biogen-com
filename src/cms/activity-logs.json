@@ -1,5 +1,41 @@
 [
   {
+    "id": "log_1787045357145_uj48i",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-18T09:29:17.145Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787045207757_eego3",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-18T09:26:47.757Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787045010355_aoqdm",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-18T09:23:30.355Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787044795283_9fiuc",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-18T09:19:55.283Z",
+    "user": "Admin"
+  },
+  {
     "id": "log_1786998788758_wenwk",
     "action": "UPDATE",
     "entity": "SiteConfig",

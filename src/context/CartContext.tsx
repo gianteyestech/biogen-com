@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import type { CMSProduct as Product } from "@/lib/cms";
 
-
 export interface CartItem {
   product: Product;
   quantity: number;
@@ -20,27 +19,37 @@ interface CartContextType {
   setIsCartOpen: (isOpen: boolean) => void;
   cartTotal: number;
   cartCount: number;
+  mounted: boolean;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window === "undefined") return [];
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Safely hydrate from localStorage on client-side only
+  useEffect(() => {
     try {
       const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
     } catch (e) {
       console.error("Failed to parse cart from localStorage", e);
-      return [];
     }
-  });
-  const [isCartOpen, setIsCartOpen] = useState(false);
+    setMounted(true);
+  }, []);
 
   // Save cart to localStorage
   const saveCart = (newCart: CartItem[]) => {
     setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+    try {
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    } catch (e) {
+      console.error("Failed to save cart to localStorage", e);
+    }
   };
 
   const addToCart = (product: Product, weight: string, quantity: number = 1) => {
@@ -83,7 +92,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const cartTotal = cart.reduce((total, item) => {
-    const pricePerUnit = item.product.prices[item.selectedWeight] || 0;
+    const pricePerUnit = item.product?.prices?.[item.selectedWeight] || 0;
     return total + pricePerUnit * item.quantity;
   }, 0);
 
@@ -101,6 +110,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setIsCartOpen,
         cartTotal,
         cartCount,
+        mounted,
       }}
     >
       {children}
