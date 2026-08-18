@@ -577,107 +577,107 @@ export default function Header({
                   {/* Mega Menu Dropdown */}
                   {megaMenuOpen && (
                     <div
-                      className="absolute top-full left-0 w-[960px] bg-white shadow-2xl rounded-b-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-top-3 duration-300 z-50"
+                      className="absolute top-full left-0 w-[1040px] bg-white shadow-2xl rounded-b-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-top-3 duration-300 z-50"
                       onMouseEnter={openMega}
                       onMouseLeave={closeMegaDelayed}
                     >
-                      <div className="grid grid-cols-4 p-8 gap-6">
+                      <div className="grid grid-cols-[300px_440px_1fr] p-6 gap-6 items-start">
                         
-                        {/* Column 1: Shop by Category */}
-                        <div>
-                          <h4 className="font-sans text-[11px] font-bold text-slate-400 uppercase tracking-widest pb-2.5 mb-4 border-b border-slate-100">
-                            Medical Departments
-                          </h4>
-                          <div className="flex flex-col gap-1.5">
-                            {MEGA_MENU.slice(0, 7).map((cat) => (
+                        {/* Column 1: All 26 Medical Departments */}
+                        <div className="border-r border-slate-100 pr-4">
+                          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+                            <h4 className="font-sans text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+                              Medical Departments ({MEGA_MENU.length})
+                            </h4>
+                            <span className="text-[9px] font-bold text-[#0072CE] bg-blue-50 px-1.5 py-0.5 rounded">
+                              26 Sectors
+                            </span>
+                          </div>
+                          <div className="flex flex-col gap-1 max-h-[380px] overflow-y-auto pr-1.5 scrollbar-thin">
+                            {MEGA_MENU.map((cat) => (
                               <button
                                 key={cat.id}
                                 onMouseEnter={() => setHoveredCat(cat.id)}
                                 onClick={() => handleCategorySelect(cat.id)}
-                                className={`w-full flex items-center justify-between py-2 px-3 rounded-lg text-left text-xs transition-all duration-200 group ${
+                                className={`w-full flex items-center justify-between py-2 px-2.5 rounded-lg text-left text-xs transition-all duration-150 group ${
                                   hoveredCat === cat.id
-                                    ? "bg-blue-50 text-[#0072CE] font-bold"
-                                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                    ? "bg-[#0072CE] text-white font-bold shadow-xs"
+                                    : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 font-medium"
                                 }`}
                               >
-                                <span className="flex items-center gap-2">
-                                  <span className="text-sm">{cat.icon}</span>
-                                  <span className="font-semibold">{cat.name}</span>
+                                <span className="flex items-center gap-2 min-w-0">
+                                  <span className="text-sm flex-shrink-0">{cat.icon}</span>
+                                  <span className="truncate text-[11px]">{cat.name}</span>
                                 </span>
-                                <ChevronRight size={12} className={`transition-transform duration-200 ${
-                                  hoveredCat === cat.id ? "translate-x-1" : "opacity-30"
+                                <ChevronRight size={12} className={`flex-shrink-0 transition-transform ${
+                                  hoveredCat === cat.id ? "text-white" : "opacity-30 group-hover:opacity-100"
                                 }`} />
                               </button>
                             ))}
                           </div>
                         </div>
 
-                        {/* Column 2: Featured Medical Supplies */}
-                        <div className="col-span-2">
-                          <h4 className="font-sans text-[11px] font-bold text-slate-400 uppercase tracking-widest pb-2.5 mb-4 border-b border-slate-100">
-                            Featured Supplies
-                          </h4>
-                          <div className="grid grid-cols-3 gap-3">
-                            {bestSellerProducts.map((p) => {
-                              const weight = Object.keys(p.prices)[0];
-                              const price = p.prices[weight];
-                              return (
-                                <Link
-                                  key={p.id}
-                                  href={`/product/${p.id}`}
-                                  onClick={() => setMegaMenuOpen(false)}
-                                  className="group/item flex flex-col p-2 bg-slate-50 hover:bg-blue-50/50 rounded-xl transition-all duration-300 border border-slate-200 text-center"
-                                >
-                                  <div className="aspect-square w-full rounded-lg overflow-hidden bg-white mb-2 shadow-xs border border-slate-100 flex items-center justify-center">
-                                    <img 
-                                      src={p.imageUrl} 
-                                      alt={p.name} 
-                                      className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-500" 
-                                    />
+                        {/* Column 2: Dynamic Subcategories of Active Department */}
+                        <div className="border-r border-slate-100 pr-4">
+                          {(() => {
+                            const activeCategoryData = MEGA_MENU.find((c) => c.id === hoveredCat) || MEGA_MENU[0];
+                            return (
+                              <div>
+                                <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
+                                  <div className="flex items-center gap-2 min-w-0">
+                                    <span className="text-base">{activeCategoryData?.icon}</span>
+                                    <h4 className="font-sans text-xs font-black text-slate-900 truncate">
+                                      {activeCategoryData?.name}
+                                    </h4>
                                   </div>
-                                  <span className="text-[10px] font-bold text-slate-800 line-clamp-1 group-hover/item:text-[#0072CE] transition-colors px-1">
-                                    {p.name}
-                                  </span>
-                                  <span className="text-[11px] font-black text-[#0072CE] mt-1">
-                                    ${price.toFixed(2)}
-                                  </span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                          
-                          {/* Shop all link */}
-                          <div className="mt-5 text-center">
-                            <button
-                              onClick={() => handleCategorySelect("all")}
-                              className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-slate-800 hover:text-[#0072CE] transition-colors"
-                            >
-                              <span>Browse All Departments</span>
-                              <ArrowRight size={12} />
-                            </button>
-                          </div>
+                                  <button
+                                    onClick={() => handleCategorySelect(activeCategoryData.id)}
+                                    className="text-[10px] font-bold text-[#0072CE] hover:underline uppercase tracking-wider flex-shrink-0"
+                                  >
+                                    View All →
+                                  </button>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-2 max-h-[340px] overflow-y-auto pr-1 scrollbar-thin">
+                                  {activeCategoryData?.subcategories?.map((sub) => (
+                                    <button
+                                      key={sub.id}
+                                      onClick={() => {
+                                        setMegaMenuOpen(false);
+                                        handleSearchSubmit(sub.name);
+                                      }}
+                                      className="p-2.5 rounded-xl border border-slate-100 bg-slate-50/70 hover:bg-blue-50 hover:border-[#0072CE]/30 text-left transition-all text-[11px] font-semibold text-slate-700 hover:text-[#0072CE] flex items-center justify-between group"
+                                    >
+                                      <span className="truncate pr-1">{sub.name}</span>
+                                      <ArrowRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0072CE] flex-shrink-0" />
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })()}
                         </div>
 
-                        {/* Column 3: Quality Guarantee Badge */}
-                        <div>
-                          <div className="relative rounded-2xl overflow-hidden bg-[#0A0F1D] h-full flex flex-col justify-end p-5 border border-blue-500/30 text-white min-h-[220px]">
-                            <div className="relative z-20">
-                              <span className="text-[#00A3E0] font-sans text-[8px] font-black uppercase tracking-[0.25em] block mb-1">
+                        {/* Column 3: Quality Assurance & Highlights */}
+                        <div className="flex flex-col gap-4">
+                          <div className="relative rounded-2xl overflow-hidden bg-[#0A0F1D] p-5 border border-blue-500/30 text-white flex flex-col justify-between">
+                            <div>
+                              <span className="text-[#00A3E0] font-sans text-[9px] font-black uppercase tracking-[0.2em] block mb-1">
                                 WHO-GMP COMPLIANT
                               </span>
-                              <h5 className="font-sans font-bold text-sm tracking-wide mb-1.5 leading-snug text-white">
-                                Precision Surgical &amp; Clinical Gear
+                              <h5 className="font-sans font-bold text-xs tracking-wide mb-1.5 leading-snug text-white">
+                                Institutional Grade Supply
                               </h5>
-                              <p className="text-[10px] text-slate-300 leading-relaxed mb-3">
-                                Autoclavable German stainless steel instruments &amp; essential medicines.
+                              <p className="text-[10px] text-slate-300 leading-relaxed">
+                                26 certified healthcare categories covering pharmaceuticals, surgery, devices &amp; diagnostics.
                               </p>
-                              <button
-                                onClick={() => handleCategorySelect("surgical-instruments")}
-                                className="text-[9px] font-bold uppercase tracking-wider bg-[#0072CE] hover:bg-white text-white hover:text-slate-900 py-1.5 px-3.5 rounded-lg transition-all duration-300"
-                              >
-                                Explore Supplies
-                              </button>
                             </div>
+                            <button
+                              onClick={() => handleCategorySelect("all")}
+                              className="mt-4 text-[9px] font-bold uppercase tracking-wider bg-[#0072CE] hover:bg-[#005EA6] text-white py-2 px-3 rounded-lg transition-all text-center"
+                            >
+                              Browse Full Catalog
+                            </button>
                           </div>
                         </div>
 
