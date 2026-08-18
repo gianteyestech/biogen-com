@@ -525,6 +525,25 @@ export default function HomeClient({
                 </div>
               );
             })}
+            {allProducts.length === 0 && (
+              <div className="bg-white border border-slate-200/80 rounded-2xl p-10 text-center shadow-xs my-2">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 text-[#0072CE] flex items-center justify-center mx-auto mb-3.5 border border-blue-100">
+                  <Package size={26} />
+                </div>
+                <h3 className="text-base font-extrabold text-slate-800 tracking-tight">Pharmaceutical &amp; Medical Catalogue</h3>
+                <p className="text-xs text-slate-500 max-w-md mx-auto mt-1.5 leading-relaxed">
+                  Medical supplies and verified pharmaceutical formulations will appear here as they are published via the administrative portal.
+                </p>
+                <div className="mt-5">
+                  <Link
+                    href="/business-page/contact-us"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0072CE] hover:bg-[#005EA6] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
+                  >
+                    <BookOpen size={14} /> Submit Institutional Requisition
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

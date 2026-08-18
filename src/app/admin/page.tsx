@@ -119,24 +119,33 @@ export default async function AdminDashboard() {
             <h2 className="text-sm font-bold text-white uppercase tracking-wider">Top Requisitioned Medical Supplies</h2>
           </div>
           <div className="space-y-2">
-            {topProducts.map((p, i) => (
-              <div key={p.id} className="flex items-center gap-3 p-3 rounded-xl bg-[#070B14] border border-slate-800">
-                <span className="text-xs font-black text-slate-500 w-5 text-center">{i + 1}</span>
-                <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1">
-                  <img src={p.imageUrl} alt={p.name} className="w-full h-full object-contain" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-white truncate">{p.name}</p>
-                  <p className="text-[10px] text-slate-400">{p.reviewsCount} reviews · ★ {p.rating}</p>
-                </div>
-                <Link
-                  href={`/admin/products?edit=${p.id}`}
-                  className="text-[10px] font-bold text-[#00A3E0] hover:underline flex-shrink-0"
-                >
-                  EDIT
+            {topProducts.length === 0 ? (
+              <div className="py-8 text-center bg-[#070B14] rounded-xl border border-slate-800">
+                <p className="text-xs text-slate-400">No medical products in catalog yet.</p>
+                <Link href="/admin/products" className="text-xs text-[#00A3E0] hover:underline font-bold mt-1 inline-block">
+                  + Add your first medical product
                 </Link>
               </div>
-            ))}
+            ) : (
+              topProducts.map((p, i) => (
+                <div key={p.id} className="flex items-center gap-3 p-3 rounded-xl bg-[#070B14] border border-slate-800">
+                  <span className="text-xs font-black text-slate-500 w-5 text-center">{i + 1}</span>
+                  <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1">
+                    <img src={p.imageUrl} alt={p.name} className="w-full h-full object-contain" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-white truncate">{p.name}</p>
+                    <p className="text-[10px] text-slate-400">{p.reviewsCount} reviews · ★ {p.rating}</p>
+                  </div>
+                  <Link
+                    href={`/admin/products?edit=${p.id}`}
+                    className="text-[10px] font-bold text-[#00A3E0] hover:underline flex-shrink-0"
+                  >
+                    EDIT
+                  </Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
