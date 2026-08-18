@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 
   return {
-    title: `${product.name} - Ideal Dry Fruit`,
+    title: `${product.name} - Biogen Pharma`,
     description: product.description.slice(0, 160),
   };
 }

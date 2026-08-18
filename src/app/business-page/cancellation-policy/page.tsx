@@ -3,8 +3,8 @@ import PolicyPageLayout from "@/components/PolicyPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cancellation Policy - Ideal Dry Fruit",
-  description: "Check the order cancellation guidelines and timelines for Ideal Dry Fruit purchases.",
+  title: "Requisition Cancellation Policy — Biogen Pharma",
+  description: "Check the medical requisition and order cancellation guidelines for Biogen Pharma healthcare supplies.",
 };
 
 export default async function CancellationPolicyPage() {
@@ -12,55 +12,40 @@ export default async function CancellationPolicyPage() {
   const { brand } = siteConfig;
 
   return (
-    <PolicyPageLayout title="Cancellation Policy" siteConfig={siteConfig}>
-      <p className="text-gray-500 text-xs">Effective Date: {new Date().toLocaleDateString()}</p>
+    <PolicyPageLayout title="Requisition Cancellation Policy" siteConfig={siteConfig}>
+      <p className="text-slate-400 text-xs">Effective Date: {new Date().toLocaleDateString()}</p>
       
-      <p className="font-semibold text-lg text-gray-800">
-        “Change of Mind? We’ve Got You Covered.”
+      <p className="font-semibold text-base text-slate-800">
+        “Seamless Clinical Procurement Management.”
       </p>
 
       <p>
-        At <strong>{brand.name}</strong>, we understand that sometimes plans change. Whether you placed an order by mistake or simply changed your mind, our cancellation policy is designed to be flexible and fair.
+        At <strong>{brand.name}</strong>, we recognize that clinical demand and hospital schedules may require adjustments. Our requisition cancellation protocols provide transparent guidelines for procurement officers.
       </p>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">When Can You Cancel?</h2>
-      
-      <h3 className="text-sm font-bold text-gray-800 mt-3 mb-1">Before Dispatch</h3>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Pre-Dispatch Requisition Amendments</h2>
       <p>
-        You can cancel your order <strong>free of charge</strong> if the item has <strong>not yet been dispatched</strong> from our warehouse.
+        A healthcare facility may cancel or modify an unfulfilled requisition <strong>without surcharge</strong> if the batch has not yet been packed into temperature-controlled cold-chain containers for courier dispatch.
       </p>
-      <p>
-        Simply contact us via phone or email with your <strong>order ID</strong>, and we’ll process the cancellation immediately.
+      <p className="mt-2 text-xs">
+        To cancel an order before dispatch, contact our Clinical Desk with your <strong>Requisition ID (#BGP-XXXXXX)</strong>.
       </p>
 
-      <h3 className="text-sm font-bold text-gray-800 mt-3 mb-1">After Dispatch</h3>
-      <p>
-        If your order has already been <strong>shipped or is in transit</strong>, it <strong>cannot be canceled</strong>. However, you may still:
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Post-Dispatch Protocols</h2>
+      <p className="text-xs">
+        Once a consignment is actively in transit with our cold-chain carrier, the shipment cannot be intercepted midway. The receiving medical officer can initiate a return upon facility delivery in accordance with our Quality Return Policy.
       </p>
+
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Refund &amp; Credit Reversal</h2>
       <ul className="list-disc pl-5 space-y-1">
-        <li>Request a return once the product is delivered.</li>
-        <li>Shipping or return courier costs may apply (unless the error is from our side).</li>
+        <li>Cancelled pre-dispatch orders receive full refund or institutional credit within <strong>3–5 business days</strong>.</li>
+        <li>Confirmation documentation is automatically dispatched to your accounts payable desk.</li>
       </ul>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Refund for Cancelled Orders</h2>
-      <ul className="list-disc pl-5 space-y-1">
-        <li>If canceled <strong>before dispatch</strong>, your payment will be fully refunded within <strong>3–5 business days</strong>.</li>
-        <li>Refunds are processed via bank transfer or your original payment method.</li>
-        <li>You’ll receive a confirmation once the refund is initiated.</li>
-      </ul>
-
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Important Notes</h2>
-      <ul className="list-disc pl-5 space-y-1">
-        <li>Orders paid through Cash on Delivery (COD) can also be canceled before dispatch.</li>
-        <li>Custom, perishable, or personalized gift boxes may not be eligible for cancellation after order confirmation.</li>
-        <li>Frequent cancellations may result in account review or restrictions.</li>
-      </ul>
-
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Need Help Cancelling?</h2>
-      <p>Our support team is available to assist with your cancellation requests:</p>
-      <div className="bg-gray-50 rounded-lg p-4 text-xs space-y-1 mt-2">
-        <p><strong>Address:</strong> {brand.address}</p>
-        <p><strong>Phone:</strong> {brand.phone}</p>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Clinical Procurement Desk</h2>
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-1 mt-2">
+        <p><strong>Headquarters:</strong> {brand.address}</p>
+        <p><strong>Hotline:</strong> {brand.phone}</p>
         <p><strong>Email:</strong> {brand.email}</p>
       </div>
     </PolicyPageLayout>

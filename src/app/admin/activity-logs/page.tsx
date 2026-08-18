@@ -45,27 +45,28 @@ export default function ActivityLogsPage() {
       case "CREATE":
         return "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
       case "UPDATE":
-        return "bg-amber-500/10 text-amber-400 border-amber-500/30";
+        return "bg-blue-500/10 text-[#00A3E0] border-blue-500/30";
       case "DELETE":
         return "bg-rose-500/10 text-rose-400 border-rose-500/30";
       default:
-        return "bg-gray-500/10 text-gray-400 border-gray-500/30";
+        return "bg-slate-700/50 text-slate-400 border-slate-700";
     }
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 font-sans antialiased text-white">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#18181b] border border-[#C9A84C]/20 p-6 rounded-2xl">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#0E1526] border border-slate-800 p-6 rounded-2xl shadow-sm">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C]">
+            <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-[#00A3E0]">
               <History size={22} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white tracking-wide">CMS Activity Logs</h1>
-              <p className="text-xs text-gray-400 mt-0.5">
-                Audit trail of changes made to products, categories, site configuration & media.
+              <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider">Compliance Audit Trail</span>
+              <h1 className="text-xl font-bold text-white tracking-wide mt-0.5">CMS Activity &amp; Governance Logs</h1>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Cryptographic audit trail of changes made to formulations, supplies, facility configurations &amp; media.
               </p>
             </div>
           </div>
@@ -74,7 +75,7 @@ export default function ActivityLogsPage() {
         <button
           onClick={loadLogs}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#C9A84C] text-black font-semibold text-xs hover:bg-[#d8b555] transition-all disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0072CE] text-white font-semibold text-xs hover:bg-[#005EA6] transition-all disabled:opacity-50 shadow-xs"
         >
           <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
           Refresh Logs
@@ -85,23 +86,23 @@ export default function ActivityLogsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Search */}
         <div className="relative">
-          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
             placeholder="Search details or entity ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#18181b] border border-[#C9A84C]/20 rounded-xl text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A84C]"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#0E1526] border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#0072CE]"
           />
         </div>
 
         {/* Action Filter */}
         <div className="relative">
-          <Filter size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Filter size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <select
             value={actionFilter}
             onChange={(e) => setActionFilter(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#18181b] border border-[#C9A84C]/20 rounded-xl text-xs text-white focus:outline-none focus:border-[#C9A84C] appearance-none"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#0E1526] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-[#0072CE] appearance-none"
           >
             <option value="ALL">All Actions (CREATE, UPDATE, DELETE)</option>
             <option value="CREATE">CREATE</option>
@@ -112,50 +113,50 @@ export default function ActivityLogsPage() {
 
         {/* Entity Filter */}
         <div className="relative">
-          <ShieldCheck size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+          <ShieldCheck size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <select
             value={entityFilter}
             onChange={(e) => setEntityFilter(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#18181b] border border-[#C9A84C]/20 rounded-xl text-xs text-white focus:outline-none focus:border-[#C9A84C] appearance-none"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#0E1526] border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-[#0072CE] appearance-none"
           >
             <option value="ALL">All Entities (Product, Category, Config...)</option>
-            <option value="Product">Products</option>
-            <option value="Category">Categories</option>
+            <option value="Product">Medical Products</option>
+            <option value="Category">Departments</option>
             <option value="HeroSlide">Hero Slides</option>
-            <option value="PaymentMethod">Payment Methods</option>
-            <option value="SiteConfig">Site Config</option>
+            <option value="PaymentMethod">Settlement Methods</option>
+            <option value="SiteConfig">Facility Config</option>
             <option value="PagesConfig">Page Layouts</option>
           </select>
         </div>
       </div>
 
       {/* Logs Table */}
-      <div className="bg-[#18181b] border border-[#C9A84C]/20 rounded-2xl overflow-hidden shadow-xl">
+      <div className="bg-[#0E1526] border border-slate-800 rounded-2xl overflow-hidden shadow-sm">
         {loading ? (
-          <div className="p-12 text-center text-gray-400 text-xs flex flex-col items-center justify-center gap-3">
-            <RefreshCw size={24} className="animate-spin text-[#C9A84C]" />
-            Loading CMS audit logs...
+          <div className="p-12 text-center text-slate-400 text-xs flex flex-col items-center justify-center gap-3">
+            <RefreshCw size={24} className="animate-spin text-[#00A3E0]" />
+            Loading audit logs...
           </div>
         ) : filteredLogs.length === 0 ? (
-          <div className="p-12 text-center text-gray-400 text-xs">
-            No activity logs found matching your filters.
+          <div className="p-12 text-center text-slate-400 text-xs">
+            No activity logs found matching current filters.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-[#C9A84C]/10 bg-black/40 text-gray-400 font-semibold uppercase tracking-wider">
+                <tr className="border-b border-slate-800 bg-[#0A0F1D] text-slate-400 font-semibold uppercase tracking-wider">
                   <th className="py-3.5 px-4">Timestamp</th>
                   <th className="py-3.5 px-4">Action</th>
                   <th className="py-3.5 px-4">Entity</th>
                   <th className="py-3.5 px-4">Details</th>
-                  <th className="py-3.5 px-4">User</th>
+                  <th className="py-3.5 px-4">Operator</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#C9A84C]/10">
+              <tbody className="divide-y divide-slate-800/60">
                 {filteredLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3.5 px-4 whitespace-nowrap text-gray-400 font-mono text-[11px]">
+                  <tr key={log.id} className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-3.5 px-4 whitespace-nowrap text-slate-400 font-mono text-[11px]">
                       {new Date(log.timestamp).toLocaleString("en-US", {
                         dateStyle: "medium",
                         timeStyle: "short",
@@ -173,14 +174,14 @@ export default function ActivityLogsPage() {
                     <td className="py-3.5 px-4 whitespace-nowrap text-white font-medium">
                       {log.entity}
                     </td>
-                    <td className="py-3.5 px-4 text-gray-300 max-w-md truncate">
+                    <td className="py-3.5 px-4 text-slate-300 max-w-md truncate">
                       {log.details}
-                      <span className="block text-[10px] text-gray-500 font-mono mt-0.5">
+                      <span className="block text-[10px] text-slate-500 font-mono mt-0.5">
                         ID: {log.entityId}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 whitespace-nowrap text-gray-400">
-                      <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px]">
+                    <td className="py-3.5 px-4 whitespace-nowrap text-slate-400">
+                      <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[11px]">
                         {log.user || "Admin"}
                       </span>
                     </td>

@@ -5,8 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { KeyRound, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 
-const goldGrad = "linear-gradient(135deg, #F0C040 0%, #C9A84C 55%, #B8922B 100%)";
-
 function ResetPasswordForm() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") || "";
@@ -59,25 +57,24 @@ function ResetPasswordForm() {
   };
 
   return (
-    <div className="bg-[#181818] border border-[#C9A84C]/20 rounded-2xl shadow-2xl overflow-hidden p-8">
+    <div className="bg-[#0E1526] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden p-8 font-sans antialiased text-white">
       <div className="text-center mb-6">
-        <div className="w-12 h-12 rounded-2xl bg-[#0A0A0A] border border-[#C9A84C]/40 text-[#C9A84C] flex items-center justify-center mx-auto mb-3">
+        <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-[#00A3E0] flex items-center justify-center mx-auto mb-3">
           <KeyRound size={24} />
         </div>
-        <h1 className="text-xl font-bold text-white">Set New Password</h1>
-        <p className="text-xs text-gray-400 mt-1">Enter your new admin account password below</p>
+        <h1 className="text-xl font-bold text-white">Set New Administrative Password</h1>
+        <p className="text-xs text-slate-400 mt-1">Enter your new secure credential below</p>
       </div>
 
       {success ? (
         <div className="text-center space-y-4 py-4">
-          <CheckCircle2 size={48} className="text-green-500 mx-auto" />
-          <p className="text-sm font-semibold text-white">Password Updated Successfully!</p>
+          <CheckCircle2 size={48} className="text-emerald-400 mx-auto" />
+          <p className="text-sm font-semibold text-white">Security Credential Updated Successfully!</p>
           <Link
             href="/admin/login"
-            className="inline-block px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-[#0D0D0D] transition-all hover:opacity-90"
-            style={{ background: goldGrad }}
+            className="inline-block px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6] transition-all shadow-md"
           >
-            Sign In to CMS →
+            Authenticate to CMS →
           </Link>
         </div>
       ) : (
@@ -90,8 +87,8 @@ function ResetPasswordForm() {
           )}
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">
-              New Password
+            <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">
+              New Master Password
             </label>
             <input
               type="password"
@@ -99,13 +96,13 @@ function ResetPasswordForm() {
               placeholder="At least 6 characters"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-[#111] border border-gray-700 rounded-xl text-white outline-none focus:border-[#C9A84C] text-sm"
+              className="w-full px-4 py-3 bg-[#070B14] border border-slate-700 rounded-xl text-white outline-none focus:border-[#0072CE] text-xs placeholder-slate-500"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">
-              Confirm Password
+            <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">
+              Confirm Master Password
             </label>
             <input
               type="password"
@@ -113,17 +110,16 @@ function ResetPasswordForm() {
               placeholder="Re-enter new password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-[#111] border border-gray-700 rounded-xl text-white outline-none focus:border-[#C9A84C] text-sm"
+              className="w-full px-4 py-3 bg-[#070B14] border border-slate-700 rounded-xl text-white outline-none focus:border-[#0072CE] text-xs placeholder-slate-500"
             />
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-wider text-[#0D0D0D] transition-all hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
-            style={{ background: goldGrad }}
+            className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6] transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm"
           >
-            {submitting ? <Loader2 size={16} className="animate-spin" /> : "Save New Password"}
+            {submitting ? <Loader2 size={16} className="animate-spin" /> : "Save New Master Password"}
           </button>
         </form>
       )}
@@ -133,12 +129,9 @@ function ResetPasswordForm() {
 
 export default function AdminResetPasswordPage() {
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4"
-      style={{ background: "linear-gradient(135deg, #0D0D0D 0%, #1a1400 50%, #0D0D0D 100%)" }}
-    >
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#070B14]">
       <div className="w-full max-w-md">
-        <Suspense fallback={<div className="text-center text-gray-400"><Loader2 size={32} className="animate-spin mx-auto text-[#C9A84C]" /></div>}>
+        <Suspense fallback={<div className="text-center text-slate-400"><Loader2 size={32} className="animate-spin mx-auto text-[#0072CE]" /></div>}>
           <ResetPasswordForm />
         </Suspense>
       </div>

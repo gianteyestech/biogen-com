@@ -2,8 +2,7 @@
 import { useState, useActionState } from "react";
 import { adminLogin } from "../actions";
 import Image from "next/image";
-
-const goldGrad = "linear-gradient(135deg, #F0C040 0%, #C9A84C 55%, #B8922B 100%)";
+import { ShieldCheck } from "lucide-react";
 
 type LoginState = { error?: string } | null;
 
@@ -39,53 +38,43 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4"
-      style={{ background: "linear-gradient(135deg, #0D0D0D 0%, #1a1400 50%, #0D0D0D 100%)" }}
-    >
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 25% 25%, #C9A84C 1px, transparent 1px), radial-gradient(circle at 75% 75%, #C9A84C 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#070B14] font-sans antialiased text-white relative">
+      {/* Background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative w-full max-w-md">
+      <div className="relative w-full max-w-md z-10">
         {/* Card */}
-        <div className="bg-[#181818] border border-[#C9A84C]/20 rounded-2xl shadow-2xl overflow-hidden">
+        <div className="bg-[#0E1526] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="px-8 pt-10 pb-6 text-center border-b border-[#C9A84C]/10">
+          <div className="px-8 pt-10 pb-6 text-center border-b border-slate-800">
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 rounded-2xl border-2 border-[#C9A84C]/50 overflow-hidden bg-black flex items-center justify-center">
-                <Image src="/ideal-logo.png" alt="Ideal Dry Fruit" width={56} height={56} className="object-cover" />
+              <div className="w-16 h-16 rounded-2xl bg-white p-2 shadow-lg flex items-center justify-center">
+                <Image src="/logo.png" alt="Biogen Pharma" width={56} height={56} className="object-contain" />
               </div>
             </div>
-            <h1 className="text-2xl font-black text-white tracking-tight">CMS Admin</h1>
-            <p className="text-sm text-gray-400 mt-1">Ideal Dry Fruit — Content Manager</p>
+            <h1 className="text-2xl font-black text-white tracking-tight">Biogen Medical CMS</h1>
+            <p className="text-xs text-slate-400 mt-1">Enterprise Pharmaceutical &amp; Clinical Operations</p>
           </div>
 
           {/* Form */}
           <form action={action} className="px-8 py-8 space-y-5">
             {state?.error && (
-              <div className="bg-red-950/50 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-xl">
+              <div className="bg-red-950/50 border border-red-500/30 text-red-400 text-xs px-4 py-3 rounded-xl">
                 {state.error}
               </div>
             )}
 
             <div>
               <div className="flex items-center justify-between text-xs mb-2">
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400">
-                  Admin Password
+                <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                  Master Security Key
                 </label>
                 <button
                   type="button"
                   onClick={() => setForgotOpen(true)}
-                  className="text-[#C9A84C] hover:underline font-semibold"
+                  className="text-[#00A3E0] hover:underline font-semibold"
                 >
-                  Forgot Password?
+                  Forgot Key?
                 </button>
               </div>
               <input
@@ -94,30 +83,30 @@ export default function AdminLoginPage() {
                 id="admin-password"
                 required
                 autoFocus
-                placeholder="Enter your password"
-                className="w-full px-4 py-3.5 bg-[#111] border border-gray-700 rounded-xl text-white placeholder-gray-600 outline-none focus:border-[#C9A84C] focus:ring-1 focus:ring-[#C9A84C]/30 transition-all text-sm"
+                placeholder="Enter authorized credential"
+                className="w-full px-4 py-3 bg-[#070B14] border border-slate-700 rounded-xl text-white placeholder-slate-500 outline-none focus:border-[#0072CE] focus:ring-1 focus:ring-[#0072CE]/30 transition-all text-xs"
               />
             </div>
 
             <button
               type="submit"
               disabled={pending}
-              className="w-full py-3.5 rounded-xl font-black text-sm uppercase tracking-wider text-[#0D0D0D] transition-all hover:opacity-90 active:scale-95 disabled:opacity-60 flex items-center justify-center gap-2"
-              style={{ background: goldGrad }}
+              className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6] transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-md"
             >
               {pending ? (
                 <>
-                  <span className="w-4 h-4 border-2 border-[#0D0D0D]/40 border-t-[#0D0D0D] rounded-full animate-spin" />
-                  Signing in…
+                  <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  Authenticating…
                 </>
               ) : (
-                "Sign In to CMS →"
+                "Authenticate & Access System →"
               )}
             </button>
 
-            <p className="text-center text-xs text-gray-600">
-              Protected area — authorized personnel only
-            </p>
+            <div className="flex items-center justify-center gap-1 text-[11px] text-slate-500 pt-2">
+              <ShieldCheck size={13} className="text-emerald-400" />
+              <span>WHO-GMP &amp; ISO 9001:2015 Encrypted Portal</span>
+            </div>
           </form>
         </div>
       </div>
@@ -125,14 +114,14 @@ export default function AdminLoginPage() {
       {/* Forgot Password Modal */}
       {forgotOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#181818] border border-[#C9A84C]/30 rounded-2xl max-w-sm w-full p-6 space-y-4">
-            <h3 className="text-lg font-bold text-white">Reset Admin Password</h3>
-            <p className="text-xs text-gray-400">
-              Enter your registered admin email address (<span className="text-white font-mono">admin.biogen@gianteyetech.com</span>) to receive a password reset link.
+          <div className="bg-[#0E1526] border border-slate-700 rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl">
+            <h3 className="text-base font-bold text-white">Reset Administrative Access</h3>
+            <p className="text-xs text-slate-400">
+              Enter your registered clinical administration email (<span className="text-white font-mono">admin.biogen@gianteyetech.com</span>) to receive a secure recovery token.
             </p>
 
             {forgotStatus && (
-              <p className="text-xs text-[#C9A84C] bg-[#C9A84C]/10 p-3 rounded-xl border border-[#C9A84C]/20">
+              <p className="text-xs text-[#00A3E0] bg-blue-500/10 p-3 rounded-xl border border-blue-500/20">
                 {forgotStatus}
               </p>
             )}
@@ -142,14 +131,14 @@ export default function AdminLoginPage() {
               placeholder="admin.biogen@gianteyetech.com"
               value={resetEmail}
               onChange={(e) => setResetEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-[#111] border border-gray-700 rounded-xl text-white outline-none focus:border-[#C9A84C] text-sm"
+              className="w-full px-4 py-3 bg-[#070B14] border border-slate-700 rounded-xl text-white outline-none focus:border-[#0072CE] text-xs placeholder-slate-500"
             />
 
             <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => setForgotOpen(false)}
-                className="flex-1 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-xs font-bold transition-colors"
+                className="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition-colors"
               >
                 Cancel
               </button>
@@ -157,10 +146,9 @@ export default function AdminLoginPage() {
                 type="button"
                 disabled={sendingReset}
                 onClick={handleSendReset}
-                className="flex-1 py-2.5 text-[#0D0D0D] rounded-xl text-xs font-bold transition-colors"
-                style={{ background: goldGrad }}
+                className="flex-1 py-2.5 text-white bg-[#0072CE] hover:bg-[#005EA6] rounded-xl text-xs font-bold transition-colors shadow-xs"
               >
-                {sendingReset ? "Sending..." : "Send Reset Link"}
+                {sendingReset ? "Dispatching..." : "Send Reset Token"}
               </button>
             </div>
           </div>

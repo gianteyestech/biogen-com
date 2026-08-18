@@ -38,7 +38,7 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       className={`${jakarta.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F0F0F0] text-gray-900 font-sans" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-slate-900 font-sans" suppressHydrationWarning>
         <CartProvider>
           <PaymentMethodsProvider paymentMethods={paymentMethods}>
             {children}

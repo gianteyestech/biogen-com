@@ -1,14 +1,6 @@
 import Link from "next/link";
 import { getCMSProducts, getCMSCategories, getCMSHeroSlides, getCMSPagesConfig } from "@/lib/cms";
-import { Package, Tag, ImagePlay, Layout, TrendingUp, AlertCircle, Star, BarChart3 } from "lucide-react";
-
-const goldGrad = "linear-gradient(135deg, #F0C040 0%, #C9A84C 55%, #B8922B 100%)";
-const goldText: React.CSSProperties = {
-  background: goldGrad,
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-};
+import { Package, Tag, ImagePlay, Layout, TrendingUp, AlertCircle, Star, BarChart3, ShieldCheck } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -32,17 +24,17 @@ export default async function AdminDashboard() {
   const totalCategories = categories.categories.length - 1; // minus "all"
 
   const stats = [
-    { label: "Total Products", value: totalProducts, icon: Package, color: "#C9A84C", href: "/admin/products" },
-    { label: "Categories", value: totalCategories, icon: Tag, color: "#3b82f6", href: "/admin/categories" },
-    { label: "Hero Slides", value: slides.length, icon: ImagePlay, color: "#8b5cf6", href: "/admin/hero" },
+    { label: "Medical Supplies", value: totalProducts, icon: Package, color: "#0072CE", href: "/admin/products" },
+    { label: "Departments", value: totalCategories, icon: Tag, color: "#00A3E0", href: "/admin/categories" },
+    { label: "Hero Banners", value: slides.length, icon: ImagePlay, color: "#8b5cf6", href: "/admin/hero" },
     { label: "Page Sections", value: pages.sections.filter(s => s.visible).length, icon: Layout, color: "#10b981", href: "/admin/sections" },
   ];
 
   const quickStats = [
-    { label: "In Stock", value: inStockCount, color: "#10b981" },
-    { label: "Out of Stock", value: outOfStockCount, color: "#ef4444" },
-    { label: "Featured", value: featuredCount, color: "#C9A84C" },
-    { label: "New Arrivals", value: newCount, color: "#3b82f6" },
+    { label: "Active Stock", value: inStockCount, color: "#10b981" },
+    { label: "Reorder Needed", value: outOfStockCount, color: "#ef4444" },
+    { label: "Spotlight Items", value: featuredCount, color: "#0072CE" },
+    { label: "New Formulations", value: newCount, color: "#00A3E0" },
   ];
 
   const topProducts = [...products]
@@ -50,11 +42,17 @@ export default async function AdminDashboard() {
     .slice(0, 5);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-[1200px] w-full mx-auto">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-[1200px] w-full mx-auto font-sans antialiased text-white">
       {/* Header */}
-      <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl font-black text-white">Dashboard</h1>
-        <p className="text-gray-400 mt-1 text-xs sm:text-sm">Welcome to the Ideal Dry Fruit CMS</p>
+      <div className="mb-6 sm:mb-8 flex items-center justify-between">
+        <div>
+          <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider">Executive Overview</span>
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5">Biogen Pharma Clinical CMS</h1>
+          <p className="text-slate-400 mt-1 text-xs sm:text-sm">Manage certified pharmaceutical inventory, hospital requisitions, and clinical content</p>
+        </div>
+        <div className="hidden sm:flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3.5 py-1.5 rounded-xl text-xs font-bold text-[#00A3E0]">
+          <ShieldCheck size={16} /> GMP Certified System
+        </div>
       </div>
 
       {/* Stat Cards */}
@@ -63,16 +61,16 @@ export default async function AdminDashboard() {
           <Link
             key={label}
             href={href}
-            className="bg-[#181818] border border-[#C9A84C]/10 rounded-2xl p-4 sm:p-5 hover:border-[#C9A84C]/30 transition-all group"
+            className="bg-[#0E1526] border border-slate-800 rounded-2xl p-4 sm:p-5 hover:border-[#0072CE]/60 transition-all group"
           >
             <div className="flex items-center justify-between mb-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${color}20` }}>
                 <Icon size={20} style={{ color }} />
               </div>
-              <span className="text-xs text-gray-600 group-hover:text-[#C9A84C] transition-colors font-semibold">MANAGE →</span>
+              <span className="text-xs text-slate-500 group-hover:text-[#00A3E0] transition-colors font-semibold">MANAGE →</span>
             </div>
             <p className="text-2xl sm:text-3xl font-black text-white">{value}</p>
-            <p className="text-xs text-gray-400 mt-1 font-semibold uppercase tracking-wider">{label}</p>
+            <p className="text-xs text-slate-400 mt-1 font-semibold uppercase tracking-wider">{label}</p>
           </Link>
         ))}
       </div>
@@ -80,33 +78,33 @@ export default async function AdminDashboard() {
       {/* Secondary stats + reviews */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6 sm:mb-8">
         {/* Inventory breakdown */}
-        <div className="bg-[#181818] border border-[#C9A84C]/10 rounded-2xl p-4 sm:p-5 lg:col-span-2">
+        <div className="bg-[#0E1526] border border-slate-800 rounded-2xl p-4 sm:p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <BarChart3 size={16} className="text-[#C9A84C]" />
-            <h2 className="text-sm font-extrabold text-white uppercase tracking-wider">Inventory Breakdown</h2>
+            <BarChart3 size={16} className="text-[#00A3E0]" />
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider">Catalog Allocation Breakdown</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {quickStats.map(({ label, value, color }) => (
-              <div key={label} className="bg-[#111] rounded-xl p-3 sm:p-4 text-center border border-white/5">
+              <div key={label} className="bg-[#070B14] rounded-xl p-3 sm:p-4 text-center border border-slate-800">
                 <p className="text-xl sm:text-2xl font-black" style={{ color }}>{value}</p>
-                <p className="text-[10px] text-gray-500 mt-1 font-semibold uppercase tracking-wider">{label}</p>
+                <p className="text-[10px] text-slate-400 mt-1 font-semibold uppercase tracking-wider">{label}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Ratings */}
-        <div className="bg-[#181818] border border-[#C9A84C]/10 rounded-2xl p-4 sm:p-5">
+        <div className="bg-[#0E1526] border border-slate-800 rounded-2xl p-4 sm:p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Star size={16} className="text-[#C9A84C]" />
-            <h2 className="text-sm font-extrabold text-white uppercase tracking-wider">Reviews</h2>
+            <Star size={16} className="text-amber-400" />
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider">Clinical Satisfaction</h2>
           </div>
           <div className="text-center py-2">
-            <p className="text-4xl sm:text-5xl font-black" style={goldText}>{avgRating}</p>
-            <p className="text-xs text-gray-400 mt-1">Average Rating</p>
-            <div className="mt-4 pt-4 border-t border-white/5">
+            <p className="text-4xl sm:text-5xl font-black text-[#00A3E0]">{avgRating}</p>
+            <p className="text-xs text-slate-400 mt-1">Average Practitioner Rating</p>
+            <div className="mt-4 pt-4 border-t border-slate-800">
               <p className="text-xl sm:text-2xl font-black text-white">{totalReviews.toLocaleString()}</p>
-              <p className="text-xs text-gray-400 mt-1">Total Reviews</p>
+              <p className="text-xs text-slate-400 mt-1">Verified Feedback Submissions</p>
             </div>
           </div>
         </div>
@@ -115,23 +113,25 @@ export default async function AdminDashboard() {
       {/* Top Products + Alerts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Top Products */}
-        <div className="bg-[#181818] border border-[#C9A84C]/10 rounded-2xl p-4 sm:p-5 lg:col-span-2">
+        <div className="bg-[#0E1526] border border-slate-800 rounded-2xl p-4 sm:p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp size={16} className="text-[#C9A84C]" />
-            <h2 className="text-sm font-extrabold text-white uppercase tracking-wider">Top Products by Reviews</h2>
+            <TrendingUp size={16} className="text-[#00A3E0]" />
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider">Top Requisitioned Medical Supplies</h2>
           </div>
           <div className="space-y-2">
             {topProducts.map((p, i) => (
-              <div key={p.id} className="flex items-center gap-3 p-3 rounded-xl bg-[#111] border border-white/5">
-                <span className="text-xs font-black text-gray-600 w-5 text-center">{i + 1}</span>
-                <img src={p.imageUrl} alt={p.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0 bg-gray-800" />
+              <div key={p.id} className="flex items-center gap-3 p-3 rounded-xl bg-[#070B14] border border-slate-800">
+                <span className="text-xs font-black text-slate-500 w-5 text-center">{i + 1}</span>
+                <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1">
+                  <img src={p.imageUrl} alt={p.name} className="w-full h-full object-contain" />
+                </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-semibold text-white truncate">{p.name}</p>
-                  <p className="text-[10px] text-gray-500">{p.reviewsCount} reviews · ★ {p.rating}</p>
+                  <p className="text-[10px] text-slate-400">{p.reviewsCount} reviews · ★ {p.rating}</p>
                 </div>
                 <Link
                   href={`/admin/products?edit=${p.id}`}
-                  className="text-[10px] font-bold text-[#C9A84C] hover:underline flex-shrink-0"
+                  className="text-[10px] font-bold text-[#00A3E0] hover:underline flex-shrink-0"
                 >
                   EDIT
                 </Link>
@@ -141,36 +141,36 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Alerts & Quick Actions */}
-        <div className="bg-[#181818] border border-[#C9A84C]/10 rounded-2xl p-4 sm:p-5">
+        <div className="bg-[#0E1526] border border-slate-800 rounded-2xl p-4 sm:p-5">
           <div className="flex items-center gap-2 mb-4">
-            <AlertCircle size={16} className="text-[#C9A84C]" />
-            <h2 className="text-sm font-extrabold text-white uppercase tracking-wider">Alerts</h2>
+            <AlertCircle size={16} className="text-[#00A3E0]" />
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider">Alerts &amp; Dispatch</h2>
           </div>
           <div className="space-y-3">
             {outOfStockCount > 0 && (
               <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-3">
-                <p className="text-xs font-bold text-red-400">{outOfStockCount} products out of stock</p>
+                <p className="text-xs font-bold text-red-400">{outOfStockCount} supplies require inventory restock</p>
                 <Link href="/admin/products" className="text-[10px] text-red-400/70 hover:text-red-400 underline mt-1 block">
-                  Manage inventory →
+                  Manage medical inventory →
                 </Link>
               </div>
             )}
             {outOfStockCount === 0 && (
-              <div className="bg-green-950/30 border border-green-500/20 rounded-xl p-3">
-                <p className="text-xs font-bold text-green-400">All products in stock ✓</p>
+              <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-3">
+                <p className="text-xs font-bold text-emerald-400">All catalog items active &amp; in stock ✓</p>
               </div>
             )}
-            <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-xl p-3">
-              <p className="text-xs font-bold text-[#C9A84C]">Quick Actions</p>
-              <div className="mt-2 space-y-1">
-                <Link href="/admin/products" className="block text-[10px] text-gray-400 hover:text-[#C9A84C] transition-colors">
-                  + Add new product
+            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
+              <p className="text-xs font-bold text-[#00A3E0]">Quick Management</p>
+              <div className="mt-2 space-y-1.5">
+                <Link href="/admin/products" className="block text-[11px] text-slate-300 hover:text-[#00A3E0] transition-colors">
+                  + Add Medical Formulation / Supply
                 </Link>
-                <Link href="/admin/hero" className="block text-[10px] text-gray-400 hover:text-[#C9A84C] transition-colors">
-                  + Add hero slide
+                <Link href="/admin/hero" className="block text-[11px] text-slate-300 hover:text-[#00A3E0] transition-colors">
+                  + Add Hero Carousel Slide
                 </Link>
-                <Link href="/admin/site" className="block text-[10px] text-gray-400 hover:text-[#C9A84C] transition-colors">
-                  ✎ Edit site config
+                <Link href="/admin/site" className="block text-[11px] text-slate-300 hover:text-[#00A3E0] transition-colors">
+                  ✎ Update Facility Operational Parameters
                 </Link>
               </div>
             </div>

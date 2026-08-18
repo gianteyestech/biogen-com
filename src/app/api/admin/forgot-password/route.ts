@@ -40,7 +40,7 @@ export async function POST(req: Request) {
           <p>Click the button below to set a new password. This link is valid for <strong>15 minutes</strong>.</p>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="${resetUrl}" style="background-color: #0A0A0A; color: #C9A84C; text-decoration: none; padding: 14px 28px; font-weight: bold; border-radius: 8px; display: inline-block;">
+            <a href="${resetUrl}" style="background-color: #0072CE; color: #ffffff; text-decoration: none; padding: 14px 28px; font-weight: bold; border-radius: 8px; display: inline-block;">
               Reset Admin Password →
             </a>
           </div>

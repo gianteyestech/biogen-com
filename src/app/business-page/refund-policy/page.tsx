@@ -3,8 +3,8 @@ import PolicyPageLayout from "@/components/PolicyPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Refund Policy - Ideal Dry Fruit",
-  description: "Check the Refund Policy guidelines for Ideal Dry Fruit orders including processing timelines and method options.",
+  title: "Clinical Refund & Credit Policy — Biogen Pharma",
+  description: "Check the clinical credit and refund policy guidelines for Biogen Pharma institutional and healthcare orders.",
 };
 
 export default async function RefundPolicyPage() {
@@ -12,63 +12,52 @@ export default async function RefundPolicyPage() {
   const { brand } = siteConfig;
 
   return (
-    <PolicyPageLayout title="Refund Policy" siteConfig={siteConfig}>
-      <p className="text-gray-500 text-xs">Effective Date: {new Date().toLocaleDateString()}</p>
+    <PolicyPageLayout title="Clinical Refund & Credit Policy" siteConfig={siteConfig}>
+      <p className="text-slate-400 text-xs">Effective Date: {new Date().toLocaleDateString()}</p>
       
-      <p className="font-semibold text-lg text-gray-800">
-        “We Refund What We Can’t Fix.”
+      <p className="font-semibold text-base text-slate-800">
+        “Quality Assurance &amp; Institutional Reliability.”
       </p>
       
       <p>
-        At <strong>{brand.name}</strong>, your satisfaction is our top priority. While we always strive to resolve any issues through replacement or exchange, we also understand that refunds may be necessary in certain situations. That’s why we’ve designed a clear, transparent, and customer-friendly refund policy.
+        At <strong>{brand.name}</strong>, patient safety and institutional satisfaction are our highest priorities. While all batches are strictly certified under WHO-GMP standards prior to dispatch, we maintain transparent protocols for return credits, batch replacements, or institutional refunds where appropriate.
       </p>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Refund Eligibility</h2>
-      <p>You may be eligible for a <strong>full or partial refund</strong> if:</p>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Requisition Refund &amp; Credit Eligibility</h2>
+      <p>A healthcare facility or practitioner may be eligible for a credit adjustment or refund if:</p>
       <ul className="list-disc pl-5 space-y-1">
-        <li>The product was <strong>damaged, defective, or expired</strong> at the time of delivery.</li>
-        <li>You received the <strong>wrong item or quantity</strong>, and a replacement is <strong>not available</strong>.</li>
-        <li>We are <strong>unable to deliver your order</strong> within the promised delivery window (usually 3–5 working days).</li>
-        <li>The return request is approved and the item is <strong>returned in original condition</strong>.</li>
+        <li>The shipment suffered verifiable <strong>cold-chain compromise, damaged seal, or transport defect</strong> at delivery.</li>
+        <li>You received an <strong>incorrect formulation, dosage, or batch</strong>, and replacement supply is unavailable.</li>
+        <li>Consignment failed to arrive within the agreed operational window due to logistics failure.</li>
+        <li>The claim is reported within <strong>7 business days</strong> of delivery with batch photographic evidence.</li>
       </ul>
-      <blockquote>
-        <strong>Note:</strong> Refunds are generally <strong>not issued</strong> for products that are correctly delivered and match their description, but are returned due to a change of mind or personal dislike.
+      <blockquote className="bg-blue-50 border-l-4 border-[#0072CE] p-3 rounded-r-lg my-4 text-xs text-slate-700">
+        <strong>Note:</strong> Due to regulatory health requirements, opened medicines or unsealed sterile supplies cannot be refunded for change of requirement.
       </blockquote>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Return Required for Refund</h2>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Verification &amp; Quality Audit</h2>
       <p>
-        Refunds are typically processed <strong>after the returned item is received and inspected</strong> by our quality team. To return the item:
+        Refunds or account credits are processed after quality verification by our clinical compliance officers.
       </p>
+
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Settlement Method</h2>
+      <p>Approved refunds are disbursed via:</p>
       <ul className="list-disc pl-5 space-y-1">
-        <li>You can return the product via our rider (where available).</li>
-        <li>Or drop the item at your nearest Leopards or TCS courier hub (our support team will provide pre-paid dispatch codes).</li>
+        <li><strong>Direct Institutional Wire Transfer</strong> to the registered hospital/clinic account, or</li>
+        <li><strong>Facility Account Credit Note</strong> applicable towards subsequent medical supply orders.</li>
       </ul>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Refund Method</h2>
-      <p>Approved refunds will be issued via:</p>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Processing Window</h2>
       <ul className="list-disc pl-5 space-y-1">
-        <li><strong>Bank Transfer</strong> directly to your account, or</li>
-        <li><strong>Original Payment Method</strong> (e.g., credit/debit card, Easypaisa, or JazzCash).</li>
+        <li>Refunds and credit notes are issued within <strong>3–5 business days</strong> following audit clearance.</li>
+        <li>Written confirmation and revised commercial invoice will be emailed to your procurement desk.</li>
       </ul>
 
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Processing Time</h2>
-      <ul className="list-disc pl-5 space-y-1">
-        <li>Refunds are processed within <strong>5–7 business days</strong> after item verification at our Lahore warehouse.</li>
-        <li>You will be notified via SMS or email once your refund is initiated.</li>
-      </ul>
-
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Important Conditions</h2>
-      <ul className="list-disc pl-5 space-y-1">
-        <li>Products must be returned in <strong>unused, original condition</strong> with all outer tags and seals intact.</li>
-        <li>No refunds without a valid <strong>Order ID</strong> and proof of issue (e.g., photos/videos).</li>
-        <li>The refund amount may be adjusted in case of missing parts or damaged returns.</li>
-      </ul>
-
-      <h2 className="text-base font-extrabold text-gray-900 mt-6 mb-2">Need Help?</h2>
-      <p>Our customer care team is always ready to assist you with any refund-related queries:</p>
-      <div className="bg-gray-50 rounded-lg p-4 text-xs space-y-1 mt-2">
-        <p><strong>Address:</strong> {brand.address}</p>
-        <p><strong>Phone:</strong> {brand.phone}</p>
+      <h2 className="text-base font-bold text-slate-900 mt-6 mb-2">Clinical Support Desk</h2>
+      <p>For urgent assistance regarding order reconciliation:</p>
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs space-y-1 mt-2">
+        <p><strong>Facility Hub:</strong> {brand.address}</p>
+        <p><strong>Hotline:</strong> {brand.phone}</p>
         <p><strong>Email:</strong> {brand.email}</p>
       </div>
     </PolicyPageLayout>

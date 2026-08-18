@@ -117,9 +117,9 @@ export default function ImageUploader({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-sans">
       {label && (
-        <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1.5">
+        <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
           {label}
         </label>
       )}
@@ -127,12 +127,12 @@ export default function ImageUploader({
       {/* Main Input Display */}
       <div className="flex gap-2 items-center">
         {/* Preview Thumbnail */}
-        <div className="relative w-12 h-12 rounded-xl bg-[#111] border border-gray-700 overflow-hidden flex-shrink-0 flex items-center justify-center">
+        <div className="relative w-12 h-12 rounded-xl bg-white p-1 border border-slate-700 overflow-hidden flex-shrink-0 flex items-center justify-center">
           {value ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={value} alt="Preview" className="w-full h-full object-cover" />
+            <img src={value} alt="Preview" className="w-full h-full object-contain" />
           ) : (
-            <ImageIcon size={20} className="text-gray-600" />
+            <ImageIcon size={20} className="text-slate-400" />
           )}
         </div>
 
@@ -145,16 +145,16 @@ export default function ImageUploader({
             onChange(e.target.value);
           }}
           placeholder={placeholder}
-          className="flex-1 px-3 py-2.5 bg-[#111] border border-gray-700 rounded-xl text-white text-sm outline-none focus:border-[#C9A84C] transition-all placeholder-gray-600"
+          className="flex-1 px-3 py-2.5 bg-[#070B14] border border-slate-700 rounded-xl text-white text-xs outline-none focus:border-[#0072CE] transition-all placeholder-slate-500"
         />
 
         {/* Upload / Library Trigger Button */}
         <button
           type="button"
           onClick={openLibrary}
-          className="px-4 py-2.5 bg-[#222] hover:bg-[#333] border border-gray-700 hover:border-[#C9A84C] rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all flex-shrink-0"
+          className="px-4 py-2.5 bg-[#131D31] hover:bg-[#1E2D4A] border border-slate-700 hover:border-[#0072CE] rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all flex-shrink-0 shadow-xs"
         >
-          <Upload size={14} className="text-[#C9A84C]" />
+          <Upload size={14} className="text-[#00A3E0]" />
           Browse / Upload
         </button>
 
@@ -176,33 +176,33 @@ export default function ImageUploader({
       {/* Media Manager Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#141414] border border-gray-800 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+          <div className="bg-[#0E1526] border border-slate-700 rounded-2xl w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh] text-white">
             {/* Modal Header */}
-            <div className="px-6 py-4 border-b border-gray-800 flex items-center justify-between">
+            <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-[#0A0F1D]">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <ImageIcon size={18} className="text-[#C9A84C]" /> Media Manager
+                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <ImageIcon size={18} className="text-[#00A3E0]" /> Pharmaceutical Media Manager
                 </h3>
-                <p className="text-xs text-gray-400">Upload new images or pick from your library</p>
+                <p className="text-[11px] text-slate-400">Upload clinical product graphics or select from cloud storage</p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition-colors"
+                className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
               >
                 <X size={18} />
               </button>
             </div>
 
             {/* Modal Tabs */}
-            <div className="px-6 border-b border-gray-800 flex gap-4 bg-[#111]">
+            <div className="px-6 border-b border-slate-800 flex gap-4 bg-[#0E1526]">
               <button
                 type="button"
                 onClick={() => setActiveTab("upload")}
                 className={`py-3 text-xs font-bold uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all ${
                   activeTab === "upload"
-                    ? "border-[#C9A84C] text-[#C9A84C]"
-                    : "border-transparent text-gray-400 hover:text-gray-200"
+                    ? "border-[#0072CE] text-[#00A3E0]"
+                    : "border-transparent text-slate-400 hover:text-slate-200"
                 }`}
               >
                 <Upload size={14} /> Direct Upload
@@ -215,8 +215,8 @@ export default function ImageUploader({
                 }}
                 className={`py-3 text-xs font-bold uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all ${
                   activeTab === "library"
-                    ? "border-[#C9A84C] text-[#C9A84C]"
-                    : "border-transparent text-gray-400 hover:text-gray-200"
+                    ? "border-[#0072CE] text-[#00A3E0]"
+                    : "border-transparent text-slate-400 hover:text-slate-200"
                 }`}
               >
                 <ImageIcon size={14} /> Media Library ({mediaList.length})
@@ -226,8 +226,8 @@ export default function ImageUploader({
                 onClick={() => setActiveTab("url")}
                 className={`py-3 text-xs font-bold uppercase tracking-wider border-b-2 flex items-center gap-2 transition-all ${
                   activeTab === "url"
-                    ? "border-[#C9A84C] text-[#C9A84C]"
-                    : "border-transparent text-gray-400 hover:text-gray-200"
+                    ? "border-[#0072CE] text-[#00A3E0]"
+                    : "border-transparent text-slate-400 hover:text-slate-200"
                 }`}
               >
                 <LinkIcon size={14} /> External Link
@@ -235,7 +235,7 @@ export default function ImageUploader({
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 overflow-y-auto flex-1">
+            <div className="p-6 overflow-y-auto flex-1 bg-[#070B14]">
               {error && (
                 <div className="mb-4 p-3 bg-red-950/60 border border-red-800 rounded-xl text-xs text-red-300 flex items-center justify-between">
                   <span>{error}</span>
@@ -255,8 +255,8 @@ export default function ImageUploader({
                   onClick={() => fileInputRef.current?.click()}
                   className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all flex flex-col items-center justify-center min-h-[220px] ${
                     dragActive
-                      ? "border-[#C9A84C] bg-[#C9A84C]/10"
-                      : "border-gray-700 hover:border-gray-500 bg-[#111]"
+                      ? "border-[#0072CE] bg-blue-500/10"
+                      : "border-slate-700 hover:border-[#0072CE] bg-[#0E1526]"
                   }`}
                 >
                   <input
@@ -273,18 +273,18 @@ export default function ImageUploader({
 
                   {uploading ? (
                     <div className="flex flex-col items-center gap-3">
-                      <Loader2 size={32} className="animate-spin text-[#C9A84C]" />
-                      <p className="text-sm font-medium text-white">Uploading & Processing Image...</p>
+                      <Loader2 size={32} className="animate-spin text-[#0072CE]" />
+                      <p className="text-xs font-medium text-white">Uploading &amp; Optimizing Image WebP...</p>
                     </div>
                   ) : (
                     <>
-                      <div className="w-14 h-14 rounded-full bg-[#1e1e1e] border border-gray-700 flex items-center justify-center mb-3">
-                        <Upload size={24} className="text-[#C9A84C]" />
+                      <div className="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-3">
+                        <Upload size={24} className="text-[#00A3E0]" />
                       </div>
-                      <p className="text-sm font-semibold text-white mb-1">
-                        Drag & Drop image here, or <span className="text-[#C9A84C]">Browse</span>
+                      <p className="text-xs font-semibold text-white mb-1">
+                        Drag &amp; Drop media file here, or <span className="text-[#00A3E0]">Browse files</span>
                       </p>
-                      <p className="text-xs text-gray-400 mt-2">
+                      <p className="text-[11px] text-slate-400 mt-2">
                         Supported: PNG, JPG, WEBP, AVIF, SVG (Auto converted to optimized .webp)
                       </p>
                     </>
@@ -296,24 +296,24 @@ export default function ImageUploader({
               {activeTab === "library" && (
                 <div>
                   <div className="flex justify-between items-center mb-4">
-                    <p className="text-xs text-gray-400">Click any image to select it for your form.</p>
+                    <p className="text-xs text-slate-400">Click any image to select it for your form.</p>
                     <button
                       type="button"
                       onClick={fetchMediaList}
-                      className="text-xs text-[#C9A84C] hover:underline flex items-center gap-1"
+                      className="text-xs text-[#00A3E0] hover:underline flex items-center gap-1 font-semibold"
                     >
-                      <RefreshCw size={12} className={loadingMedia ? "animate-spin" : ""} /> Refresh
+                      <RefreshCw size={12} className={loadingMedia ? "animate-spin" : ""} /> Refresh Library
                     </button>
                   </div>
 
                   {loadingMedia ? (
                     <div className="py-12 flex justify-center">
-                      <Loader2 size={28} className="animate-spin text-[#C9A84C]" />
+                      <Loader2 size={28} className="animate-spin text-[#0072CE]" />
                     </div>
                   ) : mediaList.length === 0 ? (
-                    <div className="py-12 text-center border border-gray-800 rounded-xl bg-[#111]">
-                      <ImageIcon size={32} className="mx-auto text-gray-600 mb-2" />
-                      <p className="text-sm text-gray-400">No uploaded media found.</p>
+                    <div className="py-12 text-center border border-slate-800 rounded-xl bg-[#0E1526]">
+                      <ImageIcon size={32} className="mx-auto text-slate-600 mb-2" />
+                      <p className="text-xs text-slate-400">No uploaded media found on cloud storage.</p>
                     </div>
                   ) : (
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -327,10 +327,10 @@ export default function ImageUploader({
                               setInputUrl(item.url);
                               setIsModalOpen(false);
                             }}
-                            className={`group relative aspect-square bg-[#111] border rounded-xl overflow-hidden cursor-pointer transition-all ${
+                            className={`group relative aspect-square bg-[#0E1526] border rounded-xl overflow-hidden cursor-pointer transition-all ${
                               isSelected
-                                ? "border-[#C9A84C] ring-2 ring-[#C9A84C]/40"
-                                : "border-gray-800 hover:border-gray-600"
+                                ? "border-[#0072CE] ring-2 ring-[#0072CE]/40"
+                                : "border-slate-800 hover:border-slate-600"
                             }`}
                           >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -340,13 +340,13 @@ export default function ImageUploader({
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                             {isSelected && (
-                              <div className="absolute top-2 right-2 bg-[#C9A84C] text-black p-1 rounded-full shadow">
+                              <div className="absolute top-2 right-2 bg-[#0072CE] text-white p-1 rounded-full shadow">
                                 <Check size={12} strokeWidth={3} />
                               </div>
                             )}
                             <div className="absolute inset-x-0 bottom-0 bg-black/75 backdrop-blur-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                               <p className="text-[10px] text-white font-medium truncate">{item.filename}</p>
-                              <p className="text-[9px] text-gray-400">{formatSize(item.size)}</p>
+                              <p className="text-[9px] text-slate-400">{formatSize(item.size)}</p>
                             </div>
                           </div>
                         );
@@ -360,21 +360,21 @@ export default function ImageUploader({
               {activeTab === "url" && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1.5">
+                    <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                       Direct Image URL
                     </label>
                     <input
                       type="text"
                       value={inputUrl}
                       onChange={(e) => setInputUrl(e.target.value)}
-                      placeholder="https://images.unsplash.com/photo-..."
-                      className="w-full px-3 py-2.5 bg-[#111] border border-gray-700 rounded-xl text-white text-sm outline-none focus:border-[#C9A84C]"
+                      placeholder="https://assets.idealdryfruit.com/uploads/..."
+                      className="w-full px-3 py-2.5 bg-[#0E1526] border border-slate-700 rounded-xl text-white text-xs outline-none focus:border-[#0072CE]"
                     />
                   </div>
 
                   {inputUrl && (
-                    <div className="p-4 border border-gray-800 rounded-xl bg-[#111]">
-                      <p className="text-xs text-gray-400 mb-2 font-medium">Image Preview:</p>
+                    <div className="p-4 border border-slate-800 rounded-xl bg-[#0E1526]">
+                      <p className="text-xs text-slate-400 mb-2 font-medium">Image Preview:</p>
                       <div className="max-h-48 rounded-lg overflow-hidden flex items-center justify-center bg-black/40">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -395,7 +395,7 @@ export default function ImageUploader({
                       onChange(inputUrl);
                       setIsModalOpen(false);
                     }}
-                    className="w-full py-2.5 bg-[#C9A84C] hover:bg-[#b8922b] text-black font-bold text-xs uppercase tracking-wider rounded-xl transition-all"
+                    className="w-full py-2.5 bg-[#0072CE] hover:bg-[#005EA6] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm"
                   >
                     Confirm Image URL
                   </button>
