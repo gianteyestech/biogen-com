@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { resetTokensStore } from "../forgot-password/route";
-import { resetAdminPasswordDirect } from "@/lib/cms";
+import { verifyAndConsumeResetToken, resetAdminPasswordDirect } from "@/lib/cms";
 
 export async function POST(req: Request) {
   try {
@@ -11,9 +10,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Token and new password are required" }, { status: 400 });
     }
 
-    const tokenData = resetTokensStore.get(token);
+    const { valid } = await verifyAndConsumeResetToken(token);
 
-    if (!tokenData || Date.now() > tokenData.expires) {
+    if (!valid) {
       return NextResponse.json({ error: "Password reset token is invalid or has expired." }, { status: 400 });
     }
 
@@ -22,9 +21,6 @@ export async function POST(req: Request) {
     if (!result.success) {
       return NextResponse.json({ error: result.message }, { status: 400 });
     }
-
-    // Invalidate token after single use
-    resetTokensStore.delete(token);
 
     return NextResponse.json({
       success: true,

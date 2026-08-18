@@ -118,6 +118,14 @@ async function ensureTable(): Promise<boolean> {
             INDEX idx_thread (thread_id)
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         `);
+        await pool.query(`
+          CREATE TABLE IF NOT EXISTS password_resets (
+            token VARCHAR(100) PRIMARY KEY,
+            email VARCHAR(255) NOT NULL,
+            expires BIGINT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        `);
         isTableInitialized = true;
         isDbAvailable = true;
         return true;
@@ -482,6 +490,43 @@ export async function resetAdminPasswordDirect(newPassword: string): Promise<{ s
   } catch (err: any) {
     console.error("[CMS Auth] Failed to reset password:", err);
     return { success: false, message: err.message || "Failed to reset password." };
+  }
+}
+
+export async function savePasswordResetToken(token: string, email: string, expires: number): Promise<boolean> {
+  const dbOk = await ensureTable();
+  if (!dbOk || !isDbAvailable) return false;
+  try {
+    await pool.query(
+      "INSERT INTO password_resets (token, email, expires) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE expires = VALUES(expires)",
+      [token, email, expires]
+    );
+    return true;
+  } catch (err) {
+    console.error("[CMS Auth] Failed to save reset token:", err);
+    return false;
+  }
+}
+
+export async function verifyAndConsumeResetToken(token: string): Promise<{ valid: boolean; email?: string }> {
+  const dbOk = await ensureTable();
+  if (!dbOk || !isDbAvailable) return { valid: false };
+  try {
+    const [rows] = await pool.query<any[]>("SELECT * FROM password_resets WHERE token = ?", [token]);
+    if (!rows || rows.length === 0) {
+      return { valid: false };
+    }
+    const tokenRecord = rows[0];
+    if (Date.now() > Number(tokenRecord.expires)) {
+      await pool.query("DELETE FROM password_resets WHERE token = ?", [token]);
+      return { valid: false };
+    }
+    // Delete once verified/consumed
+    await pool.query("DELETE FROM password_resets WHERE token = ?", [token]);
+    return { valid: true, email: tokenRecord.email };
+  } catch (err) {
+    console.error("[CMS Auth] Failed to verify reset token:", err);
+    return { valid: false };
   }
 }
 

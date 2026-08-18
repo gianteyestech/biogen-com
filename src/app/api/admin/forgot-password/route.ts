@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
+import { savePasswordResetToken } from "@/lib/cms";
 import crypto from "crypto";
-
-// Memory store for temporary password reset tokens (Expires in 15 mins)
-export const resetTokensStore = new Map<string, { email: string; expires: number }>();
 
 export async function POST(req: Request) {
   try {
@@ -24,7 +22,7 @@ export async function POST(req: Request) {
     const token = crypto.randomBytes(32).toString("hex");
     const expires = Date.now() + 15 * 60 * 1000; // 15 minutes validity
 
-    resetTokensStore.set(token, { email, expires });
+    await savePasswordResetToken(token, email, expires);
 
     const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_SITE_URL || "https://biogen.com";
     const resetUrl = `${origin}/admin/reset-password?token=${token}`;
