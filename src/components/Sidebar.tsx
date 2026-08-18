@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { X, ChevronDown, ChevronRight, ShoppingBag, Leaf, Nut, Grape, TreePine, Gift, Apple } from "lucide-react";
+import { X, ChevronDown, ChevronRight, Pill, Stethoscope, Eye, Bed, Apple, Sparkles } from "lucide-react";
 import { MEGA_MENU } from "@/data/products";
+import BiogenLogo from "./BiogenLogo";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -10,19 +11,14 @@ interface SidebarProps {
   onSelectCategory: (id: string) => void;
 }
 
-const CategoryIcon = ({ id, icon }: { id: string, icon: string }) => {
+const CategoryIcon = ({ id, icon }: { id: string; icon: string }) => {
   switch (id) {
-    case "pistachios": return <Leaf size={18} className="text-[#C9A227]" />;
-    case "almonds": return <Nut size={18} className="text-[#C9A227]" />;
-    case "walnuts": return <Nut size={18} className="text-[#C9A227]" />;
-    case "cashews": return <Nut size={18} className="text-[#C9A227]" />;
-    case "dried-fruits": return <Grape size={18} className="text-[#C9A227]" />;
-    case "dried-fig": return <Leaf size={18} className="text-[#C9A227]" />;
-    case "dates": return <TreePine size={18} className="text-[#C9A227]" />;
-    case "raisins": return <Grape size={18} className="text-[#C9A227]" />;
-    case "apricots": return <Apple size={18} className="text-[#C9A227]" />;
-    case "dry-prunes": return <Apple size={18} className="text-[#C9A227]" />;
-    case "gift-box": return <Gift size={18} className="text-[#C9A227]" />;
+    case "medicines": return <Pill size={18} className="text-[#0072CE]" />;
+    case "surgical-instruments": return <Stethoscope size={18} className="text-[#00A3E0]" />;
+    case "eye-vision": return <Eye size={18} className="text-[#0072CE]" />;
+    case "surgical-furniture": return <Bed size={18} className="text-[#00A3E0]" />;
+    case "nutrition-supplements": return <Sparkles size={18} className="text-[#70BA28]" />;
+    case "diagnostics": return <Stethoscope size={18} className="text-[#0072CE]" />;
     default: return <span className="text-base">{icon}</span>;
   }
 };
@@ -38,7 +34,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex">
+    <div className="fixed inset-0 z-50 flex font-sans">
       {/* Backdrop with premium blur */}
       <div 
         className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300" 
@@ -46,16 +42,14 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
       />
 
       {/* Drawer Panel */}
-      <div className="relative z-10 w-80 max-w-[85vw] bg-[#111111] border-r border-[#C9A227]/20 h-full flex flex-col shadow-2xl animate-in slide-in-from-left duration-300 overflow-y-auto">
+      <div className="relative z-10 w-80 max-w-[85vw] bg-[#0A0F1D] border-r border-slate-800 h-full flex flex-col shadow-2xl animate-in slide-in-from-left duration-300 overflow-y-auto text-white">
         
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#0072CE]/20 flex-shrink-0 bg-[#0F172A]">
-          <div className="h-[38px] bg-white px-3 py-1.5 rounded-lg flex items-center justify-center">
-            <img src="/biogen-logo.png" alt="Biogen Pharma" className="h-full w-auto object-contain" />
-          </div>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800 flex-shrink-0 bg-[#070B14]">
+          <BiogenLogo variant="dark" size="sm" />
           <button 
             onClick={onClose} 
-            className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#0072CE] transition-all duration-300"
+            className="w-8 h-8 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-[#0072CE] transition-all duration-300"
             aria-label="Close menu"
           >
             <X size={16} />
@@ -63,120 +57,92 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
         </div>
 
         {/* Categories Content Container */}
-        <div className="flex-1 py-6 px-4">
-          
-          {/* Section title */}
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] block mb-4 px-1">
-            Shop Collections
-          </span>
+        <div className="flex-1 py-4 overflow-y-auto px-4 space-y-1">
+          <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3">
+            Medical Departments
+          </p>
 
-          {/* All Products shortcut card */}
+          {/* All Supplies option */}
           <button
             onClick={() => handleCategoryClick("all")}
-            className={`w-full flex items-center gap-3.5 p-4 rounded-xl text-left transition-all duration-300 border mb-4 shadow-sm ${
+            className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-bold transition-all duration-200 ${
               selectedCategory === "all"
-                ? "bg-[#0072CE] border-[#0072CE] text-white font-extrabold"
-                : "bg-[#F8F7F2] border-gray-200 text-gray-800 hover:border-[#0072CE]/40"
+                ? "bg-[#0072CE] text-white shadow-md shadow-blue-500/20"
+                : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
             }`}
           >
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              selectedCategory === "all" ? "bg-white/20" : "bg-white border border-gray-100"
-            }`}>
-              <ShoppingBag size={16} className={selectedCategory === "all" ? "text-white" : "text-[#0072CE]"} />
-            </div>
-            <div className="leading-tight">
-              <span className="text-xs uppercase tracking-wider block font-bold">
-                All Supplies
-              </span>
-              <span className="text-[9px] opacity-75">Browse entire range</span>
-            </div>
+            <span className="flex items-center gap-3">
+              <span className="text-base">📦</span>
+              <span>All Medical Supplies</span>
+            </span>
+            <ChevronRight size={14} className="opacity-60" />
           </button>
 
-          {/* Categories list as Accordion Cards */}
-          <div className="flex flex-col gap-2.5">
-            {MEGA_MENU.map((cat) => {
-              const isActive = selectedCategory === cat.id;
-              const isExpanded = expandedCat === cat.id;
-              const hasSubs = cat.subcategories.length > 0;
+          {MEGA_MENU.map((category) => {
+            const isSelected = selectedCategory === category.slug;
+            const isExpanded = expandedCat === category.id;
+            const hasSub = category.subcategories && category.subcategories.length > 0;
 
-              return (
+            return (
+              <div key={category.id} className="rounded-xl overflow-hidden">
                 <div 
-                  key={cat.id} 
-                  className={`rounded-xl border transition-all duration-300 overflow-hidden ${
-                    isExpanded 
-                      ? "bg-[#181818] border-[#0072CE]/30 shadow-md" 
-                      : "bg-[#F8F7F2] border-gray-200"
+                  className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? "bg-[#0072CE] text-white shadow-md shadow-blue-500/20"
+                      : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
                   }`}
+                  onClick={() => handleCategoryClick(category.slug)}
                 >
-                  {/* Parent Category Row (Min 48px target) */}
-                  <div className="flex items-center justify-between min-h-[50px] pr-2">
-                    <button
-                      onClick={() => handleCategoryClick(cat.id)}
-                      className="flex-1 flex items-center gap-3.5 px-4 py-3 text-left group"
-                    >
-                      <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                        <CategoryIcon id={cat.id} icon={cat.icon} />
-                      </div>
-                      <span className={`text-xs font-bold uppercase tracking-wide transition-colors ${
-                        isExpanded ? "text-white" : "text-gray-800 hover:text-[#0072CE]"
-                      }`}>
-                        {cat.name}
-                      </span>
-                    </button>
-
-                    {/* Expand/Collapse Dropdown Arrow */}
-                    {hasSubs && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setExpandedCat(isExpanded ? null : cat.id);
-                        }}
-                        className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                          isExpanded 
-                            ? "text-[#0072CE] hover:bg-white/5" 
-                            : "text-gray-400 hover:bg-black/5 hover:text-gray-700"
-                        }`}
-                        aria-label="Expand category options"
-                      >
-                        <ChevronDown 
-                          size={16} 
-                          className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} 
-                        />
-                      </button>
-                    )}
+                  <div className="flex items-center gap-3 min-w-0">
+                    <CategoryIcon id={category.id} icon={category.icon} />
+                    <span className="truncate">{category.name}</span>
                   </div>
 
-                  {/* Subcategories Panel */}
-                  {hasSubs && isExpanded && (
-                    <div className="bg-black/40 border-t border-[#0072CE]/10 py-1.5 px-3">
-                      <div className="grid grid-cols-1 gap-1">
-                        {cat.subcategories.map((sub) => (
-                          <button
-                            key={sub.id}
-                            onClick={() => handleCategoryClick(cat.id)}
-                            className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left text-[11px] font-medium text-gray-400 hover:text-[#0072CE] hover:bg-white/5 rounded-lg transition-all"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#0072CE]/40 flex-shrink-0" />
-                            <span>{sub.name}</span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                  {hasSub && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedCat(isExpanded ? null : category.id);
+                      }}
+                      className="p-1 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                      aria-label="Toggle subcategories"
+                    >
+                      <ChevronDown 
+                        size={14} 
+                        className={`transition-transform duration-300 ${isExpanded ? "rotate-180 text-[#00A3E0]" : ""}`} 
+                      />
+                    </button>
                   )}
                 </div>
-              );
-            })}
+
+                {/* Subcategories Accordion */}
+                {hasSub && isExpanded && (
+                  <div className="pl-9 pr-2 py-2 space-y-1 bg-[#0E1526]/50 rounded-b-xl my-1 border-l-2 border-[#0072CE]/40 ml-4 animate-in slide-in-from-top-1 duration-200">
+                    {category.subcategories.map((sub) => (
+                      <button
+                        key={sub.id}
+                        onClick={() => handleCategoryClick(category.slug)}
+                        className="w-full text-left py-2 px-3 rounded-lg text-xs font-medium text-slate-400 hover:text-[#00A3E0] hover:bg-slate-800/40 transition-colors flex items-center justify-between group"
+                      >
+                        <span className="truncate">{sub.name}</span>
+                        <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all text-[#00A3E0]" />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Drawer Footer info */}
+        <div className="p-4 border-t border-slate-800 bg-[#070B14] flex-shrink-0 text-xs">
+          <div className="bg-[#0E1526] p-3 rounded-xl border border-slate-800 space-y-1">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-[#00A3E0]">Institutional Helpdesk</p>
+            <p className="text-xs text-white font-semibold">+232 75 011616</p>
+            <p className="text-[10px] text-slate-400">info@biogenpharma.com</p>
           </div>
-
         </div>
-
-        {/* Drawer Footer */}
-        <div className="px-5 py-5 border-t border-[#0284C7]/10 flex-shrink-0 bg-[#0d0d0d] text-center">
-          <p className="text-[9px] text-[#0284C7]/60 font-sans uppercase tracking-[0.2em]">
-            Biogen Pharma • Healthcare Excellence
-          </p>
-        </div>
-
       </div>
     </div>
   );

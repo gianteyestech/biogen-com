@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { adminLogout } from "./actions";
-import Image from "next/image";
+import BiogenLogo from "@/components/BiogenLogo";
 import {
   LayoutDashboard,
   Package,
@@ -44,15 +44,7 @@ export default function AdminSidebar() {
     <>
       {/* Mobile Top Toggle Bar (visible on sm/md screens) */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A0F1D] border-b border-slate-800 px-4 flex items-center justify-between z-50">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 bg-white p-1">
-            <Image src="/logo.png" alt="Biogen Logo" width={32} height={32} className="object-contain" />
-          </div>
-          <div>
-            <span className="text-xs font-black text-white">BIOGEN PHARMA</span>
-            <span className="block text-[9px] text-[#00A3E0] font-mono">CLINICAL CMS</span>
-          </div>
-        </div>
+        <BiogenLogo variant="dark" size="sm" showSubtitle={false} />
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="p-2 text-slate-300 hover:text-white bg-slate-800 border border-slate-700 rounded-xl"
@@ -72,23 +64,13 @@ export default function AdminSidebar() {
 
       {/* Sidebar Drawer Container */}
       <aside
-        className={`w-[250px] flex-shrink-0 flex flex-col border-r border-slate-800/80 min-h-screen bg-[#0A0F1D] fixed lg:sticky top-0 left-0 bottom-0 z-50 transition-transform duration-300 ease-in-out ${
+        className={`w-[260px] flex-shrink-0 flex flex-col border-r border-slate-800/80 min-h-screen bg-[#0A0F1D] fixed lg:sticky top-0 left-0 bottom-0 z-50 transition-transform duration-300 ease-in-out ${
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        {/* Logo */}
-        <div className="px-5 py-6 border-b border-slate-800/80 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 bg-white p-1.5 shadow-sm">
-              <Image src="/logo.png" alt="Biogen Logo" width={40} height={40} className="object-contain" />
-            </div>
-            <div>
-              <p className="text-xs font-black text-white leading-none">BIOGEN PHARMA</p>
-              <p className="text-[10px] text-[#00A3E0] mt-1 font-semibold flex items-center gap-1">
-                <ShieldCheck size={11} /> Admin Control
-              </p>
-            </div>
-          </div>
+        {/* Logo Header */}
+        <div className="px-5 py-5 border-b border-slate-800/80 flex items-center justify-between">
+          <BiogenLogo variant="dark" size="md" />
           <button
             onClick={() => setMobileOpen(false)}
             className="lg:hidden p-1.5 text-slate-400 hover:text-white"

@@ -5,6 +5,7 @@ import { Send, MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
 import { CMSSiteConfig } from "@/lib/cms-types";
 import { getFooterLinkHref } from "@/lib/link-utils";
 import { BRAND } from "@/config/brand";
+import BiogenLogo from "./BiogenLogo";
 
 interface FooterProps {
   siteConfig: CMSSiteConfig;
@@ -39,9 +40,7 @@ export default function Footer({ siteConfig }: FooterProps) {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-10">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
             <div className="flex items-center mb-4 select-none">
-              <div className="h-[52px] bg-white px-3.5 py-2 rounded-xl border border-white/20 shadow-md flex items-center justify-center">
-                <img src="/biogen-logo.png" alt={brand.name} className="h-full w-auto object-contain" />
-              </div>
+              <BiogenLogo variant="dark" size="lg" />
             </div>
             <p className="text-sm text-gray-300 leading-relaxed mb-4">
               Biogen Pharma is a trusted provider of high-grade pharmaceuticals, precision surgical instruments, eye care, and hospital equipment in West Africa and internationally.

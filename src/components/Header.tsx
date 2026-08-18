@@ -12,6 +12,7 @@ import { CATEGORIES, MEGA_MENU } from "@/data/products";
 import { BRAND } from "@/config/brand";
 import productsData from "@/cms/products.json";
 import Sidebar from "./Sidebar";
+import BiogenLogo from "./BiogenLogo";
 
 // Emojis mapping for announcements
 const ANNOUNCEMENTS = [
@@ -324,18 +325,7 @@ export default function Header({
               onClick={handleLogoClick}
             >
               <div className="flex items-center group">
-                <div className={`transition-all duration-300 flex items-center justify-center ${
-                  isScrolled ? "h-[36px]" : "h-[44px] sm:h-[50px]"
-                }`}>
-                  <Image
-                    src="/biogen-logo.png"
-                    alt="Biogen Pharma"
-                    width={200}
-                    height={55}
-                    className="h-full w-auto object-contain transition-transform group-hover:scale-105"
-                    priority
-                  />
-                </div>
+                <BiogenLogo variant="light" size={isScrolled ? "md" : "lg"} />
               </div>
             </div>
 
@@ -815,15 +805,10 @@ export default function Header({
         {/* Center Main Home Action */}
         <button
           onClick={handleLogoClick}
-          className="flex flex-col items-center justify-center w-14 h-14 bg-[#111111] border-2 border-[#C9A227] rounded-full text-center text-[#C9A227] -translate-y-4 shadow-lg active:scale-95 transition-transform"
+          className="flex flex-col items-center justify-center w-14 h-14 bg-[#0A0F1D] border-2 border-[#0072CE] rounded-full text-center text-[#0072CE] -translate-y-4 shadow-lg shadow-blue-500/20 active:scale-95 transition-transform"
+          aria-label="Home"
         >
-          <Image 
-            src="/ideal-logo.png" 
-            alt="Home logo" 
-            width={30} 
-            height={30} 
-            className="object-contain" 
-          />
+          <BiogenLogo variant="symbol" size="sm" />
         </button>
 
         <button

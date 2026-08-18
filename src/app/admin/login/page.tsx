@@ -2,6 +2,7 @@
 import { useState, useActionState } from "react";
 import { adminLogin } from "../actions";
 import Image from "next/image";
+import BiogenLogo from "@/components/BiogenLogo";
 import { ShieldCheck } from "lucide-react";
 
 type LoginState = { error?: string } | null;
@@ -46,13 +47,10 @@ export default function AdminLoginPage() {
         {/* Card */}
         <div className="bg-[#0E1526] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="px-8 pt-10 pb-6 text-center border-b border-slate-800">
-            <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 rounded-2xl bg-white p-2 shadow-lg flex items-center justify-center">
-                <Image src="/logo.png" alt="Biogen Pharma" width={56} height={56} className="object-contain" />
-              </div>
+          <div className="px-8 pt-10 pb-6 text-center border-b border-slate-800 flex flex-col items-center">
+            <div className="mb-3">
+              <BiogenLogo variant="dark" size="lg" />
             </div>
-            <h1 className="text-2xl font-black text-white tracking-tight">Biogen Medical CMS</h1>
             <p className="text-xs text-slate-400 mt-1">Enterprise Pharmaceutical &amp; Clinical Operations</p>
           </div>
 
