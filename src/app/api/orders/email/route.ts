@@ -31,12 +31,12 @@ export async function POST(req: Request) {
     const adminEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
     const adminEmailResult = await sendEmail({
       to: adminEmail,
-      subject: `🚨 New Order Alert #${orderId || "BG-STORE"} (Rs. ${totalAmount})`,
+      subject: `🚨 New Order Alert #${orderId || "BG-STORE"} ($${totalAmount})`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2>New Order Received on Store!</h2>
           <p><strong>Customer:</strong> ${customerName} (${customerEmail})</p>
-          <p><strong>Total Amount:</strong> Rs. ${totalAmount}</p>
+          <p><strong>Total Amount:</strong> $${totalAmount}</p>
           <p>Check the admin dashboard for complete order shipping details.</p>
         </div>
       `,

@@ -170,7 +170,7 @@ export async function POST(req: Request) {
     const adminEmail = process.env.ADMIN_EMAIL || "admin.biogen@gianteyetech.com";
     await sendEmail({
       to: adminEmail,
-      subject: `🚨 New Order ${orderNumber} (Rs. ${serverTotalAmount})`,
+      subject: `🚨 New Order ${orderNumber} ($${serverTotalAmount})`,
       channel: "admin",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -178,7 +178,7 @@ export async function POST(req: Request) {
           <p><strong>Order #:</strong> ${orderNumber}</p>
           <p><strong>Customer:</strong> ${customerName} (${customerPhone})</p>
           <p><strong>City:</strong> ${city}</p>
-          <p><strong>Total:</strong> Rs. ${serverTotalAmount}</p>
+          <p><strong>Total:</strong> $${serverTotalAmount}</p>
         </div>
       `,
     }).catch((e) => console.error("Admin Email Alert Error:", e));
