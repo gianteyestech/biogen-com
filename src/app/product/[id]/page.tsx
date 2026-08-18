@@ -1,4 +1,4 @@
-import { getCMSProducts } from "@/lib/cms";
+import { getCMSProducts, getCMSSiteConfig } from "@/lib/cms";
 import ProductPageClient from "./ProductPageClient";
 import type { Metadata } from "next";
 
@@ -29,11 +29,14 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const allProducts = await getCMSProducts();
+  const [allProducts, siteConfig] = await Promise.all([
+    getCMSProducts(),
+    getCMSSiteConfig(),
+  ]);
   const product = allProducts.find((p) => p.id === id) || null;
   const related = product
     ? allProducts.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4)
     : [];
 
-  return <ProductPageClient product={product} related={related} />;
+  return <ProductPageClient product={product} related={related} siteConfig={siteConfig} />;
 }

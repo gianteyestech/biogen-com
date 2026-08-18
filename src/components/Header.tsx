@@ -44,19 +44,25 @@ const NAV_LINKS = [
   { label: "Contact Us", id: "contact", href: "/business-page/contact-us" }
 ];
 
+import type { CMSSiteConfig } from "@/lib/cms-types";
+
 interface HeaderProps {
   searchTerm?: string;
   setSearchTerm?: (t: string) => void;
   selectedCategory?: string;
   setSelectedCategory?: (c: string) => void;
+  siteConfig?: CMSSiteConfig;
 }
 
 export default function Header({ 
   searchTerm = "", 
   setSearchTerm = () => {}, 
   selectedCategory = "all", 
-  setSelectedCategory = () => {} 
+  setSelectedCategory = () => {},
+  siteConfig
 }: HeaderProps) {
+  const isCatalogue = siteConfig?.siteMode === "catalogue";
+  const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
   const router = useRouter();
   const pathname = usePathname();
   const { setIsCartOpen, cartCount, cartTotal } = useCart();
@@ -519,9 +525,13 @@ export default function Header({
                     </span>
                   </button>
                   <div className="hidden lg:flex flex-col leading-none">
-                    <span className="text-[10px] text-slate-400 font-semibold tracking-wide">MY CART</span>
+                    <span className="text-[10px] text-slate-400 font-semibold tracking-wide">
+                      {isCatalogue ? "REQUISITION" : "MY CART"}
+                    </span>
                     <span className="text-xs font-black text-slate-900 group-hover:text-[#0072CE] transition-colors mt-0.5">
-                      ${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      {isCatalogue && hidePrices
+                        ? `${cartCount} Items`
+                        : `$${cartTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
                     </span>
                   </div>
                 </div>

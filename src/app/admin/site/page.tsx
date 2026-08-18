@@ -3,13 +3,16 @@ import { useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
 import type { CMSSiteConfig } from "@/lib/cms-types";
 import { actionUpdateSiteConfig, actionGetSiteConfig, actionChangeAdminPassword } from "../actions";
-import { Save, Check, KeyRound, ShieldCheck } from "lucide-react";
+import { 
+  Save, Check, KeyRound, ShieldCheck, ShoppingCart, 
+  BookOpen, Layers, CheckCircle2, MessageSquare, Phone, FileText
+} from "lucide-react";
 
 export default function AdminSitePage() {
   const [config, setConfig] = useState<CMSSiteConfig | null>(null);
   const [pending, startT] = useTransition();
   const [msg, setMsg] = useState("");
-  const [tab, setTab] = useState<"brand" | "promo" | "features" | "footer" | "seo" | "security">("brand");
+  const [tab, setTab] = useState<"mode" | "brand" | "promo" | "features" | "footer" | "seo" | "security">("mode");
 
   const [passState, setPassState] = useState<{ error?: string; success?: string } | null>(null);
   const [passPending, startPassT] = useTransition();
@@ -57,7 +60,10 @@ export default function AdminSitePage() {
   const inputCls = "w-full px-3 py-2.5 bg-[#070B14] border border-slate-700 rounded-xl text-white text-xs outline-none focus:border-[#0072CE] transition-all placeholder-slate-500";
   const labelCls = "block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5";
 
+  const currentMode = config.siteMode ?? "ecommerce";
+
   const tabs = [
+    { id: "mode", label: "⚡ Store Mode" },
     { id: "brand", label: "Brand & Hubs" },
     { id: "promo", label: "Promo Banners" },
     { id: "features", label: "Assurance Bar" },
@@ -68,11 +74,21 @@ export default function AdminSitePage() {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto font-sans antialiased text-white">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider">Facility Parameters</span>
-          <h1 className="text-2xl font-black text-white tracking-tight mt-0.5">Site &amp; System Configuration</h1>
-          <p className="text-slate-400 text-xs mt-0.5">Manage institutional contact parameters, hub addresses, and security credentials</p>
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-bold text-[#00A3E0] uppercase tracking-wider">Facility Parameters</span>
+            <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full ${
+              currentMode === "ecommerce"
+                ? "bg-emerald-950/60 text-emerald-400 border border-emerald-500/30"
+                : "bg-blue-950/60 text-[#00A3E0] border border-blue-500/30"
+            }`}>
+              {currentMode === "ecommerce" ? "🛒 E-Commerce Mode" : "📋 Catalogue Mode"}
+            </span>
+          </div>
+          <h1 className="text-2xl font-black text-white tracking-tight mt-1">Site &amp; System Configuration</h1>
+          <p className="text-slate-400 text-xs mt-0.5">Control operating mode, institutional contact parameters, hub addresses, and security credentials</p>
         </div>
         <button
           onClick={save}
@@ -109,6 +125,144 @@ export default function AdminSitePage() {
 
       <div className="bg-[#0E1526] border border-slate-800 rounded-2xl p-6 space-y-5 shadow-sm">
 
+        {/* Operating Mode Tab */}
+        {tab === "mode" && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-1">Platform Operating Mode</h2>
+              <p className="text-slate-400 text-xs">Choose how Biogen Pharma presents products and handles practitioner inquiries.</p>
+            </div>
+
+            {/* Mode Selector Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Option 1: E-Commerce Mode */}
+              <div 
+                onClick={() => set("siteMode", "ecommerce")}
+                className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between gap-4 ${
+                  currentMode === "ecommerce"
+                    ? "bg-[#070B14] border-[#0072CE] shadow-lg shadow-blue-500/10"
+                    : "bg-[#070B14]/50 border-slate-800 hover:border-slate-700 opacity-70 hover:opacity-100"
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      currentMode === "ecommerce" ? "bg-[#0072CE] text-white" : "bg-slate-800 text-slate-400"
+                    }`}>
+                      <ShoppingCart size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-sm text-white">E-Commerce Mode</h3>
+                      <p className="text-[10px] text-slate-400 font-medium">Direct Online Procurement</p>
+                    </div>
+                  </div>
+                  {currentMode === "ecommerce" && (
+                    <span className="text-[#00A3E0]">
+                      <CheckCircle2 size={18} />
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Full online shopping experience. Buyers can view prices, select packaging sizes, add items to cart, and checkout with online orders.
+                </p>
+                <div className="pt-2 border-t border-slate-800/80 text-[10px] font-semibold text-emerald-400 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Cart &amp; Checkout Active
+                </div>
+              </div>
+
+              {/* Option 2: Catalogue Mode */}
+              <div 
+                onClick={() => set("siteMode", "catalogue")}
+                className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between gap-4 ${
+                  currentMode === "catalogue"
+                    ? "bg-[#070B14] border-[#0072CE] shadow-lg shadow-blue-500/10"
+                    : "bg-[#070B14]/50 border-slate-800 hover:border-slate-700 opacity-70 hover:opacity-100"
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      currentMode === "catalogue" ? "bg-[#0072CE] text-white" : "bg-slate-800 text-slate-400"
+                    }`}>
+                      <BookOpen size={20} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-sm text-white">Catalogue Mode</h3>
+                      <p className="text-[10px] text-slate-400 font-medium">B2B Showcase &amp; Quotation Requests</p>
+                    </div>
+                  </div>
+                  {currentMode === "catalogue" && (
+                    <span className="text-[#00A3E0]">
+                      <CheckCircle2 size={18} />
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  B2B Showcase for hospitals, tenders &amp; clinics. Replaces &quot;Add to Cart&quot; with &quot;Request Official Quotation &amp; CoA&quot; and direct Biogen Chat consultations.
+                </p>
+                <div className="pt-2 border-t border-slate-800/80 text-[10px] font-semibold text-[#00A3E0] flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00A3E0]" />
+                  Institutional Inquiries &amp; Quotation Active
+                </div>
+              </div>
+            </div>
+
+            {/* Catalogue Mode Fine-Tuning Options */}
+            {currentMode === "catalogue" && (
+              <div className="bg-[#070B14] border border-blue-500/20 rounded-xl p-5 space-y-4 animate-in fade-in duration-200">
+                <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Layers size={14} className="text-[#00A3E0]" />
+                  Catalogue Mode Settings
+                </h3>
+
+                {/* Hide Price Switch */}
+                <div className="flex items-center justify-between py-2 border-b border-slate-800">
+                  <div>
+                    <p className="text-xs font-bold text-slate-200">Hide Prices on Catalogue</p>
+                    <p className="text-[11px] text-slate-400">If enabled, price tags are hidden and replaced with &quot;Inquire for Institutional Pricing&quot;</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={config.hidePricesInCatalogue ?? false}
+                      onChange={e => set("hidePricesInCatalogue", e.target.checked)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0072CE]" />
+                  </label>
+                </div>
+
+                {/* Custom CTA Label */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div>
+                    <label className={labelCls}>Quotation Button Label</label>
+                    <input
+                      value={config.catalogueInquiryText || "Request Official Quotation & CoA"}
+                      onChange={e => set("catalogueInquiryText", e.target.value)}
+                      className={inputCls}
+                      placeholder="e.g. Request Official Quotation & CoA"
+                    />
+                  </div>
+
+                  <div>
+                    <label className={labelCls}>Primary Inquire Channel</label>
+                    <select
+                      value={config.catalogueAction || "chat"}
+                      onChange={e => set("catalogueAction", e.target.value)}
+                      className={inputCls}
+                    >
+                      <option value="chat">Biogen Live Chat Desk</option>
+                      <option value="whatsapp">WhatsApp Direct Consultation</option>
+                      <option value="contact">Institutional Quote Form</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Brand Tab */}
         {tab === "brand" && (
           <>
@@ -144,206 +298,116 @@ export default function AdminSitePage() {
                 />
               </div>
             </div>
-            <hr className="border-slate-800" />
-            <h3 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider">Institutional Promotional Voucher</h3>
+
+            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mt-6 mb-2">Procurement &amp; Transit Thresholds</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div><label className={labelCls}>Voucher Code</label><input value={config.promoCode.code} onChange={e => set("promoCode.code", e.target.value)} className={inputCls} /></div>
-              <div><label className={labelCls}>Discount %</label><input type="number" value={config.promoCode.discountPercent} onChange={e => set("promoCode.discountPercent", Number(e.target.value))} className={inputCls} /></div>
-              <div><label className={labelCls}>Minimum Order Requirement ($)</label><input type="number" value={config.promoCode.minOrderAmount} onChange={e => set("promoCode.minOrderAmount", Number(e.target.value))} className={inputCls} /></div>
-              <div><label className={labelCls}>Description</label><input value={config.promoCode.description} onChange={e => set("promoCode.description", e.target.value)} className={inputCls} /></div>
-            </div>
-            <hr className="border-slate-800" />
-            <h3 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider">Logistics &amp; Shipping Charges</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div><label className={labelCls}>Free Priority Delivery Threshold ($)</label><input type="number" value={config.shipping.freeThreshold} onChange={e => set("shipping.freeThreshold", Number(e.target.value))} className={inputCls} /></div>
-              <div><label className={labelCls}>Standard Freight / Logistics Fee ($)</label><input type="number" value={config.shipping.standardCost} onChange={e => set("shipping.standardCost", Number(e.target.value))} className={inputCls} /></div>
+              <div><label className={labelCls}>Standard Cold-Chain Transit Fee ($ USD)</label><input type="number" value={config.shipping.standardCost} onChange={e => set("shipping.standardCost", Number(e.target.value))} className={inputCls} /></div>
+              <div><label className={labelCls}>Free Institutional Dispatch Threshold ($ USD)</label><input type="number" value={config.shipping.freeThreshold} onChange={e => set("shipping.freeThreshold", Number(e.target.value))} className={inputCls} /></div>
             </div>
           </>
         )}
 
-        {/* Promo Banners Tab */}
+        {/* Promo Tab */}
         {tab === "promo" && (
-          <>
-            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Category Promotional Modules</h2>
-            <div className="space-y-4">
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Category Promo Callouts</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {config.promoBanners.map((banner, i) => (
-                <div key={banner.id} className="bg-[#070B14] border border-slate-800 rounded-xl p-4 grid grid-cols-2 gap-3">
-                  <div><label className={labelCls}>Label</label><input value={banner.label} onChange={e => { const b = [...config.promoBanners]; b[i] = { ...b[i], label: e.target.value }; set("promoBanners", b); }} className={inputCls} /></div>
-                  <div><label className={labelCls}>Subtext</label><input value={banner.sub} onChange={e => { const b = [...config.promoBanners]; b[i] = { ...b[i], sub: e.target.value }; set("promoBanners", b); }} className={inputCls} /></div>
-                  <div><label className={labelCls}>Link to Department ID</label><input value={banner.catId} onChange={e => { const b = [...config.promoBanners]; b[i] = { ...b[i], catId: e.target.value }; set("promoBanners", b); }} className={inputCls} /></div>
-                  <div><label className={labelCls}>Accent Color (Hex)</label>
-                    <div className="flex gap-2">
-                      <input value={banner.color} onChange={e => { const b = [...config.promoBanners]; b[i] = { ...b[i], color: e.target.value }; set("promoBanners", b); }} className={inputCls} />
-                      <input type="color" value={banner.color} onChange={e => { const b = [...config.promoBanners]; b[i] = { ...b[i], color: e.target.value }; set("promoBanners", b); }} className="w-10 h-10 rounded-lg border border-slate-700 bg-[#070B14] cursor-pointer" />
-                    </div>
+                <div key={banner.id} className="p-4 bg-[#070B14] border border-slate-700/60 rounded-xl space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-300">Banner #{i + 1}</span>
+                    <div className="w-4 h-4 rounded-full border border-slate-600" style={{ background: banner.bg }} />
                   </div>
+                  <div><label className={labelCls}>Heading Label</label><input value={banner.label} onChange={e => set(`promoBanners.${i}.label`, e.target.value)} className={inputCls} /></div>
+                  <div><label className={labelCls}>Subtitle Details</label><input value={banner.sub} onChange={e => set(`promoBanners.${i}.sub`, e.target.value)} className={inputCls} /></div>
+                  <div><label className={labelCls}>Target Category Slug</label><input value={banner.catId} onChange={e => set(`promoBanners.${i}.catId`, e.target.value)} className={inputCls} /></div>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
 
-        {/* Assurance Features Tab */}
+        {/* Features Tab */}
         {tab === "features" && (
-          <>
-            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Quality &amp; Logistics Assurance Bar</h2>
-            <p className="text-xs text-slate-500 mb-4">Supported Icons: Truck, RotateCcw, Headphones, Tag, Shield, Star, Package</p>
-            <div className="space-y-3">
-              {config.trustFeatures.map((f, i) => (
-                <div key={f.id} className="bg-[#070B14] border border-slate-800 rounded-xl p-4 grid grid-cols-3 gap-3 items-center">
-                  <div><label className={labelCls}>Icon Name</label><input value={f.icon} onChange={e => { const t = [...config.trustFeatures]; t[i] = { ...t[i], icon: e.target.value }; set("trustFeatures", t); }} className={inputCls} /></div>
-                  <div><label className={labelCls}>Title</label><input value={f.title} onChange={e => { const t = [...config.trustFeatures]; t[i] = { ...t[i], title: e.target.value }; set("trustFeatures", t); }} className={inputCls} /></div>
-                  <div><label className={labelCls}>Subtitle</label><input value={f.sub} onChange={e => { const t = [...config.trustFeatures]; t[i] = { ...t[i], sub: e.target.value }; set("trustFeatures", t); }} className={inputCls} /></div>
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Clinical Trust &amp; Certification Badges</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {config.trustFeatures.map((feat, i) => (
+                <div key={feat.id} className="p-4 bg-[#070B14] border border-slate-700/60 rounded-xl space-y-3">
+                  <span className="text-xs font-bold text-slate-300">Badge #{i + 1} ({feat.icon})</span>
+                  <div><label className={labelCls}>Badge Title</label><input value={feat.title} onChange={e => set(`trustFeatures.${i}.title`, e.target.value)} className={inputCls} /></div>
+                  <div><label className={labelCls}>Description</label><input value={feat.sub} onChange={e => set(`trustFeatures.${i}.sub`, e.target.value)} className={inputCls} /></div>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
 
         {/* Footer Tab */}
         {tab === "footer" && (
-          <>
-            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Footer Navigation &amp; Social</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label className={labelCls}>Quick Links (one per line)</label>
-                <textarea rows={8} value={config.footer.quickLinks.join("\n")}
-                  onChange={e => set("footer.quickLinks", e.target.value.split("\n"))}
-                  className={inputCls + " resize-none"} />
-              </div>
-              <div>
-                <label className={labelCls}>Policy Links (one per line)</label>
-                <textarea rows={8} value={config.footer.moreLinks.join("\n")}
-                  onChange={e => set("footer.moreLinks", e.target.value.split("\n"))}
-                  className={inputCls + " resize-none"} />
-              </div>
-            </div>
-            <div>
-              <label className={labelCls}>Newsletter Headline</label>
-              <input value={config.footer.newsletterTitle} onChange={e => set("footer.newsletterTitle", e.target.value)} className={inputCls} />
-            </div>
-            <div>
-              <label className={labelCls}>Newsletter Subtitle</label>
-              <input value={config.footer.newsletterSub} onChange={e => set("footer.newsletterSub", e.target.value)} className={inputCls} />
-            </div>
-            <div>
-              <label className={labelCls}>Footer Copyright Text</label>
-              <input value={config.footer.copyrightText || ""} onChange={e => set("footer.copyrightText", e.target.value)} className={inputCls} />
-            </div>
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className={labelCls}>Social Channels (FB, IG, LI, WA)</label>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const soc = [...config.footer.social, { label: "LI", href: "https://linkedin.com/company/biogenpharma" }];
-                    set("footer.social", soc);
-                  }}
-                  className="text-xs text-[#00A3E0] font-bold hover:underline"
-                >
-                  + Add Channel
-                </button>
-              </div>
-              <div className="space-y-2">
-                {config.footer.social.map((s, i) => (
-                  <div key={i} className="flex gap-2 items-center">
-                    <input value={s.label} onChange={e => { const soc = [...config.footer.social]; soc[i] = { ...soc[i], label: e.target.value }; set("footer.social", soc); }} placeholder="Label (e.g. LI)" className="w-24 px-3 py-2 bg-[#070B14] border border-slate-700 rounded-lg text-white text-xs outline-none focus:border-[#0072CE]" />
-                    <input value={s.href} onChange={e => { const soc = [...config.footer.social]; soc[i] = { ...soc[i], href: e.target.value }; set("footer.social", soc); }} placeholder="Channel URL" className={inputCls} />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const soc = config.footer.social.filter((_, idx) => idx !== i);
-                        set("footer.social", soc);
-                      }}
-                      className="p-2 text-slate-500 hover:text-red-400"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Footer &amp; Institutional Governance</h2>
+            <div><label className={labelCls}>Newsletter Heading</label><input value={config.footer.newsletterTitle} onChange={e => set("footer.newsletterTitle", e.target.value)} className={inputCls} /></div>
+            <div><label className={labelCls}>Newsletter Subtitle</label><input value={config.footer.newsletterSub} onChange={e => set("footer.newsletterSub", e.target.value)} className={inputCls} /></div>
+            <div><label className={labelCls}>Copyright &amp; Regulatory Notice</label><input value={config.footer.copyrightText || ""} onChange={e => set("footer.copyrightText", e.target.value)} className={inputCls} /></div>
+          </div>
         )}
 
         {/* SEO Tab */}
         {tab === "seo" && (
-          <>
-            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Search Engine Optimization (SEO)</h2>
-            <div className="space-y-4">
-              <div><label className={labelCls}>Site Brand Name</label><input value={config.seo.siteName} onChange={e => set("seo.siteName", e.target.value)} className={inputCls} /></div>
-              <div><label className={labelCls}>Default Page Title</label><input value={config.seo.defaultTitle} onChange={e => set("seo.defaultTitle", e.target.value)} className={inputCls} /></div>
-              <div><label className={labelCls}>Default Meta Description</label><textarea rows={3} value={config.seo.defaultDescription} onChange={e => set("seo.defaultDescription", e.target.value)} className={inputCls + " resize-none"} /></div>
-              <div><label className={labelCls}>Search Keywords</label><input value={config.seo.keywords} onChange={e => set("seo.keywords", e.target.value)} className={inputCls} placeholder="pharmaceuticals, medical devices, surgical instruments..." /></div>
-            </div>
-          </>
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Metadata &amp; Search Engine Optimization</h2>
+            <div><label className={labelCls}>Default Meta Title</label><input value={config.seo.defaultTitle} onChange={e => set("seo.defaultTitle", e.target.value)} className={inputCls} /></div>
+            <div><label className={labelCls}>Default Meta Description</label><textarea rows={3} value={config.seo.defaultDescription} onChange={e => set("seo.defaultDescription", e.target.value)} className={inputCls} /></div>
+            <div><label className={labelCls}>Target Keywords (Comma Separated)</label><input value={config.seo.keywords} onChange={e => set("seo.keywords", e.target.value)} className={inputCls} /></div>
+          </div>
         )}
 
-        {/* Security / Password Tab */}
+        {/* Security Tab */}
         {tab === "security" && (
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <KeyRound className="w-5 h-5 text-[#00A3E0]" />
-              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider">Update Admin Master Password</h2>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <ShieldCheck className="text-[#00A3E0]" size={16} />
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider">CMS Security &amp; Key Rotation</h2>
             </div>
-
-            <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md bg-[#070B14] p-6 rounded-xl border border-slate-800">
+            
+            <form onSubmit={handlePasswordChange} className="bg-[#070B14] p-5 rounded-xl border border-slate-800 space-y-4">
               {passState?.error && (
-                <div className="bg-red-950/50 border border-red-500/30 text-red-400 text-xs px-3 py-2 rounded-lg">
+                <div className="bg-red-950/50 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-lg">
                   {passState.error}
                 </div>
               )}
               {passState?.success && (
-                <div className="bg-emerald-950/50 border border-emerald-500/30 text-emerald-400 text-xs px-3 py-2 rounded-lg">
-                  {passState.success}
+                <div className="bg-emerald-950/50 border border-emerald-500/30 text-emerald-400 text-xs px-4 py-2.5 rounded-lg flex items-center gap-2">
+                  <Check size={14} /> {passState.success}
                 </div>
               )}
-
               <div>
-                <label className={labelCls}>Current Master Password</label>
-                <input
-                  type="password"
-                  name="currentPassword"
-                  required
-                  placeholder="Enter current password"
-                  className={inputCls}
-                />
+                <label className={labelCls}>Current Master Security Key</label>
+                <input type="password" name="currentPassword" required className={inputCls} placeholder="Enter current master key..." />
               </div>
-
-              <div>
-                <label className={labelCls}>New Password</label>
-                <input
-                  type="password"
-                  name="newPassword"
-                  required
-                  minLength={6}
-                  placeholder="Enter new password (min 6 chars)"
-                  className={inputCls}
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelCls}>New Master Security Key</label>
+                  <input type="password" name="newPassword" required minLength={8} className={inputCls} placeholder="Min 8 characters..." />
+                </div>
+                <div>
+                  <label className={labelCls}>Confirm New Key</label>
+                  <input type="password" name="confirmPassword" required minLength={8} className={inputCls} placeholder="Re-enter new key..." />
+                </div>
               </div>
-
-              <div>
-                <label className={labelCls}>Confirm New Password</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  required
-                  minLength={6}
-                  placeholder="Confirm new password"
-                  className={inputCls}
-                />
-              </div>
-
               <button
                 type="submit"
                 disabled={passPending}
-                className="w-full py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6] transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm"
+                className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 disabled:opacity-60 transition-colors shadow-sm uppercase tracking-wider"
               >
-                {passPending ? "Updating Database…" : "Update Master Password"}
+                {passPending ? <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> : <KeyRound size={15} />}
+                Update Master Security Key
               </button>
             </form>
           </div>
         )}
+
       </div>
     </div>
   );

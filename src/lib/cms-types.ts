@@ -105,6 +105,10 @@ export interface CMSTrustFeature {
 }
 
 export interface CMSSiteConfig {
+  siteMode?: "ecommerce" | "catalogue"; // "ecommerce" (default) or "catalogue" (B2B Showcase & Request Quote)
+  hidePricesInCatalogue?: boolean;     // if true, hides price numbers in catalogue mode
+  catalogueInquiryText?: string;       // custom CTA button label, e.g. "Request Official Quotation"
+  catalogueAction?: "chat" | "whatsapp" | "contact"; // default action when requesting quote
   brand: {
     name: string;
     tagline: string;

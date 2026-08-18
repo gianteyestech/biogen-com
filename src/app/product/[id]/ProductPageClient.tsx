@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Star, ShoppingBag, ChevronRight, Minus, Plus, CheckCircle2, Package, Truck, ShieldCheck, FileText, Send } from "lucide-react";
+import { 
+  Star, ShoppingBag, ChevronRight, Minus, Plus, CheckCircle2, 
+  Package, Truck, ShieldCheck, FileText, Send, MessageSquare, BookOpen 
+} from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { BRAND } from "@/config/brand";
 import Header from "@/components/Header";
@@ -9,7 +12,7 @@ import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import ProductCard from "@/components/ProductCard";
 import { getSavePercent } from "@/lib/cms-types";
-import type { CMSProduct } from "@/lib/cms-types";
+import type { CMSProduct, CMSSiteConfig } from "@/lib/cms-types";
 
 function WhatsAppIcon({ size = 16 }: { size?: number }) {
   return (
@@ -22,9 +25,10 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
 interface ProductPageClientProps {
   product: CMSProduct | null;
   related: CMSProduct[];
+  siteConfig?: CMSSiteConfig;
 }
 
-export default function ProductPageClient({ product, related }: ProductPageClientProps) {
+export default function ProductPageClient({ product, related, siteConfig }: ProductPageClientProps) {
   const { addToCart, setIsCartOpen } = useCart();
   const [selectedWeight, setSelectedWeight] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
@@ -32,10 +36,20 @@ export default function ProductPageClient({ product, related }: ProductPageClien
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [addedNotice, setAddedNotice] = useState(false);
 
+  const isCatalogue = siteConfig?.siteMode === "catalogue";
+  const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
+  const quoteCtaText = siteConfig?.catalogueInquiryText || "Request Official Quotation & CoA";
+
   if (!product) {
     return (
       <div className="min-h-screen bg-[#F8FAFC]">
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+        <Header 
+          searchTerm={searchTerm} 
+          setSearchTerm={setSearchTerm} 
+          selectedCategory={selectedCategory} 
+          setSelectedCategory={setSelectedCategory} 
+          siteConfig={siteConfig}
+        />
         <CartSlider />
         <div className="global-container py-24 text-center">
           <p className="text-5xl mb-4">🔍</p>
@@ -58,21 +72,37 @@ export default function ProductPageClient({ product, related }: ProductPageClien
   const handleWhatsAppInquiry = () => {
     const total = currentPrice * quantity;
     const msg = [
-      `🏥 *Medical Requisition Inquiry — Biogen Pharma*`,
+      `🏥 *Institutional Quotation Request — Biogen Pharma*`,
       ``,
       `• *Product:* ${product.name}`,
-      `• *Specification/Pack:* ${activeWeight}`,
-      `• *Quantity:* ${quantity} Units`,
-      `• *Estimated Total:* $${total.toLocaleString()}`,
+      `• *Packaging / Specification:* ${activeWeight}`,
+      `• *Requisition Quantity:* ${quantity} Units`,
+      !hidePrices ? `• *Unit Estimated Price:* $${currentPrice.toLocaleString()}` : ``,
+      !hidePrices ? `• *Estimated Consignment:* $${total.toLocaleString()}` : ``,
       ``,
-      `Please provide institutional pricing / quotation & delivery timeline for our facility.`,
-    ].join("\n");
+      `Please provide formal institutional quotation invoice, Certificate of Analysis (CoA), and cold-chain transit schedule for our healthcare facility.`,
+    ].filter(Boolean).join("\n");
     window.open(`${BRAND.contact.whatsappBase}?text=${encodeURIComponent(msg)}`, "_blank");
+  };
+
+  const handleLiveChatInquiry = () => {
+    const chatBtn = document.querySelector('button[aria-label="Live Customer Support"]') as HTMLButtonElement | null;
+    if (chatBtn) {
+      chatBtn.click();
+    } else {
+      handleWhatsAppInquiry();
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] font-sans antialiased">
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <Header 
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} 
+        selectedCategory={selectedCategory} 
+        setSelectedCategory={setSelectedCategory} 
+        siteConfig={siteConfig}
+      />
       <CartSlider />
 
       <div className="global-container py-6">
@@ -83,6 +113,27 @@ export default function ProductPageClient({ product, related }: ProductPageClien
           <span className="text-[#0072CE] font-semibold line-clamp-1">{product.name}</span>
         </nav>
 
+        {/* Catalogue Mode Banner */}
+        {isCatalogue && (
+          <div className="mb-6 p-4 rounded-xl bg-blue-950/60 border border-blue-500/30 text-white flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-[#0072CE] text-white">
+                <BookOpen size={18} />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-white">B2B Institutional Medical Catalogue Mode</p>
+                <p className="text-[11px] text-slate-300">Submit requests for formal quotations, tenders, Batch Certificates of Analysis (CoA), and hospital volume pricing.</p>
+              </div>
+            </div>
+            <button
+              onClick={handleWhatsAppInquiry}
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0072CE] hover:bg-[#005EA6] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-xs"
+            >
+              <MessageSquare size={13} /> Quick Tender Quote
+            </button>
+          </div>
+        )}
+
         {/* Product Card Container */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -90,9 +141,14 @@ export default function ProductPageClient({ product, related }: ProductPageClien
             {/* Product Image Area */}
             <div>
               <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 aspect-square max-h-[480px] p-6 flex items-center justify-center">
-                {savePercent && (
+                {!isCatalogue && savePercent && (
                   <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-md text-white text-xs font-bold bg-[#70BA28] shadow-sm">
                     Save {savePercent}%
+                  </div>
+                )}
+                {isCatalogue && (
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-md text-[#00A3E0] bg-blue-950/90 border border-blue-500/30 text-[10px] font-extrabold uppercase shadow-sm">
+                    B2B CATALOGUE ITEM
                   </div>
                 )}
                 <div className="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-xs border border-white/20 text-white px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-bold tracking-wider">
@@ -129,8 +185,22 @@ export default function ProductPageClient({ product, related }: ProductPageClien
 
               {/* Pricing */}
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-black text-[#0072CE]">${(currentPrice ?? 0).toLocaleString()}</span>
-                {originalPrice && <span className="text-base text-slate-400 line-through font-medium">${originalPrice.toLocaleString()}</span>}
+                {isCatalogue && hidePrices ? (
+                  <div>
+                    <span className="text-2xl font-black text-[#0072CE]">Inquire for Institutional Pricing</span>
+                    <p className="text-xs text-slate-400 mt-0.5">Custom bulk pricing &amp; tenders tailored to healthcare facility requirements</p>
+                  </div>
+                ) : (
+                  <>
+                    <span className="text-3xl font-black text-[#0072CE]">${(currentPrice ?? 0).toLocaleString()}</span>
+                    {originalPrice && !isCatalogue && (
+                      <span className="text-base text-slate-400 line-through font-medium">${originalPrice.toLocaleString()}</span>
+                    )}
+                    {isCatalogue && (
+                      <span className="text-xs font-semibold text-slate-400">/ estimated unit price</span>
+                    )}
+                  </>
+                )}
               </div>
 
               {/* Description */}
@@ -160,13 +230,15 @@ export default function ProductPageClient({ product, related }: ProductPageClien
                             : "border-slate-200 hover:border-slate-300 bg-white text-slate-700"
                         }`}
                       >
-                        {sp && (
+                        {!isCatalogue && sp && (
                           <span className="absolute -top-2 -right-1.5 text-[8px] font-extrabold px-1.5 py-0.5 rounded text-white bg-[#70BA28]">
                             -{sp}%
                           </span>
                         )}
                         <span>{w}</span>
-                        <span className="text-[11px] font-bold mt-0.5">${priceForWeight.toLocaleString()}</span>
+                        {!hidePrices && (
+                          <span className="text-[11px] font-bold mt-0.5">${priceForWeight.toLocaleString()}</span>
+                        )}
                       </button>
                     );
                   })}
@@ -201,26 +273,43 @@ export default function ProductPageClient({ product, related }: ProductPageClien
                 </div>
               )}
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <button
-                  onClick={() => {
-                    addToCart(product, activeWeight, quantity);
-                    setIsCartOpen(true);
-                    setAddedNotice(true);
-                    setTimeout(() => setAddedNotice(false), 3000);
-                  }}
-                  className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-slate-900 text-white hover:bg-black transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
-                >
-                  <ShoppingBag size={16} /> Add to Requisition
-                </button>
-                <button
-                  onClick={handleWhatsAppInquiry}
-                  className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
-                >
-                  <WhatsAppIcon size={16} /> WhatsApp Bulk Quote
-                </button>
-              </div>
+              {/* Action Buttons: E-Commerce vs Catalogue Mode */}
+              {isCatalogue ? (
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <button
+                    onClick={handleWhatsAppInquiry}
+                    className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-[#0072CE] hover:bg-[#005EA6] transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
+                  >
+                    <FileText size={16} /> {quoteCtaText}
+                  </button>
+                  <button
+                    onClick={handleLiveChatInquiry}
+                    className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all active:scale-98 flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare size={16} className="text-[#0072CE]" /> Biogen Live Chat Consultation
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <button
+                    onClick={() => {
+                      addToCart(product, activeWeight, quantity);
+                      setIsCartOpen(true);
+                      setAddedNotice(true);
+                      setTimeout(() => setAddedNotice(false), 3000);
+                    }}
+                    className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-slate-900 text-white hover:bg-black transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
+                  >
+                    <ShoppingBag size={16} /> Add to Requisition
+                  </button>
+                  <button
+                    onClick={handleWhatsAppInquiry}
+                    className="flex-1 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 transition-all active:scale-98 shadow-md flex items-center justify-center gap-2"
+                  >
+                    <WhatsAppIcon size={16} /> WhatsApp Bulk Quote
+                  </button>
+                </div>
+              )}
 
               {/* Institutional Assurance */}
               <div className="bg-slate-50 rounded-xl p-4 grid grid-cols-3 gap-3 border border-slate-200 text-center">
@@ -252,22 +341,30 @@ export default function ProductPageClient({ product, related }: ProductPageClien
               </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-              {related.map((p) => <ProductCard key={p.id} product={p} />)}
+              {related.map((p) => (
+                <ProductCard 
+                  key={p.id} 
+                  product={p} 
+                  siteMode={siteConfig?.siteMode || "ecommerce"} 
+                  hidePrices={siteConfig?.hidePricesInCatalogue}
+                  catalogueInquiryText={siteConfig?.catalogueInquiryText}
+                />
+              ))}
             </div>
           </div>
         )}
       </div>
 
-      <Footer siteConfig={{
+      <Footer siteConfig={siteConfig || ({
         brand: {
           name: BRAND.name,
           tagline: BRAND.tagline,
-          logoUrl: "/biogen-logo.png",
+          logoUrl: "/logo.png",
           address: BRAND.contact.addressHead,
           phone: BRAND.contact.formattedNumber,
           email: BRAND.contact.email,
         }
-      } as any} />
+      } as any)} />
     </div>
   );
 }

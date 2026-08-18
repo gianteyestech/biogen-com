@@ -1,4 +1,8 @@
 {
+  "siteMode": "ecommerce",
+  "hidePricesInCatalogue": false,
+  "catalogueInquiryText": "Request Official Quotation & CoA",
+  "catalogueAction": "chat",
   "brand": {
     "name": "Biogen Pharma",
     "tagline": "Enhancing Lives Through Quality Healthcare",

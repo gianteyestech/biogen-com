@@ -3,7 +3,7 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   ArrowRight, Phone, Mail, MapPin, Clock,
-  Truck, RotateCcw, Headphones, Tag, Send, Star, Shield, Package, Menu, ChevronRight, CheckCircle2
+  Truck, RotateCcw, Headphones, Tag, Send, Star, Shield, Package, Menu, ChevronRight, CheckCircle2, BookOpen, MessageSquare
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -46,6 +46,10 @@ export default function HomeClient({
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [heroSlide, setHeroSlide] = useState(0);
+
+  const isCatalogue = siteConfig?.siteMode === "catalogue";
+  const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
+  const catalogueInquiryText = siteConfig?.catalogueInquiryText;
 
   const filteredProducts = useMemo(() => {
     let list = filterProductsByCategory(allProducts, selectedCategory);
@@ -92,8 +96,14 @@ export default function HomeClient({
             <span className="text-[10px] text-slate-400">({product.reviewsCount})</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-extrabold text-[#0072CE]">${price.toLocaleString()}</span>
-            {oldPrice && <span className="text-xs text-slate-400 line-through">${oldPrice.toLocaleString()}</span>}
+            {isCatalogue && hidePrices ? (
+              <span className="text-xs font-bold text-[#0072CE]">Request Quote</span>
+            ) : (
+              <>
+                <span className="text-sm font-extrabold text-[#0072CE]">${price.toLocaleString()}</span>
+                {oldPrice && !isCatalogue && <span className="text-xs text-slate-400 line-through">${oldPrice.toLocaleString()}</span>}
+              </>
+            )}
           </div>
         </div>
       </Link>
@@ -107,11 +117,35 @@ export default function HomeClient({
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        siteConfig={siteConfig}
       />
       <CartSlider />
 
       {/* ─── MAIN CONTAINER ────────────────────────────────────────── */}
       <div className="global-container py-6">
+
+        {/* Catalogue Mode Alert Notice (Visible when Catalogue Mode is enabled) */}
+        {isCatalogue && (
+          <div className="mb-6 p-4 rounded-2xl bg-blue-950/80 border border-blue-500/30 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm animate-in fade-in duration-300">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-xl bg-[#0072CE] text-white flex-shrink-0">
+                <BookOpen size={20} />
+              </div>
+              <div>
+                <p className="text-xs font-black text-white uppercase tracking-wide">B2B Institutional Medical Catalogue</p>
+                <p className="text-[11px] text-slate-300">Direct hospital procurement, clinic tender quotations, Batch COA documentation, and volume supply inquiries.</p>
+              </div>
+            </div>
+            <Link
+              href="/business-page/contact-us"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#0072CE] hover:bg-[#005EA6] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-xs flex-shrink-0"
+            >
+              <MessageSquare size={13} />
+              <span>Submit Requisition</span>
+            </Link>
+          </div>
+        )}
+
         {isFiltered ? (
           /* ── FILTERED CATALOG VIEW ──────────────────────────────── */
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
@@ -142,7 +176,15 @@ export default function HomeClient({
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                {filteredProducts.map((p) => <ProductCard key={p.id} product={p} />)}
+                {filteredProducts.map((p) => (
+                  <ProductCard 
+                    key={p.id} 
+                    product={p} 
+                    siteMode={siteConfig?.siteMode || "ecommerce"} 
+                    hidePrices={hidePrices} 
+                    catalogueInquiryText={catalogueInquiryText}
+                  />
+                ))}
               </div>
             )}
           </div>
@@ -205,7 +247,7 @@ export default function HomeClient({
                         onClick={() => setSelectedCategory("all")}
                         className="w-fit px-6 py-2.5 rounded-xl bg-white text-slate-900 hover:bg-[#0072CE] hover:text-white font-bold text-xs sm:text-sm transition-all shadow-lg flex items-center gap-2"
                       >
-                        {slide.ctaText || "Explore Catalog"}
+                        {isCatalogue ? "Browse B2B Catalogue" : (slide.ctaText || "Explore Catalog")}
                         <ArrowRight size={16} />
                       </button>
                     </div>
@@ -266,14 +308,22 @@ export default function HomeClient({
                           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                             {section.title || "Featured Medical Supplies"}
                           </h2>
-                          <p className="text-xs text-slate-500">Certified pharmaceuticals & institutional healthcare items</p>
+                          <p className="text-xs text-slate-500">Certified pharmaceuticals &amp; institutional healthcare items</p>
                         </div>
                         <button onClick={() => setSelectedCategory("all")} className="text-xs font-bold text-[#0072CE] flex items-center gap-1 hover:underline uppercase tracking-wider">
                           VIEW ALL <ArrowRight size={14}/>
                         </button>
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                        {featuredProducts.map(p => <ProductCard key={p.id} product={p} />)}
+                        {featuredProducts.map(p => (
+                          <ProductCard 
+                            key={p.id} 
+                            product={p} 
+                            siteMode={siteConfig?.siteMode || "ecommerce"} 
+                            hidePrices={hidePrices} 
+                            catalogueInquiryText={catalogueInquiryText}
+                          />
+                        ))}
                       </div>
                     </div>
                   )
@@ -331,7 +381,15 @@ export default function HomeClient({
                         </button>
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                        {trendingProducts.map(p => <ProductCard key={p.id} product={p} />)}
+                        {trendingProducts.map(p => (
+                          <ProductCard 
+                            key={p.id} 
+                            product={p} 
+                            siteMode={siteConfig?.siteMode || "ecommerce"} 
+                            hidePrices={hidePrices} 
+                            catalogueInquiryText={catalogueInquiryText}
+                          />
+                        ))}
                       </div>
                     </div>
                   )
@@ -357,22 +415,36 @@ export default function HomeClient({
                           </div>
                           <h3 className="text-base font-bold text-slate-800 group-hover:text-[#0072CE] transition-colors line-clamp-2">{dealProduct.name}</h3>
                           <div className="flex flex-wrap items-baseline gap-2 mt-2">
-                            <span className="text-2xl font-black text-[#0072CE]">
-                              ${(dealProduct.prices?.[Object.keys(dealProduct.prices || {})[0]] ?? 0).toLocaleString()}
-                            </span>
-                            {dealProduct.originalPrices && Object.keys(dealProduct.prices || {})[0] && (
-                              <span className="text-sm text-slate-400 line-through font-medium">
-                                ${(dealProduct.originalPrices[Object.keys(dealProduct.prices)[0]] ?? 0).toLocaleString()}
-                              </span>
+                            {isCatalogue && hidePrices ? (
+                              <span className="text-lg font-bold text-[#0072CE]">Inquire for Pricing</span>
+                            ) : (
+                              <>
+                                <span className="text-2xl font-black text-[#0072CE]">
+                                  ${(dealProduct.prices?.[Object.keys(dealProduct.prices || {})[0]] ?? 0).toLocaleString()}
+                                </span>
+                                {dealProduct.originalPrices && Object.keys(dealProduct.prices || {})[0] && !isCatalogue && (
+                                  <span className="text-sm text-slate-400 line-through font-medium">
+                                    ${(dealProduct.originalPrices[Object.keys(dealProduct.prices)[0]] ?? 0).toLocaleString()}
+                                  </span>
+                                )}
+                              </>
                             )}
                           </div>
                           <div className="mt-4 w-full py-2.5 bg-[#0072CE] text-white text-center rounded-lg font-bold text-xs hover:bg-[#005EA6] transition-colors">
-                            View Clinical Specifications
+                            View Clinical Specifications &amp; Quote
                           </div>
                         </Link>
                       </div>
                       <div className="w-full lg:w-[60%] grid grid-cols-2 gap-4">
-                        {dealGridProducts.map(p => <ProductCard key={p.id} product={p} />)}
+                        {dealGridProducts.map(p => (
+                          <ProductCard 
+                            key={p.id} 
+                            product={p} 
+                            siteMode={siteConfig?.siteMode || "ecommerce"} 
+                            hidePrices={hidePrices} 
+                            catalogueInquiryText={catalogueInquiryText}
+                          />
+                        ))}
                       </div>
                     </div>
                   )
@@ -440,7 +512,15 @@ export default function HomeClient({
                     </button>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {section.products.slice(0, 5).map(p => <ProductCard key={p.id} product={p} />)}
+                    {section.products.slice(0, 5).map(p => (
+                      <ProductCard 
+                        key={p.id} 
+                        product={p} 
+                        siteMode={siteConfig?.siteMode || "ecommerce"} 
+                        hidePrices={hidePrices} 
+                        catalogueInquiryText={catalogueInquiryText}
+                      />
+                    ))}
                   </div>
                 </div>
               );
