@@ -3,7 +3,7 @@ import { useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
 import type { CMSHeroSlide } from "@/lib/cms-types";
 import { actionUpdateHeroSlides, actionGetHeroSlides } from "../actions";
-import { Plus, Trash2, Save, Check } from "lucide-react";
+import { Plus, Trash2, Save, Check, ChevronUp, ChevronDown } from "lucide-react";
 
 const defaultSlide = (): CMSHeroSlide => ({
   id: `slide-${Date.now()}`,
@@ -30,6 +30,15 @@ export default function AdminHeroPage() {
 
   const update = (id: string, field: keyof CMSHeroSlide, value: string) => {
     setSlides(slides.map(s => s.id === id ? { ...s, [field]: value } : s));
+  };
+
+  const moveSlide = (index: number, direction: -1 | 1) => {
+    const target = index + direction;
+    if (target < 0 || target >= slides.length) return;
+    const updated = [...slides];
+    const [moved] = updated.splice(index, 1);
+    updated.splice(target, 0, moved);
+    setSlides(updated);
   };
 
   const remove = (id: string) => {
@@ -86,14 +95,38 @@ export default function AdminHeroPage() {
         {slides.map((s, i) => (
           <div key={s.id} className="bg-[#0E1526] border border-slate-800 rounded-2xl p-5 space-y-4 shadow-sm">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <span className="text-xs font-bold text-white uppercase tracking-wider">Slide #{i + 1} — {s.id}</span>
-              <button
-                onClick={() => remove(s.id)}
-                className="text-red-400 hover:text-red-300 p-1.5 hover:bg-red-950/30 rounded-lg transition-colors"
-                title="Delete slide"
-              >
-                <Trash2 size={15} />
-              </button>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-white uppercase tracking-wider">Slide #{i + 1}</span>
+                <span className="text-[10px] text-slate-500 font-mono">({s.id})</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  disabled={i === 0}
+                  onClick={() => moveSlide(i, -1)}
+                  className="p-1 rounded text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
+                  title="Move Up"
+                >
+                  <ChevronUp size={16} />
+                </button>
+                <button
+                  type="button"
+                  disabled={i === slides.length - 1}
+                  onClick={() => moveSlide(i, 1)}
+                  className="p-1 rounded text-slate-400 hover:text-white disabled:opacity-20 transition-colors"
+                  title="Move Down"
+                >
+                  <ChevronDown size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => remove(s.id)}
+                  className="text-red-400 hover:text-red-300 p-1.5 hover:bg-red-950/30 rounded-lg transition-colors ml-1"
+                  title="Delete slide"
+                >
+                  <Trash2 size={15} />
+                </button>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

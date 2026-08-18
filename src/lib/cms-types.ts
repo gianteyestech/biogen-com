@@ -54,6 +54,8 @@ export interface CMSCircleCat {
   id: string;
   name: string;
   img: string;
+  image?: string;
+  icon?: string;
 }
 
 export interface CMSCategoriesFile {
