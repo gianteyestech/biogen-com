@@ -47,8 +47,8 @@ export default function NotificationSystem() {
             });
           }
         }
-      } catch (e) {
-        console.error("Failed to check order notifications:", e);
+      } catch {
+        // Ignore network glitches silently during hot reloads
       }
     }
 
