@@ -37,6 +37,7 @@ export default function ProductPageClient({ product, related, siteConfig, catego
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [addedNotice, setAddedNotice] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const isCatalogue = siteConfig?.siteMode === "catalogue";
   const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
@@ -70,6 +71,13 @@ export default function ProductPageClient({ product, related, siteConfig, catego
   const currentPrice = product.prices[activeWeight] || 0;
   const originalPrice = product.originalPrices?.[activeWeight];
   const savePercent = getSavePercent(product, activeWeight);
+
+  // Gallery array
+  const galleryImages: string[] = (product as any).images && (product as any).images.length > 0 
+    ? (product as any).images 
+    : [product.imageUrl || "/images/products/pharma_tablets.webp"];
+  
+  const currentImage = galleryImages[activeImageIndex] || product.imageUrl || "/images/products/pharma_tablets.webp";
 
   const handleWhatsAppInquiry = () => {
     const total = currentPrice * quantity;
@@ -145,9 +153,9 @@ export default function ProductPageClient({ product, related, siteConfig, catego
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             
-            {/* Product Image Area */}
-            <div>
-              <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 aspect-square max-h-[480px] p-6 flex items-center justify-center">
+            {/* Product Multi-Image Gallery Area */}
+            <div className="flex flex-col gap-3">
+              <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 aspect-square max-h-[480px] p-6 flex items-center justify-center group shadow-xs">
                 {!isCatalogue && savePercent && (
                   <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-md text-white text-xs font-bold bg-[#70BA28] shadow-sm">
                     Save {savePercent}%
@@ -155,15 +163,38 @@ export default function ProductPageClient({ product, related, siteConfig, catego
                 )}
                 {isCatalogue && (
                   <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-md text-[#00A3E0] bg-blue-950/90 border border-blue-500/30 text-[10px] font-extrabold uppercase shadow-sm">
-                    B2B CATALOGUE ITEM
+                    {(product as any).hasAuthenticPhoto ? "AUTHENTIC B2B SPECIMEN" : "MCA REGULATORY STANDARD"}
                   </div>
                 )}
-                <div className="absolute top-4 right-4 z-10 bg-slate-900/80 backdrop-blur-xs border border-white/20 text-white px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-bold tracking-wider">
+                <div className="absolute top-4 right-4 z-10 bg-slate-900/85 backdrop-blur-xs border border-white/20 text-white px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-bold tracking-wider">
                   <ShieldCheck size={13} className="text-[#00A3E0]" />
-                  <span>GMP CERTIFIED</span>
+                  <span>GMP VERIFIED</span>
                 </div>
-                <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+                <img 
+                  src={currentImage} 
+                  alt={product.name} 
+                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" 
+                />
               </div>
+
+              {/* Gallery Thumbnails (if multiple packaging/angles exist) */}
+              {galleryImages.length > 1 && (
+                <div className="flex items-center gap-2.5 overflow-x-auto pb-1">
+                  {galleryImages.map((imgUrl, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`w-16 h-16 rounded-xl border-2 p-1 bg-white overflow-hidden flex-shrink-0 transition-all ${
+                        activeImageIndex === idx
+                          ? "border-[#0072CE] ring-2 ring-[#0072CE]/30 shadow-xs"
+                          : "border-slate-200 hover:border-slate-400 opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-contain" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Details & Actions */}

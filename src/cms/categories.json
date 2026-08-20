@@ -1,81 +1,261 @@
 {
   "categories": [
-    { "id": "all", "name": "All Supplies", "icon": "📦" },
-    { "id": "prescription-medicines", "name": "Prescription Medicines", "icon": "💊" },
-    { "id": "otc-medicines", "name": "OTC Medicines", "icon": "🩹" },
-    { "id": "vitamins-supplements", "name": "Vitamins, Minerals & Supplements", "icon": "🌿" },
-    { "id": "mother-baby", "name": "Mother & Baby", "icon": "🍼" },
-    { "id": "personal-care-hygiene", "name": "Personal Care & Hygiene", "icon": "🧼" },
-    { "id": "skin-care-dermatology", "name": "Skin Care & Dermatology", "icon": "✨" },
-    { "id": "hair-care", "name": "Hair Care", "icon": "💇" },
-    { "id": "oral-dental-care", "name": "Oral & Dental Care", "icon": "🪥" },
-    { "id": "mens-health-grooming", "name": "Men's Health & Grooming", "icon": "🧔" },
-    { "id": "womens-health", "name": "Women's Health", "icon": "🌸" },
-    { "id": "sexual-wellness", "name": "Sexual Wellness & Family Planning", "icon": "❤️" },
-    { "id": "medical-devices-equipment", "name": "Medical Devices & Equipment", "icon": "🩺" },
-    { "id": "first-aid-wound-care", "name": "First Aid & Wound Care", "icon": "🩹" },
-    { "id": "orthopedic-rehabilitation", "name": "Orthopedic & Rehabilitation", "icon": "🦿" },
-    { "id": "diabetes-care", "name": "Diabetes Care", "icon": "🩸" },
-    { "id": "eye-care", "name": "Eye Care", "icon": "👁️" },
-    { "id": "ear-nose-care", "name": "Ear & Nose Care", "icon": "👂" },
-    { "id": "respiratory-care", "name": "Respiratory Care", "icon": "🫁" },
-    { "id": "home-healthcare", "name": "Home Healthcare", "icon": "🏡" },
-    { "id": "surgical-clinical-supplies", "name": "Surgical & Clinical Supplies", "icon": "🔬" },
-    { "id": "nutrition-healthy-living", "name": "Nutrition & Healthy Living", "icon": "🥗" },
-    { "id": "beauty-cosmetics", "name": "Beauty & Cosmetics", "icon": "💄" },
-    { "id": "fitness-sports-care", "name": "Fitness & Sports Care", "icon": "🏋️" },
-    { "id": "travel-protection", "name": "Travel & Protection", "icon": "✈️" },
-    { "id": "senior-elderly-care", "name": "Senior & Elderly Care", "icon": "🦯" },
-    { "id": "health-monitoring-tests", "name": "Health Monitoring & Tests", "icon": "📊" }
-  ],
-  "circleCats": [
+    {
+      "id": "all",
+      "name": "All Supplies",
+      "icon": "📦"
+    },
     {
       "id": "prescription-medicines",
-      "name": "Prescriptions",
-      "icon": "💊",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/medicines_cat.webp"
+      "name": "Prescription Medicines",
+      "icon": "💊"
     },
     {
-      "id": "surgical-clinical-supplies",
-      "name": "Surgical Supplies",
-      "icon": "🔬",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/surgical_cat.webp"
-    },
-    {
-      "id": "medical-devices-equipment",
-      "name": "Medical Devices",
-      "icon": "🩺",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/diagnostics_cat.webp"
+      "id": "otc-medicines",
+      "name": "OTC Medicines",
+      "icon": "🩹"
     },
     {
       "id": "vitamins-supplements",
-      "name": "Supplements",
-      "icon": "🌿",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/nutrition_cat.webp"
-    },
-    {
-      "id": "diabetes-care",
-      "name": "Diabetes Care",
-      "icon": "🩸",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/furniture_cat.webp"
-    },
-    {
-      "id": "eye-care",
-      "name": "Eye Care",
-      "icon": "👁️",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/glasses_cat.webp"
+      "name": "Vitamins, Minerals & Supplements",
+      "icon": "🌿"
     },
     {
       "id": "mother-baby",
       "name": "Mother & Baby",
-      "icon": "🍼",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/medicines_cat.webp"
+      "icon": "🍼"
+    },
+    {
+      "id": "personal-care-hygiene",
+      "name": "Personal Care & Hygiene",
+      "icon": "🧼"
+    },
+    {
+      "id": "skin-care-dermatology",
+      "name": "Skin Care & Dermatology",
+      "icon": "✨"
+    },
+    {
+      "id": "hair-care",
+      "name": "Hair Care",
+      "icon": "💇"
+    },
+    {
+      "id": "oral-dental-care",
+      "name": "Oral & Dental Care",
+      "icon": "🪥"
+    },
+    {
+      "id": "mens-health-grooming",
+      "name": "Men's Health & Grooming",
+      "icon": "🧔"
+    },
+    {
+      "id": "womens-health",
+      "name": "Women's Health",
+      "icon": "🌸"
+    },
+    {
+      "id": "sexual-wellness",
+      "name": "Sexual Wellness & Family Planning",
+      "icon": "❤️"
+    },
+    {
+      "id": "medical-devices-equipment",
+      "name": "Medical Devices & Equipment",
+      "icon": "🩺"
     },
     {
       "id": "first-aid-wound-care",
-      "name": "First Aid",
+      "name": "First Aid & Wound Care",
+      "icon": "🩹"
+    },
+    {
+      "id": "orthopedic-rehabilitation",
+      "name": "Orthopedic & Rehabilitation",
+      "icon": "🦿"
+    },
+    {
+      "id": "diabetes-care",
+      "name": "Diabetes Care",
+      "icon": "🩸"
+    },
+    {
+      "id": "eye-care",
+      "name": "Eye Care",
+      "icon": "👁️"
+    },
+    {
+      "id": "ear-nose-care",
+      "name": "Ear & Nose Care",
+      "icon": "👂"
+    },
+    {
+      "id": "respiratory-care",
+      "name": "Respiratory Care",
+      "icon": "🫁"
+    },
+    {
+      "id": "home-healthcare",
+      "name": "Home Healthcare",
+      "icon": "🏡"
+    },
+    {
+      "id": "surgical-clinical-supplies",
+      "name": "Surgical & Clinical Supplies",
+      "icon": "🔬"
+    },
+    {
+      "id": "nutrition-healthy-living",
+      "name": "Nutrition & Healthy Living",
+      "icon": "🥗"
+    },
+    {
+      "id": "beauty-cosmetics",
+      "name": "Beauty & Cosmetics",
+      "icon": "💄"
+    },
+    {
+      "id": "fitness-sports-care",
+      "name": "Fitness & Sports Care",
+      "icon": "🏋️"
+    },
+    {
+      "id": "travel-protection",
+      "name": "Travel & Protection",
+      "icon": "✈️"
+    },
+    {
+      "id": "senior-elderly-care",
+      "name": "Senior & Elderly Care",
+      "icon": "🦯"
+    },
+    {
+      "id": "health-monitoring-tests",
+      "name": "Health Monitoring & Tests",
+      "icon": "📊"
+    }
+  ],
+  "circleCats": [
+    {
+      "id": "prescription-medicines",
+      "name": "Prescription Medicines",
+      "shortName": "Prescriptions",
+      "icon": "💊",
+      "tag": "50+ MCA Formulations",
+      "img": "/images/products/pharma_tablets.webp",
+      "image": "/images/products/pharma_tablets.webp",
+      "color": "#0072CE"
+    },
+    {
+      "id": "surgical-clinical-supplies",
+      "name": "Surgical & Clinical Sets",
+      "shortName": "Surgical Sets",
+      "icon": "🔬",
+      "tag": "German Grade BR-TC",
+      "img": "/images/products/care_medical_br_tc_set.webp",
+      "image": "/images/products/care_medical_br_tc_set.webp",
+      "color": "#0284C7"
+    },
+    {
+      "id": "medical-devices-equipment",
+      "name": "Medical Devices & Beds",
+      "shortName": "Medical Equipment",
+      "icon": "🩺",
+      "tag": "Motorized ICU Beds",
+      "img": "/images/products/electric_icu_hospital_bed.webp",
+      "image": "/images/products/electric_icu_hospital_bed.webp",
+      "color": "#10B981"
+    },
+    {
+      "id": "eye-care",
+      "name": "Ophthalmic Optics & Drops",
+      "shortName": "Eye Care",
+      "icon": "👁️",
+      "tag": "Sterile Drops & Loupes",
+      "img": "/images/products/ophthalmic_surgical_loupes.webp",
+      "image": "/images/products/ophthalmic_surgical_loupes.webp",
+      "color": "#3B82F6"
+    },
+    {
+      "id": "orthopedic-rehabilitation",
+      "name": "Orthopedic & Trauma Plating",
+      "shortName": "Orthopedics",
+      "icon": "🦿",
+      "tag": "Titanium Compression",
+      "img": "/images/products/ortho_implant_trauma_system.webp",
+      "image": "/images/products/ortho_implant_trauma_system.webp",
+      "color": "#6366F1"
+    },
+    {
+      "id": "oral-dental-care",
+      "name": "Dental Surgery & Implants",
+      "shortName": "Dental Care",
+      "icon": "🪥",
+      "tag": "Extraction & Implant Kits",
+      "img": "/images/products/care_medical_dental_kit.webp",
+      "image": "/images/products/care_medical_dental_kit.webp",
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "skin-care-dermatology",
+      "name": "Dermatology & Topicals",
+      "shortName": "Dermatology",
+      "icon": "✨",
+      "tag": "Medicated Creams",
+      "img": "/images/products/med_img_10.webp",
+      "image": "/images/products/med_img_10.webp",
+      "color": "#EC4899"
+    },
+    {
+      "id": "vitamins-supplements",
+      "name": "Vitamins & Supplements",
+      "shortName": "Supplements",
+      "icon": "🌿",
+      "tag": "Iron & Zinc Syrups",
+      "img": "/images/products/med_img_18.webp",
+      "image": "/images/products/med_img_18.webp",
+      "color": "#10B981"
+    },
+    {
+      "id": "first-aid-wound-care",
+      "name": "First Aid & Antiseptics",
+      "shortName": "First Aid",
       "icon": "🩹",
-      "image": "https://assets.idealdryfruit.com/uploads/products/2026/08/surgical_cat.webp"
+      "tag": "Povidone & Spirit",
+      "img": "/images/products/med_img_4.webp",
+      "image": "/images/products/med_img_4.webp",
+      "color": "#EF4444"
+    },
+    {
+      "id": "health-monitoring-tests",
+      "name": "Rapid Diagnostic Tests",
+      "shortName": "Diagnostics",
+      "icon": "📊",
+      "tag": "Malaria & Pregnancy Kits",
+      "img": "/images/products/pharma_rapid_test.webp",
+      "image": "/images/products/pharma_rapid_test.webp",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "mother-baby",
+      "name": "Mother, Child & Hygiene",
+      "shortName": "Mother & Baby",
+      "icon": "🍼",
+      "tag": "Pediatric Syrups & Care",
+      "img": "/images/products/med_img_6.webp",
+      "image": "/images/products/med_img_6.webp",
+      "color": "#06B6D4"
+    },
+    {
+      "id": "respiratory-care",
+      "name": "Respiratory & Inhalers",
+      "shortName": "Respiratory Care",
+      "icon": "🫁",
+      "tag": "Salbutamol & Nebulizers",
+      "img": "/images/products/pharma_tablets.webp",
+      "image": "/images/products/pharma_tablets.webp",
+      "color": "#14B8A6"
     }
   ],
   "megaMenu": [
@@ -86,21 +266,81 @@
       "icon": "💊",
       "featured": true,
       "subcategories": [
-        { "id": "prescription-drugs", "name": "Prescription drugs", "slug": "prescription-drugs" },
-        { "id": "antibiotics", "name": "Antibiotics", "slug": "antibiotics" },
-        { "id": "cardiovascular-medicines", "name": "Cardiovascular medicines", "slug": "cardiovascular-medicines" },
-        { "id": "diabetes-medicines", "name": "Diabetes medicines", "slug": "diabetes-medicines" },
-        { "id": "neurology-medicines", "name": "Neurology medicines", "slug": "neurology-medicines" },
-        { "id": "psychiatric-medicines", "name": "Psychiatric medicines", "slug": "psychiatric-medicines" },
-        { "id": "gastrointestinal-medicines", "name": "Gastrointestinal medicines", "slug": "gastrointestinal-medicines" },
-        { "id": "respiratory-medicines", "name": "Respiratory medicines", "slug": "respiratory-medicines" },
-        { "id": "hormonal-medicines", "name": "Hormonal medicines", "slug": "hormonal-medicines" },
-        { "id": "steroids", "name": "Steroids", "slug": "steroids" },
-        { "id": "antivirals", "name": "Antivirals", "slug": "antivirals" },
-        { "id": "antifungals", "name": "Antifungals", "slug": "antifungals" },
-        { "id": "oncology-medicines", "name": "Oncology medicines", "slug": "oncology-medicines" },
-        { "id": "immunosuppressants", "name": "Immunosuppressants", "slug": "immunosuppressants" },
-        { "id": "prescription-injections", "name": "Prescription injections", "slug": "prescription-injections" }
+        {
+          "id": "prescription-drugs",
+          "name": "Prescription drugs",
+          "slug": "prescription-drugs"
+        },
+        {
+          "id": "antibiotics",
+          "name": "Antibiotics",
+          "slug": "antibiotics"
+        },
+        {
+          "id": "cardiovascular-medicines",
+          "name": "Cardiovascular medicines",
+          "slug": "cardiovascular-medicines"
+        },
+        {
+          "id": "diabetes-medicines",
+          "name": "Diabetes medicines",
+          "slug": "diabetes-medicines"
+        },
+        {
+          "id": "neurology-medicines",
+          "name": "Neurology medicines",
+          "slug": "neurology-medicines"
+        },
+        {
+          "id": "psychiatric-medicines",
+          "name": "Psychiatric medicines",
+          "slug": "psychiatric-medicines"
+        },
+        {
+          "id": "gastrointestinal-medicines",
+          "name": "Gastrointestinal medicines",
+          "slug": "gastrointestinal-medicines"
+        },
+        {
+          "id": "respiratory-medicines",
+          "name": "Respiratory medicines",
+          "slug": "respiratory-medicines"
+        },
+        {
+          "id": "hormonal-medicines",
+          "name": "Hormonal medicines",
+          "slug": "hormonal-medicines"
+        },
+        {
+          "id": "steroids",
+          "name": "Steroids",
+          "slug": "steroids"
+        },
+        {
+          "id": "antivirals",
+          "name": "Antivirals",
+          "slug": "antivirals"
+        },
+        {
+          "id": "antifungals",
+          "name": "Antifungals",
+          "slug": "antifungals"
+        },
+        {
+          "id": "oncology-medicines",
+          "name": "Oncology medicines",
+          "slug": "oncology-medicines"
+        },
+        {
+          "id": "immunosuppressants",
+          "name": "Immunosuppressants",
+          "slug": "immunosuppressants"
+        },
+        {
+          "id": "prescription-injections",
+          "name": "Prescription injections",
+          "slug": "prescription-injections"
+        }
       ]
     },
     {
@@ -110,21 +350,81 @@
       "icon": "🩹",
       "featured": true,
       "subcategories": [
-        { "id": "pain-fever", "name": "Pain & fever", "slug": "pain-fever" },
-        { "id": "cold-cough-flu", "name": "Cold, cough & flu", "slug": "cold-cough-flu" },
-        { "id": "allergy-antihistamines", "name": "Allergy & antihistamines", "slug": "allergy-antihistamines" },
-        { "id": "sore-throat", "name": "Sore throat", "slug": "sore-throat" },
-        { "id": "headache-migraine", "name": "Headache & migraine", "slug": "headache-migraine" },
-        { "id": "digestive-health", "name": "Digestive health", "slug": "digestive-health" },
-        { "id": "acidity-heartburn", "name": "Acidity & heartburn", "slug": "acidity-heartburn" },
-        { "id": "diarrhea-constipation", "name": "Diarrhea & constipation", "slug": "diarrhea-constipation" },
-        { "id": "nausea-vomiting", "name": "Nausea & vomiting", "slug": "nausea-vomiting" },
-        { "id": "motion-sickness", "name": "Motion sickness", "slug": "motion-sickness" },
-        { "id": "hemorrhoid-care", "name": "Hemorrhoid care", "slug": "hemorrhoid-care" },
-        { "id": "sleep-aids", "name": "Sleep aids", "slug": "sleep-aids" },
-        { "id": "smoking-cessation", "name": "Smoking cessation", "slug": "smoking-cessation" },
-        { "id": "oral-rehydration", "name": "Oral rehydration", "slug": "oral-rehydration" },
-        { "id": "first-aid-medicines", "name": "First-aid medicines", "slug": "first-aid-medicines" }
+        {
+          "id": "pain-fever",
+          "name": "Pain & fever",
+          "slug": "pain-fever"
+        },
+        {
+          "id": "cold-cough-flu",
+          "name": "Cold, cough & flu",
+          "slug": "cold-cough-flu"
+        },
+        {
+          "id": "allergy-antihistamines",
+          "name": "Allergy & antihistamines",
+          "slug": "allergy-antihistamines"
+        },
+        {
+          "id": "sore-throat",
+          "name": "Sore throat",
+          "slug": "sore-throat"
+        },
+        {
+          "id": "headache-migraine",
+          "name": "Headache & migraine",
+          "slug": "headache-migraine"
+        },
+        {
+          "id": "digestive-health",
+          "name": "Digestive health",
+          "slug": "digestive-health"
+        },
+        {
+          "id": "acidity-heartburn",
+          "name": "Acidity & heartburn",
+          "slug": "acidity-heartburn"
+        },
+        {
+          "id": "diarrhea-constipation",
+          "name": "Diarrhea & constipation",
+          "slug": "diarrhea-constipation"
+        },
+        {
+          "id": "nausea-vomiting",
+          "name": "Nausea & vomiting",
+          "slug": "nausea-vomiting"
+        },
+        {
+          "id": "motion-sickness",
+          "name": "Motion sickness",
+          "slug": "motion-sickness"
+        },
+        {
+          "id": "hemorrhoid-care",
+          "name": "Hemorrhoid care",
+          "slug": "hemorrhoid-care"
+        },
+        {
+          "id": "sleep-aids",
+          "name": "Sleep aids",
+          "slug": "sleep-aids"
+        },
+        {
+          "id": "smoking-cessation",
+          "name": "Smoking cessation",
+          "slug": "smoking-cessation"
+        },
+        {
+          "id": "oral-rehydration",
+          "name": "Oral rehydration",
+          "slug": "oral-rehydration"
+        },
+        {
+          "id": "first-aid-medicines",
+          "name": "First-aid medicines",
+          "slug": "first-aid-medicines"
+        }
       ]
     },
     {
@@ -134,22 +434,86 @@
       "icon": "🌿",
       "featured": true,
       "subcategories": [
-        { "id": "multivitamins", "name": "Multivitamins", "slug": "multivitamins" },
-        { "id": "vitamins-a-k", "name": "Vitamin A, B, C, D, E & K", "slug": "vitamins-a-k" },
-        { "id": "calcium", "name": "Calcium", "slug": "calcium" },
-        { "id": "iron", "name": "Iron", "slug": "iron" },
-        { "id": "magnesium", "name": "Magnesium", "slug": "magnesium" },
-        { "id": "zinc", "name": "Zinc", "slug": "zinc" },
-        { "id": "folic-acid", "name": "Folic acid", "slug": "folic-acid" },
-        { "id": "omega-3-fish-oil", "name": "Omega-3 & fish oil", "slug": "omega-3-fish-oil" },
-        { "id": "probiotics", "name": "Probiotics", "slug": "probiotics" },
-        { "id": "herbal-supplements", "name": "Herbal supplements", "slug": "herbal-supplements" },
-        { "id": "immunity-support", "name": "Immunity support", "slug": "immunity-support" },
-        { "id": "bone-joint-supplements", "name": "Bone & joint supplements", "slug": "bone-joint-supplements" },
-        { "id": "mens-supplements", "name": "Men's supplements", "slug": "mens-supplements" },
-        { "id": "womens-supplements", "name": "Women's supplements", "slug": "womens-supplements" },
-        { "id": "childrens-supplements", "name": "Children's supplements", "slug": "childrens-supplements" },
-        { "id": "sports-nutrition", "name": "Sports nutrition", "slug": "sports-nutrition" }
+        {
+          "id": "multivitamins",
+          "name": "Multivitamins",
+          "slug": "multivitamins"
+        },
+        {
+          "id": "vitamins-a-k",
+          "name": "Vitamin A, B, C, D, E & K",
+          "slug": "vitamins-a-k"
+        },
+        {
+          "id": "calcium",
+          "name": "Calcium",
+          "slug": "calcium"
+        },
+        {
+          "id": "iron",
+          "name": "Iron",
+          "slug": "iron"
+        },
+        {
+          "id": "magnesium",
+          "name": "Magnesium",
+          "slug": "magnesium"
+        },
+        {
+          "id": "zinc",
+          "name": "Zinc",
+          "slug": "zinc"
+        },
+        {
+          "id": "folic-acid",
+          "name": "Folic acid",
+          "slug": "folic-acid"
+        },
+        {
+          "id": "omega-3-fish-oil",
+          "name": "Omega-3 & fish oil",
+          "slug": "omega-3-fish-oil"
+        },
+        {
+          "id": "probiotics",
+          "name": "Probiotics",
+          "slug": "probiotics"
+        },
+        {
+          "id": "herbal-supplements",
+          "name": "Herbal supplements",
+          "slug": "herbal-supplements"
+        },
+        {
+          "id": "immunity-support",
+          "name": "Immunity support",
+          "slug": "immunity-support"
+        },
+        {
+          "id": "bone-joint-supplements",
+          "name": "Bone & joint supplements",
+          "slug": "bone-joint-supplements"
+        },
+        {
+          "id": "mens-supplements",
+          "name": "Men's supplements",
+          "slug": "mens-supplements"
+        },
+        {
+          "id": "womens-supplements",
+          "name": "Women's supplements",
+          "slug": "womens-supplements"
+        },
+        {
+          "id": "childrens-supplements",
+          "name": "Children's supplements",
+          "slug": "childrens-supplements"
+        },
+        {
+          "id": "sports-nutrition",
+          "name": "Sports nutrition",
+          "slug": "sports-nutrition"
+        }
       ]
     },
     {
@@ -159,21 +523,81 @@
       "icon": "🍼",
       "featured": true,
       "subcategories": [
-        { "id": "baby-formula", "name": "Baby formula", "slug": "baby-formula" },
-        { "id": "baby-food", "name": "Baby food", "slug": "baby-food" },
-        { "id": "diapers-pants", "name": "Diapers & pants", "slug": "diapers-pants" },
-        { "id": "baby-wipes", "name": "Baby wipes", "slug": "baby-wipes" },
-        { "id": "baby-skincare", "name": "Baby skincare", "slug": "baby-skincare" },
-        { "id": "baby-shampoo-wash", "name": "Baby shampoo & wash", "slug": "baby-shampoo-wash" },
-        { "id": "baby-oral-care", "name": "Baby oral care", "slug": "baby-oral-care" },
-        { "id": "feeding-bottles", "name": "Feeding bottles", "slug": "feeding-bottles" },
-        { "id": "nipples-accessories", "name": "Nipples & accessories", "slug": "nipples-accessories" },
-        { "id": "breast-pumps", "name": "Breast pumps", "slug": "breast-pumps" },
-        { "id": "breastfeeding-accessories", "name": "Breastfeeding accessories", "slug": "breastfeeding-accessories" },
-        { "id": "maternity-products", "name": "Maternity products", "slug": "maternity-products" },
-        { "id": "pregnancy-supplements", "name": "Pregnancy supplements", "slug": "pregnancy-supplements" },
-        { "id": "pregnancy-ovulation-tests", "name": "Pregnancy & ovulation tests", "slug": "pregnancy-ovulation-tests" },
-        { "id": "pacifiers-teethers", "name": "Pacifiers & teethers", "slug": "pacifiers-teethers" }
+        {
+          "id": "baby-formula",
+          "name": "Baby formula",
+          "slug": "baby-formula"
+        },
+        {
+          "id": "baby-food",
+          "name": "Baby food",
+          "slug": "baby-food"
+        },
+        {
+          "id": "diapers-pants",
+          "name": "Diapers & pants",
+          "slug": "diapers-pants"
+        },
+        {
+          "id": "baby-wipes",
+          "name": "Baby wipes",
+          "slug": "baby-wipes"
+        },
+        {
+          "id": "baby-skincare",
+          "name": "Baby skincare",
+          "slug": "baby-skincare"
+        },
+        {
+          "id": "baby-shampoo-wash",
+          "name": "Baby shampoo & wash",
+          "slug": "baby-shampoo-wash"
+        },
+        {
+          "id": "baby-oral-care",
+          "name": "Baby oral care",
+          "slug": "baby-oral-care"
+        },
+        {
+          "id": "feeding-bottles",
+          "name": "Feeding bottles",
+          "slug": "feeding-bottles"
+        },
+        {
+          "id": "nipples-accessories",
+          "name": "Nipples & accessories",
+          "slug": "nipples-accessories"
+        },
+        {
+          "id": "breast-pumps",
+          "name": "Breast pumps",
+          "slug": "breast-pumps"
+        },
+        {
+          "id": "breastfeeding-accessories",
+          "name": "Breastfeeding accessories",
+          "slug": "breastfeeding-accessories"
+        },
+        {
+          "id": "maternity-products",
+          "name": "Maternity products",
+          "slug": "maternity-products"
+        },
+        {
+          "id": "pregnancy-supplements",
+          "name": "Pregnancy supplements",
+          "slug": "pregnancy-supplements"
+        },
+        {
+          "id": "pregnancy-ovulation-tests",
+          "name": "Pregnancy & ovulation tests",
+          "slug": "pregnancy-ovulation-tests"
+        },
+        {
+          "id": "pacifiers-teethers",
+          "name": "Pacifiers & teethers",
+          "slug": "pacifiers-teethers"
+        }
       ]
     },
     {
@@ -183,20 +607,76 @@
       "icon": "🧼",
       "featured": true,
       "subcategories": [
-        { "id": "bath-body", "name": "Bath & body", "slug": "bath-body" },
-        { "id": "soaps-body-wash", "name": "Soaps & body wash", "slug": "soaps-body-wash" },
-        { "id": "hand-wash-sanitizers", "name": "Hand wash & sanitizers", "slug": "hand-wash-sanitizers" },
-        { "id": "deodorants-antiperspirants", "name": "Deodorants & antiperspirants", "slug": "deodorants-antiperspirants" },
-        { "id": "feminine-hygiene", "name": "Feminine hygiene", "slug": "feminine-hygiene" },
-        { "id": "sanitary-pads", "name": "Sanitary pads", "slug": "sanitary-pads" },
-        { "id": "tampons", "name": "Tampons", "slug": "tampons" },
-        { "id": "menstrual-care", "name": "Menstrual care", "slug": "menstrual-care" },
-        { "id": "intimate-hygiene", "name": "Intimate hygiene", "slug": "intimate-hygiene" },
-        { "id": "foot-care", "name": "Foot care", "slug": "foot-care" },
-        { "id": "nail-care", "name": "Nail care", "slug": "nail-care" },
-        { "id": "hand-care", "name": "Hand care", "slug": "hand-care" },
-        { "id": "cotton-tissues", "name": "Cotton & tissues", "slug": "cotton-tissues" },
-        { "id": "incontinence-products", "name": "Incontinence products", "slug": "incontinence-products" }
+        {
+          "id": "bath-body",
+          "name": "Bath & body",
+          "slug": "bath-body"
+        },
+        {
+          "id": "soaps-body-wash",
+          "name": "Soaps & body wash",
+          "slug": "soaps-body-wash"
+        },
+        {
+          "id": "hand-wash-sanitizers",
+          "name": "Hand wash & sanitizers",
+          "slug": "hand-wash-sanitizers"
+        },
+        {
+          "id": "deodorants-antiperspirants",
+          "name": "Deodorants & antiperspirants",
+          "slug": "deodorants-antiperspirants"
+        },
+        {
+          "id": "feminine-hygiene",
+          "name": "Feminine hygiene",
+          "slug": "feminine-hygiene"
+        },
+        {
+          "id": "sanitary-pads",
+          "name": "Sanitary pads",
+          "slug": "sanitary-pads"
+        },
+        {
+          "id": "tampons",
+          "name": "Tampons",
+          "slug": "tampons"
+        },
+        {
+          "id": "menstrual-care",
+          "name": "Menstrual care",
+          "slug": "menstrual-care"
+        },
+        {
+          "id": "intimate-hygiene",
+          "name": "Intimate hygiene",
+          "slug": "intimate-hygiene"
+        },
+        {
+          "id": "foot-care",
+          "name": "Foot care",
+          "slug": "foot-care"
+        },
+        {
+          "id": "nail-care",
+          "name": "Nail care",
+          "slug": "nail-care"
+        },
+        {
+          "id": "hand-care",
+          "name": "Hand care",
+          "slug": "hand-care"
+        },
+        {
+          "id": "cotton-tissues",
+          "name": "Cotton & tissues",
+          "slug": "cotton-tissues"
+        },
+        {
+          "id": "incontinence-products",
+          "name": "Incontinence products",
+          "slug": "incontinence-products"
+        }
       ]
     },
     {
@@ -206,21 +686,81 @@
       "icon": "✨",
       "featured": true,
       "subcategories": [
-        { "id": "face-cleansers", "name": "Face cleansers", "slug": "face-cleansers" },
-        { "id": "moisturizers", "name": "Moisturizers", "slug": "moisturizers" },
-        { "id": "sunscreens", "name": "Sunscreens", "slug": "sunscreens" },
-        { "id": "acne-care", "name": "Acne care", "slug": "acne-care" },
-        { "id": "eczema-care", "name": "Eczema care", "slug": "eczema-care" },
-        { "id": "psoriasis-care", "name": "Psoriasis care", "slug": "psoriasis-care" },
-        { "id": "dry-sensitive-skin", "name": "Dry & sensitive skin", "slug": "dry-sensitive-skin" },
-        { "id": "pigmentation-care", "name": "Pigmentation care", "slug": "pigmentation-care" },
-        { "id": "anti-aging", "name": "Anti-aging", "slug": "anti-aging" },
-        { "id": "lip-care", "name": "Lip care", "slug": "lip-care" },
-        { "id": "body-lotions", "name": "Body lotions", "slug": "body-lotions" },
-        { "id": "medicated-creams", "name": "Medicated creams", "slug": "medicated-creams" },
-        { "id": "antifungal-skincare", "name": "Antifungal skincare", "slug": "antifungal-skincare" },
-        { "id": "scar-care", "name": "Scar care", "slug": "scar-care" },
-        { "id": "warts-corn-treatment", "name": "Warts & corn treatment", "slug": "warts-corn-treatment" }
+        {
+          "id": "face-cleansers",
+          "name": "Face cleansers",
+          "slug": "face-cleansers"
+        },
+        {
+          "id": "moisturizers",
+          "name": "Moisturizers",
+          "slug": "moisturizers"
+        },
+        {
+          "id": "sunscreens",
+          "name": "Sunscreens",
+          "slug": "sunscreens"
+        },
+        {
+          "id": "acne-care",
+          "name": "Acne care",
+          "slug": "acne-care"
+        },
+        {
+          "id": "eczema-care",
+          "name": "Eczema care",
+          "slug": "eczema-care"
+        },
+        {
+          "id": "psoriasis-care",
+          "name": "Psoriasis care",
+          "slug": "psoriasis-care"
+        },
+        {
+          "id": "dry-sensitive-skin",
+          "name": "Dry & sensitive skin",
+          "slug": "dry-sensitive-skin"
+        },
+        {
+          "id": "pigmentation-care",
+          "name": "Pigmentation care",
+          "slug": "pigmentation-care"
+        },
+        {
+          "id": "anti-aging",
+          "name": "Anti-aging",
+          "slug": "anti-aging"
+        },
+        {
+          "id": "lip-care",
+          "name": "Lip care",
+          "slug": "lip-care"
+        },
+        {
+          "id": "body-lotions",
+          "name": "Body lotions",
+          "slug": "body-lotions"
+        },
+        {
+          "id": "medicated-creams",
+          "name": "Medicated creams",
+          "slug": "medicated-creams"
+        },
+        {
+          "id": "antifungal-skincare",
+          "name": "Antifungal skincare",
+          "slug": "antifungal-skincare"
+        },
+        {
+          "id": "scar-care",
+          "name": "Scar care",
+          "slug": "scar-care"
+        },
+        {
+          "id": "warts-corn-treatment",
+          "name": "Warts & corn treatment",
+          "slug": "warts-corn-treatment"
+        }
       ]
     },
     {
@@ -230,16 +770,56 @@
       "icon": "💇",
       "featured": false,
       "subcategories": [
-        { "id": "shampoo", "name": "Shampoo", "slug": "shampoo" },
-        { "id": "conditioner", "name": "Conditioner", "slug": "conditioner" },
-        { "id": "hair-oils-serums", "name": "Hair oils & serums", "slug": "hair-oils-serums" },
-        { "id": "anti-dandruff", "name": "Anti-dandruff", "slug": "anti-dandruff" },
-        { "id": "hair-loss-products", "name": "Hair-loss products", "slug": "hair-loss-products" },
-        { "id": "medicated-shampoos", "name": "Medicated shampoos", "slug": "medicated-shampoos" },
-        { "id": "hair-treatments", "name": "Hair treatments", "slug": "hair-treatments" },
-        { "id": "hair-styling", "name": "Hair styling", "slug": "hair-styling" },
-        { "id": "hair-color", "name": "Hair color", "slug": "hair-color" },
-        { "id": "lice-treatment", "name": "Lice treatment", "slug": "lice-treatment" }
+        {
+          "id": "shampoo",
+          "name": "Shampoo",
+          "slug": "shampoo"
+        },
+        {
+          "id": "conditioner",
+          "name": "Conditioner",
+          "slug": "conditioner"
+        },
+        {
+          "id": "hair-oils-serums",
+          "name": "Hair oils & serums",
+          "slug": "hair-oils-serums"
+        },
+        {
+          "id": "anti-dandruff",
+          "name": "Anti-dandruff",
+          "slug": "anti-dandruff"
+        },
+        {
+          "id": "hair-loss-products",
+          "name": "Hair-loss products",
+          "slug": "hair-loss-products"
+        },
+        {
+          "id": "medicated-shampoos",
+          "name": "Medicated shampoos",
+          "slug": "medicated-shampoos"
+        },
+        {
+          "id": "hair-treatments",
+          "name": "Hair treatments",
+          "slug": "hair-treatments"
+        },
+        {
+          "id": "hair-styling",
+          "name": "Hair styling",
+          "slug": "hair-styling"
+        },
+        {
+          "id": "hair-color",
+          "name": "Hair color",
+          "slug": "hair-color"
+        },
+        {
+          "id": "lice-treatment",
+          "name": "Lice treatment",
+          "slug": "lice-treatment"
+        }
       ]
     },
     {
@@ -249,17 +829,61 @@
       "icon": "🪥",
       "featured": false,
       "subcategories": [
-        { "id": "toothpaste", "name": "Toothpaste", "slug": "toothpaste" },
-        { "id": "toothbrushes", "name": "Toothbrushes", "slug": "toothbrushes" },
-        { "id": "mouthwash", "name": "Mouthwash", "slug": "mouthwash" },
-        { "id": "dental-floss", "name": "Dental floss", "slug": "dental-floss" },
-        { "id": "interdental-brushes", "name": "Interdental brushes", "slug": "interdental-brushes" },
-        { "id": "sensitive-teeth-care", "name": "Sensitive-teeth care", "slug": "sensitive-teeth-care" },
-        { "id": "gum-care", "name": "Gum care", "slug": "gum-care" },
-        { "id": "denture-care", "name": "Denture care", "slug": "denture-care" },
-        { "id": "teeth-whitening", "name": "Teeth whitening", "slug": "teeth-whitening" },
-        { "id": "mouth-ulcer-care", "name": "Mouth-ulcer care", "slug": "mouth-ulcer-care" },
-        { "id": "childrens-dental-care", "name": "Children's dental care", "slug": "childrens-dental-care" }
+        {
+          "id": "toothpaste",
+          "name": "Toothpaste",
+          "slug": "toothpaste"
+        },
+        {
+          "id": "toothbrushes",
+          "name": "Toothbrushes",
+          "slug": "toothbrushes"
+        },
+        {
+          "id": "mouthwash",
+          "name": "Mouthwash",
+          "slug": "mouthwash"
+        },
+        {
+          "id": "dental-floss",
+          "name": "Dental floss",
+          "slug": "dental-floss"
+        },
+        {
+          "id": "interdental-brushes",
+          "name": "Interdental brushes",
+          "slug": "interdental-brushes"
+        },
+        {
+          "id": "sensitive-teeth-care",
+          "name": "Sensitive-teeth care",
+          "slug": "sensitive-teeth-care"
+        },
+        {
+          "id": "gum-care",
+          "name": "Gum care",
+          "slug": "gum-care"
+        },
+        {
+          "id": "denture-care",
+          "name": "Denture care",
+          "slug": "denture-care"
+        },
+        {
+          "id": "teeth-whitening",
+          "name": "Teeth whitening",
+          "slug": "teeth-whitening"
+        },
+        {
+          "id": "mouth-ulcer-care",
+          "name": "Mouth-ulcer care",
+          "slug": "mouth-ulcer-care"
+        },
+        {
+          "id": "childrens-dental-care",
+          "name": "Children's dental care",
+          "slug": "childrens-dental-care"
+        }
       ]
     },
     {
@@ -269,15 +893,51 @@
       "icon": "🧔",
       "featured": false,
       "subcategories": [
-        { "id": "mens-vitamins", "name": "Men's vitamins", "slug": "mens-vitamins" },
-        { "id": "shaving-products", "name": "Shaving products", "slug": "shaving-products" },
-        { "id": "razors-blades", "name": "Razors & blades", "slug": "razors-blades" },
-        { "id": "beard-care", "name": "Beard care", "slug": "beard-care" },
-        { "id": "mens-skincare", "name": "Men's skincare", "slug": "mens-skincare" },
-        { "id": "mens-hair-loss-care", "name": "Hair-loss care", "slug": "mens-hair-loss-care" },
-        { "id": "mens-sexual-wellness", "name": "Sexual wellness", "slug": "mens-sexual-wellness" },
-        { "id": "mens-hygiene", "name": "Men's hygiene", "slug": "mens-hygiene" },
-        { "id": "prostate-support", "name": "Prostate support", "slug": "prostate-support" }
+        {
+          "id": "mens-vitamins",
+          "name": "Men's vitamins",
+          "slug": "mens-vitamins"
+        },
+        {
+          "id": "shaving-products",
+          "name": "Shaving products",
+          "slug": "shaving-products"
+        },
+        {
+          "id": "razors-blades",
+          "name": "Razors & blades",
+          "slug": "razors-blades"
+        },
+        {
+          "id": "beard-care",
+          "name": "Beard care",
+          "slug": "beard-care"
+        },
+        {
+          "id": "mens-skincare",
+          "name": "Men's skincare",
+          "slug": "mens-skincare"
+        },
+        {
+          "id": "mens-hair-loss-care",
+          "name": "Hair-loss care",
+          "slug": "mens-hair-loss-care"
+        },
+        {
+          "id": "mens-sexual-wellness",
+          "name": "Sexual wellness",
+          "slug": "mens-sexual-wellness"
+        },
+        {
+          "id": "mens-hygiene",
+          "name": "Men's hygiene",
+          "slug": "mens-hygiene"
+        },
+        {
+          "id": "prostate-support",
+          "name": "Prostate support",
+          "slug": "prostate-support"
+        }
       ]
     },
     {
@@ -287,15 +947,51 @@
       "icon": "🌸",
       "featured": false,
       "subcategories": [
-        { "id": "womens-vitamins", "name": "Women's vitamins", "slug": "womens-vitamins" },
-        { "id": "womens-menstrual-care", "name": "Menstrual care", "slug": "womens-menstrual-care" },
-        { "id": "womens-pregnancy-care", "name": "Pregnancy care", "slug": "womens-pregnancy-care" },
-        { "id": "fertility-ovulation", "name": "Fertility & ovulation", "slug": "fertility-ovulation" },
-        { "id": "menopause-support", "name": "Menopause support", "slug": "menopause-support" },
-        { "id": "womens-feminine-hygiene", "name": "Feminine hygiene", "slug": "womens-feminine-hygiene" },
-        { "id": "womens-breastfeeding-support", "name": "Breastfeeding support", "slug": "womens-breastfeeding-support" },
-        { "id": "uti-care", "name": "UTI care", "slug": "uti-care" },
-        { "id": "womens-sexual-wellness", "name": "Sexual wellness", "slug": "womens-sexual-wellness" }
+        {
+          "id": "womens-vitamins",
+          "name": "Women's vitamins",
+          "slug": "womens-vitamins"
+        },
+        {
+          "id": "womens-menstrual-care",
+          "name": "Menstrual care",
+          "slug": "womens-menstrual-care"
+        },
+        {
+          "id": "womens-pregnancy-care",
+          "name": "Pregnancy care",
+          "slug": "womens-pregnancy-care"
+        },
+        {
+          "id": "fertility-ovulation",
+          "name": "Fertility & ovulation",
+          "slug": "fertility-ovulation"
+        },
+        {
+          "id": "menopause-support",
+          "name": "Menopause support",
+          "slug": "menopause-support"
+        },
+        {
+          "id": "womens-feminine-hygiene",
+          "name": "Feminine hygiene",
+          "slug": "womens-feminine-hygiene"
+        },
+        {
+          "id": "womens-breastfeeding-support",
+          "name": "Breastfeeding support",
+          "slug": "womens-breastfeeding-support"
+        },
+        {
+          "id": "uti-care",
+          "name": "UTI care",
+          "slug": "uti-care"
+        },
+        {
+          "id": "womens-sexual-wellness",
+          "name": "Sexual wellness",
+          "slug": "womens-sexual-wellness"
+        }
       ]
     },
     {
@@ -305,12 +1001,36 @@
       "icon": "❤️",
       "featured": false,
       "subcategories": [
-        { "id": "condoms", "name": "Condoms", "slug": "condoms" },
-        { "id": "lubricants", "name": "Lubricants", "slug": "lubricants" },
-        { "id": "sw-pregnancy-tests", "name": "Pregnancy tests", "slug": "sw-pregnancy-tests" },
-        { "id": "sw-ovulation-tests", "name": "Ovulation tests", "slug": "sw-ovulation-tests" },
-        { "id": "fertility-products", "name": "Fertility products", "slug": "fertility-products" },
-        { "id": "family-planning-products", "name": "Family-planning products", "slug": "family-planning-products" }
+        {
+          "id": "condoms",
+          "name": "Condoms",
+          "slug": "condoms"
+        },
+        {
+          "id": "lubricants",
+          "name": "Lubricants",
+          "slug": "lubricants"
+        },
+        {
+          "id": "sw-pregnancy-tests",
+          "name": "Pregnancy tests",
+          "slug": "sw-pregnancy-tests"
+        },
+        {
+          "id": "sw-ovulation-tests",
+          "name": "Ovulation tests",
+          "slug": "sw-ovulation-tests"
+        },
+        {
+          "id": "fertility-products",
+          "name": "Fertility products",
+          "slug": "fertility-products"
+        },
+        {
+          "id": "family-planning-products",
+          "name": "Family-planning products",
+          "slug": "family-planning-products"
+        }
       ]
     },
     {
@@ -320,21 +1040,81 @@
       "icon": "🩺",
       "featured": true,
       "subcategories": [
-        { "id": "blood-pressure-monitors", "name": "Blood pressure monitors", "slug": "blood-pressure-monitors" },
-        { "id": "glucose-meters", "name": "Glucose meters", "slug": "glucose-meters" },
-        { "id": "glucose-strips-lancets", "name": "Glucose strips & lancets", "slug": "glucose-strips-lancets" },
-        { "id": "pulse-oximeters", "name": "Pulse oximeters", "slug": "pulse-oximeters" },
-        { "id": "thermometers", "name": "Thermometers", "slug": "thermometers" },
-        { "id": "nebulizers", "name": "Nebulizers", "slug": "nebulizers" },
-        { "id": "inhaler-accessories", "name": "Inhaler accessories", "slug": "inhaler-accessories" },
-        { "id": "weighing-scales", "name": "Weighing scales", "slug": "weighing-scales" },
-        { "id": "tens-devices", "name": "TENS devices", "slug": "tens-devices" },
-        { "id": "hearing-aids-accessories", "name": "Hearing aids/accessories", "slug": "hearing-aids-accessories" },
-        { "id": "mobility-aids", "name": "Mobility aids", "slug": "mobility-aids" },
-        { "id": "walking-sticks", "name": "Walking sticks", "slug": "walking-sticks" },
-        { "id": "wheelchairs", "name": "Wheelchairs", "slug": "wheelchairs" },
-        { "id": "crutches", "name": "Crutches", "slug": "crutches" },
-        { "id": "hospital-beds-accessories", "name": "Hospital beds/accessories", "slug": "hospital-beds-accessories" }
+        {
+          "id": "blood-pressure-monitors",
+          "name": "Blood pressure monitors",
+          "slug": "blood-pressure-monitors"
+        },
+        {
+          "id": "glucose-meters",
+          "name": "Glucose meters",
+          "slug": "glucose-meters"
+        },
+        {
+          "id": "glucose-strips-lancets",
+          "name": "Glucose strips & lancets",
+          "slug": "glucose-strips-lancets"
+        },
+        {
+          "id": "pulse-oximeters",
+          "name": "Pulse oximeters",
+          "slug": "pulse-oximeters"
+        },
+        {
+          "id": "thermometers",
+          "name": "Thermometers",
+          "slug": "thermometers"
+        },
+        {
+          "id": "nebulizers",
+          "name": "Nebulizers",
+          "slug": "nebulizers"
+        },
+        {
+          "id": "inhaler-accessories",
+          "name": "Inhaler accessories",
+          "slug": "inhaler-accessories"
+        },
+        {
+          "id": "weighing-scales",
+          "name": "Weighing scales",
+          "slug": "weighing-scales"
+        },
+        {
+          "id": "tens-devices",
+          "name": "TENS devices",
+          "slug": "tens-devices"
+        },
+        {
+          "id": "hearing-aids-accessories",
+          "name": "Hearing aids/accessories",
+          "slug": "hearing-aids-accessories"
+        },
+        {
+          "id": "mobility-aids",
+          "name": "Mobility aids",
+          "slug": "mobility-aids"
+        },
+        {
+          "id": "walking-sticks",
+          "name": "Walking sticks",
+          "slug": "walking-sticks"
+        },
+        {
+          "id": "wheelchairs",
+          "name": "Wheelchairs",
+          "slug": "wheelchairs"
+        },
+        {
+          "id": "crutches",
+          "name": "Crutches",
+          "slug": "crutches"
+        },
+        {
+          "id": "hospital-beds-accessories",
+          "name": "Hospital beds/accessories",
+          "slug": "hospital-beds-accessories"
+        }
       ]
     },
     {
@@ -344,18 +1124,66 @@
       "icon": "🩹",
       "featured": true,
       "subcategories": [
-        { "id": "bandages", "name": "Bandages", "slug": "bandages" },
-        { "id": "plasters", "name": "Plasters", "slug": "plasters" },
-        { "id": "gauze", "name": "Gauze", "slug": "gauze" },
-        { "id": "medical-tape", "name": "Medical tape", "slug": "medical-tape" },
-        { "id": "cotton", "name": "Cotton", "slug": "cotton" },
-        { "id": "antiseptics", "name": "Antiseptics", "slug": "antiseptics" },
-        { "id": "wound-dressings", "name": "Wound dressings", "slug": "wound-dressings" },
-        { "id": "burn-care", "name": "Burn care", "slug": "burn-care" },
-        { "id": "scar-dressings", "name": "Scar dressings", "slug": "scar-dressings" },
-        { "id": "hot-cold-packs", "name": "Hot & cold packs", "slug": "hot-cold-packs" },
-        { "id": "first-aid-kits", "name": "First-aid kits", "slug": "first-aid-kits" },
-        { "id": "sprays-ointments", "name": "Sprays & ointments", "slug": "sprays-ointments" }
+        {
+          "id": "bandages",
+          "name": "Bandages",
+          "slug": "bandages"
+        },
+        {
+          "id": "plasters",
+          "name": "Plasters",
+          "slug": "plasters"
+        },
+        {
+          "id": "gauze",
+          "name": "Gauze",
+          "slug": "gauze"
+        },
+        {
+          "id": "medical-tape",
+          "name": "Medical tape",
+          "slug": "medical-tape"
+        },
+        {
+          "id": "cotton",
+          "name": "Cotton",
+          "slug": "cotton"
+        },
+        {
+          "id": "antiseptics",
+          "name": "Antiseptics",
+          "slug": "antiseptics"
+        },
+        {
+          "id": "wound-dressings",
+          "name": "Wound dressings",
+          "slug": "wound-dressings"
+        },
+        {
+          "id": "burn-care",
+          "name": "Burn care",
+          "slug": "burn-care"
+        },
+        {
+          "id": "scar-dressings",
+          "name": "Scar dressings",
+          "slug": "scar-dressings"
+        },
+        {
+          "id": "hot-cold-packs",
+          "name": "Hot & cold packs",
+          "slug": "hot-cold-packs"
+        },
+        {
+          "id": "first-aid-kits",
+          "name": "First-aid kits",
+          "slug": "first-aid-kits"
+        },
+        {
+          "id": "sprays-ointments",
+          "name": "Sprays & ointments",
+          "slug": "sprays-ointments"
+        }
       ]
     },
     {
@@ -365,16 +1193,56 @@
       "icon": "🦿",
       "featured": false,
       "subcategories": [
-        { "id": "knee-supports", "name": "Knee supports", "slug": "knee-supports" },
-        { "id": "ankle-supports", "name": "Ankle supports", "slug": "ankle-supports" },
-        { "id": "wrist-supports", "name": "Wrist supports", "slug": "wrist-supports" },
-        { "id": "elbow-supports", "name": "Elbow supports", "slug": "elbow-supports" },
-        { "id": "back-waist-supports", "name": "Back & waist supports", "slug": "back-waist-supports" },
-        { "id": "cervical-collars", "name": "Cervical collars", "slug": "cervical-collars" },
-        { "id": "compression-stockings", "name": "Compression stockings", "slug": "compression-stockings" },
-        { "id": "posture-supports", "name": "Posture supports", "slug": "posture-supports" },
-        { "id": "braces", "name": "Braces", "slug": "braces" },
-        { "id": "rehabilitation-equipment", "name": "Rehabilitation equipment", "slug": "rehabilitation-equipment" }
+        {
+          "id": "knee-supports",
+          "name": "Knee supports",
+          "slug": "knee-supports"
+        },
+        {
+          "id": "ankle-supports",
+          "name": "Ankle supports",
+          "slug": "ankle-supports"
+        },
+        {
+          "id": "wrist-supports",
+          "name": "Wrist supports",
+          "slug": "wrist-supports"
+        },
+        {
+          "id": "elbow-supports",
+          "name": "Elbow supports",
+          "slug": "elbow-supports"
+        },
+        {
+          "id": "back-waist-supports",
+          "name": "Back & waist supports",
+          "slug": "back-waist-supports"
+        },
+        {
+          "id": "cervical-collars",
+          "name": "Cervical collars",
+          "slug": "cervical-collars"
+        },
+        {
+          "id": "compression-stockings",
+          "name": "Compression stockings",
+          "slug": "compression-stockings"
+        },
+        {
+          "id": "posture-supports",
+          "name": "Posture supports",
+          "slug": "posture-supports"
+        },
+        {
+          "id": "braces",
+          "name": "Braces",
+          "slug": "braces"
+        },
+        {
+          "id": "rehabilitation-equipment",
+          "name": "Rehabilitation equipment",
+          "slug": "rehabilitation-equipment"
+        }
       ]
     },
     {
@@ -384,15 +1252,51 @@
       "icon": "🩸",
       "featured": true,
       "subcategories": [
-        { "id": "dc-glucose-meters", "name": "Glucose meters", "slug": "dc-glucose-meters" },
-        { "id": "dc-test-strips", "name": "Test strips", "slug": "dc-test-strips" },
-        { "id": "dc-lancets", "name": "Lancets", "slug": "dc-lancets" },
-        { "id": "insulin-syringes", "name": "Insulin syringes", "slug": "insulin-syringes" },
-        { "id": "pen-needles", "name": "Pen needles", "slug": "pen-needles" },
-        { "id": "insulin-storage", "name": "Insulin storage", "slug": "insulin-storage" },
-        { "id": "diabetic-foot-care", "name": "Diabetic foot care", "slug": "diabetic-foot-care" },
-        { "id": "diabetic-nutrition", "name": "Diabetic nutrition", "slug": "diabetic-nutrition" },
-        { "id": "cgm-supplies", "name": "Continuous glucose monitoring supplies", "slug": "cgm-supplies" }
+        {
+          "id": "dc-glucose-meters",
+          "name": "Glucose meters",
+          "slug": "dc-glucose-meters"
+        },
+        {
+          "id": "dc-test-strips",
+          "name": "Test strips",
+          "slug": "dc-test-strips"
+        },
+        {
+          "id": "dc-lancets",
+          "name": "Lancets",
+          "slug": "dc-lancets"
+        },
+        {
+          "id": "insulin-syringes",
+          "name": "Insulin syringes",
+          "slug": "insulin-syringes"
+        },
+        {
+          "id": "pen-needles",
+          "name": "Pen needles",
+          "slug": "pen-needles"
+        },
+        {
+          "id": "insulin-storage",
+          "name": "Insulin storage",
+          "slug": "insulin-storage"
+        },
+        {
+          "id": "diabetic-foot-care",
+          "name": "Diabetic foot care",
+          "slug": "diabetic-foot-care"
+        },
+        {
+          "id": "diabetic-nutrition",
+          "name": "Diabetic nutrition",
+          "slug": "diabetic-nutrition"
+        },
+        {
+          "id": "cgm-supplies",
+          "name": "Continuous glucose monitoring supplies",
+          "slug": "cgm-supplies"
+        }
       ]
     },
     {
@@ -402,14 +1306,46 @@
       "icon": "👁️",
       "featured": true,
       "subcategories": [
-        { "id": "eye-drops", "name": "Eye drops", "slug": "eye-drops" },
-        { "id": "dry-eye-care", "name": "Dry-eye care", "slug": "dry-eye-care" },
-        { "id": "contact-lens-solutions", "name": "Contact-lens solutions", "slug": "contact-lens-solutions" },
-        { "id": "contact-lens-accessories", "name": "Contact-lens accessories", "slug": "contact-lens-accessories" },
-        { "id": "eye-patches", "name": "Eye patches", "slug": "eye-patches" },
-        { "id": "eye-masks", "name": "Eye masks", "slug": "eye-masks" },
-        { "id": "reading-glasses", "name": "Reading glasses", "slug": "reading-glasses" },
-        { "id": "eye-supplements", "name": "Eye supplements", "slug": "eye-supplements" }
+        {
+          "id": "eye-drops",
+          "name": "Eye drops",
+          "slug": "eye-drops"
+        },
+        {
+          "id": "dry-eye-care",
+          "name": "Dry-eye care",
+          "slug": "dry-eye-care"
+        },
+        {
+          "id": "contact-lens-solutions",
+          "name": "Contact-lens solutions",
+          "slug": "contact-lens-solutions"
+        },
+        {
+          "id": "contact-lens-accessories",
+          "name": "Contact-lens accessories",
+          "slug": "contact-lens-accessories"
+        },
+        {
+          "id": "eye-patches",
+          "name": "Eye patches",
+          "slug": "eye-patches"
+        },
+        {
+          "id": "eye-masks",
+          "name": "Eye masks",
+          "slug": "eye-masks"
+        },
+        {
+          "id": "reading-glasses",
+          "name": "Reading glasses",
+          "slug": "reading-glasses"
+        },
+        {
+          "id": "eye-supplements",
+          "name": "Eye supplements",
+          "slug": "eye-supplements"
+        }
       ]
     },
     {
@@ -419,13 +1355,41 @@
       "icon": "👂",
       "featured": false,
       "subcategories": [
-        { "id": "ear-drops", "name": "Ear drops", "slug": "ear-drops" },
-        { "id": "ear-plugs", "name": "Ear plugs", "slug": "ear-plugs" },
-        { "id": "ear-wax-removal", "name": "Ear wax removal", "slug": "ear-wax-removal" },
-        { "id": "nasal-sprays", "name": "Nasal sprays", "slug": "nasal-sprays" },
-        { "id": "saline-solutions", "name": "Saline solutions", "slug": "saline-solutions" },
-        { "id": "nasal-strips", "name": "Nasal strips", "slug": "nasal-strips" },
-        { "id": "nasal-aspirators", "name": "Nasal aspirators", "slug": "nasal-aspirators" }
+        {
+          "id": "ear-drops",
+          "name": "Ear drops",
+          "slug": "ear-drops"
+        },
+        {
+          "id": "ear-plugs",
+          "name": "Ear plugs",
+          "slug": "ear-plugs"
+        },
+        {
+          "id": "ear-wax-removal",
+          "name": "Ear wax removal",
+          "slug": "ear-wax-removal"
+        },
+        {
+          "id": "nasal-sprays",
+          "name": "Nasal sprays",
+          "slug": "nasal-sprays"
+        },
+        {
+          "id": "saline-solutions",
+          "name": "Saline solutions",
+          "slug": "saline-solutions"
+        },
+        {
+          "id": "nasal-strips",
+          "name": "Nasal strips",
+          "slug": "nasal-strips"
+        },
+        {
+          "id": "nasal-aspirators",
+          "name": "Nasal aspirators",
+          "slug": "nasal-aspirators"
+        }
       ]
     },
     {
@@ -435,13 +1399,41 @@
       "icon": "🫁",
       "featured": false,
       "subcategories": [
-        { "id": "rc-nebulizers", "name": "Nebulizers", "slug": "rc-nebulizers" },
-        { "id": "nebulizer-masks", "name": "Nebulizer masks", "slug": "nebulizer-masks" },
-        { "id": "inhaler-spacers", "name": "Inhaler spacers", "slug": "inhaler-spacers" },
-        { "id": "steam-inhalers", "name": "Steam inhalers", "slug": "steam-inhalers" },
-        { "id": "humidifiers", "name": "Humidifiers", "slug": "humidifiers" },
-        { "id": "respiratory-accessories", "name": "Respiratory accessories", "slug": "respiratory-accessories" },
-        { "id": "masks", "name": "Masks", "slug": "masks" }
+        {
+          "id": "rc-nebulizers",
+          "name": "Nebulizers",
+          "slug": "rc-nebulizers"
+        },
+        {
+          "id": "nebulizer-masks",
+          "name": "Nebulizer masks",
+          "slug": "nebulizer-masks"
+        },
+        {
+          "id": "inhaler-spacers",
+          "name": "Inhaler spacers",
+          "slug": "inhaler-spacers"
+        },
+        {
+          "id": "steam-inhalers",
+          "name": "Steam inhalers",
+          "slug": "steam-inhalers"
+        },
+        {
+          "id": "humidifiers",
+          "name": "Humidifiers",
+          "slug": "humidifiers"
+        },
+        {
+          "id": "respiratory-accessories",
+          "name": "Respiratory accessories",
+          "slug": "respiratory-accessories"
+        },
+        {
+          "id": "masks",
+          "name": "Masks",
+          "slug": "masks"
+        }
       ]
     },
     {
@@ -451,15 +1443,51 @@
       "icon": "🏡",
       "featured": false,
       "subcategories": [
-        { "id": "adult-diapers", "name": "Adult diapers", "slug": "adult-diapers" },
-        { "id": "underpads", "name": "Underpads", "slug": "underpads" },
-        { "id": "bed-protectors", "name": "Bed protectors", "slug": "bed-protectors" },
-        { "id": "urinals", "name": "Urinals", "slug": "urinals" },
-        { "id": "bedpans", "name": "Bedpans", "slug": "bedpans" },
-        { "id": "catheter-care-supplies", "name": "Catheter-care supplies", "slug": "catheter-care-supplies" },
-        { "id": "hh-compression-products", "name": "Compression products", "slug": "hh-compression-products" },
-        { "id": "home-nursing-supplies", "name": "Home nursing supplies", "slug": "home-nursing-supplies" },
-        { "id": "patient-care-accessories", "name": "Patient-care accessories", "slug": "patient-care-accessories" }
+        {
+          "id": "adult-diapers",
+          "name": "Adult diapers",
+          "slug": "adult-diapers"
+        },
+        {
+          "id": "underpads",
+          "name": "Underpads",
+          "slug": "underpads"
+        },
+        {
+          "id": "bed-protectors",
+          "name": "Bed protectors",
+          "slug": "bed-protectors"
+        },
+        {
+          "id": "urinals",
+          "name": "Urinals",
+          "slug": "urinals"
+        },
+        {
+          "id": "bedpans",
+          "name": "Bedpans",
+          "slug": "bedpans"
+        },
+        {
+          "id": "catheter-care-supplies",
+          "name": "Catheter-care supplies",
+          "slug": "catheter-care-supplies"
+        },
+        {
+          "id": "hh-compression-products",
+          "name": "Compression products",
+          "slug": "hh-compression-products"
+        },
+        {
+          "id": "home-nursing-supplies",
+          "name": "Home nursing supplies",
+          "slug": "home-nursing-supplies"
+        },
+        {
+          "id": "patient-care-accessories",
+          "name": "Patient-care accessories",
+          "slug": "patient-care-accessories"
+        }
       ]
     },
     {
@@ -469,17 +1497,61 @@
       "icon": "🔬",
       "featured": true,
       "subcategories": [
-        { "id": "syringes", "name": "Syringes", "slug": "syringes" },
-        { "id": "needles", "name": "Needles", "slug": "needles" },
-        { "id": "iv-accessories", "name": "IV accessories", "slug": "iv-accessories" },
-        { "id": "gloves", "name": "Gloves", "slug": "gloves" },
-        { "id": "surgical-masks", "name": "Surgical masks", "slug": "surgical-masks" },
-        { "id": "sc-dressings", "name": "Dressings", "slug": "sc-dressings" },
-        { "id": "surgical-tape", "name": "Surgical tape", "slug": "surgical-tape" },
-        { "id": "specimen-containers", "name": "Specimen containers", "slug": "specimen-containers" },
-        { "id": "disposable-medical-supplies", "name": "Disposable medical supplies", "slug": "disposable-medical-supplies" },
-        { "id": "ppe", "name": "PPE", "slug": "ppe" },
-        { "id": "clinical-consumables", "name": "Clinical consumables", "slug": "clinical-consumables" }
+        {
+          "id": "syringes",
+          "name": "Syringes",
+          "slug": "syringes"
+        },
+        {
+          "id": "needles",
+          "name": "Needles",
+          "slug": "needles"
+        },
+        {
+          "id": "iv-accessories",
+          "name": "IV accessories",
+          "slug": "iv-accessories"
+        },
+        {
+          "id": "gloves",
+          "name": "Gloves",
+          "slug": "gloves"
+        },
+        {
+          "id": "surgical-masks",
+          "name": "Surgical masks",
+          "slug": "surgical-masks"
+        },
+        {
+          "id": "sc-dressings",
+          "name": "Dressings",
+          "slug": "sc-dressings"
+        },
+        {
+          "id": "surgical-tape",
+          "name": "Surgical tape",
+          "slug": "surgical-tape"
+        },
+        {
+          "id": "specimen-containers",
+          "name": "Specimen containers",
+          "slug": "specimen-containers"
+        },
+        {
+          "id": "disposable-medical-supplies",
+          "name": "Disposable medical supplies",
+          "slug": "disposable-medical-supplies"
+        },
+        {
+          "id": "ppe",
+          "name": "PPE",
+          "slug": "ppe"
+        },
+        {
+          "id": "clinical-consumables",
+          "name": "Clinical consumables",
+          "slug": "clinical-consumables"
+        }
       ]
     },
     {
@@ -489,15 +1561,51 @@
       "icon": "🥗",
       "featured": false,
       "subcategories": [
-        { "id": "protein-supplements", "name": "Protein supplements", "slug": "protein-supplements" },
-        { "id": "nutritional-drinks", "name": "Nutritional drinks", "slug": "nutritional-drinks" },
-        { "id": "meal-replacements", "name": "Meal replacements", "slug": "meal-replacements" },
-        { "id": "weight-management-products", "name": "Weight-management products", "slug": "weight-management-products" },
-        { "id": "electrolytes", "name": "Electrolytes", "slug": "electrolytes" },
-        { "id": "energy-products", "name": "Energy products", "slug": "energy-products" },
-        { "id": "nh-diabetic-nutrition", "name": "Diabetic nutrition", "slug": "nh-diabetic-nutrition" },
-        { "id": "childrens-nutrition", "name": "Children's nutrition", "slug": "childrens-nutrition" },
-        { "id": "senior-nutrition", "name": "Senior nutrition", "slug": "senior-nutrition" }
+        {
+          "id": "protein-supplements",
+          "name": "Protein supplements",
+          "slug": "protein-supplements"
+        },
+        {
+          "id": "nutritional-drinks",
+          "name": "Nutritional drinks",
+          "slug": "nutritional-drinks"
+        },
+        {
+          "id": "meal-replacements",
+          "name": "Meal replacements",
+          "slug": "meal-replacements"
+        },
+        {
+          "id": "weight-management-products",
+          "name": "Weight-management products",
+          "slug": "weight-management-products"
+        },
+        {
+          "id": "electrolytes",
+          "name": "Electrolytes",
+          "slug": "electrolytes"
+        },
+        {
+          "id": "energy-products",
+          "name": "Energy products",
+          "slug": "energy-products"
+        },
+        {
+          "id": "nh-diabetic-nutrition",
+          "name": "Diabetic nutrition",
+          "slug": "nh-diabetic-nutrition"
+        },
+        {
+          "id": "childrens-nutrition",
+          "name": "Children's nutrition",
+          "slug": "childrens-nutrition"
+        },
+        {
+          "id": "senior-nutrition",
+          "name": "Senior nutrition",
+          "slug": "senior-nutrition"
+        }
       ]
     },
     {
@@ -507,15 +1615,51 @@
       "icon": "💄",
       "featured": false,
       "subcategories": [
-        { "id": "makeup", "name": "Makeup", "slug": "makeup" },
-        { "id": "face-care", "name": "Face care", "slug": "face-care" },
-        { "id": "body-care", "name": "Body care", "slug": "body-care" },
-        { "id": "lip-products", "name": "Lip products", "slug": "lip-products" },
-        { "id": "eye-products", "name": "Eye products", "slug": "eye-products" },
-        { "id": "nail-products", "name": "Nail products", "slug": "nail-products" },
-        { "id": "beauty-tools", "name": "Beauty tools", "slug": "beauty-tools" },
-        { "id": "fragrances", "name": "Fragrances", "slug": "fragrances" },
-        { "id": "dermocosmetics", "name": "Dermocosmetics", "slug": "dermocosmetics" }
+        {
+          "id": "makeup",
+          "name": "Makeup",
+          "slug": "makeup"
+        },
+        {
+          "id": "face-care",
+          "name": "Face care",
+          "slug": "face-care"
+        },
+        {
+          "id": "body-care",
+          "name": "Body care",
+          "slug": "body-care"
+        },
+        {
+          "id": "lip-products",
+          "name": "Lip products",
+          "slug": "lip-products"
+        },
+        {
+          "id": "eye-products",
+          "name": "Eye products",
+          "slug": "eye-products"
+        },
+        {
+          "id": "nail-products",
+          "name": "Nail products",
+          "slug": "nail-products"
+        },
+        {
+          "id": "beauty-tools",
+          "name": "Beauty tools",
+          "slug": "beauty-tools"
+        },
+        {
+          "id": "fragrances",
+          "name": "Fragrances",
+          "slug": "fragrances"
+        },
+        {
+          "id": "dermocosmetics",
+          "name": "Dermocosmetics",
+          "slug": "dermocosmetics"
+        }
       ]
     },
     {
@@ -525,14 +1669,46 @@
       "icon": "🏋️",
       "featured": false,
       "subcategories": [
-        { "id": "fs-sports-nutrition", "name": "Sports nutrition", "slug": "fs-sports-nutrition" },
-        { "id": "fs-protein", "name": "Protein", "slug": "fs-protein" },
-        { "id": "fs-electrolytes", "name": "Electrolytes", "slug": "fs-electrolytes" },
-        { "id": "muscle-rubs", "name": "Muscle rubs", "slug": "muscle-rubs" },
-        { "id": "pain-relief-sprays", "name": "Pain-relief sprays", "slug": "pain-relief-sprays" },
-        { "id": "fs-supports-braces", "name": "Supports & braces", "slug": "fs-supports-braces" },
-        { "id": "recovery-products", "name": "Recovery products", "slug": "recovery-products" },
-        { "id": "fitness-accessories", "name": "Fitness accessories", "slug": "fitness-accessories" }
+        {
+          "id": "fs-sports-nutrition",
+          "name": "Sports nutrition",
+          "slug": "fs-sports-nutrition"
+        },
+        {
+          "id": "fs-protein",
+          "name": "Protein",
+          "slug": "fs-protein"
+        },
+        {
+          "id": "fs-electrolytes",
+          "name": "Electrolytes",
+          "slug": "fs-electrolytes"
+        },
+        {
+          "id": "muscle-rubs",
+          "name": "Muscle rubs",
+          "slug": "muscle-rubs"
+        },
+        {
+          "id": "pain-relief-sprays",
+          "name": "Pain-relief sprays",
+          "slug": "pain-relief-sprays"
+        },
+        {
+          "id": "fs-supports-braces",
+          "name": "Supports & braces",
+          "slug": "fs-supports-braces"
+        },
+        {
+          "id": "recovery-products",
+          "name": "Recovery products",
+          "slug": "recovery-products"
+        },
+        {
+          "id": "fitness-accessories",
+          "name": "Fitness accessories",
+          "slug": "fitness-accessories"
+        }
       ]
     },
     {
@@ -542,14 +1718,46 @@
       "icon": "✈️",
       "featured": false,
       "subcategories": [
-        { "id": "travel-first-aid", "name": "Travel first aid", "slug": "travel-first-aid" },
-        { "id": "tp-motion-sickness", "name": "Motion-sickness products", "slug": "tp-motion-sickness" },
-        { "id": "insect-repellents", "name": "Insect repellents", "slug": "insect-repellents" },
-        { "id": "tp-sunscreen", "name": "Sunscreen", "slug": "tp-sunscreen" },
-        { "id": "tp-hand-sanitizers", "name": "Hand sanitizers", "slug": "tp-hand-sanitizers" },
-        { "id": "tp-face-masks", "name": "Face masks", "slug": "tp-face-masks" },
-        { "id": "travel-size-toiletries", "name": "Travel-size toiletries", "slug": "travel-size-toiletries" },
-        { "id": "tp-compression-stockings", "name": "Compression stockings", "slug": "tp-compression-stockings" }
+        {
+          "id": "travel-first-aid",
+          "name": "Travel first aid",
+          "slug": "travel-first-aid"
+        },
+        {
+          "id": "tp-motion-sickness",
+          "name": "Motion-sickness products",
+          "slug": "tp-motion-sickness"
+        },
+        {
+          "id": "insect-repellents",
+          "name": "Insect repellents",
+          "slug": "insect-repellents"
+        },
+        {
+          "id": "tp-sunscreen",
+          "name": "Sunscreen",
+          "slug": "tp-sunscreen"
+        },
+        {
+          "id": "tp-hand-sanitizers",
+          "name": "Hand sanitizers",
+          "slug": "tp-hand-sanitizers"
+        },
+        {
+          "id": "tp-face-masks",
+          "name": "Face masks",
+          "slug": "tp-face-masks"
+        },
+        {
+          "id": "travel-size-toiletries",
+          "name": "Travel-size toiletries",
+          "slug": "travel-size-toiletries"
+        },
+        {
+          "id": "tp-compression-stockings",
+          "name": "Compression stockings",
+          "slug": "tp-compression-stockings"
+        }
       ]
     },
     {
@@ -559,14 +1767,46 @@
       "icon": "🦯",
       "featured": false,
       "subcategories": [
-        { "id": "sec-adult-incontinence", "name": "Adult incontinence", "slug": "sec-adult-incontinence" },
-        { "id": "sec-mobility-aids", "name": "Mobility aids", "slug": "sec-mobility-aids" },
-        { "id": "sec-nutritional-supplements", "name": "Nutritional supplements", "slug": "sec-nutritional-supplements" },
-        { "id": "pill-organizers", "name": "Pill organizers", "slug": "pill-organizers" },
-        { "id": "sec-monitoring-devices", "name": "Monitoring devices", "slug": "sec-monitoring-devices" },
-        { "id": "joint-supports", "name": "Joint supports", "slug": "joint-supports" },
-        { "id": "home-care-products", "name": "Home-care products", "slug": "home-care-products" },
-        { "id": "daily-living-aids", "name": "Daily living aids", "slug": "daily-living-aids" }
+        {
+          "id": "sec-adult-incontinence",
+          "name": "Adult incontinence",
+          "slug": "sec-adult-incontinence"
+        },
+        {
+          "id": "sec-mobility-aids",
+          "name": "Mobility aids",
+          "slug": "sec-mobility-aids"
+        },
+        {
+          "id": "sec-nutritional-supplements",
+          "name": "Nutritional supplements",
+          "slug": "sec-nutritional-supplements"
+        },
+        {
+          "id": "pill-organizers",
+          "name": "Pill organizers",
+          "slug": "pill-organizers"
+        },
+        {
+          "id": "sec-monitoring-devices",
+          "name": "Monitoring devices",
+          "slug": "sec-monitoring-devices"
+        },
+        {
+          "id": "joint-supports",
+          "name": "Joint supports",
+          "slug": "joint-supports"
+        },
+        {
+          "id": "home-care-products",
+          "name": "Home-care products",
+          "slug": "home-care-products"
+        },
+        {
+          "id": "daily-living-aids",
+          "name": "Daily living aids",
+          "slug": "daily-living-aids"
+        }
       ]
     },
     {
@@ -576,14 +1816,46 @@
       "icon": "📊",
       "featured": true,
       "subcategories": [
-        { "id": "hmt-pregnancy-tests", "name": "Pregnancy tests", "slug": "hmt-pregnancy-tests" },
-        { "id": "hmt-ovulation-tests", "name": "Ovulation tests", "slug": "hmt-ovulation-tests" },
-        { "id": "blood-glucose-testing", "name": "Blood glucose testing", "slug": "blood-glucose-testing" },
-        { "id": "blood-pressure-monitoring", "name": "Blood pressure monitoring", "slug": "blood-pressure-monitoring" },
-        { "id": "cholesterol-tests", "name": "Cholesterol tests", "slug": "cholesterol-tests" },
-        { "id": "hmt-thermometers", "name": "Thermometers", "slug": "hmt-thermometers" },
-        { "id": "hmt-pulse-oximeters", "name": "Pulse oximeters", "slug": "hmt-pulse-oximeters" },
-        { "id": "home-diagnostic-kits", "name": "Other home diagnostic kits", "slug": "home-diagnostic-kits" }
+        {
+          "id": "hmt-pregnancy-tests",
+          "name": "Pregnancy tests",
+          "slug": "hmt-pregnancy-tests"
+        },
+        {
+          "id": "hmt-ovulation-tests",
+          "name": "Ovulation tests",
+          "slug": "hmt-ovulation-tests"
+        },
+        {
+          "id": "blood-glucose-testing",
+          "name": "Blood glucose testing",
+          "slug": "blood-glucose-testing"
+        },
+        {
+          "id": "blood-pressure-monitoring",
+          "name": "Blood pressure monitoring",
+          "slug": "blood-pressure-monitoring"
+        },
+        {
+          "id": "cholesterol-tests",
+          "name": "Cholesterol tests",
+          "slug": "cholesterol-tests"
+        },
+        {
+          "id": "hmt-thermometers",
+          "name": "Thermometers",
+          "slug": "hmt-thermometers"
+        },
+        {
+          "id": "hmt-pulse-oximeters",
+          "name": "Pulse oximeters",
+          "slug": "hmt-pulse-oximeters"
+        },
+        {
+          "id": "home-diagnostic-kits",
+          "name": "Other home diagnostic kits",
+          "slug": "home-diagnostic-kits"
+        }
       ]
     }
   ]

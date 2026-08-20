@@ -393,34 +393,79 @@ export default function HomeClient({
                 );
               }
 
-              // 2. Shop By Department / Category Circles
+              // 2. Shop By Department / Clinical Departments Grid
               if (section.type === "circles" || section.id === "shop-by-category") {
                 return (
                   circleCats.length > 0 && (
-                    <div key={section.id} className="flex flex-col gap-4">
-                      <div className="flex items-center justify-between pb-2 border-b border-slate-200/80">
+                    <div key={section.id} className="flex flex-col gap-5 my-2">
+                      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-3 border-b border-slate-200/80">
                         <div>
+                          <div className="flex items-center gap-2 text-xs font-bold text-[#0072CE] uppercase tracking-widest mb-1">
+                            <span>Hospital &amp; Clinical Procurement</span>
+                          </div>
                           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                            {section.title || "Explore By Department"}
+                            {section.title || "Browse By Clinical Department"}
                           </h2>
-                          <p className="text-xs text-slate-500">Browse clinical categories, instruments, and equipment</p>
+                          <p className="text-xs text-slate-500 mt-0.5">Explore certified pharmaceuticals, German-grade surgical instrumentation, and medical devices</p>
                         </div>
+                        <button 
+                          onClick={() => setSelectedCategory("all")} 
+                          className="text-xs font-bold text-[#0072CE] hover:text-[#005EA6] flex items-center gap-1 self-start sm:self-auto transition-colors"
+                        >
+                          <span>View All 123 Products</span> <ArrowRight size={13} />
+                        </button>
                       </div>
-                      <div className="flex gap-4 overflow-x-auto pb-2 snap-x hide-scrollbar">
-                        {circleCats.map((cat) => (
-                          <button
-                            key={cat.id}
-                            onClick={() => setSelectedCategory(cat.id)}
-                            className="flex flex-col items-center gap-2.5 flex-shrink-0 group w-24 snap-start"
-                          >
-                            <div className="w-[84px] h-[84px] rounded-2xl overflow-hidden border-2 border-slate-200 group-hover:border-[#0072CE] transition-all group-hover:shadow-md bg-white p-1 relative">
-                              <img src={cat.img} alt={cat.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
-                            </div>
-                            <span className="text-[11px] font-bold text-slate-700 text-center group-hover:text-[#0072CE] transition-colors leading-tight">
-                              {cat.name}
-                            </span>
-                          </button>
-                        ))}
+
+                      {/* Clinical Department Cards Grid */}
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+                        {circleCats.map((cat) => {
+                          const catImage = cat.img || cat.image || "/images/products/pharma_tablets.webp";
+                          const isSelected = selectedCategory === cat.id;
+                          const productCount = allProducts.filter(p => p.category === cat.id).length;
+
+                          return (
+                            <button
+                              key={cat.id}
+                              onClick={() => setSelectedCategory(isSelected ? "all" : cat.id)}
+                              className={`group relative p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between overflow-hidden ${
+                                isSelected
+                                  ? "bg-blue-50/90 border-[#0072CE] ring-2 ring-[#0072CE]/40 shadow-md scale-[1.02]"
+                                  : "bg-white border-slate-200/90 hover:border-[#0072CE]/60 hover:shadow-lg hover:-translate-y-0.5"
+                              }`}
+                            >
+                              {/* Top Icon & Count */}
+                              <div className="flex items-center justify-between gap-1 mb-2.5">
+                                <span className="text-xl p-1.5 rounded-xl bg-slate-50 border border-slate-100 group-hover:scale-110 transition-transform">
+                                  {cat.icon || "💊"}
+                                </span>
+                                {productCount > 0 && (
+                                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#0072CE] border border-blue-100/80">
+                                    {productCount} items
+                                  </span>
+                                )}
+                              </div>
+
+                              {/* Department Showcase Image */}
+                              <div className="w-full h-20 bg-slate-50/80 rounded-xl p-2 flex items-center justify-center overflow-hidden mb-2.5 border border-slate-100 group-hover:bg-white transition-colors">
+                                <img
+                                  src={catImage}
+                                  alt={cat.name}
+                                  className="max-h-full max-w-full object-contain group-hover:scale-108 transition-transform duration-300"
+                                />
+                              </div>
+
+                              {/* Titles */}
+                              <div>
+                                <h3 className="text-xs font-black text-slate-800 line-clamp-1 group-hover:text-[#0072CE] transition-colors">
+                                  {cat.name}
+                                </h3>
+                                <p className="text-[10px] text-slate-400 font-medium mt-0.5 line-clamp-1">
+                                  {cat.tag || "MCA Registered"}
+                                </p>
+                              </div>
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   )

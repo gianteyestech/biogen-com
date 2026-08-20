@@ -23,6 +23,8 @@ export interface CMSProduct {
   registrationNo?: string;
   status?: string;
   catalogueMode?: boolean;
+  images?: string[];
+  hasAuthenticPhoto?: boolean;
 }
 
 export interface CMSActivityLog {
@@ -58,9 +60,12 @@ export interface CMSMegaMenuEntry {
 export interface CMSCircleCat {
   id: string;
   name: string;
-  img: string;
+  img?: string;
   image?: string;
   icon?: string;
+  tag?: string;
+  shortName?: string;
+  color?: string;
 }
 
 export interface CMSCategoriesFile {

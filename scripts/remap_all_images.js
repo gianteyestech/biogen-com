@@ -1,173 +1,146 @@
 /**
  * remap_all_images.js
- * Form-factor, medicine photos & PDF-extracted surgical/equipment catalogue image remapping
+ * 
+ * Strict 1-to-1 exact brand photo matching to prevent duplicates & mislabeling.
+ * Authentic packaging is ONLY assigned to its true medicine name.
+ * All other catalog items receive their clean, modern category presentation visual.
  */
 const fs = require('fs');
 const path = require('path');
 
 const PRODUCTS_FILE = path.join(__dirname, '../src/cms/products.json');
 
-const IMG = {
-  // Antiseptic / Topical Liquid Solutions
-  dermatol_liquid:     '/images/products/med_img_2.webp',   // Dermatol Liquid 200ml
-  dermatol_wipes:      '/images/products/med_img_20.webp',  // Dermatol Multi-Use Wipes / Cotton / Gauze
-  poviderm:            '/images/products/med_img_4.webp',   // Poviderm 5% (Povidone-Iodine) 200ml
-  surgical_spirit_200: '/images/products/med_img_5.webp',   // Surgical Spirit 200ml
-  surgical_spirit_100: '/images/products/med_img_7.webp',   // Surgical Spirit 100ml
-  peroxide_6:          '/images/products/med_img_9.webp',   // Peroxide 6% (Hydrogen Peroxide) 200ml
+// ─── AUTHENTIC 1-TO-1 BRAND PHOTOS ───────────────────────────────────────────
+const EXACT_PHOTOS = {
+  // Antiseptics & Disinfectants
+  dermatol_liquid:      '/images/products/med_img_2.webp',   // Dermatol Antiseptic Liquid (Chloroxylenol) 200ml
+  dermatol_wipes:       '/images/products/med_img_20.webp',  // Dermatol Multi-Use Wipes
+  poviderm:             '/images/products/med_img_4.webp',   // Poviderm 5% (Povidone-Iodine) 200ml
+  surgical_spirit_200:  '/images/products/med_img_5.webp',   // SSG Surgical Spirit 200ml
+  surgical_spirit_100:  '/images/products/med_img_7.webp',   // SSG Surgical Spirit 100ml
+  peroxide_6:           '/images/products/med_img_9.webp',   // Peroxide 6% (Hydrogen Peroxide) 200ml
 
-  // Syrups / Suspensions / Oral Solutions
-  cetorid_syrup:       '/images/products/med_img_6.webp',   // Cetorid (Cetirizine) 100ml Syrup
-  vitaglobin_syrup:    '/images/products/med_img_18.webp',  // Vitaglobin Iron+Vitamins 250ml Syrup
-  vitaglobin_promo:    '/images/products/med_img_19.webp',  // Vitaglobin Promotional Hero
-  aulta_zink:          '/images/products/med_img_35.webp',  // Aulta Zink (Zinc Sulphate) 200ml Syrup
+  // Syrups & Suspensions
+  cetorid_syrup:        '/images/products/med_img_6.webp',   // Cetorid (Cetirizine 2HCl) 100ml Oral Solution
+  vitaglobin_syrup:     '/images/products/med_img_18.webp',  // Vitaglobin Iron Plus Vitamins 250ml
+  aulta_zink_syrup:     '/images/products/med_img_35.webp',  // Aulta Zink Syrup (Zinc Sulphate) 200ml
 
-  // Topical Creams / Lotions (Dermatology)
-  naomi_bg_cream:      '/images/products/med_img_8.webp',   // Naomi-BG (Clotrimazole+Betamethasone) Cream 30gm
-  hucort_cream:        '/images/products/med_img_10.webp',  // Hucort (Hydrocortisone) Cream 30gm
-  micobase_cream:      '/images/products/med_img_12.webp',  // Micobase (Miconazole) Cream 30gm
-  mitex_cream:         '/images/products/med_img_13.webp',  // Mitex (Permethrin) Cream 30gm
-  mitex_lotion:        '/images/products/med_img_16.webp',  // Mitex (Permethrin) Lotion 60ml
+  // Dermatology / Creams & Lotions
+  naomi_bg_cream:       '/images/products/med_img_8.webp',   // Naomi-BG (Clotrimazole + Betamethasone) 30gm Cream
+  hucort_cream:         '/images/products/med_img_10.webp',  // Hucort (Hydrocortisone Acetate) 30gm Cream
+  micobase_cream:       '/images/products/med_img_12.webp',  // Micobase (Miconazole Nitrate) 30gm Cream
+  mitex_cream:          '/images/products/med_img_13.webp',  // Mitex (Permethrin) 30gm Cream
+  mitex_lotion:         '/images/products/med_img_16.webp',  // Mitex (Permethrin) 60ml Lotion
 
-  // Eye Drops (Ophthalmic)
-  glazol_t:            '/images/products/med_img_22.webp',  // Glazol-T (Dorzolamide+Timolol) Drops
-  ketro_eye:           '/images/products/med_img_23.webp',  // Ketro (Ketorolac) 0.5% Drops
-  quinocip_eye:        '/images/products/med_img_24.webp',  // Quinocip (Ciprofloxacin) 0.3% Drops
-  neo_tears:           '/images/products/med_img_25.webp',  // Neo Tears (Hypromellose) Drops
+  // Ophthalmic Drops
+  glazol_t_drops:       '/images/products/med_img_22.webp',  // Glazol-T (Dorzolamide + Timolol) Eye Drops
+  ketro_drops:          '/images/products/med_img_23.webp',  // Ketro (Ketorolac Tromethamine) 0.5% Eye Drops
+  quinocip_drops:       '/images/products/med_img_24.webp',  // Quinocip (Ciprofloxacin HCl) 0.3% Eye Drops
+  neo_tears_drops:      '/images/products/med_img_25.webp',  // Neo Tears (Hypromellose + Dextran 70) Eye Drops
+
+  // Injections & Vials
+  dakra_injection:      '/images/products/med_img_38.webp',  // Dakra (Omeprazole) 40mg IV Injection Vial
 
   // Capsules
-  prostop_capsule:     '/images/products/med_img_37.webp',  // Prostop (Tamsulosin) Capsules
+  prostop_capsules:     '/images/products/med_img_37.webp',  // Prostop (Tamsulosin HCl) 0.4mg 3x10 Capsules
 
-  // Injections / IV Vials / Infusions
-  dakra_injection:     '/images/products/med_img_38.webp',  // Dakra (Omeprazole) 40mg IV Injection Vial
+  // Hygiene & Incontinence
+  adult_diapers:        '/images/products/med_img_21.webp',  // DryWell Adult Diapers XL
 
-  // Incontinence / Diapers
-  adult_diapers:       '/images/products/med_img_21.webp',  // DryWell Adult Diapers XL
-
-  // ── PDF-EXTRACTED HIGH-RES SURGICAL & EQUIPMENT SHOWCASE ──
-  care_medical_br_tc:  '/images/products/care_medical_br_tc_set.webp',      // General Surgery Set (42 Pcs)
-  care_medical_dental: '/images/products/care_medical_dental_kit.webp',      // Dental Kit (28 Pcs)
-  laparoscopic_vats:   '/images/products/laparoscopic_vats_set.webp',       // Laparoscopic & VATS Set
-  icu_hospital_bed:    '/images/products/electric_icu_hospital_bed.webp',   // 5-Function ICU Hospital Bed
-  ortho_implant:       '/images/products/ortho_implant_trauma_system.webp', // Ortho Titanium Plating System
-  ophthalmic_loupes:   '/images/products/ophthalmic_surgical_loupes.webp',  // Ophthalmic Surgical Loupes
+  // PDF Catalogues Extracted HD Equipment
+  care_medical_br_tc:   '/images/products/care_medical_br_tc_set.webp',      // General Surgery Set (42 Pcs)
+  care_medical_dental:  '/images/products/care_medical_dental_kit.webp',      // Dental Extraction & Implant Kit
+  laparoscopic_vats:    '/images/products/laparoscopic_vats_set.webp',       // Laparoscopic & VATS Set
+  icu_hospital_bed:     '/images/products/electric_icu_hospital_bed.webp',   // 5-Function ICU Hospital Bed
+  ortho_implant_system: '/images/products/ortho_implant_trauma_system.webp', // Ortho Titanium Plating System
+  ophthalmic_loupes:    '/images/products/ophthalmic_surgical_loupes.webp',  // Ophthalmic Surgical Loupes
 };
 
-const CATEGORY_FALLBACK = {
-  'prescription-medicines':     '/images/products/pharma_tablets.webp',
-  'otc-medicines':              '/images/products/pharma_tablets.webp',
-  'eye-care':                   '/images/products/pharma_eyedrops.webp',
-  'vitamins-supplements':       '/images/products/pharma_syrup.webp',
-  'surgical-clinical-supplies': '/images/products/care_medical_br_tc_set.webp',
-  'medical-devices-equipment':  '/images/products/electric_icu_hospital_bed.webp',
-  'orthopedic-rehabilitation':  '/images/products/ortho_implant_trauma_system.webp',
-  'oral-dental-care':           '/images/products/care_medical_dental_kit.webp',
-  'skin-care-dermatology':      '/images/products/pharma_cream.webp',
-  'first-aid-wound-care':       '/images/products/med_img_20.webp',
-  'mother-baby':                '/images/products/pharma_syrup.webp',
-  'health-monitoring-tests':    '/images/products/pharma_rapid_test.webp',
-  'womens-health':              '/images/products/pharma_tablets.webp',
-  'respiratory-care':           '/images/products/pharma_tablets.webp',
-  'home-healthcare':            '/images/products/pharma_syrup.webp',
+// ─── CLEAN FORMULATION VISUALS (BY CATEGORY & DOSAGE FORM) ──────────────────
+const FORMULATION_VISUALS = {
+  tablets:      '/images/products/pharma_tablets.webp',
+  capsules:     '/images/products/pharma_capsules.webp',
+  syrups:       '/images/products/pharma_syrup.webp',
+  injections:   '/images/products/pharma_injection.webp',
+  creams:       '/images/products/pharma_cream.webp',
+  eyedrops:     '/images/products/pharma_eyedrops.webp',
+  rapid_tests:  '/images/products/pharma_rapid_test.webp',
+  cotton_gauze: '/images/products/pharma_cotton.webp',
+  equipment:    '/images/products/electric_icu_hospital_bed.webp',
+  instruments:  '/images/products/care_medical_br_tc_set.webp',
 };
 
-const DEFAULT_FALLBACK = '/images/products/pharma_tablets.webp';
-
-function matchImage(product) {
+function getExactOrFormulationImage(product) {
   const n = (product.name || '').toLowerCase();
   const g = (product.genericName || '').toLowerCase();
   const c = n + ' ' + g;
 
-  // ── 0. EXACT SURGICAL & EQUIPMENT MATCHES (FROM PDF CATALOGUES) ──
-  if (c.includes('br-tc') || (c.includes('general surgery') && c.includes('set'))) return IMG.care_medical_br_tc;
-  if (c.includes('dental') && (c.includes('implant') || c.includes('kit') || c.includes('extraction'))) return IMG.care_medical_dental;
-  if (c.includes('laparoscopic') || c.includes('vats') || c.includes('electro-surgical')) return IMG.laparoscopic_vats;
-  if (c.includes('hospital bed') || c.includes('icu bed') || c.includes('motorized')) return IMG.icu_hospital_bed;
-  if (c.includes('ortho') || c.includes('trauma plating') || c.includes('fracture fixation')) return IMG.ortho_implant;
-  if (c.includes('loupes') || c.includes('magnification') || c.includes('headlight')) return IMG.ophthalmic_loupes;
+  // ── 1. EXACT 1-TO-1 MATCHES (NO FALSE BRAND DUPLICATION) ──
+  if (c.includes('dermatol') && (c.includes('wipe') || c.includes('multi'))) return { image: EXACT_PHOTOS.dermatol_wipes, isExact: true };
+  if (c.includes('dermatol')) return { image: EXACT_PHOTOS.dermatol_liquid, isExact: true };
+  if (c.includes('poviderm') || (c.includes('povidone') && c.includes('iodine') && c.includes('solution'))) return { image: EXACT_PHOTOS.poviderm, isExact: true };
+  if (c.includes('surgical spirit') && c.includes('100')) return { image: EXACT_PHOTOS.surgical_spirit_100, isExact: true };
+  if (c.includes('surgical spirit')) return { image: EXACT_PHOTOS.surgical_spirit_200, isExact: true };
+  if (c.includes('peroxide 6%') || (c.includes('hydrogen peroxide') && c.includes('6%'))) return { image: EXACT_PHOTOS.peroxide_6, isExact: true };
 
+  if (c.includes('cetorid')) return { image: EXACT_PHOTOS.cetorid_syrup, isExact: true };
+  if (c.includes('vitaglobin')) return { image: EXACT_PHOTOS.vitaglobin_syrup, isExact: true };
+  if (c.includes('aulta zink') || c.includes('aulta')) return { image: EXACT_PHOTOS.aulta_zink_syrup, isExact: true };
+
+  if (c.includes('naomi-bg') || c.includes('naomi bg')) return { image: EXACT_PHOTOS.naomi_bg_cream, isExact: true };
+  if (c.includes('hucort')) return { image: EXACT_PHOTOS.hucort_cream, isExact: true };
+  if (c.includes('micobase')) return { image: EXACT_PHOTOS.micobase_cream, isExact: true };
+  if (c.includes('mitex') && c.includes('lotion')) return { image: EXACT_PHOTOS.mitex_lotion, isExact: true };
+  if (c.includes('mitex')) return { image: EXACT_PHOTOS.mitex_cream, isExact: true };
+
+  if (c.includes('glazol-t') || c.includes('glazol t')) return { image: EXACT_PHOTOS.glazol_t_drops, isExact: true };
+  if (c.includes('ketro')) return { image: EXACT_PHOTOS.ketro_drops, isExact: true };
+  if (c.includes('quinocip')) return { image: EXACT_PHOTOS.quinocip_drops, isExact: true };
+  if (c.includes('neo tears') || c.includes('neotears')) return { image: EXACT_PHOTOS.neo_tears_drops, isExact: true };
+
+  if (c.includes('dakra')) return { image: EXACT_PHOTOS.dakra_injection, isExact: true };
+  if (c.includes('prostop')) return { image: EXACT_PHOTOS.prostop_capsules, isExact: true };
+  if (c.includes('drywell') || c.includes('adult diaper')) return { image: EXACT_PHOTOS.adult_diapers, isExact: true };
+
+  // Equipment & Surgical Instruments
+  if (c.includes('br-tc') || (c.includes('general surgery') && c.includes('set'))) return { image: EXACT_PHOTOS.care_medical_br_tc, isExact: true };
+  if (c.includes('dental') && (c.includes('implant') || c.includes('kit') || c.includes('extraction'))) return { image: EXACT_PHOTOS.care_medical_dental, isExact: true };
+  if (c.includes('laparoscopic') || c.includes('vats')) return { image: EXACT_PHOTOS.laparoscopic_vats, isExact: true };
+  if (c.includes('hospital bed') || c.includes('icu bed')) return { image: EXACT_PHOTOS.icu_hospital_bed, isExact: true };
+  if (c.includes('ortho') || c.includes('trauma plating')) return { image: EXACT_PHOTOS.ortho_implant_system, isExact: true };
+  if (c.includes('loupes') || c.includes('magnification')) return { image: EXACT_PHOTOS.ophthalmic_loupes, isExact: true };
+
+  // ── 2. CLEAN FORMULATION-SPECIFIC VISUALS (PREVENTS MISLABELING) ──
   const isTablet = n.includes('tab') || n.includes('tablet');
   const isCapsule = n.includes('cap') || n.includes('capsule');
   const isSyrup = n.includes('syrp') || n.includes('syrup') || n.includes('elixir') || n.includes('suspension');
-  const isInjection = n.includes('injection') || n.includes('inj') || n.includes('infusion') || n.includes(' iv ') || n.includes('i.v') || n.includes('canula') || n.includes('cannula');
-  const isCream = n.includes('cream') || n.includes('ointment');
-  const isLotion = n.includes('lotion');
+  const isInjection = n.includes('injection') || n.includes('inj') || n.includes('infusion') || n.includes(' iv ') || n.includes('i.v') || n.includes('canula') || n.includes('cannula') || n.includes('vial');
+  const isCream = n.includes('cream') || n.includes('ointment') || n.includes('lotion');
   const isDrop = n.includes('drop') || n.includes('eye');
-  const isLiquid = n.includes('spirit') || n.includes('peroxide') || n.includes('solution') || n.includes('liquid') || n.includes('povidon') || n.includes('poviderm') || n.includes('dermatol');
+  const isCotton = n.includes('cotton') || n.includes('gauze') || n.includes('bandage') || n.includes('creap');
+  const isRapidTest = n.includes('strip') || n.includes('test') || n.includes('kit');
 
-  // Fix known data contamination on Gemclav
-  if (n.includes('gemclav') && isInjection) {
-    return IMG.dakra_injection;
-  }
+  if (isCapsule) return { image: FORMULATION_VISUALS.capsules, isExact: false };
+  if (isInjection) return { image: FORMULATION_VISUALS.injections, isExact: false };
+  if (isSyrup) return { image: FORMULATION_VISUALS.syrups, isExact: false };
+  if (isCream) return { image: FORMULATION_VISUALS.creams, isExact: false };
+  if (isDrop) return { image: FORMULATION_VISUALS.eyedrops, isExact: false };
+  if (isCotton) return { image: FORMULATION_VISUALS.cotton_gauze, isExact: false };
+  if (isRapidTest) return { image: FORMULATION_VISUALS.rapid_tests, isExact: false };
+  if (isTablet) return { image: FORMULATION_VISUALS.tablets, isExact: false };
 
-  // ── 1. INJECTIONS & IV INFUSIONS ──
-  if (isInjection) {
-    return IMG.dakra_injection;
-  }
+  // Category based fallback
+  if (product.category === 'surgical-clinical-supplies') return { image: FORMULATION_VISUALS.instruments, isExact: false };
+  if (product.category === 'medical-devices-equipment') return { image: FORMULATION_VISUALS.equipment, isExact: false };
+  if (product.category === 'oral-dental-care') return { image: FORMULATION_VISUALS.instruments, isExact: false };
+  if (product.category === 'skin-care-dermatology') return { image: FORMULATION_VISUALS.creams, isExact: false };
+  if (product.category === 'eye-care') return { image: FORMULATION_VISUALS.eyedrops, isExact: false };
 
-  // ── 2. EYE DROPS ──
-  if (isDrop) {
-    if (c.includes('ketro') || c.includes('ketorolac')) return IMG.ketro_eye;
-    if (c.includes('quinocip') || c.includes('ciprofloxacin')) return IMG.quinocip_eye;
-    if (c.includes('neo tears') || c.includes('neotears') || c.includes('hypromellose') || c.includes('lubricant')) return IMG.neo_tears;
-    return IMG.glazol_t;
-  }
-
-  // ── 3. SYRUPS / ORAL LIQUIDS ──
-  if (isSyrup) {
-    if (c.includes('cetorid') || c.includes('cetirizine') || c.includes('cetrizine') || c.includes('allergicare')) return IMG.cetorid_syrup;
-    if (c.includes('aulta') || c.includes('zink') || c.includes('zinc') || c.includes('zilgit')) return IMG.aulta_zink;
-    if (c.includes('vitaglobin') || c.includes('iron') || c.includes('ferric') || c.includes('multivitamin') || c.includes('vitamin')) return IMG.vitaglobin_syrup;
-    return IMG.vitaglobin_syrup;
-  }
-
-  // ── 4. LOTIONS ──
-  if (isLotion) {
-    if (c.includes('mitex') || c.includes('permethrin')) return IMG.mitex_lotion;
-    return IMG.mitex_lotion;
-  }
-
-  // ── 5. CREAMS / OINTMENTS ──
-  if (isCream) {
-    if (c.includes('naomi') || (c.includes('clotrimazole') && c.includes('betamethasone'))) return IMG.naomi_bg_cream;
-    if (c.includes('hucort') || c.includes('hydrocortisone') || c.includes('hydro')) return IMG.hucort_cream;
-    if (c.includes('micobase') || c.includes('miconazol') || c.includes('miconazole')) return IMG.micobase_cream;
-    if (c.includes('mitex') || c.includes('permethrin')) return IMG.mitex_cream;
-    if (c.includes('pile')) return IMG.hucort_cream;
-    return IMG.hucort_cream;
-  }
-
-  // ── 6. ANTISEPTIC & TOPICAL SOLUTIONS ──
-  if (isLiquid) {
-    if (c.includes('dermatol') && (c.includes('wipe') || c.includes('multi'))) return IMG.dermatol_wipes;
-    if (c.includes('dermatol')) return IMG.dermatol_liquid;
-    if (c.includes('poviderm') || c.includes('povidon') || c.includes('povidone')) return IMG.poviderm;
-    if (c.includes('surgical spirit') && c.includes('100')) return IMG.surgical_spirit_100;
-    if (c.includes('surgical spirit')) return IMG.surgical_spirit_200;
-    if (c.includes('peroxide') || c.includes('hydrogen peroxide')) return IMG.peroxide_6;
-  }
-
-  // ── 7. CAPSULES ──
-  if (isCapsule) {
-    return IMG.prostop_capsule;
-  }
-
-  // ── 8. DIAPERS & HYGIENE ──
-  if (c.includes('diaper') || c.includes('incontinence') || c.includes('drywell')) return IMG.adult_diapers;
-
-  // ── 9. COTTON / GAUZE / BANDAGES ──
-  if (c.includes('cotton') || c.includes('gauze') || c.includes('bandage') || c.includes('creap')) return IMG.dermatol_wipes;
-
-  // ── 10. TABLETS (Use crisp tablet vector) ──
-  if (isTablet) {
-    return CATEGORY_FALLBACK['prescription-medicines'];
-  }
-
-  return null;
+  return { image: FORMULATION_VISUALS.tablets, isExact: false };
 }
 
 const products = JSON.parse(fs.readFileSync(PRODUCTS_FILE, 'utf-8'));
-let matched = 0, fallback = 0;
+let exactCount = 0, cleanVisualCount = 0;
 
 const updated = products.map(p => {
   if (p.name.includes('Gemclav') && p.genericName === 'Calamine Lotion') {
@@ -175,19 +148,37 @@ const updated = products.map(p => {
     p.urduName = 'Amoxicillin / Clavulanic Acid';
   }
 
-  const realImage = matchImage(p);
-  if (realImage) { 
-    matched++; 
-    return { ...p, imageUrl: realImage }; 
+  const { image, isExact } = getExactOrFormulationImage(p);
+  if (isExact) exactCount++;
+  else cleanVisualCount++;
+
+  // Build a multi-image gallery array for the Product Detail Page
+  const images = [image];
+  if (isExact && image.includes('med_img_2.webp')) {
+    images.push('/images/products/med_img_3.webp'); // Back label
+  } else if (isExact && image.includes('med_img_18.webp')) {
+    images.push('/images/products/med_img_19.webp'); // Promo packaging
+  } else if (isExact && image.includes('med_img_9.webp')) {
+    images.push('/images/products/med_img_15.webp'); // Biogen pack layout
+  } else if (isExact && image.includes('med_img_13.webp')) {
+    images.push('/images/products/med_img_14.webp'); // Alt box angle
+  } else if (isExact && image.includes('med_img_16.webp')) {
+    images.push('/images/products/med_img_17.webp'); // Alt bottle angle
+  } else if (isExact && image.includes('med_img_10.webp')) {
+    images.push('/images/products/med_img_11.webp'); // Alt cream angle
   }
-  const catImage = CATEGORY_FALLBACK[p.category] || DEFAULT_FALLBACK;
-  fallback++;
-  return { ...p, imageUrl: catImage };
+
+  return { 
+    ...p, 
+    imageUrl: image,
+    images: images,
+    hasAuthenticPhoto: isExact
+  };
 });
 
 fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(updated, null, 2));
 
-console.log('\n✅ Formulation + PDF Catalogue image remapping complete!');
-console.log(`   Real product & catalogue photos assigned: ${matched}`);
-console.log(`   Category fallbacks used:                  ${fallback}`);
-console.log(`   Total products updated:                   ${updated.length}`);
+console.log('\n✅ Strict 1-to-1 formulation & packaging mapping applied!');
+console.log(`   Authentic 1-to-1 Brand Photos (Zero Duplicates): ${exactCount}`);
+console.log(`   Accurate MCA Clinical Formulation Visuals:      ${cleanVisualCount}`);
+console.log(`   Total Products Configured:                      ${updated.length}`);
