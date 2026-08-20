@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="none">
+    <rect width="300" height="80" rx="12" fill="#FFFFFF"/>
+    <g transform="translate(15, 12)">
+      <!-- Highnoon Sun & Horizon Logo -->
+      <circle cx="28" cy="28" r="22" fill="#00529B"/>
+      <path d="M14 28 C14 20, 42 20, 42 28 C42 36, 14 36, 14 28 Z" fill="#E31837"/>
+      <circle cx="28" cy="28" r="8" fill="#FFFFFF"/>
+      <circle cx="28" cy="28" r="4" fill="#00529B"/>
+      <!-- Typography -->
+      <text x="62" y="27" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="900" fill="#00529B" letter-spacing="1.5">HIGHNOON</text>
+      <text x="63" y="44" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#E31837" letter-spacing="3">LABORATORIES</text>
+    </g>
+  </svg>

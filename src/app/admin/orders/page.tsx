@@ -326,13 +326,27 @@ export default function AdminOrdersPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center justify-between border-t border-slate-800 pt-4">
-              <button
-                onClick={() => window.print()}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold transition-colors"
-              >
-                <Printer size={14} /> Print Clinical Invoice
-              </button>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => window.print()}
+                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold transition-colors"
+                >
+                  <Printer size={14} /> Print Clinical Invoice
+                </button>
+                {selectedOrder.customer_phone && (
+                  <button
+                    onClick={() => {
+                      const cleanPhone = selectedOrder.customer_phone.replace(/[^0-9+]/g, "");
+                      const msg = `Hello ${selectedOrder.customer_name},\nThis is Biogen Pharma regarding your medical requisition #${selectedOrder.order_number}.\nStatus: ${selectedOrder.status.toUpperCase()}\nTotal: $${selectedOrder.total_amount?.toLocaleString()}`;
+                      window.open(`https://wa.me/${cleanPhone.replace("+", "")}?text=${encodeURIComponent(msg)}`, "_blank");
+                    }}
+                    className="flex items-center gap-1.5 px-3.5 py-2 bg-emerald-950/60 text-emerald-400 hover:bg-emerald-900/60 border border-emerald-500/30 rounded-xl text-xs font-bold transition-colors"
+                  >
+                    <span>💬 WhatsApp Client</span>
+                  </button>
+                )}
+              </div>
 
               <button
                 onClick={() => setSelectedOrder(null)}

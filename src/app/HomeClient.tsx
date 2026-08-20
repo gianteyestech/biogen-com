@@ -9,10 +9,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import ProductCard from "@/components/ProductCard";
+import BrandPartners from "@/components/BrandPartners";
 import { MEGA_MENU } from "@/data/products";
 import type {
   CMSProduct,
   CMSCategory,
+  CMSMegaMenuEntry,
   CMSCircleCat,
   CMSHeroSlide,
   CMSSiteConfig,
@@ -33,6 +35,7 @@ interface SectionWithProducts extends CMSPageSection {
 interface HomeClientProps {
   allProducts: CMSProduct[];
   categories: CMSCategory[];
+  megaMenu?: CMSMegaMenuEntry[];
   circleCats: CMSCircleCat[];
   heroSlides: CMSHeroSlide[];
   siteConfig: CMSSiteConfig;
@@ -41,11 +44,17 @@ interface HomeClientProps {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function HomeClient({
-  allProducts, categories, circleCats, heroSlides, siteConfig, sections,
+  allProducts, categories, megaMenu, circleCats, heroSlides, siteConfig, sections,
 }: HomeClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedBrand, setSelectedBrand] = useState("all");
   const [heroSlide, setHeroSlide] = useState(0);
+
+  const displayCategories = useMemo(() => {
+    if (megaMenu && megaMenu.length > 0) return megaMenu;
+    return categories.filter((c) => c.id !== "all");
+  }, [megaMenu, categories]);
 
   const isCatalogue = siteConfig?.siteMode === "catalogue";
   const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
@@ -53,16 +62,32 @@ export default function HomeClient({
 
   const filteredProducts = useMemo(() => {
     let list = filterProductsByCategory(allProducts, selectedCategory);
+    
+    if (selectedBrand && selectedBrand !== "all") {
+      const bLower = selectedBrand.toLowerCase();
+      list = list.filter((p) => {
+        if (!p.brand) return false;
+        const pBrand = p.brand.toLowerCase();
+        return pBrand === bLower || pBrand.includes(bLower) || bLower.includes(pBrand);
+      });
+    }
+
     if (searchTerm.trim()) {
       const q = searchTerm.toLowerCase();
       list = list.filter(
-        (p) => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || (p.urduName && p.urduName.includes(q))
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          (p.urduName && p.urduName.toLowerCase().includes(q)) ||
+          (p.brand && p.brand.toLowerCase().includes(q)) ||
+          (p.genericName && p.genericName.toLowerCase().includes(q)) ||
+          (p.registrationNo && p.registrationNo.toLowerCase().includes(q))
       );
     }
     return list;
-  }, [selectedCategory, searchTerm, allProducts]);
+  }, [selectedCategory, selectedBrand, searchTerm, allProducts]);
 
-  const isFiltered = selectedCategory !== "all" || searchTerm.trim();
+  const isFiltered = selectedCategory !== "all" || selectedBrand !== "all" || searchTerm.trim() !== "";
 
   // Highlight products
   const featuredProducts = allProducts.filter((p) => p.featured).slice(0, 5);
@@ -118,6 +143,9 @@ export default function HomeClient({
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         siteConfig={siteConfig}
+        categories={categories}
+        megaMenu={megaMenu}
+        allProducts={allProducts}
       />
       <CartSlider />
 
@@ -149,30 +177,59 @@ export default function HomeClient({
         {isFiltered ? (
           /* ── FILTERED CATALOG VIEW ──────────────────────────────── */
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
-            <div className="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-slate-100 pb-4">
               <div>
                 <h2 className="text-xl font-black text-slate-900 tracking-tight">
-                  {searchTerm
+                  {selectedBrand !== "all"
+                    ? `${selectedBrand} Formulations`
+                    : searchTerm
                     ? `Search Results for "${searchTerm}"`
                     : categories.find((c) => c.id === selectedCategory)?.name || "Medical Catalog"
                   }
                 </h2>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Showing verified clinical supplies and pharmaceutical inventory
-                </p>
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  <span className="text-xs text-slate-500 font-medium">Active Filters:</span>
+                  {selectedBrand !== "all" && (
+                    <button
+                      onClick={() => setSelectedBrand("all")}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 text-[#0072CE] border border-blue-200 text-xs font-bold hover:bg-blue-100 transition-colors"
+                    >
+                      <span>Brand: <strong>{selectedBrand}</strong></span>
+                      <span className="text-blue-400 hover:text-blue-700">✕</span>
+                    </button>
+                  )}
+                  {selectedCategory !== "all" && (
+                    <button
+                      onClick={() => setSelectedCategory("all")}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold hover:bg-slate-200 transition-colors"
+                    >
+                      <span>Category: <strong>{categories.find((c) => c.id === selectedCategory)?.name || selectedCategory}</strong></span>
+                      <span className="text-slate-400 hover:text-slate-700">✕</span>
+                    </button>
+                  )}
+                  {searchTerm.trim() && (
+                    <button
+                      onClick={() => setSearchTerm("")}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold hover:bg-amber-100 transition-colors"
+                    >
+                      <span>Search: &ldquo;{searchTerm}&rdquo;</span>
+                      <span className="text-amber-500 hover:text-amber-800">✕</span>
+                    </button>
+                  )}
+                </div>
               </div>
               <button
-                onClick={() => { setSelectedCategory("all"); setSearchTerm(""); }}
-                className="text-xs font-bold text-[#0072CE] bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-[#0072CE] hover:text-white transition-all uppercase tracking-wider"
+                onClick={() => { setSelectedCategory("all"); setSelectedBrand("all"); setSearchTerm(""); }}
+                className="text-xs font-bold text-[#0072CE] bg-blue-50 px-3.5 py-2 rounded-xl hover:bg-[#0072CE] hover:text-white transition-all uppercase tracking-wider self-start sm:self-auto border border-blue-200/60"
               >
-                ← View All Products
+                ← View Complete Catalog
               </button>
             </div>
             {filteredProducts.length === 0 ? (
               <div className="text-center py-20 text-slate-400">
                 <p className="text-4xl mb-3">🔍</p>
                 <p className="font-semibold text-base text-slate-700">No medical supplies found matching your criteria.</p>
-                <p className="text-xs text-slate-400 mt-1">Try adjusting your search keyword or selected department.</p>
+                <p className="text-xs text-slate-400 mt-1">Try resetting the brand or department filter.</p>
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
@@ -204,7 +261,7 @@ export default function HomeClient({
                   <span className="text-[10px] bg-blue-500/20 text-[#00A3E0] px-2 py-0.5 rounded font-mono font-bold">GMP</span>
                 </div>
                 <div className="py-2 bg-white flex-1 overflow-y-auto divide-y divide-slate-50">
-                  {MEGA_MENU.map((cat) => (
+                  {displayCategories.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.id)}
@@ -280,7 +337,7 @@ export default function HomeClient({
 
             {/* Mobile/Tablet Category Quick-Bar */}
             <div className="xl:hidden w-full overflow-x-auto py-1 flex gap-2 scrollbar-none snap-x">
-              {MEGA_MENU.map((cat) => (
+              {displayCategories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
@@ -295,6 +352,12 @@ export default function HomeClient({
                 </button>
               ))}
             </div>
+
+            {/* ── AUTHORIZED PHARMACEUTICAL & SURGICAL PARTNERS ─────── */}
+            <BrandPartners
+              selectedBrand={selectedBrand}
+              onSelectBrand={setSelectedBrand}
+            />
 
             {/* ── CMS SECTIONS ─────────────────────────────────────── */}
             {sections.filter(s => s.visible).map((section) => {

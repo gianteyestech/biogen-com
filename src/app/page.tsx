@@ -29,11 +29,6 @@ export default async function HomePage() {
         sectionProducts = products.filter((p) => p.featured);
       } else {
         sectionProducts = filterProductsByCategory(products, section.categoryId);
-        // For gift-box sections also include mix
-        if (section.categoryId === "gift-box") {
-          const mix = filterProductsByCategory(products, "mix");
-          sectionProducts = [...sectionProducts, ...mix];
-        }
       }
       return { ...section, products: sectionProducts };
     });
@@ -42,6 +37,7 @@ export default async function HomePage() {
     <HomeClient
       allProducts={products}
       categories={categoriesData.categories}
+      megaMenu={categoriesData.megaMenu || []}
       circleCats={categoriesData.circleCats}
       heroSlides={heroSlides}
       siteConfig={siteConfig}

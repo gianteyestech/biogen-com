@@ -44,7 +44,7 @@ const NAV_LINKS = [
   { label: "Contact Us", id: "contact", href: "/business-page/contact-us" }
 ];
 
-import type { CMSSiteConfig } from "@/lib/cms-types";
+import type { CMSSiteConfig, CMSCategory, CMSMegaMenuEntry, CMSProduct } from "@/lib/cms-types";
 
 interface HeaderProps {
   searchTerm?: string;
@@ -52,6 +52,9 @@ interface HeaderProps {
   selectedCategory?: string;
   setSelectedCategory?: (c: string) => void;
   siteConfig?: CMSSiteConfig;
+  categories?: CMSCategory[];
+  megaMenu?: CMSMegaMenuEntry[];
+  allProducts?: CMSProduct[];
 }
 
 export default function Header({ 
@@ -59,13 +62,52 @@ export default function Header({
   setSearchTerm = () => {}, 
   selectedCategory = "all", 
   setSelectedCategory = () => {},
-  siteConfig
+  siteConfig,
+  categories,
+  megaMenu,
+  allProducts,
 }: HeaderProps) {
   const isCatalogue = siteConfig?.siteMode === "catalogue";
   const hidePrices = siteConfig?.hidePricesInCatalogue ?? false;
   const router = useRouter();
   const pathname = usePathname();
   const { setIsCartOpen, cartCount, cartTotal, mounted } = useCart();
+
+  const activeCategories = useMemo(() => {
+    return categories && categories.length > 0 ? categories : CATEGORIES;
+  }, [categories]);
+
+  const activeMegaMenu = useMemo(() => {
+    if (megaMenu && megaMenu.length > 0) return megaMenu;
+    if (categories && categories.length > 0) {
+      return categories.filter(c => c.id !== "all").map(c => ({
+        id: c.id,
+        name: c.name,
+        icon: c.icon,
+        subcategories: []
+      }));
+    }
+    return MEGA_MENU;
+  }, [megaMenu, categories]);
+
+  const dynamicNavLinks = useMemo(() => {
+    const topCats = activeCategories
+      .filter((c) => c.id !== "all")
+      .slice(0, 5)
+      .map((c) => ({
+        label: c.name,
+        id: c.id,
+        href: "/",
+      }));
+
+    return [
+      { label: "Home", id: "all", href: "/" },
+      ...topCats,
+      { label: "About Us", id: "about", href: "/business-page/about-us" },
+      { label: "FAQs", id: "faqs", href: "/business-page/faqs" },
+      { label: "Contact Us", id: "contact", href: "/business-page/contact-us" },
+    ];
+  }, [activeCategories]);
 
   // Component States
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -76,7 +118,14 @@ export default function Header({
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [hoveredCat, setHoveredCat] = useState<string>(MEGA_MENU[0]?.id ?? "");
+  const [hoveredCat, setHoveredCat] = useState<string>("");
+
+  useEffect(() => {
+    if (activeMegaMenu[0] && !hoveredCat) {
+      setHoveredCat(activeMegaMenu[0].id);
+    }
+  }, [activeMegaMenu, hoveredCat]);
+
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [activeSuggestionIdx, setActiveSuggestionIdx] = useState(-1);
 
@@ -254,7 +303,7 @@ export default function Header({
   function openMega() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setMegaMenuOpen(true);
-    if (!hoveredCat && MEGA_MENU[0]) setHoveredCat(MEGA_MENU[0].id);
+    if (!hoveredCat && activeMegaMenu[0]) setHoveredCat(activeMegaMenu[0].id);
   }
 
   function closeMegaDelayed() {
@@ -269,6 +318,8 @@ export default function Header({
         onClose={() => setIsSidebarOpen(false)}
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
+        categories={activeCategories}
+        megaMenu={activeMegaMenu}
       />
 
       <header className="w-full z-40 relative">
@@ -583,18 +634,18 @@ export default function Header({
                     >
                       <div className="grid grid-cols-[300px_440px_1fr] p-6 gap-6 items-start">
                         
-                        {/* Column 1: All 26 Medical Departments */}
+                        {/* Column 1: Medical Departments */}
                         <div className="border-r border-slate-100 pr-4">
                           <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
                             <h4 className="font-sans text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                              Medical Departments ({MEGA_MENU.length})
+                              Medical Departments ({activeMegaMenu.length})
                             </h4>
                             <span className="text-[9px] font-bold text-[#0072CE] bg-blue-50 px-1.5 py-0.5 rounded">
-                              26 Sectors
+                              {activeMegaMenu.length} Sectors
                             </span>
                           </div>
                           <div className="flex flex-col gap-1 max-h-[380px] overflow-y-auto pr-1.5 scrollbar-thin">
-                            {MEGA_MENU.map((cat) => (
+                            {activeMegaMenu.map((cat) => (
                               <button
                                 key={cat.id}
                                 onMouseEnter={() => setHoveredCat(cat.id)}
@@ -620,7 +671,7 @@ export default function Header({
                         {/* Column 2: Dynamic Subcategories of Active Department */}
                         <div className="border-r border-slate-100 pr-4">
                           {(() => {
-                            const activeCategoryData = MEGA_MENU.find((c) => c.id === hoveredCat) || MEGA_MENU[0];
+                            const activeCategoryData = activeMegaMenu.find((c) => c.id === hoveredCat) || activeMegaMenu[0];
                             return (
                               <div>
                                 <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-100">
@@ -631,7 +682,7 @@ export default function Header({
                                     </h4>
                                   </div>
                                   <button
-                                    onClick={() => handleCategorySelect(activeCategoryData.id)}
+                                    onClick={() => handleCategorySelect(activeCategoryData?.id || "all")}
                                     className="text-[10px] font-bold text-[#0072CE] hover:underline uppercase tracking-wider flex-shrink-0"
                                   >
                                     View All →
@@ -652,6 +703,11 @@ export default function Header({
                                       <ArrowRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#0072CE] flex-shrink-0" />
                                     </button>
                                   ))}
+                                  {(!activeCategoryData?.subcategories || activeCategoryData.subcategories.length === 0) && (
+                                    <p className="text-xs text-slate-400 col-span-2 py-4 italic text-center">
+                                      Browse all products in this department
+                                    </p>
+                                  )}
                                 </div>
                               </div>
                             );
@@ -669,7 +725,7 @@ export default function Header({
                                 Institutional Grade Supply
                               </h5>
                               <p className="text-[10px] text-slate-300 leading-relaxed">
-                                26 certified healthcare categories covering pharmaceuticals, surgery, devices &amp; diagnostics.
+                                Certified healthcare categories covering pharmaceuticals, surgery, devices &amp; diagnostics.
                               </p>
                             </div>
                             <button
@@ -687,7 +743,7 @@ export default function Header({
                 </div>
 
                 {/* Standard Nav links */}
-                {NAV_LINKS.map((link) => (
+                {dynamicNavLinks.map((link) => (
                   <button
                     key={link.label}
                     onClick={() => handleNavClick(link)}

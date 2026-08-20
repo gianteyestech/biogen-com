@@ -1,24 +1,46 @@
 [
   {
     "id": "slide-1",
-    "title": "Precision Surgical Instruments & Essential Medicines",
-    "subtitle": "Trusted Healthcare Partner in West Africa & Globally",
-    "bg": "#0A0F1D",
-    "accent": "#0284C7",
-    "img": "https://assets.idealdryfruit.com/uploads/products/2026/08/biogen_hero_banner1.webp",
-    "promoText": "GMP & ISO Certified Quality",
-    "promoLabel": "Certified Medical Excellence",
-    "ctaText": "Explore Supplies"
+    "title": "Certified Institutional Pharmaceutical Supply",
+    "subtitle": "100+ MCA-Registered Formulations from Leading Global Laboratories",
+    "bg": "#0B192C",
+    "accent": "#0072CE",
+    "img": "/images/banners/biogen_banner_1.webp",
+    "promoText": "MCA Certified • Cold-Chain Guaranteed • Direct Wholesale",
+    "promoLabel": "Official Medical Supply",
+    "ctaText": "Explore Medicines Catalog"
   },
   {
     "id": "slide-2",
-    "title": "Hospital Furniture & Advanced Clinical Loupes",
-    "subtitle": "Complete Clinical & Hospital Equipment Solutions",
+    "title": "German-Grade Surgical Instruments & Eye Care Optics",
+    "subtitle": "Care Medical 2025–26 Series: BR-TC Sets, Laparoscopy & Precision Loupes",
+    "bg": "#0D2B45",
+    "accent": "#00A3E0",
+    "img": "/images/banners/biogen_banner_2.webp",
+    "promoText": "Tungsten Carbide • CE & ISO 13485 Certified • Operating Room Grade",
+    "promoLabel": "Surgical Excellence",
+    "ctaText": "View Surgical Catalog"
+  },
+  {
+    "id": "slide-3",
+    "title": "Authorized Manufacturer Partners & Institutional Tenders",
+    "subtitle": "Highnoon, Glitz, Welmark, Caraway, Schazoo & Davis Pharmaceuticals",
     "bg": "#064E3B",
     "accent": "#10B981",
-    "img": "https://assets.idealdryfruit.com/uploads/products/2026/08/biogen_hero_banner2.webp",
-    "promoText": "Direct Institutional Wholesale",
-    "promoLabel": "Hospital Supplies",
+    "img": "/images/banners/biogen_banner_1.webp",
+    "promoText": "Direct-From-Manufacturer • Batch Release Verification",
+    "promoLabel": "Verified Principals",
+    "ctaText": "Request Institutional Quote"
+  },
+  {
+    "id": "slide-4",
+    "title": "Modern Hospital Furniture & Rapid Diagnostics",
+    "subtitle": "5-Function Motorized ICU Beds, Examination Tables & Rapid Test Kits",
+    "bg": "#1E1B4B",
+    "accent": "#8B5CF6",
+    "img": "/images/banners/biogen_banner_2.webp",
+    "promoText": "Heavy Duty Medical Infrastructure • Rapid Malaria/Pregnancy Screening",
+    "promoLabel": "Hospital Infrastructure",
     "ctaText": "View Equipment"
   }
 ]

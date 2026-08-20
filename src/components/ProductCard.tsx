@@ -83,12 +83,19 @@ export default function ProductCard({
           </h3>
         </Link>
 
-        {/* Packing / Variant Tag */}
-        {defaultWeight && (
-          <div className="text-[11px] text-slate-500 font-medium bg-slate-100 px-2 py-0.5 rounded w-fit">
-            {defaultWeight}
-          </div>
-        )}
+        {/* Brand & Packaging Tags */}
+        <div className="flex flex-wrap items-center gap-1.5 mt-auto">
+          {product.brand && (
+            <span className="text-[10px] text-blue-700 font-semibold bg-blue-50/80 px-1.5 py-0.5 rounded border border-blue-100/60 truncate max-w-[150px]">
+              {product.brand}
+            </span>
+          )}
+          {product.registrationNo && product.registrationNo.startsWith("MCA") && (
+            <span className="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.5 rounded border border-emerald-100">
+              MCA
+            </span>
+          )}
+        </div>
 
         {/* Spacer to push pricing and button to bottom */}
         <div className="mt-auto pt-3 border-t border-slate-100 flex items-center justify-between gap-2">

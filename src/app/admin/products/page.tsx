@@ -212,7 +212,13 @@ export default function AdminProductsPage() {
 
   const filtered = products.filter((p) => {
     const q = search.toLowerCase();
-    const matchSearch = !q || p.name.toLowerCase().includes(q) || p.category.includes(q);
+    const matchSearch =
+      !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q) ||
+      (p.brand && p.brand.toLowerCase().includes(q)) ||
+      (p.genericName && p.genericName.toLowerCase().includes(q)) ||
+      (p.registrationNo && p.registrationNo.toLowerCase().includes(q));
     const matchCat = filterCat === "all" || p.category === filterCat;
     return matchSearch && matchCat;
   });
@@ -341,7 +347,9 @@ export default function AdminProductsPage() {
                   </div>
                   <div className="min-w-0 pr-3">
                     <p className="text-xs font-semibold text-white truncate">{p.name}</p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">{p.category} · {p.id}</p>
+                    <p className="text-[10px] text-slate-400 mt-0.5">
+                      {p.category} {p.brand ? `· ${p.brand}` : ""} {p.registrationNo ? `· ${p.registrationNo}` : ""}
+                    </p>
                   </div>
                   <div className="w-24 text-right pr-3">
                     <p className="text-xs font-bold text-[#00A3E0]">${firstPrice?.toLocaleString()}</p>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { X, ChevronDown, ChevronRight, Pill, Stethoscope, Eye, Bed, Apple, Sparkles } from "lucide-react";
+import type { CMSCategory, CMSMegaMenuEntry } from "@/lib/cms-types";
 import { MEGA_MENU } from "@/data/products";
 import BiogenLogo from "./BiogenLogo";
 
@@ -9,6 +10,8 @@ interface SidebarProps {
   onClose: () => void;
   selectedCategory: string;
   onSelectCategory: (id: string) => void;
+  categories?: CMSCategory[];
+  megaMenu?: CMSMegaMenuEntry[];
 }
 
 const CategoryIcon = ({ id, icon }: { id: string; icon: string }) => {
@@ -23,7 +26,7 @@ const CategoryIcon = ({ id, icon }: { id: string; icon: string }) => {
   }
 };
 
-export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCategory }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCategory, categories, megaMenu }: SidebarProps) {
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
   if (!isOpen) return null;
@@ -32,6 +35,12 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
     onSelectCategory(id);
     onClose();
   };
+
+  const menuItems = (megaMenu && megaMenu.length > 0)
+    ? megaMenu
+    : (categories && categories.length > 0)
+      ? categories.filter(c => c.id !== "all").map(c => ({ id: c.id, name: c.name, icon: c.icon, subcategories: [] }))
+      : MEGA_MENU;
 
   return (
     <div className="fixed inset-0 z-50 flex font-sans">
@@ -78,8 +87,9 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
             <ChevronRight size={14} className="opacity-60" />
           </button>
 
-          {MEGA_MENU.map((category) => {
-            const isSelected = selectedCategory === category.slug;
+          {menuItems.map((category) => {
+            const catSlug = (category as any).slug || category.id;
+            const isSelected = selectedCategory === catSlug;
             const isExpanded = expandedCat === category.id;
             const hasSub = category.subcategories && category.subcategories.length > 0;
 
@@ -91,7 +101,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
                       ? "bg-[#0072CE] text-white shadow-md shadow-blue-500/20"
                       : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
                   }`}
-                  onClick={() => handleCategoryClick(category.slug)}
+                  onClick={() => handleCategoryClick(catSlug)}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <CategoryIcon id={category.id} icon={category.icon} />
@@ -121,7 +131,7 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
                     {category.subcategories.map((sub) => (
                       <button
                         key={sub.id}
-                        onClick={() => handleCategoryClick(category.slug)}
+                        onClick={() => handleCategoryClick(catSlug)}
                         className="w-full text-left py-2 px-3 rounded-lg text-xs font-medium text-slate-400 hover:text-[#00A3E0] hover:bg-slate-800/40 transition-colors flex items-center justify-between group"
                       >
                         <span className="truncate">{sub.name}</span>

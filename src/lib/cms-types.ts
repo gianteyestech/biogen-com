@@ -18,6 +18,11 @@ export interface CMSProduct {
   featured: boolean;
   isNew: boolean;
   badge: string;
+  brand?: string;
+  genericName?: string;
+  registrationNo?: string;
+  status?: string;
+  catalogueMode?: boolean;
 }
 
 export interface CMSActivityLog {

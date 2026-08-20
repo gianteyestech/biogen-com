@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import ProductCard from "@/components/ProductCard";
 import { getSavePercent } from "@/lib/cms-types";
-import type { CMSProduct, CMSSiteConfig } from "@/lib/cms-types";
+import type { CMSProduct, CMSSiteConfig, CMSCategory, CMSMegaMenuEntry } from "@/lib/cms-types";
 
 function WhatsAppIcon({ size = 16 }: { size?: number }) {
   return (
@@ -26,9 +26,11 @@ interface ProductPageClientProps {
   product: CMSProduct | null;
   related: CMSProduct[];
   siteConfig?: CMSSiteConfig;
+  categories?: CMSCategory[];
+  megaMenu?: CMSMegaMenuEntry[];
 }
 
-export default function ProductPageClient({ product, related, siteConfig }: ProductPageClientProps) {
+export default function ProductPageClient({ product, related, siteConfig, categories, megaMenu }: ProductPageClientProps) {
   const { addToCart, setIsCartOpen } = useCart();
   const [selectedWeight, setSelectedWeight] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
@@ -75,10 +77,13 @@ export default function ProductPageClient({ product, related, siteConfig }: Prod
       `🏥 *Institutional Quotation Request — Biogen Pharma*`,
       ``,
       `• *Product:* ${product.name}`,
-      `• *Packaging / Specification:* ${activeWeight}`,
+      product.genericName ? `• *Formulation / Generic:* ${product.genericName}` : ``,
+      product.brand ? `• *Manufacturer / Principal:* ${product.brand}` : ``,
+      product.registrationNo ? `• *Registration No:* ${product.registrationNo}` : ``,
+      activeWeight ? `• *Packaging / Presentation:* ${activeWeight}` : ``,
       `• *Requisition Quantity:* ${quantity} Units`,
-      !hidePrices ? `• *Unit Estimated Price:* $${currentPrice.toLocaleString()}` : ``,
-      !hidePrices ? `• *Estimated Consignment:* $${total.toLocaleString()}` : ``,
+      !hidePrices && currentPrice > 0 ? `• *Unit Estimated Price:* $${currentPrice.toLocaleString()}` : ``,
+      !hidePrices && currentPrice > 0 ? `• *Estimated Consignment:* $${total.toLocaleString()}` : ``,
       ``,
       `Please provide formal institutional quotation invoice, Certificate of Analysis (CoA), and cold-chain transit schedule for our healthcare facility.`,
     ].filter(Boolean).join("\n");
@@ -102,6 +107,8 @@ export default function ProductPageClient({ product, related, siteConfig }: Prod
         selectedCategory={selectedCategory} 
         setSelectedCategory={setSelectedCategory} 
         siteConfig={siteConfig}
+        categories={categories}
+        megaMenu={megaMenu}
       />
       <CartSlider />
 
@@ -210,40 +217,84 @@ export default function ProductPageClient({ product, related, siteConfig }: Prod
                 </p>
               )}
 
-              {/* Packaging / Variant Selection */}
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-2.5">
-                  Select Packaging / Dosage Size:
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  {weights.map((w) => {
-                    const sp = getSavePercent(product, w);
-                    const isActive = activeWeight === w;
-                    const priceForWeight = product.prices[w] ?? 0;
-                    return (
-                      <button
-                        key={w}
-                        onClick={() => setSelectedWeight(w)}
-                        className={`relative flex flex-col items-start px-4 py-2.5 rounded-xl border-2 transition-all text-xs font-semibold ${
-                          isActive
-                            ? "border-[#0072CE] bg-blue-50/50 text-[#0072CE]"
-                            : "border-slate-200 hover:border-slate-300 bg-white text-slate-700"
-                        }`}
-                      >
-                        {!isCatalogue && sp && (
-                          <span className="absolute -top-2 -right-1.5 text-[8px] font-extrabold px-1.5 py-0.5 rounded text-white bg-[#70BA28]">
-                            -{sp}%
-                          </span>
-                        )}
-                        <span>{w}</span>
-                        {!hidePrices && (
-                          <span className="text-[11px] font-bold mt-0.5">${priceForWeight.toLocaleString()}</span>
-                        )}
-                      </button>
-                    );
-                  })}
+              {/* Clinical & Regulatory Specifications Table */}
+              <div className="bg-blue-50/40 rounded-xl p-4 border border-blue-100 flex flex-col gap-2.5">
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 pb-2 border-b border-blue-100">
+                  <ShieldCheck size={14} className="text-[#0072CE]" />
+                  Clinical &amp; Regulatory Specifications
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  {product.genericName && (
+                    <div className="flex justify-between sm:justify-start gap-2 py-1 border-b border-blue-50">
+                      <span className="text-slate-500 font-medium">Active Formulation:</span>
+                      <span className="text-slate-900 font-bold">{product.genericName}</span>
+                    </div>
+                  )}
+                  {product.brand && (
+                    <div className="flex justify-between sm:justify-start gap-2 py-1 border-b border-blue-50">
+                      <span className="text-slate-500 font-medium">Principal Manufacturer:</span>
+                      <span className="text-slate-900 font-bold">{product.brand}</span>
+                    </div>
+                  )}
+                  {product.registrationNo && (
+                    <div className="flex justify-between sm:justify-start gap-2 py-1 border-b border-blue-50">
+                      <span className="text-slate-500 font-medium">Regulatory Approval:</span>
+                      <span className="text-[#0072CE] font-bold">{product.registrationNo}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between sm:justify-start gap-2 py-1 border-b border-blue-50">
+                    <span className="text-slate-500 font-medium">Quality Compliance:</span>
+                    <span className="text-emerald-700 font-bold">cGMP / ISO Certified</span>
+                  </div>
+                  {product.status && (
+                    <div className="flex justify-between sm:justify-start gap-2 py-1">
+                      <span className="text-slate-500 font-medium">Market Status:</span>
+                      <span className="text-slate-900 font-semibold">{product.status}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between sm:justify-start gap-2 py-1">
+                    <span className="text-slate-500 font-medium">Supply Scope:</span>
+                    <span className="text-slate-900 font-semibold">Institutional &amp; Wholesale</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Packaging / Variant Selection */}
+              {weights.length > 0 && (
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-2.5">
+                    Select Packaging / Presentation Size:
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {weights.map((w) => {
+                      const sp = getSavePercent(product, w);
+                      const isActive = activeWeight === w;
+                      const priceForWeight = product.prices[w] ?? 0;
+                      return (
+                        <button
+                          key={w}
+                          onClick={() => setSelectedWeight(w)}
+                          className={`relative flex flex-col items-start px-4 py-2.5 rounded-xl border-2 transition-all text-xs font-semibold ${
+                            isActive
+                              ? "border-[#0072CE] bg-blue-50/50 text-[#0072CE]"
+                              : "border-slate-200 hover:border-slate-300 bg-white text-slate-700"
+                          }`}
+                        >
+                          {!isCatalogue && sp && (
+                            <span className="absolute -top-2 -right-1.5 text-[8px] font-extrabold px-1.5 py-0.5 rounded text-white bg-[#70BA28]">
+                              -{sp}%
+                            </span>
+                          )}
+                          <span>{w}</span>
+                          {!hidePrices && (
+                            <span className="text-[11px] font-bold mt-0.5">${priceForWeight.toLocaleString()}</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               {/* Quantity */}
               <div>
