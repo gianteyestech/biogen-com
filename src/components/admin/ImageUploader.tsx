@@ -37,6 +37,7 @@ export default function ImageUploader({
 
   useEffect(() => {
     if (value !== undefined && value !== inputUrl) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setInputUrl(value);
     }
   }, [value, inputUrl]);

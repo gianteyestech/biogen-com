@@ -171,5 +171,6 @@
     }
   ],
   "siteMode": "catalogue",
-  "hidePricesInCatalogue": true
+  "hidePricesInCatalogue": true,
+  "catalogueInquiryText": "Request Official Quotation "
 }

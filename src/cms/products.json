@@ -11,14 +11,12 @@
     "prices": {
       "GMD": 0,
       "SLE": 0,
-      "USD": 0,
-      "PKR": 0
+      "USD": 0
     },
     "originalPrices": {
       "GMD": 0,
       "SLE": 0,
-      "USD": 0,
-      "PKR": 0
+      "USD": 0
     },
     "inStock": true,
     "featured": true,
@@ -4205,7 +4203,7 @@
     "name": "CMS Laparoscopic & VATS Minimally Invasive Surgical Set",
     "urduName": "Laparoscopy & Thoracoscopy Set",
     "category": "surgical-clinical-supplies",
-    "description": "Full laparoscopic tower instrument set including 5mm/10mm trocars, Maryland dissector, Johan grasping forceps, curved scissors, bipolar electro-surgical instruments, and needle holders with rotatable 360\u00b0 handles.",
+    "description": "Full laparoscopic tower instrument set including 5mm/10mm trocars, Maryland dissector, Johan grasping forceps, curved scissors, bipolar electro-surgical instruments, and needle holders with rotatable 360° handles.",
     "rating": 4.9,
     "reviewsCount": 27,
     "imageUrl": "/images/products/laparoscopic_vats_set.webp",
@@ -4302,7 +4300,7 @@
     "name": "CARE MEDICAL Mayo-Hegar TC Needle Holder (Gold Handle)",
     "urduName": "Mayo-Hegar TC Needle Holder",
     "category": "surgical-clinical-supplies",
-    "description": "Operating room grade Mayo-Hegar Needle Holder featuring Tungsten Carbide (TC) jaws for secure needle grip without slippage. German stainless steel with gold-plated handles indicating TC inserts. Autoclavable up to 134\u00b0C.",
+    "description": "Operating room grade Mayo-Hegar Needle Holder featuring Tungsten Carbide (TC) jaws for secure needle grip without slippage. German stainless steel with gold-plated handles indicating TC inserts. Autoclavable up to 134°C.",
     "rating": 4.9,
     "reviewsCount": 24,
     "imageUrl": "/images/products/cm_mayo_hegar_needle_holder.webp",

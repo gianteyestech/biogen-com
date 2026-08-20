@@ -28,6 +28,7 @@ export default function LiveChatWidget() {
       sid = `cs_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
       localStorage.setItem("biogen_chat_session", sid);
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSessionId(sid);
 
     const savedName = localStorage.getItem("biogen_chat_name");

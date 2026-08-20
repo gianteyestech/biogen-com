@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "log_1787258801694_4sk71",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-20T20:46:41.694Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787258734881_qbeyv",
+    "action": "UPDATE",
+    "entity": "Product",
+    "entityId": "azithromycin-500mg-tab-1x3",
+    "details": "Updated product \"Azithromycin 500mg Tab 1x3\"",
+    "timestamp": "2026-08-20T20:45:34.881Z",
+    "user": "Admin"
+  }
+]
