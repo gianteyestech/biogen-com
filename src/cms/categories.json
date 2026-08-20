@@ -143,8 +143,8 @@
       "shortName": "Prescriptions",
       "icon": "💊",
       "tag": "50+ MCA Formulations",
-      "img": "/images/products/pharma_tablets.webp",
-      "image": "/images/products/pharma_tablets.webp",
+      "img": "/images/categories/cat_prescriptions.webp",
+      "image": "/images/categories/cat_prescriptions.webp",
       "color": "#0072CE"
     },
     {
@@ -153,8 +153,8 @@
       "shortName": "Surgical Sets",
       "icon": "🔬",
       "tag": "German Grade BR-TC",
-      "img": "/images/products/care_medical_br_tc_set.webp",
-      "image": "/images/products/care_medical_br_tc_set.webp",
+      "img": "/images/categories/cat_surgical.webp",
+      "image": "/images/categories/cat_surgical.webp",
       "color": "#0284C7"
     },
     {
@@ -163,8 +163,8 @@
       "shortName": "Medical Equipment",
       "icon": "🩺",
       "tag": "Motorized ICU Beds",
-      "img": "/images/products/electric_icu_hospital_bed.webp",
-      "image": "/images/products/electric_icu_hospital_bed.webp",
+      "img": "/images/categories/cat_medical_devices.webp",
+      "image": "/images/categories/cat_medical_devices.webp",
       "color": "#10B981"
     },
     {
@@ -173,8 +173,8 @@
       "shortName": "Eye Care",
       "icon": "👁️",
       "tag": "Sterile Drops & Loupes",
-      "img": "/images/products/ophthalmic_surgical_loupes.webp",
-      "image": "/images/products/ophthalmic_surgical_loupes.webp",
+      "img": "/images/categories/cat_eye_care.webp",
+      "image": "/images/categories/cat_eye_care.webp",
       "color": "#3B82F6"
     },
     {
@@ -183,8 +183,8 @@
       "shortName": "Orthopedics",
       "icon": "🦿",
       "tag": "Titanium Compression",
-      "img": "/images/products/ortho_implant_trauma_system.webp",
-      "image": "/images/products/ortho_implant_trauma_system.webp",
+      "img": "/images/categories/cat_orthopedics.webp",
+      "image": "/images/categories/cat_orthopedics.webp",
       "color": "#6366F1"
     },
     {
@@ -193,8 +193,8 @@
       "shortName": "Dental Care",
       "icon": "🪥",
       "tag": "Extraction & Implant Kits",
-      "img": "/images/products/care_medical_dental_kit.webp",
-      "image": "/images/products/care_medical_dental_kit.webp",
+      "img": "/images/categories/cat_dental.webp",
+      "image": "/images/categories/cat_dental.webp",
       "color": "#8B5CF6"
     },
     {
@@ -203,8 +203,8 @@
       "shortName": "Dermatology",
       "icon": "✨",
       "tag": "Medicated Creams",
-      "img": "/images/products/med_img_10.webp",
-      "image": "/images/products/med_img_10.webp",
+      "img": "/images/categories/cat_dermatology.webp",
+      "image": "/images/categories/cat_dermatology.webp",
       "color": "#EC4899"
     },
     {
@@ -213,8 +213,8 @@
       "shortName": "Supplements",
       "icon": "🌿",
       "tag": "Iron & Zinc Syrups",
-      "img": "/images/products/med_img_18.webp",
-      "image": "/images/products/med_img_18.webp",
+      "img": "/images/categories/cat_vitamins.webp",
+      "image": "/images/categories/cat_vitamins.webp",
       "color": "#10B981"
     },
     {
@@ -223,8 +223,8 @@
       "shortName": "First Aid",
       "icon": "🩹",
       "tag": "Povidone & Spirit",
-      "img": "/images/products/med_img_4.webp",
-      "image": "/images/products/med_img_4.webp",
+      "img": "/images/categories/cat_first_aid.webp",
+      "image": "/images/categories/cat_first_aid.webp",
       "color": "#EF4444"
     },
     {
@@ -233,8 +233,8 @@
       "shortName": "Diagnostics",
       "icon": "📊",
       "tag": "Malaria & Pregnancy Kits",
-      "img": "/images/products/pharma_rapid_test.webp",
-      "image": "/images/products/pharma_rapid_test.webp",
+      "img": "/images/categories/cat_diagnostics.webp",
+      "image": "/images/categories/cat_diagnostics.webp",
       "color": "#F59E0B"
     },
     {
@@ -243,8 +243,8 @@
       "shortName": "Mother & Baby",
       "icon": "🍼",
       "tag": "Pediatric Syrups & Care",
-      "img": "/images/products/med_img_6.webp",
-      "image": "/images/products/med_img_6.webp",
+      "img": "/images/categories/cat_mother_baby.webp",
+      "image": "/images/categories/cat_mother_baby.webp",
       "color": "#06B6D4"
     },
     {
@@ -253,8 +253,8 @@
       "shortName": "Respiratory Care",
       "icon": "🫁",
       "tag": "Salbutamol & Nebulizers",
-      "img": "/images/products/pharma_tablets.webp",
-      "image": "/images/products/pharma_tablets.webp",
+      "img": "/images/categories/cat_respiratory.webp",
+      "image": "/images/categories/cat_respiratory.webp",
       "color": "#14B8A6"
     }
   ],

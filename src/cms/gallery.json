@@ -1,0 +1,96 @@
+{
+  "team": [
+    {
+      "name": "Muhammad Rizwan",
+      "role": "Chief Executive Officer (CEO)",
+      "bio": "Visionary healthcare leader steering Biogen Pharma’s global pharmaceutical and surgical distribution across international hospital networks.",
+      "imageUrl": "/images/team/ceo_muhammad_rizwan.webp"
+    },
+    {
+      "name": "Muhammad Shahid",
+      "role": "Managing Director",
+      "bio": "Directing strategic manufacturing partnerships, institutional tender compliance, and regulatory cGMP certifications.",
+      "imageUrl": "/images/team/md_muhammad_shahid.webp"
+    },
+    {
+      "name": "M. Bilal Shabir",
+      "role": "Operations & Supply Chain Manager",
+      "bio": "Leading end-to-end cold-chain logistics, warehouse quality assurance, and institutional dispatch operations.",
+      "imageUrl": "/images/team/ops_bilal_shabir.webp"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gallery-item-1",
+      "title": "B2B Strategic Partnership & MOU Signing Ceremony",
+      "category": "MOUs & Partnerships",
+      "badge": "Strategic Alliance",
+      "imageUrl": "/images/gallery/gallery_event_1.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-2",
+      "title": "National Healthcare Excellence & Distribution Award",
+      "category": "Awards & Honors",
+      "badge": "Award 2026",
+      "imageUrl": "/images/gallery/gallery_event_2.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-3",
+      "title": "International Pharmaceutical Delegation & Trade Assembly",
+      "category": "Delegations",
+      "badge": "Global Summit",
+      "imageUrl": "/images/gallery/gallery_event_3.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-4",
+      "title": "State-of-the-Art cGMP Manufacturing Facility Inspection",
+      "category": "Plant & Facilities",
+      "badge": "cGMP Audit",
+      "imageUrl": "/images/gallery/gallery_event_4.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-5",
+      "title": "Hospital Procurement & Institutional Supply Council Meeting",
+      "category": "MOUs & Partnerships",
+      "badge": "Procurement",
+      "imageUrl": "/images/gallery/gallery_event_5.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-6",
+      "title": "Global Medical Devices & Surgical Technology Showcase",
+      "category": "Exhibitions",
+      "badge": "Technology",
+      "imageUrl": "/images/gallery/gallery_event_6.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-7",
+      "title": "Quality Assurance & Cold-Chain Warehouse Certification Audit",
+      "category": "Plant & Facilities",
+      "badge": "QA Standards",
+      "imageUrl": "/images/gallery/gallery_event_7.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-8",
+      "title": "Executive Board & Principal Laboratory Review Convention",
+      "category": "Leadership",
+      "badge": "Board Summit",
+      "imageUrl": "/images/gallery/gallery_event_8.webp",
+      "aspectRatio": "landscape"
+    },
+    {
+      "id": "gallery-item-9",
+      "title": "Government Health Regulatory Delegation Facility Review",
+      "category": "Delegations",
+      "badge": "Regulatory",
+      "imageUrl": "/images/gallery/gallery_event_9.webp",
+      "aspectRatio": "landscape"
+    }
+  ]
+}
