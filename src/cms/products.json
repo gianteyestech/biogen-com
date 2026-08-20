@@ -162,7 +162,7 @@
     "description": "Calamine Lotion (Calamine Lotion) manufactured by Genetic Pharma. Soothing topical antipruritic lotion indicated for dermatitis, sunburn, and mild skin irritations. Regulatory Status: Registred (Registration No: MCA/Med 673/8/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 17,
-    "imageUrl": "/images/products/med_img_10.webp",
+    "imageUrl": "/images/products/med_img_16.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -188,12 +188,12 @@
   {
     "id": "gemclav-1-2gm-injection",
     "name": "Gemclav 1.2gm Injection",
-    "urduName": "Calamine Lotion",
+    "urduName": "Amoxicillin / Clavulanic Acid",
     "category": "prescription-medicines",
     "description": "Gemclav 1.2gm Injection (Calamine Lotion) manufactured by Genetic Pharma. Potent penicillin-class antibacterial formulation for bacterial infections of the chest, ENT, urinary tract, and soft tissues. Regulatory Status: Registred (Registration No: MCA/Med 763/9/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 18,
-    "imageUrl": "/images/products/med_img_10.webp",
+    "imageUrl": "/images/products/med_img_38.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -211,7 +211,7 @@
     "isNew": true,
     "badge": "MCA Approved",
     "brand": "Genetic Pharma",
-    "genericName": "Calamine Lotion",
+    "genericName": "Co-Amoxiclav (Amoxicillin / Clavulanic Acid)",
     "registrationNo": "MCA/Med 763/9/23",
     "status": "Registred",
     "catalogueMode": true
@@ -441,7 +441,7 @@
     "description": "Glimox Syrp 125mg 100 ml (Amoxicillin) manufactured by Glitz Pharma. Potent penicillin-class antibacterial formulation for bacterial infections of the chest, ENT, urinary tract, and soft tissues. Regulatory Status: Registred (Registration No: MCA/Med 888/11/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 26,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -472,7 +472,7 @@
     "description": "Progitz Elixir Syrp (Promethazine) manufactured by Glitz Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 889/11/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 27,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -565,7 +565,7 @@
     "description": "Clomin Syrp 100 ml (Chlorphenramine) manufactured by Glitz Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 831/10/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 30,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -627,7 +627,7 @@
     "description": "Glitfen Syrp 100 ml (ibuprofen) manufactured by Glitz Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 832/10/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 32,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -720,7 +720,7 @@
     "description": "Tramadol 50mg Cap 10x10 (Tramadol) manufactured by Sayyed pharma. Centrally acting analgesic combination indicated for moderate to severe acute and chronic pain. Regulatory Status: Registred (Registration No: MCA/Med 769/9/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 35,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_37.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -844,7 +844,7 @@
     "description": "Doxy 100mg cap 10x10 (Doxyicillin Cap) manufactured by Sayyed pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 677/8/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 39,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_37.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -1185,7 +1185,7 @@
     "description": "Lumale Syrp (Artemther/Lumefantrin) manufactured by Welmark. First-line Artemisinin-based combination therapy (ACT) for uncomplicated Plasmodium falciparum malaria. Regulatory Status: Registred (Registration No: MCA/Med 954/12/23). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 15,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -1526,7 +1526,7 @@
     "description": "Tres-o-rex syrp 200ml (Tres-o-rex syrp 200ml) manufactured by Highnoon pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Rejected (Registration No: MCA/Med Pending). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 26,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -1929,7 +1929,7 @@
     "description": "Fluconazol Capsule (Fluconazole) manufactured by Welmark. Broad-spectrum azole antifungal indicated for systemic, superficial, and mucosal fungal infections. Regulatory Status: Registred (Registration No: MCA/med 1351/7/2024). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 39,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_37.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2053,7 +2053,7 @@
     "description": "Permtrin Cream (Permtrin Cream) manufactured by Hoover Pharmaceuticals. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/med 1283/7/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 43,
-    "imageUrl": "/images/products/med_img_13.webp",
+    "imageUrl": "/images/products/med_img_10.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2301,7 +2301,7 @@
     "description": "Captopril 25mg tab 10x10 (Captopril 25mg tab 10x10) manufactured by Caraway Pharmaceuticals. ACE inhibitor indicated for hypertension management and symptomatic heart failure treatment. Regulatory Status: Registred (Registration No: MCA/Med 1168/5/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 16,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_37.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2456,7 +2456,7 @@
     "description": "Coffrid Syrp (Childern Cough) manufactured by Al Faza Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 1569/10/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 21,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2487,7 +2487,7 @@
     "description": "Parasyp Syrp (Paracetamol) manufactured by Al Faza Pharma. Analgesic and antipyretic indicated for mild to moderate pain relief and reduction of febrile illness. Regulatory Status: Registred (Registration No: MCA/Med 1491/9/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 22,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2518,7 +2518,7 @@
     "description": "Magacid Syrp (Antacid) manufactured by Al Faza Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA /Med 1531/10/2024). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 23,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2642,7 +2642,7 @@
     "description": "Lanzit 30mg capsule (Lansporazole) manufactured by SJ& G Pharmaceuticals. Proton pump inhibitor (PPI) indicated for GERD, gastric and duodenal ulcers, and acid hypersecretion. Regulatory Status: Registred (Registration No: MCA/med 1643/12/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 27,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_37.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2797,7 +2797,7 @@
     "description": "Azithromycin syrp (Azithromycin) manufactured by Welmark. Broad-spectrum macrolide antibiotic indicated for respiratory tract infections, skin infections, and certain STIs. Regulatory Status: Registred (Registration No: MCA/med 1599/11/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 32,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -2890,7 +2890,7 @@
     "description": "Allergicare Tablet 1x10x10 (Cetirizine) manufactured by Caraway Pharmaceuticals. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/med 1679/01/25). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 35,
-    "imageUrl": "/images/products/med_img_6.webp",
+    "imageUrl": "/images/products/pharma_tablets.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -3169,7 +3169,7 @@
     "description": "Calamine Lotion (Calamine Lotion) manufactured by Genetic Pharma. Soothing topical antipruritic lotion indicated for dermatitis, sunburn, and mild skin irritations. Regulatory Status: Registred (Registration No: MCA/Med 673/8/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 44,
-    "imageUrl": "/images/products/med_img_10.webp",
+    "imageUrl": "/images/products/med_img_16.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -3195,12 +3195,12 @@
   {
     "id": "gemclav-1-3gm-injection",
     "name": "Gemclav 1.3gm Injection",
-    "urduName": "Calamine Lotion",
+    "urduName": "Amoxicillin / Clavulanic Acid",
     "category": "prescription-medicines",
     "description": "Gemclav 1.3gm Injection (Calamine Lotion) manufactured by Genetic Pharma. Potent penicillin-class antibacterial formulation for bacterial infections of the chest, ENT, urinary tract, and soft tissues. Regulatory Status: Registred (Registration No: MCA/Med 763/9/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 45,
-    "imageUrl": "/images/products/med_img_10.webp",
+    "imageUrl": "/images/products/med_img_38.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -3218,7 +3218,7 @@
     "isNew": false,
     "badge": "MCA Approved",
     "brand": "Genetic Pharma",
-    "genericName": "Calamine Lotion",
+    "genericName": "Co-Amoxiclav (Amoxicillin / Clavulanic Acid)",
     "registrationNo": "MCA/Med 763/9/24",
     "status": "Registred",
     "catalogueMode": true
@@ -3448,7 +3448,7 @@
     "description": "Glimox Syrp 125mg 101 ml (Amoxicillin) manufactured by Glitz Pharma. Potent penicillin-class antibacterial formulation for bacterial infections of the chest, ENT, urinary tract, and soft tissues. Regulatory Status: Registred (Registration No: MCA/Med 888/11/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 18,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -3479,7 +3479,7 @@
     "description": "Progitz Elixir Syrp (Promethazine) manufactured by Glitz Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 889/11/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 4.9,
     "reviewsCount": 19,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
@@ -3572,7 +3572,7 @@
     "description": "Clomin Syrp 101 ml (Chlorphenramine) manufactured by Glitz Pharma. Hospital and clinical grade therapeutic formulation manufactured under cGMP certified standards. Regulatory Status: Registred (Registration No: MCA/Med 831/10/24). Available in certified institutional packaging for hospitals, clinics, and pharmaceutical distributors.",
     "rating": 5,
     "reviewsCount": 22,
-    "imageUrl": "/images/products/pharma_tablets.webp",
+    "imageUrl": "/images/products/med_img_18.webp",
     "prices": {
       "GMD": 0,
       "SLE": 0,
