@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
+
 // Parse .env.local if present
 const envPath = path.join(__dirname, '..', '.env.local');
 if (fs.existsSync(envPath)) {
@@ -35,7 +36,7 @@ async function syncDb() {
       user,
       password,
       database,
-      connectTimeout: 5000,
+      connectTimeout: 10000,
       ssl: { rejectUnauthorized: false }
     });
 
@@ -49,6 +50,17 @@ async function syncDb() {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     `);
+
+    // Sync categories
+    const categoriesPath = path.join(__dirname, '..', 'src', 'cms', 'categories.json');
+    if (fs.existsSync(categoriesPath)) {
+      const categoriesData = fs.readFileSync(categoriesPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['categories', categoriesData]
+      );
+      console.log(`✓ Synced categories (with rich clinical department images) to database cms_store.`);
+    }
 
     // Sync products
     const productsPath = path.join(__dirname, '..', 'src', 'cms', 'products.json');
@@ -84,11 +96,22 @@ async function syncDb() {
       console.log(`✓ Synced site config to database cms_store.`);
     }
 
+    // Sync pages config
+    const pagesPath = path.join(__dirname, '..', 'src', 'cms', 'pages.json');
+    if (fs.existsSync(pagesPath)) {
+      const pagesData = fs.readFileSync(pagesPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['pages_config', pagesData]
+      );
+      console.log(`✓ Synced pages config to database cms_store.`);
+    }
+
     await connection.end();
-    console.log("Database synchronization completed successfully!");
+    console.log("\n✅ All CMS tables synchronized to Hostinger MySQL successfully!");
   } catch (err) {
     console.warn("DB sync warning:", err.message);
-    console.log("Local JSON fallback mode is active and fully functional.");
+    console.log("Local JSON fallback mode is active.");
   }
 }
 
