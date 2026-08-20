@@ -1,6 +1,6 @@
 /**
  * remap_all_images.js
- * Form-factor & formulation aware image remapping
+ * Form-factor, medicine photos & PDF-extracted surgical/equipment catalogue image remapping
  */
 const fs = require('fs');
 const path = require('path');
@@ -43,6 +43,14 @@ const IMG = {
 
   // Incontinence / Diapers
   adult_diapers:       '/images/products/med_img_21.webp',  // DryWell Adult Diapers XL
+
+  // ── PDF-EXTRACTED HIGH-RES SURGICAL & EQUIPMENT SHOWCASE ──
+  care_medical_br_tc:  '/images/products/care_medical_br_tc_set.webp',      // General Surgery Set (42 Pcs)
+  care_medical_dental: '/images/products/care_medical_dental_kit.webp',      // Dental Kit (28 Pcs)
+  laparoscopic_vats:   '/images/products/laparoscopic_vats_set.webp',       // Laparoscopic & VATS Set
+  icu_hospital_bed:    '/images/products/electric_icu_hospital_bed.webp',   // 5-Function ICU Hospital Bed
+  ortho_implant:       '/images/products/ortho_implant_trauma_system.webp', // Ortho Titanium Plating System
+  ophthalmic_loupes:   '/images/products/ophthalmic_surgical_loupes.webp',  // Ophthalmic Surgical Loupes
 };
 
 const CATEGORY_FALLBACK = {
@@ -50,12 +58,12 @@ const CATEGORY_FALLBACK = {
   'otc-medicines':              '/images/products/pharma_tablets.webp',
   'eye-care':                   '/images/products/pharma_eyedrops.webp',
   'vitamins-supplements':       '/images/products/pharma_syrup.webp',
-  'surgical-clinical-supplies': '/images/products/pharma_injection.webp',
-  'medical-devices-equipment':  '/images/products/pharma_injection.webp',
-  'orthopedic-rehabilitation':  '/images/products/pharma_injection.webp',
-  'oral-dental-care':           '/images/products/pharma_tablets.webp',
+  'surgical-clinical-supplies': '/images/products/care_medical_br_tc_set.webp',
+  'medical-devices-equipment':  '/images/products/electric_icu_hospital_bed.webp',
+  'orthopedic-rehabilitation':  '/images/products/ortho_implant_trauma_system.webp',
+  'oral-dental-care':           '/images/products/care_medical_dental_kit.webp',
   'skin-care-dermatology':      '/images/products/pharma_cream.webp',
-  'first-aid-wound-care':       '/images/products/pharma_injection.webp',
+  'first-aid-wound-care':       '/images/products/med_img_20.webp',
   'mother-baby':                '/images/products/pharma_syrup.webp',
   'health-monitoring-tests':    '/images/products/pharma_rapid_test.webp',
   'womens-health':              '/images/products/pharma_tablets.webp',
@@ -69,6 +77,14 @@ function matchImage(product) {
   const n = (product.name || '').toLowerCase();
   const g = (product.genericName || '').toLowerCase();
   const c = n + ' ' + g;
+
+  // ── 0. EXACT SURGICAL & EQUIPMENT MATCHES (FROM PDF CATALOGUES) ──
+  if (c.includes('br-tc') || (c.includes('general surgery') && c.includes('set'))) return IMG.care_medical_br_tc;
+  if (c.includes('dental') && (c.includes('implant') || c.includes('kit') || c.includes('extraction'))) return IMG.care_medical_dental;
+  if (c.includes('laparoscopic') || c.includes('vats') || c.includes('electro-surgical')) return IMG.laparoscopic_vats;
+  if (c.includes('hospital bed') || c.includes('icu bed') || c.includes('motorized')) return IMG.icu_hospital_bed;
+  if (c.includes('ortho') || c.includes('trauma plating') || c.includes('fracture fixation')) return IMG.ortho_implant;
+  if (c.includes('loupes') || c.includes('magnification') || c.includes('headlight')) return IMG.ophthalmic_loupes;
 
   const isTablet = n.includes('tab') || n.includes('tablet');
   const isCapsule = n.includes('cap') || n.includes('capsule');
@@ -154,7 +170,6 @@ const products = JSON.parse(fs.readFileSync(PRODUCTS_FILE, 'utf-8'));
 let matched = 0, fallback = 0;
 
 const updated = products.map(p => {
-  // Fix dirty genericName metadata for Gemclav injections if present
   if (p.name.includes('Gemclav') && p.genericName === 'Calamine Lotion') {
     p.genericName = 'Co-Amoxiclav (Amoxicillin / Clavulanic Acid)';
     p.urduName = 'Amoxicillin / Clavulanic Acid';
@@ -172,7 +187,7 @@ const updated = products.map(p => {
 
 fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(updated, null, 2));
 
-console.log('\n✅ Formulation-accurate image remapping complete!');
-console.log(`   Real product images assigned: ${matched}`);
-console.log(`   Category fallbacks used:      ${fallback}`);
-console.log(`   Total products updated:       ${updated.length}`);
+console.log('\n✅ Formulation + PDF Catalogue image remapping complete!');
+console.log(`   Real product & catalogue photos assigned: ${matched}`);
+console.log(`   Category fallbacks used:                  ${fallback}`);
+console.log(`   Total products updated:                   ${updated.length}`);
