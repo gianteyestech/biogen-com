@@ -1,18 +1,19 @@
 "use client";
 import { useState, useTransition, useEffect } from "react";
 import ImageUploader from "@/components/admin/ImageUploader";
-import type { CMSSiteConfig } from "@/lib/cms-types";
+import type { CMSSiteConfig, CMSLocation } from "@/lib/cms-types";
 import { actionUpdateSiteConfig, actionGetSiteConfig, actionChangeAdminPassword } from "../actions";
 import { 
   Save, Check, KeyRound, ShieldCheck, ShoppingCart, 
-  BookOpen, Layers, CheckCircle2, MessageSquare, Phone, FileText
+  BookOpen, Layers, CheckCircle2, MessageSquare, Phone, FileText,
+  MapPin, Plus, Trash2
 } from "lucide-react";
 
 export default function AdminSitePage() {
   const [config, setConfig] = useState<CMSSiteConfig | null>(null);
   const [pending, startT] = useTransition();
   const [msg, setMsg] = useState("");
-  const [tab, setTab] = useState<"mode" | "brand" | "promo" | "features" | "footer" | "seo" | "security">("mode");
+  const [tab, setTab] = useState<"mode" | "brand" | "locations" | "promo" | "features" | "footer" | "seo" | "security">("mode");
 
   const [passState, setPassState] = useState<{ error?: string; success?: string } | null>(null);
   const [passPending, startPassT] = useTransition();
@@ -65,6 +66,7 @@ export default function AdminSitePage() {
   const tabs = [
     { id: "mode", label: "⚡ Store Mode" },
     { id: "brand", label: "Brand & Hubs" },
+    { id: "locations", label: "📍 Locations" },
     { id: "promo", label: "Promo Banners" },
     { id: "features", label: "Assurance Bar" },
     { id: "footer", label: "Footer Links" },
@@ -342,6 +344,129 @@ export default function AdminSitePage() {
             </div>
           </div>
         )}
+
+        {/* Locations Tab */}
+        {tab === "locations" && (() => {
+          const locations: CMSLocation[] = config.locations ?? [];
+
+          const updateLocation = (idx: number, field: keyof CMSLocation, value: unknown) => {
+            const updated = locations.map((l, i) => i === idx ? { ...l, [field]: value } : l);
+            set("locations", updated);
+          };
+
+          const addLocation = () => {
+            const newLoc: CMSLocation = {
+              id: `loc-${Date.now()}`,
+              label: "New Office",
+              country: "",
+              flag: "🏢",
+              address: "",
+              phone: "",
+              email: "",
+              mapUrl: "",
+              enabled: true,
+            };
+            set("locations", [...locations, newLoc]);
+          };
+
+          const removeLocation = (idx: number) => {
+            set("locations", locations.filter((_, i) => i !== idx));
+          };
+
+          return (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider">Office Locations</h2>
+                  <p className="text-slate-400 text-xs mt-0.5">Manage regional offices shown in the footer. Toggle visibility per location.</p>
+                </div>
+                <button
+                  onClick={addLocation}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0072CE] hover:bg-[#005EA6] transition-colors"
+                >
+                  <Plus size={13} /> Add Location
+                </button>
+              </div>
+
+              {locations.length === 0 && (
+                <div className="text-center py-10 text-slate-500 text-sm border border-dashed border-slate-700 rounded-xl">
+                  <MapPin size={28} className="mx-auto mb-2 opacity-30" />
+                  No locations added yet. Click "Add Location" to start.
+                </div>
+              )}
+
+              <div className="space-y-4">
+                {locations.map((loc, i) => (
+                  <div key={loc.id} className="bg-[#070B14] border border-slate-700/60 rounded-2xl p-5 space-y-4">
+                    {/* Location Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{loc.flag || "🏢"}</span>
+                        <span className="text-sm font-bold text-white">{loc.label || `Location #${i + 1}`}</span>
+                        {loc.enabled ? (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">VISIBLE</span>
+                        ) : (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-600">HIDDEN</span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {/* Enable/Disable toggle */}
+                        <label className="relative inline-flex items-center cursor-pointer" title={loc.enabled ? "Hide from footer" : "Show in footer"}>
+                          <input
+                            type="checkbox"
+                            checked={loc.enabled}
+                            onChange={e => updateLocation(i, "enabled", e.target.checked)}
+                            className="sr-only peer"
+                          />
+                          <div className="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#0072CE]" />
+                        </label>
+                        <button
+                          onClick={() => removeLocation(i)}
+                          className="p-1.5 text-slate-500 hover:text-red-400 transition-colors rounded-lg hover:bg-red-950/30"
+                          title="Remove location"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Location Fields */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className={labelCls}>Office Label</label>
+                        <input value={loc.label} onChange={e => updateLocation(i, "label", e.target.value)} className={inputCls} placeholder="e.g. Head Office — The Gambia" />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Country</label>
+                        <input value={loc.country} onChange={e => updateLocation(i, "country", e.target.value)} className={inputCls} placeholder="e.g. The Gambia" />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Flag Emoji</label>
+                        <input value={loc.flag} onChange={e => updateLocation(i, "flag", e.target.value)} className={inputCls} placeholder="🇬🇲" />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Phone Number</label>
+                        <input value={loc.phone ?? ""} onChange={e => updateLocation(i, "phone", e.target.value)} className={inputCls} placeholder="+220 000 0000" />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className={labelCls}>Street Address</label>
+                        <input value={loc.address} onChange={e => updateLocation(i, "address", e.target.value)} className={inputCls} placeholder="Full street address" />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Office Email</label>
+                        <input value={loc.email ?? ""} onChange={e => updateLocation(i, "email", e.target.value)} className={inputCls} placeholder="office@biogenpharma.site" />
+                      </div>
+                      <div>
+                        <label className={labelCls}>Google Maps URL</label>
+                        <input value={loc.mapUrl ?? ""} onChange={e => updateLocation(i, "mapUrl", e.target.value)} className={inputCls} placeholder="https://maps.google.com/..." />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Footer Tab */}
         {tab === "footer" && (

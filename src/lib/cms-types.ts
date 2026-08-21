@@ -116,6 +116,18 @@ export interface CMSTrustFeature {
   sub: string;
 }
 
+export interface CMSLocation {
+  id: string;
+  label: string;        // e.g. "Head Office — The Gambia"
+  country: string;      // e.g. "The Gambia"
+  flag: string;         // emoji flag, e.g. "🇬🇲"
+  address: string;
+  phone?: string;
+  email?: string;
+  mapUrl?: string;      // optional Google Maps link
+  enabled: boolean;     // show/hide in footer
+}
+
 export interface CMSSiteConfig {
   siteMode?: "ecommerce" | "catalogue"; // "ecommerce" (default) or "catalogue" (B2B Showcase & Request Quote)
   hidePricesInCatalogue?: boolean;     // if true, hides price numbers in catalogue mode
@@ -126,12 +138,13 @@ export interface CMSSiteConfig {
     tagline: string;
     established: number;
     logoUrl: string;
-    address: string;
+    address?: string;    // legacy — kept for backward compat, use locations[] instead
     email: string;
     phone: string;
     whatsapp: string;
     showPhone?: boolean;
   };
+  locations?: CMSLocation[];  // multi-location offices/hubs
   shipping: {
     freeThreshold: number;
     standardCost: number;

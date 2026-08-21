@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Send, MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
+import { Send, MapPin, Phone, Mail, ShieldCheck, ExternalLink } from "lucide-react";
 import { CMSSiteConfig } from "@/lib/cms-types";
 import { getFooterLinkHref } from "@/lib/link-utils";
 import { BRAND } from "@/config/brand";
@@ -16,7 +16,6 @@ export default function Footer({ siteConfig }: FooterProps) {
     name: BRAND.name,
     tagline: BRAND.tagline,
     logoUrl: "/ideal-logo.png",
-    address: BRAND.contact.addressHead,
     phone: BRAND.contact.formattedNumber,
     email: BRAND.contact.email,
   };
@@ -34,23 +33,84 @@ export default function Footer({ siteConfig }: FooterProps) {
     copyrightText: "All Rights Reserved. Biogen Pharma — Enhancing Lives Through Healthcare",
   };
 
+  const enabledLocations = (siteConfig.locations ?? []).filter((l) => l.enabled);
+
   return (
     <footer className="bg-[#0F172A] text-white pt-12 pb-6 border-t border-gray-800">
       <div className="global-container">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-10">
+          {/* Brand + Locations */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
             <div className="flex items-center mb-4 select-none">
               <BiogenLogo variant="dark" size="lg" />
             </div>
-            <p className="text-sm text-gray-300 leading-relaxed mb-4">
+            <p className="text-sm text-gray-300 leading-relaxed mb-5">
               Biogen Pharma is a trusted provider of high-grade pharmaceuticals, precision surgical instruments, eye care, and hospital equipment in West Africa and internationally.
             </p>
-            <div className="font-sans text-xs font-bold uppercase tracking-wider mb-3 text-white">REGIONAL HUBS</div>
-            <div className="space-y-2 text-xs text-gray-300">
-              <p className="flex items-start gap-2"><MapPin size={15} className="text-[#38BDF8] flex-shrink-0 mt-0.5" />{brand.address}</p>
-              <p className="flex items-center gap-2"><Phone size={15} className="text-[#38BDF8] flex-shrink-0" />{brand.phone}</p>
-              <p className="flex items-center gap-2"><Mail size={15} className="text-[#38BDF8] flex-shrink-0" />{brand.email}</p>
-            </div>
+
+            {/* Multi-location display */}
+            {enabledLocations.length > 0 ? (
+              <div className="space-y-3">
+                <div className="font-sans text-xs font-bold uppercase tracking-wider mb-2 text-white">
+                  REGIONAL OFFICES
+                </div>
+                {enabledLocations.map((loc) => (
+                  <div key={loc.id} className="bg-[#1E293B] border border-slate-700/50 rounded-xl p-3 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-white flex items-center gap-1.5">
+                        <span>{loc.flag}</span>
+                        {loc.label}
+                      </span>
+                      {loc.mapUrl && (
+                        <a
+                          href={loc.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#38BDF8] hover:text-white transition-colors"
+                          title="View on map"
+                        >
+                          <ExternalLink size={11} />
+                        </a>
+                      )}
+                    </div>
+                    <p className="flex items-start gap-1.5 text-[11px] text-gray-400">
+                      <MapPin size={11} className="text-[#38BDF8] flex-shrink-0 mt-0.5" />
+                      {loc.address}
+                    </p>
+                    {loc.phone && (
+                      <p className="flex items-center gap-1.5 text-[11px] text-gray-400">
+                        <Phone size={11} className="text-[#38BDF8] flex-shrink-0" />
+                        {loc.phone}
+                      </p>
+                    )}
+                    {loc.email && (
+                      <p className="flex items-center gap-1.5 text-[11px] text-gray-400">
+                        <Mail size={11} className="text-[#38BDF8] flex-shrink-0" />
+                        {loc.email}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Legacy fallback if no locations configured */
+              <div className="space-y-2 text-xs text-gray-300">
+                {brand.address && (
+                  <p className="flex items-start gap-2">
+                    <MapPin size={15} className="text-[#38BDF8] flex-shrink-0 mt-0.5" />
+                    {brand.address}
+                  </p>
+                )}
+                <p className="flex items-center gap-2">
+                  <Phone size={15} className="text-[#38BDF8] flex-shrink-0" />
+                  {brand.phone}
+                </p>
+                <p className="flex items-center gap-2">
+                  <Mail size={15} className="text-[#38BDF8] flex-shrink-0" />
+                  {brand.email}
+                </p>
+              </div>
+            )}
           </div>
 
           <div>
