@@ -1,5 +1,41 @@
 [
   {
+    "id": "log_1787395475928_whbu5",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-22T10:44:35.928Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787395374238_b5mej",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-22T10:42:54.238Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787395300526_6a347",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-22T10:41:40.526Z",
+    "user": "Admin"
+  },
+  {
+    "id": "log_1787395055845_f0q72",
+    "action": "UPDATE",
+    "entity": "SiteConfig",
+    "entityId": "site_config_all",
+    "details": "Updated global site configuration & branding",
+    "timestamp": "2026-08-22T10:37:35.845Z",
+    "user": "Admin"
+  },
+  {
     "id": "log_1787389738693_jnhsm",
     "action": "UPDATE",
     "entity": "HeroSlide",

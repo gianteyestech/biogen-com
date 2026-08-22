@@ -280,23 +280,17 @@ export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClient
             Regional Hubs &amp; Direct Warehouses
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">🇬🇲</span>
-                <h4 className="font-black text-slate-900 text-base">Head Office (The Gambia)</h4>
+            {siteConfig.locations?.map((loc, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-2xl">{loc.country === "Sierra Leone" ? "🇸🇱" : loc.country === "The Gambia" ? "🇬🇲" : "🌍"}</span>
+                  <h4 className="font-black text-slate-900 text-base">{loc.label}</h4>
+                </div>
+                <p className="text-xs text-slate-600">{loc.address}</p>
+                {loc.phone && <p className="text-xs text-[#0072CE] font-bold mt-2">Phone: {loc.phone}</p>}
+                {loc.email && !loc.phone && <p className="text-xs text-[#0072CE] font-bold mt-2">Email: {loc.email}</p>}
               </div>
-              <p className="text-xs text-slate-600">C8WF+ CWC New Jeshwang, WestField, The Gambia</p>
-              <p className="text-xs text-[#0072CE] font-bold mt-2">Email: contact@biogenpharma.site</p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">🇸🇱</span>
-                <h4 className="font-black text-slate-900 text-base">2nd Regional Branch (Sierra Leone)</h4>
-              </div>
-              <p className="text-xs text-slate-600">20 Garrison Street, Free Town, Sierra Leone</p>
-              <p className="text-xs text-[#0072CE] font-bold mt-2">Phone: +232 75 011616</p>
-            </div>
+            ))}
           </div>
         </div>
 

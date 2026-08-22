@@ -129,25 +129,18 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
             <p className="text-xs text-gray-500">Institutional &amp; Patient Inquiries</p>
           </div>
 
-          {/* Card 3: Head Office The Gambia */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col items-start hover:border-[#0284C7]/40 transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] mb-4 group-hover:scale-110 transition-transform">
-              <MapPin size={22} />
+          {/* Dynamic Location Branches */}
+          {siteConfig.locations?.map((loc, i) => (
+            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col items-start hover:border-[#0284C7]/40 transition-all group">
+              <div className="w-12 h-12 rounded-xl bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] mb-4 group-hover:scale-110 transition-transform">
+                {i === 0 ? <MapPin size={22} /> : <Building2 size={22} />}
+              </div>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">{loc.label}</span>
+              <h3 className="font-bold text-xs text-gray-900 mb-1">{loc.address}</h3>
+              {loc.phone && <p className="text-xs text-[#0284C7] font-semibold mt-1">Ph: {loc.phone}</p>}
+              {loc.email && !loc.phone && <p className="text-xs text-[#0284C7] font-semibold mt-1">E: {loc.email}</p>}
             </div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Head Office (The Gambia)</span>
-            <h3 className="font-bold text-xs text-gray-900 mb-1">{BRAND.contact.addressHead}</h3>
-            <p className="text-xs text-[#0284C7] font-semibold mt-1">WestField Hub</p>
-          </div>
-
-          {/* Card 4: 2nd Branch Sierra Leone */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col items-start hover:border-[#0284C7]/40 transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-[#0284C7]/10 flex items-center justify-center text-[#0284C7] mb-4 group-hover:scale-110 transition-transform">
-              <Building2 size={22} />
-            </div>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">2nd Branch (Sierra Leone)</span>
-            <h3 className="font-bold text-xs text-gray-900 mb-1">{BRAND.contact.addressBranch}</h3>
-            <p className="text-xs text-[#0284C7] font-semibold mt-1">Free Town Center</p>
-          </div>
+          ))}
 
         </div>
       </div>

@@ -4,34 +4,11 @@
     "tagline": "Enhancing Lives Through Quality Healthcare",
     "established": 2018,
     "logoUrl": "https://assets.idealdryfruit.com/uploads/site/2026/08/1786998773_biogen-africa-logo_800x.webp",
+    "address": "Head Office: C8WF+ CWC New Jeshwang, WestField, The Gambia | 2nd Branch: 20 Garrison Street, Free Town, Sierra Leone",
     "email": "contact@biogenpharma.site",
     "phone": "+232 75 011616",
     "whatsapp": "https://wa.me/23275011616"
   },
-  "locations": [
-    {
-      "id": "loc-gambia",
-      "label": "Head Office — The Gambia",
-      "country": "The Gambia",
-      "flag": "🇬🇲",
-      "address": "C8WF+CWC New Jeshwang, WestField, Banjul, The Gambia",
-      "phone": "+220 000 0000",
-      "email": "gambia@biogenpharma.site",
-      "mapUrl": "https://maps.google.com/?q=New+Jeshwang+Westfield+Gambia",
-      "enabled": true
-    },
-    {
-      "id": "loc-sierra-leone",
-      "label": "Branch Office — Sierra Leone",
-      "country": "Sierra Leone",
-      "flag": "🇸🇱",
-      "address": "20 Garrison Street, Freetown, Sierra Leone",
-      "phone": "+232 75 011616",
-      "email": "contact@biogenpharma.site",
-      "mapUrl": "https://maps.google.com/?q=20+Garrison+Street+Freetown+Sierra+Leone",
-      "enabled": true
-    }
-  ],
   "shipping": {
     "freeThreshold": 500,
     "standardCost": 50,
@@ -188,12 +165,36 @@
         },
         {
           "label": "Mobile Number",
-          "value": "+232 75 011616"
+          "value": "+220 7723819"
         }
       ]
     }
   ],
   "siteMode": "catalogue",
   "hidePricesInCatalogue": true,
-  "catalogueInquiryText": "Request Official Quotation "
+  "catalogueInquiryText": "Request Official Quotation ",
+  "locations": [
+    {
+      "id": "loc-1787394947655",
+      "label": "Head Office :",
+      "country": "The Gambia",
+      "flag": "",
+      "address": "C8WF+ CWC New Jeshwang, he Gambia",
+      "phone": "",
+      "email": "info@biogen.africa",
+      "mapUrl": "",
+      "enabled": true
+    },
+    {
+      "id": "loc-1787395049787",
+      "label": "Branch Office :",
+      "country": "Sierra Leone",
+      "flag": "🏢",
+      "address": "20 Garrison Street, Free Town, Sierra Leone",
+      "phone": "+232 75 011616",
+      "email": "",
+      "mapUrl": "",
+      "enabled": true
+    }
+  ]
 }
