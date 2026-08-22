@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { X, ChevronDown, ChevronRight, Pill, Stethoscope, Eye, Bed, Apple, Sparkles } from "lucide-react";
-import type { CMSCategory, CMSMegaMenuEntry } from "@/lib/cms-types";
+import type { CMSCategory, CMSMegaMenuEntry, CMSSiteConfig } from "@/lib/cms-types";
 import { MEGA_MENU } from "@/data/products";
 import BiogenLogo from "./BiogenLogo";
 
@@ -12,6 +12,7 @@ interface SidebarProps {
   onSelectCategory: (id: string) => void;
   categories?: CMSCategory[];
   megaMenu?: CMSMegaMenuEntry[];
+  siteConfig?: CMSSiteConfig;
 }
 
 const CategoryIcon = ({ id, icon }: { id: string; icon: string }) => {
@@ -26,7 +27,7 @@ const CategoryIcon = ({ id, icon }: { id: string; icon: string }) => {
   }
 };
 
-export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCategory, categories, megaMenu }: SidebarProps) {
+export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCategory, categories, megaMenu, siteConfig }: SidebarProps) {
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
   if (!isOpen) return null;
@@ -149,8 +150,8 @@ export default function Sidebar({ isOpen, onClose, selectedCategory, onSelectCat
         <div className="p-4 border-t border-slate-800 bg-[#070B14] flex-shrink-0 text-xs">
           <div className="bg-[#0E1526] p-3 rounded-xl border border-slate-800 space-y-1">
             <p className="text-[10px] font-bold uppercase tracking-wider text-[#00A3E0]">Institutional Helpdesk</p>
-            <p className="text-xs text-white font-semibold">+232 75 011616</p>
-            <p className="text-[10px] text-slate-400">info@biogenpharma.com</p>
+            <p className="text-xs text-white font-semibold">{siteConfig?.brand?.phone || "+232 75 011616"}</p>
+            <p className="text-[10px] text-slate-400">{siteConfig?.brand?.email || "info@biogenpharma.com"}</p>
           </div>
         </div>
       </div>

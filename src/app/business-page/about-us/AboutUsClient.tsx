@@ -10,22 +10,18 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
-import { BRAND } from "@/config/brand";
-import { CMSSiteConfig, CMSGalleryData } from "@/lib/cms-types";
+import { CMSSiteConfig, CMSGalleryData, CMSAboutContent } from "@/lib/cms-types";
+import { LucideIcon } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 
 interface AboutUsClientProps {
   siteConfig: CMSSiteConfig;
   galleryData: CMSGalleryData;
+  aboutContent: CMSAboutContent;
 }
 
-export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClientProps) {
-  const brand = siteConfig.brand || {
-    name: BRAND.name,
-    tagline: BRAND.tagline,
-    established: BRAND.established,
-    phone: BRAND.contact.formattedNumber,
-    email: BRAND.contact.email,
-  };
+export default function AboutUsClient({ siteConfig, galleryData, aboutContent }: AboutUsClientProps) {
+  const brand = siteConfig.brand || ({} as any);
 
   const EXECUTIVE_TEAM = galleryData?.team || [];
   const CORPORATE_GALLERY = galleryData?.gallery || [];
@@ -45,8 +41,9 @@ export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClient
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        siteConfig={siteConfig}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       {/* ─── BREADCRUMBS ───────────────────────────────────────────── */}
       <div className="global-container pt-5">
@@ -74,7 +71,7 @@ export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClient
               {brand.tagline || "Enhancing Lives Through Quality Healthcare & Supplies"}
             </p>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Biogen Pharma is a premier institutional supplier of MCA-registered pharmaceuticals, German-grade surgical instrumentation, motorized hospital furniture, and rapid clinical diagnostics across West Africa and international healthcare corridors.
+              {aboutContent?.introText}
             </p>
           </div>
         </div>
@@ -243,37 +240,37 @@ export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClient
             Our Core Healthcare Divisions
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            <div className="bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
-              <div className="w-10 h-10 rounded-xl bg-[#0072CE] text-white flex items-center justify-center mb-3">
-                <HeartPulse size={20} />
-              </div>
-              <h4 className="font-black text-slate-900 text-sm mb-1">Essential Formulations</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">100+ MCA-registered tablets, oral syrups, and IV injections from certified international laboratories.</p>
-            </div>
+            {aboutContent?.features?.map((f, i) => {
+              const Icon = (LucideIcons as unknown as Record<string, LucideIcon>)[f.icon] || LucideIcons.HeartPulse;
+              const bgClass = {
+                blue: "bg-blue-50/50 border-blue-100",
+                sky: "bg-sky-50/50 border-sky-100",
+                indigo: "bg-indigo-50/50 border-indigo-100",
+                purple: "bg-purple-50/50 border-purple-100",
+                emerald: "bg-emerald-50/50 border-emerald-100",
+                rose: "bg-rose-50/50 border-rose-100",
+                amber: "bg-amber-50/50 border-amber-100"
+              }[f.color] || "bg-blue-50/50 border-blue-100";
+              const iconBgClass = {
+                blue: "bg-[#0072CE]",
+                sky: "bg-[#0284C7]",
+                indigo: "bg-[#6366F1]",
+                purple: "bg-[#8B5CF6]",
+                emerald: "bg-[#10B981]",
+                rose: "bg-[#F43F5E]",
+                amber: "bg-[#F59E0B]"
+              }[f.color] || "bg-[#0072CE]";
 
-            <div className="bg-sky-50/50 p-5 rounded-2xl border border-sky-100">
-              <div className="w-10 h-10 rounded-xl bg-[#0284C7] text-white flex items-center justify-center mb-3">
-                <Microscope size={20} />
-              </div>
-              <h4 className="font-black text-slate-900 text-sm mb-1">German-Grade Surgical</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">Care Medical Tungsten Carbide scissors, needle holders, and laparoscopic instrumentation.</p>
-            </div>
-
-            <div className="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100">
-              <div className="w-10 h-10 rounded-xl bg-[#6366F1] text-white flex items-center justify-center mb-3">
-                <Stethoscope size={20} />
-              </div>
-              <h4 className="font-black text-slate-900 text-sm mb-1">Ophthalmic &amp; Optics</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">Castroviejo micro-corneal scissors, wire speculums, and 3.5x binocular surgical loupes.</p>
-            </div>
-
-            <div className="bg-purple-50/50 p-5 rounded-2xl border border-purple-100">
-              <div className="w-10 h-10 rounded-xl bg-[#8B5CF6] text-white flex items-center justify-center mb-3">
-                <Building2 size={20} />
-              </div>
-              <h4 className="font-black text-slate-900 text-sm mb-1">Hospital Furniture</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">5-Function motorized ICU beds, hydraulic obstetric delivery tables, and examination couches.</p>
-            </div>
+              return (
+                <div key={i} className={`p-5 rounded-2xl border ${bgClass}`}>
+                  <div className={`w-10 h-10 rounded-xl text-white flex items-center justify-center mb-3 ${iconBgClass}`}>
+                    <Icon size={20} />
+                  </div>
+                  <h4 className="font-black text-slate-900 text-sm mb-1">{f.title}</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">{f.description}</p>
+                </div>
+              );
+            })}
           </div>
 
           <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-6 pb-3 border-b border-slate-100">

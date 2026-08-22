@@ -1,0 +1,33 @@
+{
+  "introText": "Biogen Pharma is a premier institutional supplier of MCA-registered pharmaceuticals, German-grade surgical instrumentation, motorized hospital furniture, and rapid clinical diagnostics across West Africa and international healthcare corridors.",
+  "features": [
+    {
+      "id": "f1",
+      "icon": "HeartPulse",
+      "title": "Essential Formulations",
+      "description": "100+ MCA-registered tablets, oral syrups, and IV injections from certified international laboratories.",
+      "color": "blue"
+    },
+    {
+      "id": "f2",
+      "icon": "Microscope",
+      "title": "German-Grade Surgical",
+      "description": "Care Medical Tungsten Carbide scissors, needle holders, and laparoscopic instrumentation.",
+      "color": "sky"
+    },
+    {
+      "id": "f3",
+      "icon": "Stethoscope",
+      "title": "Ophthalmic & Optics",
+      "description": "Castroviejo micro-corneal scissors, wire speculums, and 3.5x binocular surgical loupes.",
+      "color": "indigo"
+    },
+    {
+      "id": "f4",
+      "icon": "Building2",
+      "title": "Hospital Furniture",
+      "description": "5-Function motorized ICU beds, hydraulic obstetric delivery tables, and examination couches.",
+      "color": "purple"
+    }
+  ]
+}

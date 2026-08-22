@@ -23,6 +23,8 @@ export type {
   CMSBrandPartner,
   CMSGalleryData,
   CMSFaq,
+  CMSPolicyPage,
+  CMSAboutContent,
 } from "./cms-types";
 export { filterProductsByCategory, getSavePercent } from "./cms-types";
 
@@ -36,6 +38,8 @@ import type {
   CMSBrandPartner,
   CMSGalleryData,
   CMSFaq,
+  CMSPolicyPage,
+  CMSAboutContent,
 } from "./cms-types";
 
 // ─── Path helpers (Fallback) ──────────────────────────────────────────────────
@@ -281,10 +285,18 @@ export async function getCMSFaqs(): Promise<CMSFaq[]> {
   return getStoreData<CMSFaq[]>("faqs", "faqs.json");
 }
 
+export async function getCMSPolicies(): Promise<CMSPolicyPage[]> {
+  return getStoreData<CMSPolicyPage[]>("policies", "policies.json");
+}
+
+export async function getCMSAboutContent(): Promise<CMSAboutContent> {
+  return getStoreData<CMSAboutContent>("about_content", "about-content.json");
+}
+
 // ─── Activity Log helper & getter ─────────────────────────────────────────────
 export async function logActivity(
   action: "CREATE" | "UPDATE" | "DELETE",
-  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq",
+  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq" | "Policy" | "AboutContent",
   entityId: string,
   details: string,
   user: string = "Admin"
@@ -420,9 +432,19 @@ export async function updateCMSGallery(data: CMSGalleryData): Promise<void> {
 }
 
 // ─── FAQs write function ─────────────────────────────────────────────
-export async function updateCMSFaqs(faqs: CMSFaq[]): Promise<void> {
+export async function updateCMSFaqs(faqs: CMSFaq[], user: string = "Admin"): Promise<void> {
   await saveStoreData("faqs", faqs);
-  await logActivity("UPDATE", "Faq", "faqs_all", `Updated FAQs (${faqs.length} questions)`);
+  await logActivity("UPDATE", "Faq", "all", "Updated FAQs order and categories", user);
+}
+
+export async function updateCMSPolicies(policies: CMSPolicyPage[], user: string = "Admin"): Promise<void> {
+  await saveStoreData("policies", policies);
+  await logActivity("UPDATE", "Policy", "all", "Updated Legal & Policy Pages", user);
+}
+
+export async function updateCMSAboutContent(content: CMSAboutContent, user: string = "Admin"): Promise<void> {
+  await saveStoreData("about_content", content);
+  await logActivity("UPDATE", "AboutContent", "all", "Updated About Us Core Content", user);
 }
 
 // ─── Admin Users Database Auth ───────────────────────────────────────────────

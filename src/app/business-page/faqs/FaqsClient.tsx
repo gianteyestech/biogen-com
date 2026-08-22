@@ -5,7 +5,6 @@ import { Search, ChevronDown, ChevronRight, HelpCircle, Phone, MessageSquare, Tr
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
-import { BRAND } from "@/config/brand";
 import { CMSSiteConfig, CMSFaq } from "@/lib/cms-types";
 
 interface FaqsClientProps {
@@ -45,8 +44,9 @@ export default function FaqsClient({ siteConfig, faqsData }: FaqsClientProps) {
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        siteConfig={siteConfig}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       {/* ── BREADCRUMBS ── */}
       <div className="global-container pt-5">
@@ -168,7 +168,7 @@ export default function FaqsClient({ siteConfig, faqsData }: FaqsClientProps) {
 
               <div className="space-y-2 pt-1">
                 <a
-                  href={BRAND.contact.whatsappBase}
+                  href={siteConfig?.brand?.whatsapp || `https://wa.me/${siteConfig?.brand?.phone?.replace(/\D/g, '') || '23275011616'}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-sm"

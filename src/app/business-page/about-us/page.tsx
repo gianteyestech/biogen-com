@@ -1,4 +1,4 @@
-import { getCMSSiteConfig, getCMSGallery } from "@/lib/cms";
+import { getCMSSiteConfig, getCMSGallery, getCMSAboutContent } from "@/lib/cms";
 import AboutUsClient from "./AboutUsClient";
 import type { Metadata } from "next";
 
@@ -8,10 +8,11 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutUsPage() {
-  const [siteConfig, galleryData] = await Promise.all([
+  const [siteConfig, galleryData, aboutContent] = await Promise.all([
     getCMSSiteConfig(),
     getCMSGallery(),
+    getCMSAboutContent()
   ]);
   
-  return <AboutUsClient siteConfig={siteConfig} galleryData={galleryData} />;
+  return <AboutUsClient siteConfig={siteConfig} galleryData={galleryData} aboutContent={aboutContent} />;
 }

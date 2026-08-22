@@ -13,7 +13,7 @@ export default function AdminSitePage() {
   const [config, setConfig] = useState<CMSSiteConfig | null>(null);
   const [pending, startT] = useTransition();
   const [msg, setMsg] = useState("");
-  const [tab, setTab] = useState<"mode" | "brand" | "locations" | "promo" | "features" | "footer" | "seo" | "security">("mode");
+  const [tab, setTab] = useState<"mode" | "brand" | "locations" | "promo" | "features" | "header" | "partners" | "footer" | "seo" | "security">("mode");
 
   const [passState, setPassState] = useState<{ error?: string; success?: string } | null>(null);
   const [passPending, startPassT] = useTransition();
@@ -69,6 +69,8 @@ export default function AdminSitePage() {
     { id: "locations", label: "📍 Locations" },
     { id: "promo", label: "Promo Banners" },
     { id: "features", label: "Assurance Bar" },
+    { id: "header", label: "Header & Nav" },
+    { id: "partners", label: "Brand Partners Intro" },
     { id: "footer", label: "Footer Links" },
     { id: "seo", label: "SEO & Meta" },
     { id: "security", label: "Security & Passwords" },
@@ -291,6 +293,10 @@ export default function AdminSitePage() {
               <div><label className={labelCls}>WhatsApp Biogen Chat URL</label><input value={config.brand.whatsapp} onChange={e => set("brand.whatsapp", e.target.value)} className={inputCls} /></div>
               <div><label className={labelCls}>Primary Operational Address (Gambia/Sierra Leone)</label><input value={config.brand.address} onChange={e => set("brand.address", e.target.value)} className={inputCls} /></div>
               <div className="col-span-1 sm:col-span-2">
+                <label className={labelCls}>Google Maps Embed URL</label>
+                <input value={config.brand.googleMapsUrl || ""} onChange={e => set("brand.googleMapsUrl", e.target.value)} className={inputCls} placeholder="https://www.google.com/maps/embed?pb=..." />
+              </div>
+              <div className="col-span-1 sm:col-span-2">
                 <ImageUploader
                   label="Official Brand Logo"
                   value={config.brand.logoUrl}
@@ -341,6 +347,76 @@ export default function AdminSitePage() {
                   <div><label className={labelCls}>Description</label><input value={feat.sub} onChange={e => set(`trustFeatures.${i}.sub`, e.target.value)} className={inputCls} /></div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Header Tab */}
+        {tab === "header" && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-1">Header Announcement Bar</h2>
+              <p className="text-slate-400 text-xs">Manage the promotional text at the very top of the site.</p>
+            </div>
+            <div className="bg-[#070B14] p-5 rounded-xl border border-slate-700/60 space-y-4">
+              <div>
+                <label className={labelCls}>Announcement Text</label>
+                <input
+                  value={config.announcementBar?.text || ""}
+                  onChange={e => set("announcementBar.text", e.target.value)}
+                  className={inputCls}
+                  placeholder="e.g. Wholesale Medical & Pharmaceutical Supplies | Delivery Across West Africa"
+                />
+              </div>
+              <div>
+                <label className={labelCls}>Optional Link (URL)</label>
+                <input
+                  value={config.announcementBar?.link || ""}
+                  onChange={e => set("announcementBar.link", e.target.value)}
+                  className={inputCls}
+                  placeholder="e.g. /business-page/about-us"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Brand Partners Intro Tab */}
+        {tab === "partners" && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-1">Brand Partners Intro Text</h2>
+              <p className="text-slate-400 text-xs">Manage the text displayed above the brand partner logos grid.</p>
+            </div>
+            <div className="bg-[#070B14] p-5 rounded-xl border border-slate-700/60 space-y-4">
+              <div>
+                <label className={labelCls}>Subtitle (Small blue text)</label>
+                <input
+                  value={config.brandPartnersSection?.subtitle || ""}
+                  onChange={e => set("brandPartnersSection.subtitle", e.target.value)}
+                  className={inputCls}
+                  placeholder="e.g. Authorized Principals & Verified Manufacturing Partners"
+                />
+              </div>
+              <div>
+                <label className={labelCls}>Main Title (Large white text)</label>
+                <input
+                  value={config.brandPartnersSection?.title || ""}
+                  onChange={e => set("brandPartnersSection.title", e.target.value)}
+                  className={inputCls}
+                  placeholder="e.g. Our Pharmaceutical & Surgical Brand Partners"
+                />
+              </div>
+              <div>
+                <label className={labelCls}>Description</label>
+                <textarea
+                  value={config.brandPartnersSection?.description || ""}
+                  onChange={e => set("brandPartnersSection.description", e.target.value)}
+                  className={inputCls}
+                  rows={3}
+                  placeholder="e.g. Official institutional distribution with leading cGMP and ISO-certified laboratories..."
+                />
+              </div>
             </div>
           </div>
         )}
@@ -470,11 +546,47 @@ export default function AdminSitePage() {
 
         {/* Footer Tab */}
         {tab === "footer" && (
-          <div className="space-y-4">
-            <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Footer &amp; Institutional Governance</h2>
-            <div><label className={labelCls}>Newsletter Heading</label><input value={config.footer.newsletterTitle} onChange={e => set("footer.newsletterTitle", e.target.value)} className={inputCls} /></div>
-            <div><label className={labelCls}>Newsletter Subtitle</label><input value={config.footer.newsletterSub} onChange={e => set("footer.newsletterSub", e.target.value)} className={inputCls} /></div>
-            <div><label className={labelCls}>Copyright &amp; Regulatory Notice</label><input value={config.footer.copyrightText || ""} onChange={e => set("footer.copyrightText", e.target.value)} className={inputCls} /></div>
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Footer &amp; Institutional Governance</h2>
+              <div><label className={labelCls}>Newsletter Heading</label><input value={config.footer.newsletterTitle} onChange={e => set("footer.newsletterTitle", e.target.value)} className={inputCls} /></div>
+              <div><label className={labelCls}>Newsletter Subtitle</label><input value={config.footer.newsletterSub} onChange={e => set("footer.newsletterSub", e.target.value)} className={inputCls} /></div>
+              <div><label className={labelCls}>Copyright &amp; Regulatory Notice</label><input value={config.footer.copyrightText || ""} onChange={e => set("footer.copyrightText", e.target.value)} className={inputCls} /></div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-2">Social Media & Corporate Links</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {config.footer.social?.map((social, i) => (
+                  <div key={i} className="bg-[#070B14] border border-slate-700/60 rounded-xl p-4 space-y-3 relative">
+                    <button
+                      onClick={() => {
+                        const newSocial = [...config.footer.social];
+                        newSocial.splice(i, 1);
+                        set("footer.social", newSocial);
+                      }}
+                      className="absolute top-3 right-3 text-slate-500 hover:text-red-400"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                    <div>
+                      <label className={labelCls}>Platform (e.g. LinkedIn)</label>
+                      <input value={social.label} onChange={e => set(`footer.social.${i}.label`, e.target.value)} className={inputCls} />
+                    </div>
+                    <div>
+                      <label className={labelCls}>Profile URL</label>
+                      <input value={social.href} onChange={e => set(`footer.social.${i}.href`, e.target.value)} className={inputCls} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => set("footer.social", [...(config.footer.social || []), { label: "New Platform", href: "https://" }])}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 transition-colors"
+              >
+                <Plus size={13} /> Add Social Link
+              </button>
+            </div>
           </div>
         )}
 

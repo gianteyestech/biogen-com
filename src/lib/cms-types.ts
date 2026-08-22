@@ -30,7 +30,7 @@ export interface CMSProduct {
 export interface CMSActivityLog {
   id: string;
   action: "CREATE" | "UPDATE" | "DELETE";
-  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq";
+  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq" | "Policy" | "AboutContent";
   entityId: string;
   details: string;
   timestamp: string;
@@ -186,6 +186,7 @@ export interface CMSSiteConfig {
     phone: string;
     whatsapp: string;
     showPhone?: boolean;
+    googleMapsUrl?: string;
   };
   locations?: CMSLocation[];  // multi-location offices/hubs
   shipping: {
@@ -216,6 +217,15 @@ export interface CMSSiteConfig {
     keywords: string;
   };
   paymentMethods: CMSPaymentMethod[];
+  brandPartnersSection?: {
+    subtitle?: string;
+    title?: string;
+    description?: string;
+  };
+  announcementBar?: {
+    text?: string;
+    link?: string;
+  };
 }
 
 export interface CMSPageSection {
@@ -244,4 +254,23 @@ export function getSavePercent(product: CMSProduct, weight: string): number | nu
   if (!orig) return null;
   const curr = product.prices[weight];
   return Math.round(((orig - curr) / orig) * 100);
+}
+
+export interface CMSPolicyPage {
+  id: string; // e.g. "privacy-policy", "terms-and-conditions", "cancellation-policy", "refund-policy", "return-policy", "shipping-policy"
+  title: string;
+  contentHtml: string;
+  seoTitle?: string;
+  seoDescription?: string;
+}
+
+export interface CMSAboutContent {
+  introText: string;
+  features: {
+    id: string;
+    icon: string;
+    title: string;
+    description: string;
+    color: string; // e.g. "#0284C7"
+  }[];
 }

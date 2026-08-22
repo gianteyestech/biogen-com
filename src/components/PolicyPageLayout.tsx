@@ -40,8 +40,9 @@ export default function PolicyPageLayout({ title, siteConfig, children }: Policy
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        siteConfig={siteConfig}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       {/* ── BREADCRUMBS ── */}
       <div className="global-container pt-5">

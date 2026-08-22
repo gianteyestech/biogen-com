@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendEmail, generateOrderConfirmationHTML } from "@/lib/email";
+import { getCMSSiteConfig } from "@/lib/cms";
 
 export async function POST(req: Request) {
   try {
@@ -13,12 +14,14 @@ export async function POST(req: Request) {
       );
     }
 
+    const siteConfig = await getCMSSiteConfig();
+
     const htmlContent = generateOrderConfirmationHTML({
       id: orderId || `BG-${Date.now().toString().slice(-6)}`,
       customerName: customerName || "Valued Customer",
       totalAmount: Number(totalAmount),
       items: items || [],
-    });
+    }, siteConfig?.brand?.email);
 
     // 1. Send confirmation email to customer
     const customerEmailResult = await sendEmail({

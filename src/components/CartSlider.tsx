@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import { X, Truck, Minus, Plus, Trash2, ShoppingBag, ChevronLeft, Check, ShieldCheck } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { usePaymentMethods } from "@/context/PaymentMethodsContext";
-import { BRAND } from "@/config/brand";
+import { CMSSiteConfig } from "@/lib/cms-types";
 
-const FREE_DELIVERY_THRESHOLD = BRAND.shipping.freeThreshold || 500;
-const SHIPPING_COST = BRAND.shipping.standardCost || 50;
+interface CartSliderProps {
+  siteConfig?: CMSSiteConfig;
+}
 
-export default function CartSlider() {
+export default function CartSlider({ siteConfig }: CartSliderProps = {}) {
   const { cart, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, cartTotal, cartCount } = useCart();
   const paymentMethods = usePaymentMethods();
   const enabledMethods = paymentMethods.filter((m) => m.enabled);
@@ -16,8 +17,11 @@ export default function CartSlider() {
   const [step, setStep] = useState<"cart" | "payment">("cart");
   const [selectedMethodId, setSelectedMethodId] = useState<string>("");
 
-  const remaining = Math.max(0, FREE_DELIVERY_THRESHOLD - cartTotal);
-  const progressPct = Math.min(100, (cartTotal / FREE_DELIVERY_THRESHOLD) * 100);
+  const freeDeliveryThreshold = siteConfig?.shipping?.freeThreshold || 500;
+  const shippingCost = siteConfig?.shipping?.standardCost || 50;
+
+  const remaining = Math.max(0, freeDeliveryThreshold - cartTotal);
+  const progressPct = Math.min(100, (cartTotal / freeDeliveryThreshold) * 100);
 
   // Reset to cart step when panel closes
   const handleClose = () => {
@@ -183,10 +187,10 @@ export default function CartSlider() {
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400">
                   <button onClick={handleClose} className="underline hover:text-slate-600 transition-colors">Continue Browsing</button>
-                  {cartTotal < FREE_DELIVERY_THRESHOLD && (
+                  {cartTotal < freeDeliveryThreshold && (
                     <>
                       <span className="text-slate-200">•</span>
-                      <span className="flex items-center gap-1 text-slate-500"><Truck size={12} /> +${SHIPPING_COST} standard shipping</span>
+                      <span className="flex items-center gap-1 text-slate-500"><Truck size={12} /> +${shippingCost} standard shipping</span>
                     </>
                   )}
                 </div>
@@ -216,13 +220,13 @@ export default function CartSlider() {
               <div>
                 <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Total Payable</p>
                 <p className="text-white font-extrabold text-lg">
-                  ${(cartTotal >= FREE_DELIVERY_THRESHOLD ? cartTotal : cartTotal + SHIPPING_COST).toLocaleString()}
+                  ${(cartTotal >= freeDeliveryThreshold ? cartTotal : cartTotal + shippingCost).toLocaleString()}
                 </p>
               </div>
               <div className="text-right">
                 <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Logistics</p>
-                <p className={`text-xs font-bold ${cartTotal >= FREE_DELIVERY_THRESHOLD ? "text-emerald-400" : "text-slate-300"}`}>
-                  {cartTotal >= FREE_DELIVERY_THRESHOLD ? "FREE Priority" : `+$${SHIPPING_COST}`}
+                <p className={`text-xs font-bold ${cartTotal >= freeDeliveryThreshold ? "text-emerald-400" : "text-slate-300"}`}>
+                  {cartTotal >= freeDeliveryThreshold ? "FREE Priority" : `+$${shippingCost}`}
                 </p>
               </div>
             </div>

@@ -149,7 +149,7 @@ export default function HomeClient({
         megaMenu={megaMenu}
         allProducts={allProducts}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       {/* ─── MAIN CONTAINER ────────────────────────────────────────── */}
       <div className="global-container py-6">
@@ -360,6 +360,7 @@ export default function HomeClient({
               selectedBrand={selectedBrand}
               onSelectBrand={setSelectedBrand}
               partners={brandPartners}
+              siteConfig={siteConfig}
             />
 
             {/* ── CMS SECTIONS ─────────────────────────────────────── */}

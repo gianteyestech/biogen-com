@@ -53,7 +53,7 @@ export default function ProductPageClient({ product, related, siteConfig, catego
           setSelectedCategory={setSelectedCategory} 
           siteConfig={siteConfig}
         />
-        <CartSlider />
+        <CartSlider siteConfig={siteConfig} />
         <div className="global-container py-24 text-center">
           <p className="text-5xl mb-4">🔍</p>
           <h1 className="text-2xl font-bold text-slate-800 mb-2">Medical Product Not Found</h1>
@@ -95,7 +95,8 @@ export default function ProductPageClient({ product, related, siteConfig, catego
       ``,
       `Please provide formal institutional quotation invoice, Certificate of Analysis (CoA), and cold-chain transit schedule for our healthcare facility.`,
     ].filter(Boolean).join("\n");
-    window.open(`${BRAND.contact.whatsappBase}?text=${encodeURIComponent(msg)}`, "_blank");
+    const waLink = siteConfig?.brand?.whatsapp || `https://wa.me/${siteConfig?.brand?.phone?.replace(/\D/g, '') || '23275011616'}`;
+    window.open(`${waLink}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   const handleLiveChatInquiry = () => {
@@ -118,7 +119,7 @@ export default function ProductPageClient({ product, related, siteConfig, catego
         categories={categories}
         megaMenu={megaMenu}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       <div className="global-container py-6">
         {/* Breadcrumb */}
@@ -437,16 +438,7 @@ export default function ProductPageClient({ product, related, siteConfig, catego
         )}
       </div>
 
-      <Footer siteConfig={siteConfig || ({
-        brand: {
-          name: BRAND.name,
-          tagline: BRAND.tagline,
-          logoUrl: "/logo.png",
-          address: BRAND.contact.addressHead,
-          phone: BRAND.contact.formattedNumber,
-          email: BRAND.contact.email,
-        }
-      } as any)} />
+      <Footer siteConfig={siteConfig || ({} as any)} />
     </div>
   );
 }

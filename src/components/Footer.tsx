@@ -111,6 +111,23 @@ export default function Footer({ siteConfig }: FooterProps) {
                 </p>
               </div>
             )}
+
+            {/* Social Links */}
+            {footer.social && footer.social.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-6">
+                {footer.social.map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center h-8 px-3 rounded-full bg-[#1E293B] hover:bg-[#38BDF8] hover:text-slate-900 text-xs font-bold text-white transition-colors"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>

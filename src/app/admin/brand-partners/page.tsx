@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Trash2, Save, Image as ImageIcon, Search } from "lucide-react";
 import type { CMSBrandPartner } from "@/lib/cms-types";
+import ImageUploader from "@/components/admin/ImageUploader";
 
 export default function BrandPartnersAdmin() {
   const [partners, setPartners] = useState<CMSBrandPartner[]>([]);
@@ -156,13 +157,17 @@ export default function BrandPartnersAdmin() {
                           className="bg-slate-800 border border-slate-700 rounded px-2 py-1 text-slate-300 focus:border-[#0072CE] outline-none w-full"
                         />
                       </div>
-                      <div className="mt-1 flex items-center gap-2">
-                        <span className="text-xs text-slate-500">Logo URL:</span>
+                      <div className="mt-2 w-full max-w-[200px]">
+                        <span className="text-xs text-slate-500 mb-1 block">Logo Image:</span>
+                        <ImageUploader
+                          folder="brands"
+                          onUpload={(url) => updatePartner(partner.id, "logoUrl", url)}
+                        />
                         <input
                           value={partner.logoUrl}
                           onChange={(e) => updatePartner(partner.id, "logoUrl", e.target.value)}
-                          placeholder="/images/brands/..."
-                          className="flex-1 bg-transparent border-b border-slate-700 focus:border-[#0072CE] outline-none text-xs text-slate-400 px-1 py-0.5"
+                          placeholder="/images/brands/... (or upload above)"
+                          className="mt-2 w-full bg-transparent border-b border-slate-700 focus:border-[#0072CE] outline-none text-xs text-slate-400 px-1 py-0.5"
                         />
                       </div>
                     </div>

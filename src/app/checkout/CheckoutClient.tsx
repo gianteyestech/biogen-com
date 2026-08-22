@@ -5,13 +5,14 @@ import { useCart } from "@/context/CartContext";
 import { usePaymentMethods } from "@/context/PaymentMethodsContext";
 import type { CMSPaymentMethod, CMSPaymentDetail } from "@/lib/cms-types";
 import { ShoppingBag, Truck, ShieldCheck, AlertCircle, ArrowRight, Loader2, FileCheck2 } from "lucide-react";
-import { BRAND } from "@/config/brand";
+import { CMSSiteConfig } from "@/lib/cms-types";
 import Link from "next/link";
 
-const FREE_DELIVERY_THRESHOLD = BRAND.shipping.freeThreshold || 500;
-const SHIPPING_FEE_STANDARD = BRAND.shipping.standardCost || 50;
+interface CheckoutClientProps {
+  siteConfig?: CMSSiteConfig;
+}
 
-export default function CheckoutClient() {
+export default function CheckoutClient({ siteConfig }: CheckoutClientProps) {
   const { cart, cartTotal, clearCart, mounted } = useCart();
   const paymentMethods = usePaymentMethods();
 
@@ -29,8 +30,11 @@ export default function CheckoutClient() {
   const [error, setError] = useState("");
 
   const enabledMethods = paymentMethods.filter((m: CMSPaymentMethod) => m.enabled);
-  const isFreeShipping = cartTotal >= FREE_DELIVERY_THRESHOLD;
-  const shippingFee = isFreeShipping ? 0 : SHIPPING_FEE_STANDARD;
+  const freeDeliveryThreshold = siteConfig?.shipping?.freeThreshold || 500;
+  const shippingFeeStandard = siteConfig?.shipping?.standardCost || 50;
+
+  const isFreeShipping = cartTotal >= freeDeliveryThreshold;
+  const shippingFee = isFreeShipping ? 0 : shippingFeeStandard;
   const grandTotal = cartTotal + shippingFee;
 
   const handleSubmit = async (e: React.FormEvent) => {

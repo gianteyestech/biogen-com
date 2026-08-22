@@ -4,6 +4,7 @@ import pool from "@/lib/db";
 import { initOrdersDb } from "@/lib/orders-db";
 import { getCMSProduct } from "@/lib/cms";
 import { sendEmail, generateOrderConfirmationHTML } from "@/lib/email";
+import { getCMSSiteConfig } from "@/lib/cms";
 import { RowDataPacket } from "mysql2";
 
 const ADMIN_COOKIE = "admin_session";
@@ -146,6 +147,7 @@ export async function POST(req: Request) {
 
     // Async Email Notifications (If customer provided email)
     if (customerEmail) {
+      const siteConfig = await getCMSSiteConfig();
       const emailHtml = generateOrderConfirmationHTML({
         id: orderNumber,
         customerName,
@@ -156,7 +158,7 @@ export async function POST(req: Request) {
           qty: i.quantity,
           price: i.price,
         })),
-      });
+      }, siteConfig?.brand?.email);
 
       await sendEmail({
         to: customerEmail,

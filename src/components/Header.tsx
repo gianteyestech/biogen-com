@@ -320,6 +320,7 @@ export default function Header({
         onSelectCategory={setSelectedCategory}
         categories={activeCategories}
         megaMenu={activeMegaMenu}
+        siteConfig={siteConfig}
       />
 
       <header className="w-full z-40 relative">
@@ -336,14 +337,29 @@ export default function Header({
 
             {/* Fading Announcement Slider */}
             <div className="flex-1 flex justify-center items-center text-center">
-              <div className={`flex items-center gap-2 transition-all duration-300 transform ${fadeAnnounce ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"}`}>
-                <span className="text-sm leading-none">
-                  {ANNOUNCEMENTS[announcementIdx].icon}
-                </span>
-                <span className="font-sans font-medium tracking-wide text-white">
-                  {ANNOUNCEMENTS[announcementIdx].text}
-                </span>
-              </div>
+              {siteConfig?.announcementBar?.text ? (
+                <div className="flex items-center gap-2 transition-all duration-300 transform opacity-100 translate-y-0">
+                  <span className="text-sm leading-none">📢</span>
+                  {siteConfig.announcementBar.link ? (
+                    <Link href={siteConfig.announcementBar.link} className="font-sans font-medium tracking-wide text-white hover:text-[#00A3E0] transition-colors">
+                      {siteConfig.announcementBar.text}
+                    </Link>
+                  ) : (
+                    <span className="font-sans font-medium tracking-wide text-white">
+                      {siteConfig.announcementBar.text}
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <div className={`flex items-center gap-2 transition-all duration-300 transform ${fadeAnnounce ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"}`}>
+                  <span className="text-sm leading-none">
+                    {ANNOUNCEMENTS[announcementIdx].icon}
+                  </span>
+                  <span className="font-sans font-medium tracking-wide text-white">
+                    {ANNOUNCEMENTS[announcementIdx].text}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Right Contact Link */}

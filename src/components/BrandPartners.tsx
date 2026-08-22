@@ -2,15 +2,16 @@
 import React from "react";
 import { ArrowRight, Award } from "lucide-react";
 
-import { CMSBrandPartner } from "@/lib/cms-types";
+import { CMSBrandPartner, CMSSiteConfig } from "@/lib/cms-types";
 
 interface BrandPartnersProps {
   selectedBrand: string;
   onSelectBrand: (brandId: string) => void;
   partners: CMSBrandPartner[];
+  siteConfig?: CMSSiteConfig;
 }
 
-export default function BrandPartners({ selectedBrand, onSelectBrand, partners }: BrandPartnersProps) {
+export default function BrandPartners({ selectedBrand, onSelectBrand, partners, siteConfig }: BrandPartnersProps) {
   // Use a fallback if partners is not provided
   const displayPartners = partners || [];
 
@@ -26,13 +27,13 @@ export default function BrandPartners({ selectedBrand, onSelectBrand, partners }
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[#00A3E0] uppercase tracking-widest mb-1.5">
               <Award size={15} />
-              <span>Authorized Principals &amp; Verified Manufacturing Partners</span>
+              <span>{siteConfig?.brandPartnersSection?.subtitle || "Authorized Principals & Verified Manufacturing Partners"}</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              Our Pharmaceutical &amp; Surgical Brand Partners
+              {siteConfig?.brandPartnersSection?.title || "Our Pharmaceutical & Surgical Brand Partners"}
             </h2>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-              Official institutional distribution with leading cGMP and ISO-certified laboratories. Click any brand logo to filter its registered medicines and surgical supplies.
+              {siteConfig?.brandPartnersSection?.description || "Official institutional distribution with leading cGMP and ISO-certified laboratories. Click any brand logo to filter its registered medicines and surgical supplies."}
             </p>
           </div>
 

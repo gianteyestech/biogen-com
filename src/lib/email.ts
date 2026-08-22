@@ -90,7 +90,7 @@ export function generateOrderConfirmationHTML(order: {
   customerName: string;
   totalAmount: number;
   items: { name: string; weight: string; qty: number; price: number }[];
-}) {
+}, supportEmail: string = "contact@biogenpharma.site") {
   const itemsRows = order.items
     .map(
       (item) => `
@@ -133,7 +133,7 @@ export function generateOrderConfirmationHTML(order: {
       </div>
       
       <div style="background-color: #F8FAFC; padding: 16px; text-align: center; font-size: 12px; color: #64748B; border-top: 1px solid #E2E8F0;">
-        For clinical inquiries or logistics tracking, contact us at contact@biogenpharma.site or WhatsApp.
+        For clinical inquiries or logistics tracking, contact us at ${supportEmail} or WhatsApp.
       </div>
     </div>
   `;

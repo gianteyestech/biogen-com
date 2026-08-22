@@ -1,0 +1,44 @@
+[
+  {
+    "id": "privacy-policy",
+    "title": "Privacy Policy",
+    "contentHtml": "<h1>Privacy Policy</h1>\n<p>Your privacy is important to us. This is the default privacy policy.</p>",
+    "seoTitle": "Privacy Policy - Biogen Pharma",
+    "seoDescription": "Biogen Pharma Privacy Policy."
+  },
+  {
+    "id": "terms-and-conditions",
+    "title": "Terms & Conditions",
+    "contentHtml": "<h1>Terms & Conditions</h1>\n<p>These are the default terms and conditions.</p>",
+    "seoTitle": "Terms & Conditions - Biogen Pharma",
+    "seoDescription": "Biogen Pharma Terms and Conditions."
+  },
+  {
+    "id": "cancellation-policy",
+    "title": "Cancellation Policy",
+    "contentHtml": "<h1>Cancellation Policy</h1>\n<p>Orders can be cancelled before dispatch.</p>",
+    "seoTitle": "Cancellation Policy - Biogen Pharma",
+    "seoDescription": "Order cancellation policy for Biogen Pharma."
+  },
+  {
+    "id": "refund-policy",
+    "title": "Refund Policy",
+    "contentHtml": "<h1>Refund Policy</h1>\n<p>Refunds are processed within 5-7 business days.</p>",
+    "seoTitle": "Refund Policy - Biogen Pharma",
+    "seoDescription": "Refund policy for Biogen Pharma."
+  },
+  {
+    "id": "return-policy",
+    "title": "Return Policy",
+    "contentHtml": "<h1>Return Policy</h1>\n<p>We accept returns of sealed medical supplies within 7 days.</p>",
+    "seoTitle": "Return Policy - Biogen Pharma",
+    "seoDescription": "Return policy for Biogen Pharma."
+  },
+  {
+    "id": "shipping-policy",
+    "title": "Shipping & Logistics Policy",
+    "contentHtml": "<h1>Shipping & Logistics Policy</h1>\n<p>All items are shipped via tracked freight.</p>",
+    "seoTitle": "Shipping Policy - Biogen Pharma",
+    "seoDescription": "Shipping and Logistics policy."
+  }
+]

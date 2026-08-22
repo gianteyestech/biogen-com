@@ -19,6 +19,8 @@ import {
   Menu,
   X,
   ShieldCheck,
+  FileText,
+  Users,
 } from "lucide-react";
 
 const brandGrad = "linear-gradient(135deg, #00A3E0 0%, #0072CE 100%)";
@@ -31,6 +33,9 @@ const NAV = [
   { href: "/admin/categories",label: "Departments",    icon: Tag },
   { href: "/admin/hero",     label: "Hero Slides",    icon: ImagePlay },
   { href: "/admin/sections", label: "Page Sections",  icon: Layout },
+  { href: "/admin/brand-partners", label: "Brand Partners", icon: Users },
+  { href: "/admin/about",    label: "About Content",  icon: FileText },
+  { href: "/admin/policies", label: "Policies",       icon: FileText },
   { href: "/admin/payment",  label: "Settlement Methods", icon: CreditCard },
   { href: "/admin/site",     label: "Facility Config", icon: Settings },
   { href: "/admin/activity-logs", label: "Audit Logs", icon: History },

@@ -17,7 +17,6 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
-import { BRAND } from "@/config/brand";
 import { CMSSiteConfig } from "@/lib/cms-types";
 
 interface ContactUsClientProps {
@@ -25,14 +24,7 @@ interface ContactUsClientProps {
 }
 
 export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
-  const brand = siteConfig.brand || {
-    name: BRAND.name,
-    tagline: BRAND.tagline,
-    phone: BRAND.contact.formattedNumber,
-    email: BRAND.contact.email,
-    address: BRAND.contact.addressHead,
-    whatsapp: BRAND.contact.whatsappBase,
-  };
+  const brand = siteConfig.brand || ({} as any);
 
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
@@ -57,8 +49,9 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
       <Header
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        siteConfig={siteConfig}
       />
-      <CartSlider />
+      <CartSlider siteConfig={siteConfig} />
 
       {/* ── BREADCRUMBS ── */}
       <div className="global-container pt-5">
@@ -94,11 +87,11 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
                 <span>Start Medical Live Chat</span>
               </button>
               <a
-                href={`tel:${BRAND.contact.rawNumber}`}
+                href={`tel:${(brand.phone || "").replace(/[\s-]/g, "")}`}
                 className="inline-flex items-center gap-2 bg-[#1E293B] hover:bg-black text-white text-xs font-bold px-5 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:scale-105 border border-gray-700"
               >
                 <Phone size={16} />
-                <span>Call {BRAND.contact.formattedNumber}</span>
+                <span>Call {siteConfig.brand.phone}</span>
               </a>
             </div>
           </div>
@@ -115,7 +108,7 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
               <Phone size={22} />
             </div>
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Direct Phone / WhatsApp</span>
-            <h3 className="font-extrabold text-sm text-gray-900 mb-1">{BRAND.contact.formattedNumber}</h3>
+            <h3 className="font-extrabold text-sm text-gray-900 mb-1">{siteConfig.brand.phone}</h3>
             <p className="text-xs text-gray-500">Mon – Sat (10:00 AM – 4:00 PM)</p>
           </div>
 
@@ -125,7 +118,7 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
               <Mail size={22} />
             </div>
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Official Email</span>
-            <h3 className="font-extrabold text-sm text-gray-900 mb-1">{BRAND.contact.email}</h3>
+            <h3 className="font-extrabold text-sm text-gray-900 mb-1">{siteConfig.brand.email}</h3>
             <p className="text-xs text-gray-500">Institutional &amp; Patient Inquiries</p>
           </div>
 
@@ -273,10 +266,10 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
               </div>
               <h3 className="font-serif font-bold text-lg text-white mb-2">Bulk Hospital Procurement</h3>
               <p className="text-xs text-gray-300 leading-relaxed mb-4">
-                Supplying hospitals, clinics, diagnostic centers, and pharmacies across West Africa with guaranteed genuine stock and cold-chain integrity.
+                {siteConfig.brand.tagline}
               </p>
               <a
-                href={BRAND.contact.whatsappBase}
+                href={siteConfig.brand.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#0284C7] hover:bg-[#38BDF8] text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all"
@@ -316,6 +309,21 @@ export default function ContactUsClient({ siteConfig }: ContactUsClientProps) {
 
         </div>
       </div>
+
+      {siteConfig.brand.googleMapsUrl && (
+        <div className="w-full h-[400px] bg-slate-100 relative">
+          <iframe
+            src={siteConfig.brand.googleMapsUrl}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+          ></iframe>
+        </div>
+      )}
 
       <Footer siteConfig={siteConfig} />
     </div>
