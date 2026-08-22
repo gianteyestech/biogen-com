@@ -135,96 +135,99 @@ export default function AboutUsAdmin() {
       </div>
 
       {tab === "team" && (
-        <div className="space-y-4">
+        <div className="space-y-6">
           <button
             onClick={addTeamMember}
-            className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-colors mb-2"
+            className="flex items-center gap-2 bg-[#0072CE] hover:bg-[#005ea6] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-lg"
           >
             <Plus size={16} /> Add Team Member
           </button>
           
-          {data.team.map((member) => (
-            <div key={member.id} className="bg-slate-900 border border-slate-800 p-5 rounded-xl flex gap-6 relative group">
-              <button
-                onClick={() => removeTeamMember(member.id)}
-                className="absolute top-4 right-4 text-slate-500 hover:text-red-400 transition-colors"
-              >
-                <Trash2 size={18} />
-              </button>
-              
-              <div className="w-48 shrink-0">
-                <ImageUploader
-                  label="Profile Photo"
-                  value={member.imageUrl}
-                  folder="team"
-                  onChange={(url) => updateTeamMember(member.id, "imageUrl", url)}
-                  placeholder="Upload photo..."
-                />
-              </div>
+          <div className="grid grid-cols-1 gap-6">
+            {data.team.map((member) => (
+              <div key={member.id} className="bg-[#0A0F1D] border border-slate-800 p-6 rounded-2xl flex flex-col md:flex-row gap-8 relative group shadow-xl hover:border-slate-600 transition-all">
+                <button
+                  onClick={() => removeTeamMember(member.id)}
+                  className="absolute top-4 right-4 p-2 bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <Trash2 size={16} />
+                </button>
 
-              <div className="flex-1 space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className={labelCls}>Name</label>
-                    <input value={member.name} onChange={(e) => updateTeamMember(member.id, "name", e.target.value)} className={inputCls} />
+                <div className="flex-1 space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className={labelCls}>Name</label>
+                      <input value={member.name} onChange={(e) => updateTeamMember(member.id, "name", e.target.value)} className={inputCls} placeholder="e.g. John Doe" />
+                    </div>
+                    <div>
+                      <label className={labelCls}>Role / Title</label>
+                      <input value={member.role} onChange={(e) => updateTeamMember(member.id, "role", e.target.value)} className={inputCls} placeholder="e.g. Chief Medical Officer" />
+                    </div>
                   </div>
-                  <div>
-                    <label className={labelCls}>Role / Title</label>
-                    <input value={member.role} onChange={(e) => updateTeamMember(member.id, "role", e.target.value)} className={inputCls} />
+                  
+                  <div className="bg-[#131D31] p-4 rounded-xl border border-slate-800/60">
+                    <ImageUploader
+                      label="Executive Profile Photo"
+                      value={member.imageUrl}
+                      folder="team"
+                      onChange={(url) => updateTeamMember(member.id, "imageUrl", url)}
+                      placeholder="Upload photo..."
+                    />
                   </div>
-                </div>
-                <div>
-                  <label className={labelCls}>Biography</label>
-                  <textarea rows={3} value={member.bio} onChange={(e) => updateTeamMember(member.id, "bio", e.target.value)} className={inputCls} />
+
+                  <div>
+                    <label className={labelCls}>Biography</label>
+                    <textarea rows={4} value={member.bio} onChange={(e) => updateTeamMember(member.id, "bio", e.target.value)} className={inputCls} placeholder="Write a short biography..." />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
       {tab === "gallery" && (
-        <div className="space-y-4">
+        <div className="space-y-6">
           <button
             onClick={addGalleryItem}
-            className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-colors mb-2"
+            className="flex items-center gap-2 bg-[#0072CE] hover:bg-[#005ea6] text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-lg"
           >
-            <Plus size={16} /> Add Gallery Image
+            <Plus size={16} /> Add Corporate Image
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
             {data.gallery.map((item) => (
-              <div key={item.id} className="bg-slate-900 border border-slate-800 p-4 rounded-xl relative group flex flex-col">
+              <div key={item.id} className="bg-[#0A0F1D] border border-slate-800 p-5 rounded-2xl relative group flex flex-col shadow-xl hover:border-slate-600 transition-all">
                 <button
                   onClick={() => removeGalleryItem(item.id)}
-                  className="absolute top-2 right-2 p-1.5 bg-rose-500/20 text-rose-400 hover:bg-rose-500 hover:text-white rounded-lg transition-all z-10 opacity-0 group-hover:opacity-100"
+                  className="absolute top-4 right-4 p-2 bg-rose-500/10 text-rose-400 hover:bg-rose-500 hover:text-white rounded-lg transition-all z-10 opacity-0 group-hover:opacity-100"
                 >
-                  <Trash2 size={14} />
+                  <Trash2 size={16} />
                 </button>
                 
-                <div className="mb-4">
+                <div className="mb-5 bg-[#131D31] p-4 rounded-xl border border-slate-800/60">
                   <ImageUploader
-                    label=""
+                    label="Corporate Image"
                     value={item.imageUrl}
                     folder="gallery"
                     onChange={(url) => updateGalleryItem(item.id, "imageUrl", url)}
-                    placeholder="Upload image..."
+                    placeholder="Upload high-res corporate image..."
                   />
                 </div>
 
-                <div className="space-y-3 flex-1 flex flex-col justify-end">
+                <div className="space-y-4 flex-1">
                   <div>
-                    <label className={labelCls}>Title</label>
-                    <input value={item.title} onChange={(e) => updateGalleryItem(item.id, "title", e.target.value)} className={inputCls} />
+                    <label className={labelCls}>Image Title</label>
+                    <input value={item.title} onChange={(e) => updateGalleryItem(item.id, "title", e.target.value)} className={inputCls} placeholder="e.g. Annual Medical Conference" />
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className={labelCls}>Category</label>
-                      <input value={item.category} onChange={(e) => updateGalleryItem(item.id, "category", e.target.value)} className={inputCls} />
+                      <input value={item.category} onChange={(e) => updateGalleryItem(item.id, "category", e.target.value)} className={inputCls} placeholder="e.g. Events" />
                     </div>
                     <div>
                       <label className={labelCls}>Badge</label>
-                      <input value={item.badge} onChange={(e) => updateGalleryItem(item.id, "badge", e.target.value)} className={inputCls} />
+                      <input value={item.badge} onChange={(e) => updateGalleryItem(item.id, "badge", e.target.value)} className={inputCls} placeholder="e.g. 2026" />
                     </div>
                   </div>
                 </div>
