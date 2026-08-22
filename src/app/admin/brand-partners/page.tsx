@@ -29,8 +29,8 @@ export default function BrandPartnersAdmin() {
       });
       if (!res.ok) throw new Error("Failed to save");
       alert("Brand Partners saved successfully!");
-    } catch (err: any) {
-      alert("Error saving: " + err.message);
+    } catch (err: unknown) {
+      alert("Error saving: " + (err instanceof Error ? err.message : String(err)));
     }
     setSaving(false);
   };
@@ -161,7 +161,8 @@ export default function BrandPartnersAdmin() {
                         <span className="text-xs text-slate-500 mb-1 block">Logo Image:</span>
                         <ImageUploader
                           folder="brands"
-                          onUpload={(url) => updatePartner(partner.id, "logoUrl", url)}
+                          value={partner.logoUrl}
+                          onChange={(url) => updatePartner(partner.id, "logoUrl", url)}
                         />
                         <input
                           value={partner.logoUrl}
