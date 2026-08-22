@@ -11,112 +11,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
 import { BRAND } from "@/config/brand";
-import { CMSSiteConfig } from "@/lib/cms-types";
+import { CMSSiteConfig, CMSGalleryData } from "@/lib/cms-types";
 
 interface AboutUsClientProps {
   siteConfig: CMSSiteConfig;
+  galleryData: CMSGalleryData;
 }
 
-const EXECUTIVE_TEAM = [
-  {
-    name: "Muhammad Rizwan",
-    role: "Chief Executive Officer (CEO)",
-    image: "/images/team/ceo_muhammad_rizwan.webp",
-    badge: "Executive Leadership",
-    bio: "Visionary healthcare leader steering Biogen Pharma’s global pharmaceutical and surgical distribution across international hospital networks, state ministries, and bulk wholesale tenders.",
-  },
-  {
-    name: "Muhammad Shahid",
-    role: "Managing Director",
-    image: "/images/team/md_muhammad_shahid.webp",
-    badge: "Strategic Operations",
-    bio: "Directing strategic manufacturing partnerships, institutional tender compliance, global principal affiliations, and regulatory cGMP certifications across African and Asian markets.",
-  },
-  {
-    name: "M. Bilal Shabir",
-    role: "Operations & Supply Chain Manager",
-    image: "/images/team/ops_bilal_shabir.webp",
-    badge: "Logistics & Cold-Chain",
-    bio: "Leading end-to-end cold-chain logistics, warehouse quality assurance, batch traceability, and rapid institutional dispatch for hospitals and clinics.",
-  },
-];
-
-const CORPORATE_GALLERY = [
-  {
-    id: 1,
-    title: "B2B Strategic Partnership & Institutional MOU Signing Ceremony",
-    category: "MOUs & Partnerships",
-    image: "/images/gallery/gallery_event_1.webp",
-    tag: "Strategic Alliance",
-    description: "Formal bilateral agreement signing with international healthcare procurement authorities and principal manufacturing laboratories.",
-  },
-  {
-    id: 2,
-    title: "National Healthcare Excellence & Distribution Honor Award",
-    category: "Awards & Honors",
-    image: "/images/gallery/gallery_event_2.webp",
-    tag: "Excellence 2026",
-    description: "Recognized for exemplary supply chain integrity, cold-chain consistency, and reliable delivery of MCA-approved formulations.",
-  },
-  {
-    id: 3,
-    title: "International Pharmaceutical Delegation & Global Trade Assembly",
-    category: "Delegations",
-    image: "/images/gallery/gallery_event_3.webp",
-    tag: "Global Summit",
-    description: "Executive leadership meeting with visiting international medical delegates and global health technology partners.",
-  },
-  {
-    id: 4,
-    title: "State-of-the-Art cGMP Manufacturing Cleanroom Facility Inspection",
-    category: "Plant & Facilities",
-    image: "/images/gallery/gallery_event_4.webp",
-    tag: "cGMP Certified",
-    description: "On-site quality assurance audit and sterile cleanroom inspection verifying stringent compliance with WHO-GMP guidelines.",
-  },
-  {
-    id: 5,
-    title: "Hospital Procurement & Institutional Supply Council Meeting",
-    category: "MOUs & Partnerships",
-    image: "/images/gallery/gallery_event_5.webp",
-    tag: "Procurement",
-    description: "Strategic planning sessions aligning pharmaceutical stocks with hospital emergency requirements and tender schedules.",
-  },
-  {
-    id: 6,
-    title: "Medical Devices & Precision Surgical Technology Convention",
-    category: "Exhibitions",
-    image: "/images/gallery/gallery_event_6.webp",
-    tag: "Surgical Tech",
-    description: "Showcasing Care Medical German-grade tungsten carbide surgical instrumentation, motorized ICU beds, and ophthalmic optics.",
-  },
-  {
-    id: 7,
-    title: "Quality Assurance & Batch Verification Laboratory Review",
-    category: "Plant & Facilities",
-    image: "/images/gallery/gallery_event_7.webp",
-    tag: "QA Standards",
-    description: "Rigorous analytical testing, raw material inspection, and Certificate of Analysis (CoA) verification protocols.",
-  },
-  {
-    id: 8,
-    title: "Executive Board Convention & Principal Laboratory Assembly",
-    category: "Leadership",
-    image: "/images/gallery/gallery_event_8.webp",
-    tag: "Executive Summit",
-    description: "Annual leadership convention strategizing regional supply expansion and expanding pharmaceutical principal partnerships.",
-  },
-  {
-    id: 9,
-    title: "Health Regulatory Authority & Inspection Team Reception",
-    category: "Delegations",
-    image: "/images/gallery/gallery_event_9.webp",
-    tag: "Regulatory Audit",
-    description: "Hosting senior health inspection delegations to review cold-chain storage and batch documentation.",
-  },
-];
-
-export default function AboutUsClient({ siteConfig }: AboutUsClientProps) {
+export default function AboutUsClient({ siteConfig, galleryData }: AboutUsClientProps) {
   const brand = siteConfig.brand || {
     name: BRAND.name,
     tagline: BRAND.tagline,
@@ -125,9 +27,12 @@ export default function AboutUsClient({ siteConfig }: AboutUsClientProps) {
     email: BRAND.contact.email,
   };
 
+  const EXECUTIVE_TEAM = galleryData?.team || [];
+  const CORPORATE_GALLERY = galleryData?.gallery || [];
+
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("All");
-  const [lightboxImage, setLightboxImage] = useState<typeof CORPORATE_GALLERY[0] | null>(null);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const galleryTabs = ["All", "MOUs & Partnerships", "Awards & Honors", "Delegations", "Plant & Facilities", "Leadership"];
 
@@ -191,43 +96,35 @@ export default function AboutUsClient({ siteConfig }: AboutUsClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {EXECUTIVE_TEAM.map((member, idx) => (
-              <div 
-                key={idx} 
-                className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col"
-              >
-                {/* Real Executive Photo */}
-                <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#0072CE] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-sm">
-                    {member.badge}
+            {EXECUTIVE_TEAM.map((member, i) => (
+                <div key={member.name || i} className="group relative bg-[#070B14] rounded-2xl border border-slate-800 overflow-hidden hover:border-[#0072CE]/50 transition-all duration-300 flex flex-col">
+                  {/* Photo Area */}
+                  <div className="w-full aspect-[4/5] bg-slate-900 overflow-hidden relative border-b border-slate-800">
+                    <img 
+                      src={member.imageUrl || "/images/brands/zafa.svg"}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500 grayscale hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-transparent to-transparent opacity-80" />
+                    {member.badge && (
+                      <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                        <Award size={12} className="text-[#00A3E0]" />
+                        {member.badge}
+                      </div>
+                    )}
+                  </div>
+                  {/* Info Area */}
+                  <div className="p-6 flex flex-col flex-grow justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-1 leading-tight">{member.name}</h3>
+                      <p className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-4">{member.role}</p>
+                      <p className="text-sm text-slate-400 leading-relaxed font-medium">
+                        {member.bio}
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                {/* Info */}
-                <div className="p-5 flex-1 flex flex-col justify-between bg-white">
-                  <div>
-                    <h3 className="text-lg font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs font-bold text-[#0072CE] uppercase tracking-wider mt-0.5 mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-400">
-                    <span>Biogen Executive Council</span>
-                    <ShieldCheck size={14} className="text-emerald-600" />
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
 
@@ -266,22 +163,20 @@ export default function AboutUsClient({ siteConfig }: AboutUsClientProps) {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredGallery.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setLightboxImage(item)}
-                className="group relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE] cursor-pointer transition-all duration-300 hover:shadow-lg flex flex-col"
-              >
-                {/* Image Container */}
-                <div className="relative aspect-[16/11] bg-slate-900 overflow-hidden">
+              {filteredGallery.map((item, i) => (
+                <div
+                  key={item.id || i}
+                  className="group cursor-pointer relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 aspect-video md:aspect-[4/3] shadow-lg hover:border-[#0072CE]/50 transition-all duration-300"
+                  onClick={() => setSelectedImage(i)}
+                >
                   <img
-                    src={item.image}
+                    src={item.imageUrl}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-slate-900 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
-                    {item.tag}
+                    {item.badge}
                   </div>
                   <div className="absolute bottom-3 left-3 right-3 text-white">
                     <span className="text-[10px] font-bold text-[#38BDF8] uppercase tracking-wider">
@@ -292,61 +187,55 @@ export default function AboutUsClient({ siteConfig }: AboutUsClientProps) {
                     </h4>
                   </div>
                 </div>
-
-                {/* Caption below */}
-                <div className="p-4 bg-white flex-1 flex flex-col justify-between">
-                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                    {item.description}
-                  </p>
-                  <span className="text-[11px] font-bold text-[#0072CE] flex items-center gap-1 mt-2.5 group-hover:underline">
-                    View Verified Specimen <ExternalLink size={12} />
-                  </span>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
 
         {/* ─── LIGHTBOX MODAL ────────────────────────────────────────── */}
-        {lightboxImage && (
-          <div 
-            onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn"
-          >
-            <div 
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+        {selectedImage !== null && (() => {
+          const img = CORPORATE_GALLERY[selectedImage];
+          if (!img) return null;
+          return (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-md animate-in fade-in duration-200"
+              onClick={() => setSelectedImage(null)}
             >
               <button
-                onClick={() => setLightboxImage(null)}
-                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors"
+                className="absolute top-6 right-6 p-2 rounded-full bg-slate-800 text-white hover:bg-slate-700 hover:text-rose-400 transition-colors shadow-xl border border-slate-700 z-50"
+                onClick={() => setSelectedImage(null)}
               >
-                <X size={18} />
+                <X size={24} />
               </button>
-              <div className="max-h-[70vh] bg-black flex items-center justify-center">
-                <img
-                  src={lightboxImage.image}
-                  alt={lightboxImage.title}
-                  className="max-h-[70vh] w-auto object-contain"
-                />
-              </div>
-              <div className="p-6 bg-slate-900 border-t border-white/10 text-white">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#0072CE] text-white text-[10px] font-bold uppercase">
-                    {lightboxImage.tag}
-                  </span>
-                  <span className="text-xs text-slate-400 font-semibold">{lightboxImage.category}</span>
+
+              <div
+                className="relative w-full max-w-6xl max-h-[90vh] flex flex-col md:flex-row bg-[#070B14] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl animate-in zoom-in-95 duration-300"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex-1 bg-slate-900 relative flex items-center justify-center p-4">
+                  <img
+                    src={img.imageUrl}
+                    alt={img.title}
+                    className="max-h-[70vh] max-w-full object-contain rounded-lg"
+                  />
                 </div>
-                <h3 className="text-lg font-black text-white mb-2">
-                  {lightboxImage.title}
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {lightboxImage.description}
-                </p>
+                
+                <div className="w-full md:w-80 lg:w-96 p-6 md:p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-800 bg-[#070B14]">
+                  <div className="flex items-center gap-2 mb-3 text-xs font-bold tracking-wider text-[#00A3E0] uppercase">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#0072CE]/20 border border-[#0072CE]/30 text-[#00A3E0]">
+                      {img.badge || img.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
+                    {img.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed font-medium">
+                    {img.description || ""}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* ─── CORE PILLARS & REGIONAL HUBS ──────────────────────────── */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200">

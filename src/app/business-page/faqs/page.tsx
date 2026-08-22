@@ -1,13 +1,17 @@
-import { getCMSSiteConfig } from "@/lib/cms";
+import { getCMSSiteConfig, getCMSFaqs } from "@/lib/cms";
 import FaqsClient from "./FaqsClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions (FAQs) — Biogen Pharma",
-  description: "Find answers to common questions regarding clinical requisitions, WHO-GMP certification, cold-chain delivery, bulk healthcare ordering, and return policies.",
+  title: "FAQs & Support - Biogen Pharma",
+  description: "Find answers regarding clinical orders, pharmaceutical certifications, cold-chain delivery, and institutional bulk supply.",
 };
 
 export default async function FaqsPage() {
-  const siteConfig = await getCMSSiteConfig();
-  return <FaqsClient siteConfig={siteConfig} />;
+  const [siteConfig, faqsData] = await Promise.all([
+    getCMSSiteConfig(),
+    getCMSFaqs(),
+  ]);
+  
+  return <FaqsClient siteConfig={siteConfig} faqsData={faqsData} />;
 }

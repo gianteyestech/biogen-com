@@ -5,73 +5,18 @@ import { Search, ChevronDown, ChevronRight, HelpCircle, Phone, MessageSquare, Tr
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSlider from "@/components/CartSlider";
-import type { CMSSiteConfig } from "@/lib/cms-types";
 import { BRAND } from "@/config/brand";
+import { CMSSiteConfig, CMSFaq } from "@/lib/cms-types";
 
 interface FaqsClientProps {
   siteConfig: CMSSiteConfig;
+  faqsData: CMSFaq[];
 }
 
-interface FAQItem {
-  id: string;
-  category: string;
-  question: string;
-  answer: string;
-}
+export default function FaqsClient({ siteConfig, faqsData }: FaqsClientProps) {
+  const FAQ_DATA = (faqsData || []).sort((a, b) => a.order - b.order);
+  const CATEGORIES = ["All Questions", ...Array.from(new Set(FAQ_DATA.map((f) => f.category)))];
 
-const FAQ_DATA: FAQItem[] = [
-  // Category: Clinical Orders & Procurement
-  {
-    id: "faq-1",
-    category: "Orders & Procurement",
-    question: "How do clinics, hospitals, and pharmacies place orders on Biogen Pharma?",
-    answer: "Healthcare facilities and practitioners can browse our medical catalog, select required packaging/quantities, and submit an online order or requisition. You can also request official quotation invoices or place bulk orders directly via Biogen Chat or WhatsApp."
-  },
-  {
-    id: "faq-2",
-    category: "Orders & Procurement",
-    question: "What payment and settlement methods do you support?",
-    answer: "We support direct institutional bank transfers, online payment channels, and verified cash on delivery/settlement upon inspection for authorized clinics and healthcare distributors."
-  },
-  {
-    id: "faq-3",
-    category: "Orders & Procurement",
-    question: "Can we order hospital furniture and specialized surgical equipment in bulk?",
-    answer: "Yes! We specialize in institutional bulk supply of examination couches, hydraulic surgery chairs, LED surgical loupes, and precision surgical instruments with volume-based corporate discounts."
-  },
-
-  // Category: Quality & GMP Standards
-  {
-    id: "faq-4",
-    category: "Quality & Certifications",
-    question: "Are your medicines and medical devices certified?",
-    answer: "Every pharmaceutical product and medical device supplied by Biogen Pharma is manufactured under strict WHO-GMP and ISO 9001:2015 quality management standards with complete batch traceability and Certificates of Analysis (COA)."
-  },
-  {
-    id: "faq-5",
-    category: "Quality & Certifications",
-    question: "How are temperature-sensitive pharmaceuticals transported?",
-    answer: "All temperature-sensitive medicines, vaccines, and biologics are transported using specialized cold-chain packaging and monitored logistics to preserve molecular efficacy throughout transit."
-  },
-
-  // Category: Shipping & Logistics
-  {
-    id: "faq-6",
-    category: "Shipping & Logistics",
-    question: "What are the shipping timelines across West Africa and internationally?",
-    answer: "Regional orders in The Gambia and Sierra Leone typically arrive within 24 to 48 business hours. Regional and international freight dispatches are expedited with tracking IDs provided at dispatch."
-  },
-  {
-    id: "faq-7",
-    category: "Shipping & Logistics",
-    question: "What is your policy regarding damaged or non-conforming items?",
-    answer: "Any item found damaged in transit or non-conforming with your order specification will be immediately replaced or credited upon inspection by our quality compliance team."
-  },
-];
-
-const CATEGORIES = ["All Questions", "Orders & Procurement", "Quality & Certifications", "Shipping & Logistics"];
-
-export default function FaqsClient({ siteConfig }: FaqsClientProps) {
   const [activeCategory, setActiveCategory] = useState("All Questions");
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState<string | null>("faq-1");

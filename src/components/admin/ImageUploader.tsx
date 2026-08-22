@@ -15,7 +15,7 @@ interface ImageUploaderProps {
   value: string;
   onChange: (url: string) => void;
   placeholder?: string;
-  folder?: "products" | "banners" | "category" | "site";
+  folder?: "products" | "banners" | "category" | "site" | "team" | "gallery" | "brands";
 }
 
 export default function ImageUploader({

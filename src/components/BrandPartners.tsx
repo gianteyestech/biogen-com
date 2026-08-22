@@ -2,133 +2,18 @@
 import React from "react";
 import { ArrowRight, Award } from "lucide-react";
 
-export interface BrandPartner {
-  id: string;
-  name: string;
-  shortName: string;
-  country: string;
-  specialty: string;
-  logoUrl: string;
-  tag: string;
-}
-
-export const BRAND_PARTNERS: BrandPartner[] = [
-  {
-    id: "Highnoon pharma",
-    name: "Highnoon Laboratories",
-    shortName: "Highnoon",
-    country: "Global / cGMP",
-    specialty: "Cardiology & Metabolic Health",
-    logoUrl: "/images/brands/highnoon.svg",
-    tag: "Atorvastatin / Aspirin",
-  },
-  {
-    id: "Glitz Pharma",
-    name: "Glitz Pharma",
-    shortName: "Glitz",
-    country: "cGMP Certified",
-    specialty: "Neuropsychiatry & Pain Care",
-    logoUrl: "/images/brands/glitz.svg",
-    tag: "Gabapentin / Pregabalin",
-  },
-  {
-    id: "Welmark",
-    name: "Welmark Pharmaceuticals",
-    shortName: "Welmark",
-    country: "WHO Prequalified",
-    specialty: "Antimalarials & Antibiotics",
-    logoUrl: "/images/brands/welmark.svg",
-    tag: "Artemether / Lumefantrine",
-  },
-  {
-    id: "Caraway Pharmaceuticals",
-    name: "Caraway Pharmaceuticals",
-    shortName: "Caraway",
-    country: "ISO 9001:2015",
-    specialty: "Cardiovascular & Diabetes Care",
-    logoUrl: "/images/brands/caraway.svg",
-    tag: "Enalapril / Metformin",
-  },
-  {
-    id: "Davis Pharmaceuticals",
-    name: "Davis Pharmaceuticals",
-    shortName: "Davis",
-    country: "cGMP Certified",
-    specialty: "Broad-Spectrum Antibiotics",
-    logoUrl: "/images/brands/davis.svg",
-    tag: "Azithromycin / Amlodipine",
-  },
-  {
-    id: "The Schazoo",
-    name: "The Schazoo Laboratories",
-    shortName: "Schazoo",
-    country: "Since 1951 / cGMP",
-    specialty: "Ophthalmic & Sterile Drops",
-    logoUrl: "/images/brands/schazoo.svg",
-    tag: "Timolol / Tobramycin",
-  },
-  {
-    id: "Genetic Pharma",
-    name: "Genetic Pharma",
-    shortName: "Genetic",
-    country: "CE / ISO Certified",
-    specialty: "Hospital Consumables & Diagnostics",
-    logoUrl: "/images/brands/genetic.svg",
-    tag: "IV Cannula / Rapid Tests",
-  },
-  {
-    id: "Zafa Pahrmaceuticals",
-    name: "Zafa Pharmaceuticals",
-    shortName: "Zafa",
-    country: "Established 1973",
-    specialty: "Essential Hospital Formulations",
-    logoUrl: "/images/brands/zafa.svg",
-    tag: "Hydrochlorothiazide / Emkit",
-  },
-  {
-    id: "Care Medical Instruments",
-    name: "Care Medical Instruments",
-    shortName: "Care Medical",
-    country: "German Grade / ISO 13485",
-    specialty: "Surgical Sets & Eye Loupes",
-    logoUrl: "/images/brands/care_medical.svg",
-    tag: "BR-TC Sets & ICU Beds",
-  },
-  {
-    id: "Farhan Cotton Industry",
-    name: "Farhan Cotton Industry",
-    shortName: "Farhan",
-    country: "Hospital Grade",
-    specialty: "Absorbent Cotton & Bandages",
-    logoUrl: "/images/brands/farhan.svg",
-    tag: "Pure Cotton Wool / Gauze",
-  },
-  {
-    id: "Sayyed pharma",
-    name: "Sayyed Pharma",
-    shortName: "Sayyed",
-    country: "cGMP Certified",
-    specialty: "Cephalosporins & Injections",
-    logoUrl: "/images/brands/sayyed.svg",
-    tag: "Cefotaxime / Metoclopramide",
-  },
-  {
-    id: "Macter Pharma",
-    name: "Macter Pharmaceuticals",
-    shortName: "Macter",
-    country: "cGMP Certified",
-    specialty: "Respiratory & Inhalers",
-    logoUrl: "/images/brands/macter.svg",
-    tag: "Salbutamol Inhaler",
-  },
-];
+import { CMSBrandPartner } from "@/lib/cms-types";
 
 interface BrandPartnersProps {
   selectedBrand: string;
   onSelectBrand: (brandId: string) => void;
+  partners: CMSBrandPartner[];
 }
 
-export default function BrandPartners({ selectedBrand, onSelectBrand }: BrandPartnersProps) {
+export default function BrandPartners({ selectedBrand, onSelectBrand, partners }: BrandPartnersProps) {
+  // Use a fallback if partners is not provided
+  const displayPartners = partners || [];
+
   return (
     <section className="py-8 bg-slate-900 text-white rounded-3xl overflow-hidden relative border border-slate-800 shadow-xl my-6">
       {/* Background ambient accents */}
@@ -164,7 +49,7 @@ export default function BrandPartners({ selectedBrand, onSelectBrand }: BrandPar
 
         {/* Brand Logos / Cards Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-          {BRAND_PARTNERS.map((partner) => {
+          {displayPartners.map((partner) => {
             const isSelected = selectedBrand === partner.id;
             return (
               <button

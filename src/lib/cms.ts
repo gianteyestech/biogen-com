@@ -18,9 +18,11 @@ export type {
   CMSPromoBanner,
   CMSTrustFeature,
   CMSSiteConfig,
-  CMSPageSection,
   CMSPagesConfig,
   CMSActivityLog,
+  CMSBrandPartner,
+  CMSGalleryData,
+  CMSFaq,
 } from "./cms-types";
 export { filterProductsByCategory, getSavePercent } from "./cms-types";
 
@@ -31,6 +33,9 @@ import type {
   CMSSiteConfig,
   CMSPagesConfig,
   CMSActivityLog,
+  CMSBrandPartner,
+  CMSGalleryData,
+  CMSFaq,
 } from "./cms-types";
 
 // ─── Path helpers (Fallback) ──────────────────────────────────────────────────
@@ -264,10 +269,22 @@ export async function getCMSPagesConfig(): Promise<CMSPagesConfig> {
   return pagesConfig;
 }
 
+export async function getCMSBrandPartners(): Promise<CMSBrandPartner[]> {
+  return getStoreData<CMSBrandPartner[]>("brand_partners", "brand-partners.json");
+}
+
+export async function getCMSGallery(): Promise<CMSGalleryData> {
+  return getStoreData<CMSGalleryData>("gallery", "gallery.json");
+}
+
+export async function getCMSFaqs(): Promise<CMSFaq[]> {
+  return getStoreData<CMSFaq[]>("faqs", "faqs.json");
+}
+
 // ─── Activity Log helper & getter ─────────────────────────────────────────────
 export async function logActivity(
   action: "CREATE" | "UPDATE" | "DELETE",
-  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig",
+  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq",
   entityId: string,
   details: string,
   user: string = "Admin"
@@ -388,6 +405,24 @@ export async function updateCMSSiteConfig(config: CMSSiteConfig): Promise<void> 
 export async function updateCMSPagesConfig(config: CMSPagesConfig): Promise<void> {
   await saveStoreData("pages", config);
   await logActivity("UPDATE", "PagesConfig", "pages_config_all", `Updated homepage page sections layout`);
+}
+
+// ─── Brand Partners write function ─────────────────────────────────────────────
+export async function updateCMSBrandPartners(partners: CMSBrandPartner[]): Promise<void> {
+  await saveStoreData("brand_partners", partners);
+  await logActivity("UPDATE", "BrandPartner", "brand_partners_all", `Updated brand partners list (${partners.length} partners)`);
+}
+
+// ─── Gallery write function ─────────────────────────────────────────────
+export async function updateCMSGallery(data: CMSGalleryData): Promise<void> {
+  await saveStoreData("gallery", data);
+  await logActivity("UPDATE", "Gallery", "gallery_all", `Updated About Us gallery and team members`);
+}
+
+// ─── FAQs write function ─────────────────────────────────────────────
+export async function updateCMSFaqs(faqs: CMSFaq[]): Promise<void> {
+  await saveStoreData("faqs", faqs);
+  await logActivity("UPDATE", "Faq", "faqs_all", `Updated FAQs (${faqs.length} questions)`);
 }
 
 // ─── Admin Users Database Auth ───────────────────────────────────────────────

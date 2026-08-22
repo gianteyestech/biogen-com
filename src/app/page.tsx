@@ -2,19 +2,22 @@ import {
   getCMSProducts,
   getCMSCategories,
   getCMSHeroSlides,
-  getCMSSiteConfig,
   getCMSPagesConfig,
   filterProductsByCategory,
+  getCMSBrandPartners,
+  getCMSSiteConfig,
 } from "@/lib/cms";
+import type { CMSProduct } from "@/lib/cms-types";
 import HomeClient from "./HomeClient";
 
 export default async function HomePage() {
-  const [products, categoriesData, heroSlides, siteConfig, pagesConfig] = await Promise.all([
+  const [products, categoriesData, heroSlides, siteConfig, pagesConfig, brandPartners] = await Promise.all([
     getCMSProducts(),
     getCMSCategories(),
     getCMSHeroSlides(),
     getCMSSiteConfig(),
     getCMSPagesConfig(),
+    getCMSBrandPartners(),
   ]);
 
   const visibleSections = [...pagesConfig.sections]
@@ -23,10 +26,10 @@ export default async function HomePage() {
     .map((section) => {
       let sectionProducts;
       if (section.type === "new") {
-        sectionProducts = products.filter((p) => p.isNew);
+        sectionProducts = products.filter((p: CMSProduct) => p.isNew);
         if (!sectionProducts.length) sectionProducts = products.slice(0, 8);
       } else if (section.type === "featured") {
-        sectionProducts = products.filter((p) => p.featured);
+        sectionProducts = products.filter((p: CMSProduct) => p.featured);
       } else {
         sectionProducts = filterProductsByCategory(products, section.categoryId);
       }
@@ -42,6 +45,7 @@ export default async function HomePage() {
       heroSlides={heroSlides}
       siteConfig={siteConfig}
       sections={visibleSections}
+      brandPartners={brandPartners}
     />
   );
 }

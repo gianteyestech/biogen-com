@@ -1,96 +1,111 @@
 {
   "team": [
     {
+      "id": "ceo_muhammad_rizwan",
       "name": "Muhammad Rizwan",
       "role": "Chief Executive Officer (CEO)",
-      "bio": "Visionary healthcare leader steering Biogen Pharma’s global pharmaceutical and surgical distribution across international hospital networks.",
-      "imageUrl": "/images/team/ceo_muhammad_rizwan.webp"
+      "imageUrl": "/images/team/ceo_muhammad_rizwan.webp",
+      "badge": "Executive Leadership",
+      "bio": "Visionary healthcare leader steering Biogen Pharma’s global pharmaceutical and surgical distribution across international hospital networks, state ministries, and bulk wholesale tenders."
     },
     {
+      "id": "md_muhammad_shahid",
       "name": "Muhammad Shahid",
       "role": "Managing Director",
-      "bio": "Directing strategic manufacturing partnerships, institutional tender compliance, and regulatory cGMP certifications.",
-      "imageUrl": "/images/team/md_muhammad_shahid.webp"
+      "imageUrl": "/images/team/md_muhammad_shahid.webp",
+      "badge": "Strategic Operations",
+      "bio": "Directing strategic manufacturing partnerships, institutional tender compliance, global principal affiliations, and regulatory cGMP certifications across African and Asian markets."
     },
     {
+      "id": "ops_bilal_shabir",
       "name": "M. Bilal Shabir",
       "role": "Operations & Supply Chain Manager",
-      "bio": "Leading end-to-end cold-chain logistics, warehouse quality assurance, and institutional dispatch operations.",
-      "imageUrl": "/images/team/ops_bilal_shabir.webp"
+      "imageUrl": "/images/team/ops_bilal_shabir.webp",
+      "badge": "Logistics & Cold-Chain",
+      "bio": "Leading end-to-end cold-chain logistics, warehouse quality assurance, batch traceability, and rapid institutional dispatch for hospitals and clinics."
     }
   ],
   "gallery": [
     {
-      "id": "gallery-item-1",
-      "title": "B2B Strategic Partnership & MOU Signing Ceremony",
+      "id": "gallery_1",
+      "title": "B2B Strategic Partnership & Institutional MOU Signing Ceremony",
       "category": "MOUs & Partnerships",
-      "badge": "Strategic Alliance",
       "imageUrl": "/images/gallery/gallery_event_1.webp",
-      "aspectRatio": "landscape"
+      "badge": "Strategic Alliance",
+      "aspectRatio": "landscape",
+      "description": "Formal bilateral agreement signing with international healthcare procurement authorities and principal manufacturing laboratories."
     },
     {
-      "id": "gallery-item-2",
-      "title": "National Healthcare Excellence & Distribution Award",
+      "id": "gallery_2",
+      "title": "National Healthcare Excellence & Distribution Honor Award",
       "category": "Awards & Honors",
-      "badge": "Award 2026",
       "imageUrl": "/images/gallery/gallery_event_2.webp",
-      "aspectRatio": "landscape"
+      "badge": "Excellence 2026",
+      "aspectRatio": "landscape",
+      "description": "Recognized for exemplary supply chain integrity, cold-chain consistency, and reliable delivery of MCA-approved formulations."
     },
     {
-      "id": "gallery-item-3",
-      "title": "International Pharmaceutical Delegation & Trade Assembly",
+      "id": "gallery_3",
+      "title": "International Pharmaceutical Delegation & Global Trade Assembly",
       "category": "Delegations",
-      "badge": "Global Summit",
       "imageUrl": "/images/gallery/gallery_event_3.webp",
-      "aspectRatio": "landscape"
+      "badge": "Global Summit",
+      "aspectRatio": "landscape",
+      "description": "Executive leadership meeting with visiting international medical delegates and global health technology partners."
     },
     {
-      "id": "gallery-item-4",
-      "title": "State-of-the-Art cGMP Manufacturing Facility Inspection",
+      "id": "gallery_4",
+      "title": "State-of-the-Art cGMP Manufacturing Cleanroom Facility Inspection",
       "category": "Plant & Facilities",
-      "badge": "cGMP Audit",
       "imageUrl": "/images/gallery/gallery_event_4.webp",
-      "aspectRatio": "landscape"
+      "badge": "cGMP Certified",
+      "aspectRatio": "landscape",
+      "description": "On-site quality assurance audit and sterile cleanroom inspection verifying stringent compliance with WHO-GMP guidelines."
     },
     {
-      "id": "gallery-item-5",
+      "id": "gallery_5",
       "title": "Hospital Procurement & Institutional Supply Council Meeting",
       "category": "MOUs & Partnerships",
-      "badge": "Procurement",
       "imageUrl": "/images/gallery/gallery_event_5.webp",
-      "aspectRatio": "landscape"
+      "badge": "Procurement",
+      "aspectRatio": "landscape",
+      "description": "Strategic planning sessions aligning pharmaceutical stocks with hospital emergency requirements and tender schedules."
     },
     {
-      "id": "gallery-item-6",
-      "title": "Global Medical Devices & Surgical Technology Showcase",
+      "id": "gallery_6",
+      "title": "Medical Devices & Precision Surgical Technology Convention",
       "category": "Exhibitions",
-      "badge": "Technology",
       "imageUrl": "/images/gallery/gallery_event_6.webp",
-      "aspectRatio": "landscape"
+      "badge": "Surgical Tech",
+      "aspectRatio": "landscape",
+      "description": "Showcasing Care Medical German-grade tungsten carbide surgical instrumentation, motorized ICU beds, and ophthalmic optics."
     },
     {
-      "id": "gallery-item-7",
-      "title": "Quality Assurance & Cold-Chain Warehouse Certification Audit",
+      "id": "gallery_7",
+      "title": "Quality Assurance & Batch Verification Laboratory Review",
       "category": "Plant & Facilities",
-      "badge": "QA Standards",
       "imageUrl": "/images/gallery/gallery_event_7.webp",
-      "aspectRatio": "landscape"
+      "badge": "QA Standards",
+      "aspectRatio": "landscape",
+      "description": "Rigorous analytical testing, raw material inspection, and Certificate of Analysis (CoA) verification protocols."
     },
     {
-      "id": "gallery-item-8",
-      "title": "Executive Board & Principal Laboratory Review Convention",
+      "id": "gallery_8",
+      "title": "Executive Board Convention & Principal Laboratory Assembly",
       "category": "Leadership",
-      "badge": "Board Summit",
       "imageUrl": "/images/gallery/gallery_event_8.webp",
-      "aspectRatio": "landscape"
+      "badge": "Executive Summit",
+      "aspectRatio": "landscape",
+      "description": "Annual leadership convention strategizing regional supply expansion and expanding pharmaceutical principal partnerships."
     },
     {
-      "id": "gallery-item-9",
-      "title": "Government Health Regulatory Delegation Facility Review",
+      "id": "gallery_9",
+      "title": "Health Regulatory Authority & Inspection Team Reception",
       "category": "Delegations",
-      "badge": "Regulatory",
       "imageUrl": "/images/gallery/gallery_event_9.webp",
-      "aspectRatio": "landscape"
+      "badge": "Regulatory Audit",
+      "aspectRatio": "landscape",
+      "description": "Hosting senior health inspection delegations to review cold-chain storage and batch documentation."
     }
   ]
 }

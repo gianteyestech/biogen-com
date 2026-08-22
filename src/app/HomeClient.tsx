@@ -16,9 +16,10 @@ import type {
   CMSCategory,
   CMSMegaMenuEntry,
   CMSCircleCat,
-  CMSHeroSlide,
   CMSSiteConfig,
   CMSPageSection,
+  CMSBrandPartner,
+  CMSHeroSlide,
 } from "@/lib/cms-types";
 import { filterProductsByCategory } from "@/lib/cms-types";
 
@@ -37,14 +38,15 @@ interface HomeClientProps {
   categories: CMSCategory[];
   megaMenu?: CMSMegaMenuEntry[];
   circleCats: CMSCircleCat[];
-  heroSlides: CMSHeroSlide[];
   siteConfig: CMSSiteConfig;
   sections: SectionWithProducts[];
+  brandPartners: CMSBrandPartner[];
+  heroSlides: CMSHeroSlide[];
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function HomeClient({
-  allProducts, categories, megaMenu, circleCats, heroSlides, siteConfig, sections,
+  allProducts, categories, megaMenu, circleCats, heroSlides, siteConfig, sections, brandPartners,
 }: HomeClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -279,7 +281,7 @@ export default function HomeClient({
 
               {/* Right Hero Slider */}
               <div className="flex-1 min-w-0 relative rounded-2xl overflow-hidden shadow-sm h-[320px] sm:h-[440px] bg-slate-900">
-                {heroSlides.map((slide, i) => (
+                {heroSlides.map((slide: CMSHeroSlide, i: number) => (
                   <div
                     key={slide.id}
                     className={`absolute inset-0 transition-opacity duration-700 flex ${i === heroSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"}`}
@@ -313,7 +315,7 @@ export default function HomeClient({
 
                 {/* Slider Controls */}
                 <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-                  {heroSlides.map((_, i) => (
+                  {heroSlides.map((_: CMSHeroSlide, i: number) => (
                     <button
                       key={i}
                       onClick={() => setHeroSlide(i)}
@@ -357,6 +359,7 @@ export default function HomeClient({
             <BrandPartners
               selectedBrand={selectedBrand}
               onSelectBrand={setSelectedBrand}
+              partners={brandPartners}
             />
 
             {/* ── CMS SECTIONS ─────────────────────────────────────── */}

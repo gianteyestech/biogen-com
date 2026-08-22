@@ -1,0 +1,51 @@
+[
+  {
+    "id": "faq_1",
+    "category": "Orders & Procurement",
+    "question": "How do clinics, hospitals, and pharmacies place orders on Biogen Pharma?",
+    "answer": "Healthcare facilities and practitioners can browse our medical catalog, select required packaging/quantities, and submit an online order or requisition. You can also request official quotation invoices or place bulk orders directly via Biogen Chat or WhatsApp.",
+    "order": 1
+  },
+  {
+    "id": "faq_2",
+    "category": "Orders & Procurement",
+    "question": "What payment and settlement methods do you support?",
+    "answer": "We support direct institutional bank transfers, online payment channels, and verified cash on delivery/settlement upon inspection for authorized clinics and healthcare distributors.",
+    "order": 2
+  },
+  {
+    "id": "faq_3",
+    "category": "Orders & Procurement",
+    "question": "Can we order hospital furniture and specialized surgical equipment in bulk?",
+    "answer": "Yes! We specialize in institutional bulk supply of examination couches, hydraulic surgery chairs, LED surgical loupes, and precision surgical instruments with volume-based corporate discounts.",
+    "order": 3
+  },
+  {
+    "id": "faq_4",
+    "category": "Quality & Certifications",
+    "question": "Are your medicines and medical devices certified?",
+    "answer": "Every pharmaceutical product and medical device supplied by Biogen Pharma is manufactured under strict WHO-GMP and ISO 9001:2015 quality management standards with complete batch traceability and Certificates of Analysis (COA).",
+    "order": 4
+  },
+  {
+    "id": "faq_5",
+    "category": "Quality & Certifications",
+    "question": "How are temperature-sensitive pharmaceuticals transported?",
+    "answer": "All temperature-sensitive medicines, vaccines, and biologics are transported using specialized cold-chain packaging and monitored logistics to preserve molecular efficacy throughout transit.",
+    "order": 5
+  },
+  {
+    "id": "faq_6",
+    "category": "Shipping & Logistics",
+    "question": "What are the shipping timelines across West Africa and internationally?",
+    "answer": "Regional orders in The Gambia and Sierra Leone typically arrive within 24 to 48 business hours. Regional and international freight dispatches are expedited with tracking IDs provided at dispatch.",
+    "order": 6
+  },
+  {
+    "id": "faq_7",
+    "category": "Shipping & Logistics",
+    "question": "What is your policy regarding damaged or non-conforming items?",
+    "answer": "Any item found damaged in transit or non-conforming with your order specification will be immediately replaced or credited upon inspection by our quality compliance team.",
+    "order": 7
+  }
+]

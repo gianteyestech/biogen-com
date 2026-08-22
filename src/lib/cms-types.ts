@@ -30,7 +30,7 @@ export interface CMSProduct {
 export interface CMSActivityLog {
   id: string;
   action: "CREATE" | "UPDATE" | "DELETE";
-  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig";
+  entity: "Product" | "Category" | "HeroSlide" | "PaymentMethod" | "SiteConfig" | "PagesConfig" | "BrandPartner" | "Gallery" | "Faq";
   entityId: string;
   details: string;
   timestamp: string;
@@ -109,6 +109,17 @@ export interface CMSPromoBanner {
   catId: string;
 }
 
+export interface CMSBrandPartner {
+  id: string;
+  name: string;
+  shortName: string;
+  country: string;
+  specialty: string;
+  logoUrl: string;
+  tag: string;
+  order: number;
+}
+
 export interface CMSTrustFeature {
   id: string;
   icon: string;
@@ -126,6 +137,38 @@ export interface CMSLocation {
   email?: string;
   mapUrl?: string;      // optional Google Maps link
   enabled: boolean;     // show/hide in footer
+}
+
+export interface CMSTeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  imageUrl: string;
+  badge?: string;
+}
+
+export interface CMSGalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  badge: string;
+  imageUrl: string;
+  aspectRatio: string;
+  description?: string;
+}
+
+export interface CMSGalleryData {
+  team: CMSTeamMember[];
+  gallery: CMSGalleryItem[];
+}
+
+export interface CMSFaq {
+  id: string;
+  question: string;
+  answer: string;
+  category: string;
+  order: number;
 }
 
 export interface CMSSiteConfig {
