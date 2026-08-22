@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "Biogen Pharma is a trusted provider of high-quality pharmaceuticals, precision surgical instruments, eye care, and hospital equipment in West Africa and globally.",
 };
 
+export const revalidate = 60;
+
 import LiveChatWidget from "@/components/LiveChatWidget";
 
 export default async function RootLayout({
