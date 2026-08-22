@@ -21,6 +21,7 @@ import {
   ShieldCheck,
   FileText,
   Users,
+  Image as ImageIcon,
 } from "lucide-react";
 
 const brandGrad = "linear-gradient(135deg, #00A3E0 0%, #0072CE 100%)";
@@ -35,6 +36,7 @@ const NAV = [
   { href: "/admin/sections", label: "Page Sections",  icon: Layout },
   { href: "/admin/brand-partners", label: "Brand Partners", icon: Users },
   { href: "/admin/about",    label: "About Content",  icon: FileText },
+  { href: "/admin/about-us", label: "Corporate Gallery", icon: ImageIcon },
   { href: "/admin/policies", label: "Policies",       icon: FileText },
   { href: "/admin/payment",  label: "Settlement Methods", icon: CreditCard },
   { href: "/admin/site",     label: "Facility Config", icon: Settings },
