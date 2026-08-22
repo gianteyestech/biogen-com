@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Prevents Next.js from bundling native binaries — sharp must remain as a server-side require
+  serverExternalPackages: ["sharp"],
   images: {
     remotePatterns: [
       {

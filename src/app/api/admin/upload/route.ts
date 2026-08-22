@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { writeFile, mkdir } from "fs/promises";
 import path from "path";
+
+// Route segment config — App Router style (Next.js 13+)
+// maxDuration: extend function timeout to 60s for sharp processing + Hostinger upload
+export const maxDuration = 60;
+// dynamic: force dynamic so the route is never statically cached
+export const dynamic = "force-dynamic";
 
 const ADMIN_COOKIE = "admin_session";
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -104,14 +109,13 @@ export async function POST(req: Request) {
     const sizeTag = requestedFolder === "category" ? "500x" : requestedFolder === "banners" ? "1200x" : "800x";
     const filename = `${epochSec}_${cleanSlug}_${sizeTag}${finalExt}`;
 
-    // 5. Save to Hostinger Subdomain or Local Storage
+    // 5. Upload to Hostinger Media Subdomain
     const hostingerMediaUrl = process.env.HOSTINGER_MEDIA_URL || "https://assets.idealdryfruit.com/bg_upload.php";
     const uploadSecret = process.env.HOSTINGER_UPLOAD_SECRET || "biogen_media_secret_2026_change_me";
 
-    let publicUrl = `/uploads/${filename}`;
+    let publicUrl = "";
 
     try {
-      // Create FormData to send to Hostinger upload script with folder partitioning
       const remoteFormData = new FormData();
       const uint8Array = new Uint8Array(finalBuffer);
       const blob = new Blob([uint8Array], { type: finalMime });
@@ -119,32 +123,50 @@ export async function POST(req: Request) {
       remoteFormData.append("filename", filename);
       remoteFormData.append("folder", requestedFolder);
 
-      const hostingerRes = await fetch(hostingerMediaUrl, {
-        method: "POST",
-        headers: {
-          "X-Upload-Secret": uploadSecret,
-        },
-        body: remoteFormData,
-      });
+      // AbortController gives us a hard timeout so Vercel doesn't silently kill the function
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25_000); // 25s
+
+      let hostingerRes: Response;
+      try {
+        hostingerRes = await fetch(hostingerMediaUrl, {
+          method: "POST",
+          headers: { "X-Upload-Secret": uploadSecret },
+          body: remoteFormData,
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeoutId);
+      }
 
       if (hostingerRes.ok) {
         const hostingerData = await hostingerRes.json();
         if (hostingerData.url) {
           publicUrl = hostingerData.url;
+        } else {
+          console.error("Hostinger returned OK but no URL:", hostingerData);
+          return NextResponse.json(
+            { error: `Hostinger returned success but no URL. Response: ${JSON.stringify(hostingerData)}` },
+            { status: 500 }
+          );
         }
       } else {
-        const errText = await hostingerRes.text();
-        console.error("Hostinger media upload failed:", hostingerRes.status, errText);
+        const errText = await hostingerRes.text().catch(() => "(unreadable response)");
+        console.error("Hostinger upload failed:", hostingerRes.status, errText);
         return NextResponse.json(
-          { error: `Hostinger Storage Error (${hostingerRes.status}): ${errText || "Make sure bg_upload.php is placed in assets.idealdryfruit.com folder"}` },
+          { error: `Hostinger upload failed (HTTP ${hostingerRes.status}): ${errText}` },
           { status: 500 }
         );
       }
-    } catch (remoteErr: any) {
-      console.error("Failed to reach Hostinger media endpoint:", remoteErr);
+    } catch (remoteErr: unknown) {
+      const isTimeout = remoteErr instanceof Error && remoteErr.name === "AbortError";
+      const msg = remoteErr instanceof Error ? remoteErr.message : String(remoteErr);
+      console.error("Hostinger upload error:", remoteErr);
       return NextResponse.json(
-        { error: `Hostinger Subdomain Unreachable (https://assets.idealdryfruit.com/bg_upload.php): ${remoteErr.message}` },
-        { status: 500 }
+        { error: isTimeout
+            ? "Upload timed out (25s) — Hostinger media server did not respond in time. Try a smaller file."
+            : `Hostinger unreachable: ${msg}` },
+        { status: 502 }
       );
     }
 

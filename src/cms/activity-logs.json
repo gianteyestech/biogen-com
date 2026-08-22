@@ -1,5 +1,14 @@
 [
   {
+    "id": "log_1787389738693_jnhsm",
+    "action": "UPDATE",
+    "entity": "HeroSlide",
+    "entityId": "hero_slides_all",
+    "details": "Updated hero carousel slides (4 slides)",
+    "timestamp": "2026-08-22T09:08:58.693Z",
+    "user": "Admin"
+  },
+  {
     "id": "log_1787258801694_4sk71",
     "action": "UPDATE",
     "entity": "SiteConfig",
