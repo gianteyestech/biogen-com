@@ -53,6 +53,33 @@ export default function HomeClient({
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [heroSlide, setHeroSlide] = useState(0);
 
+  // Restore category and search filters from URL on mount
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("category");
+      if (cat) setSelectedCategory(cat);
+      const q = params.get("search");
+      if (q) setSearchTerm(q);
+      const brand = params.get("brand");
+      if (brand) setSelectedBrand(brand);
+    }
+  }, []);
+
+  // Update URL params when category or search changes to persist on refresh
+  const handleCategoryChange = (cat: string) => {
+    setSelectedCategory(cat);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (cat === "all") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", cat);
+      }
+      window.history.replaceState({}, "", url.toString());
+    }
+  };
+
   const displayCategories = useMemo(() => {
     if (megaMenu && megaMenu.length > 0) return megaMenu;
     return categories.filter((c) => c.id !== "all");
@@ -143,7 +170,7 @@ export default function HomeClient({
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
+        setSelectedCategory={handleCategoryChange}
         siteConfig={siteConfig}
         categories={categories}
         megaMenu={megaMenu}

@@ -96,16 +96,75 @@ async function syncDb() {
       console.log(`✓ Synced site config to database cms_store.`);
     }
 
-    // Sync pages config
+    // Sync pages config (canonical key is 'pages')
     const pagesPath = path.join(__dirname, '..', 'src', 'cms', 'pages.json');
     if (fs.existsSync(pagesPath)) {
       const pagesData = fs.readFileSync(pagesPath, 'utf-8');
       await connection.query(
         `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['pages_config', pagesData]
+        ['pages', pagesData]
       );
       console.log(`✓ Synced pages config to database cms_store.`);
     }
+
+    // Sync brand partners
+    const brandPath = path.join(__dirname, '..', 'src', 'cms', 'brand-partners.json');
+    if (fs.existsSync(brandPath)) {
+      const brandData = fs.readFileSync(brandPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['brand_partners', brandData]
+      );
+      console.log(`✓ Synced brand partners to database cms_store.`);
+    }
+
+    // Sync gallery & team
+    const galleryPath = path.join(__dirname, '..', 'src', 'cms', 'gallery.json');
+    if (fs.existsSync(galleryPath)) {
+      const galleryData = fs.readFileSync(galleryPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['gallery', galleryData]
+      );
+      console.log(`✓ Synced corporate gallery to database cms_store.`);
+    }
+
+    // Sync faqs
+    const faqsPath = path.join(__dirname, '..', 'src', 'cms', 'faqs.json');
+    if (fs.existsSync(faqsPath)) {
+      const faqsData = fs.readFileSync(faqsPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['faqs', faqsData]
+      );
+      console.log(`✓ Synced FAQs to database cms_store.`);
+    }
+
+    // Sync policies
+    const policiesPath = path.join(__dirname, '..', 'src', 'cms', 'policies.json');
+    if (fs.existsSync(policiesPath)) {
+      const policiesData = fs.readFileSync(policiesPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['policies', policiesData]
+      );
+      console.log(`✓ Synced legal & policy pages to database cms_store.`);
+    }
+
+    // Sync about content
+    const aboutPath = path.join(__dirname, '..', 'src', 'cms', 'about-content.json');
+    if (fs.existsSync(aboutPath)) {
+      const aboutData = fs.readFileSync(aboutPath, 'utf-8');
+      await connection.query(
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        ['about_content', aboutData]
+      );
+      console.log(`✓ Synced about content to database cms_store.`);
+    }
+
+    // Remove obsolete duplicate keys if they exist
+    await connection.query(`DELETE FROM cms_store WHERE store_key IN ('pages_config', 'hero-slides', 'site-config')`);
+    console.log(`✓ Cleaned up obsolete duplicate keys.`);
 
     await connection.end();
     console.log("\n✅ All CMS tables synchronized to Hostinger MySQL successfully!");

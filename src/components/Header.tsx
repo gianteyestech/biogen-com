@@ -193,7 +193,7 @@ export default function Header({
     setSelectedCategory(categoryId);
     setSearchTerm("");
     if (pathname !== "/") {
-      router.push("/");
+      router.push(categoryId === "all" ? "/" : `/?category=${encodeURIComponent(categoryId)}`);
     }
     setMegaMenuOpen(false);
     setIsMobileMenuOpen(false);

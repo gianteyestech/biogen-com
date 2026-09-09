@@ -196,6 +196,7 @@ async function getStoreData<T>(key: string, fallbackFile: string): Promise<T> {
 async function saveStoreData<T>(key: string, data: T): Promise<void> {
   const dbOk = await ensureTable();
   const jsonString = JSON.stringify(data);
+  let dbWritten = false;
 
   if (dbOk && isDbAvailable) {
     try {
@@ -205,6 +206,7 @@ async function saveStoreData<T>(key: string, data: T): Promise<void> {
          ON DUPLICATE KEY UPDATE data = VALUES(data)`,
         [key, jsonString]
       );
+      dbWritten = true;
     } catch (err: any) {
       console.error(`[CMS] Hostinger DB write failed for key "${key}":`, err.message || err);
       isDbAvailable = false;
@@ -212,11 +214,16 @@ async function saveStoreData<T>(key: string, data: T): Promise<void> {
     }
   }
 
-  // Always update local JSON file
+  // Also update local JSON file if writable (local dev environment)
   try {
     const filename = key.replace("_", "-") + ".json";
     await fs.writeFile(file(filename), JSON.stringify(data, null, 2), "utf-8");
-  } catch {}
+  } catch {
+    // If DB write failed and filesystem write failed (e.g. read-only serverless), report failure
+    if (!dbWritten) {
+      throw new Error(`Failed to persist data for "${key}". Please check database connectivity.`);
+    }
+  }
 }
 
 // ─── Read functions ───────────────────────────────────────────────────────────
@@ -381,7 +388,10 @@ export async function updateCMSProduct(id: string, updates: Partial<CMSProduct>)
   const products = await getCMSProducts();
   const idx = products.findIndex((p) => p.id === id);
   if (idx === -1) throw new Error(`Product "${id}" not found.`);
-  products[idx] = { ...products[idx], ...updates };
+  const cleanUpdates = Object.fromEntries(
+    Object.entries(updates).filter(([_, v]) => v !== undefined)
+  );
+  products[idx] = { ...products[idx], ...cleanUpdates };
   await saveStoreData("products", products);
   await logActivity("UPDATE", "Product", id, `Updated product "${products[idx].name || id}"`);
 }
