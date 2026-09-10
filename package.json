@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:backup": "node scripts/backup_from_db.js",
+    "db:sync": "node scripts/sync_db.js"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",

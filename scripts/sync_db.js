@@ -1,4 +1,15 @@
 // scripts/sync_db.js
+/**
+ * SAFE DATABASE INITIALIZER
+ * 
+ * CRITICAL RULE:
+ * This script ONLY seeds initial default data for keys that DO NOT ALREADY EXIST in Hostinger MySQL.
+ * It will NEVER overwrite existing client-entered data.
+ * 
+ * If a key already exists, it is preserved completely.
+ * To explicitly overwrite everything from local JSON, pass the flag: --force-overwrite
+ */
+
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
@@ -20,6 +31,8 @@ if (fs.existsSync(envPath)) {
   });
 }
 
+const isForce = process.argv.includes('--force-overwrite');
+
 async function syncDb() {
   const host = process.env.DB_HOST || "srv2216.hstgr.io";
   const port = Number(process.env.DB_PORT || 3306);
@@ -27,7 +40,12 @@ async function syncDb() {
   const password = process.env.DB_PASSWORD || "GetDBbiogen@026";
   const database = process.env.DB_NAME || "u564667558_getbgdb";
 
-  console.log(`Connecting to Hostinger DB (${host}:${port}/${database})...`);
+  console.log(`\nConnecting to Hostinger DB (${host}:${port}/${database})...`);
+  if (isForce) {
+    console.log("⚠️  WARNING: Running with --force-overwrite. All keys will be replaced with local JSON defaults.");
+  } else {
+    console.log("🛡️  SAFE MODE: Existing database keys will NOT be overwritten.");
+  }
 
   try {
     const connection = await mysql.createConnection({
@@ -51,126 +69,47 @@ async function syncDb() {
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     `);
 
-    // Sync categories
-    const categoriesPath = path.join(__dirname, '..', 'src', 'cms', 'categories.json');
-    if (fs.existsSync(categoriesPath)) {
-      const categoriesData = fs.readFileSync(categoriesPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['categories', categoriesData]
-      );
-      console.log(`✓ Synced categories (with rich clinical department images) to database cms_store.`);
-    }
+    // Fetch existing keys
+    const [existingRows] = await connection.query('SELECT store_key FROM cms_store');
+    const existingKeys = new Set(existingRows.map(r => r.store_key));
 
-    // Sync products
-    const productsPath = path.join(__dirname, '..', 'src', 'cms', 'products.json');
-    if (fs.existsSync(productsPath)) {
-      const productsData = fs.readFileSync(productsPath, 'utf-8');
-      const parsed = JSON.parse(productsData);
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['products', productsData]
-      );
-      console.log(`✓ Synced ${parsed.length} products to database cms_store.`);
-    }
+    const syncKey = async (storeKey, relativeFilePath, label) => {
+      const filePath = path.join(__dirname, '..', relativeFilePath);
+      if (!fs.existsSync(filePath)) return;
 
-    // Sync hero slides
-    const heroPath = path.join(__dirname, '..', 'src', 'cms', 'hero-slides.json');
-    if (fs.existsSync(heroPath)) {
-      const heroData = fs.readFileSync(heroPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['hero_slides', heroData]
-      );
-      console.log(`✓ Synced hero slides to database cms_store.`);
-    }
+      const fileData = fs.readFileSync(filePath, 'utf-8');
 
-    // Sync site config
-    const configPath = path.join(__dirname, '..', 'src', 'cms', 'site-config.json');
-    if (fs.existsSync(configPath)) {
-      const configData = fs.readFileSync(configPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['site_config', configData]
-      );
-      console.log(`✓ Synced site config to database cms_store.`);
-    }
+      if (existingKeys.has(storeKey) && !isForce) {
+        console.log(`ℹ️  [PRESERVED] Key "${storeKey}" already exists in DB. Skipping to protect client data.`);
+        return;
+      }
 
-    // Sync pages config (canonical key is 'pages')
-    const pagesPath = path.join(__dirname, '..', 'src', 'cms', 'pages.json');
-    if (fs.existsSync(pagesPath)) {
-      const pagesData = fs.readFileSync(pagesPath, 'utf-8');
       await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['pages', pagesData]
+        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) 
+         ON DUPLICATE KEY UPDATE data = VALUES(data)`,
+        [storeKey, fileData]
       );
-      console.log(`✓ Synced pages config to database cms_store.`);
-    }
+      console.log(`✓ [SEEDED] ${label} -> cms_store (${storeKey})`);
+    };
 
-    // Sync brand partners
-    const brandPath = path.join(__dirname, '..', 'src', 'cms', 'brand-partners.json');
-    if (fs.existsSync(brandPath)) {
-      const brandData = fs.readFileSync(brandPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['brand_partners', brandData]
-      );
-      console.log(`✓ Synced brand partners to database cms_store.`);
-    }
+    await syncKey('categories', 'src/cms/categories.json', 'Categories');
+    await syncKey('products', 'src/cms/products.json', 'Products');
+    await syncKey('hero_slides', 'src/cms/hero-slides.json', 'Hero Slides');
+    await syncKey('site_config', 'src/cms/site-config.json', 'Site Config');
+    await syncKey('pages', 'src/cms/pages.json', 'Pages Config');
+    await syncKey('brand_partners', 'src/cms/brand-partners.json', 'Brand Partners');
+    await syncKey('gallery', 'src/cms/gallery.json', 'Corporate Gallery & Team');
+    await syncKey('faqs', 'src/cms/faqs.json', 'FAQs');
+    await syncKey('policies', 'src/cms/policies.json', 'Policies');
+    await syncKey('about_content', 'src/cms/about-content.json', 'About Content');
 
-    // Sync gallery & team
-    const galleryPath = path.join(__dirname, '..', 'src', 'cms', 'gallery.json');
-    if (fs.existsSync(galleryPath)) {
-      const galleryData = fs.readFileSync(galleryPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['gallery', galleryData]
-      );
-      console.log(`✓ Synced corporate gallery to database cms_store.`);
-    }
-
-    // Sync faqs
-    const faqsPath = path.join(__dirname, '..', 'src', 'cms', 'faqs.json');
-    if (fs.existsSync(faqsPath)) {
-      const faqsData = fs.readFileSync(faqsPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['faqs', faqsData]
-      );
-      console.log(`✓ Synced FAQs to database cms_store.`);
-    }
-
-    // Sync policies
-    const policiesPath = path.join(__dirname, '..', 'src', 'cms', 'policies.json');
-    if (fs.existsSync(policiesPath)) {
-      const policiesData = fs.readFileSync(policiesPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['policies', policiesData]
-      );
-      console.log(`✓ Synced legal & policy pages to database cms_store.`);
-    }
-
-    // Sync about content
-    const aboutPath = path.join(__dirname, '..', 'src', 'cms', 'about-content.json');
-    if (fs.existsSync(aboutPath)) {
-      const aboutData = fs.readFileSync(aboutPath, 'utf-8');
-      await connection.query(
-        `INSERT INTO cms_store (store_key, data) VALUES (?, ?) ON DUPLICATE KEY UPDATE data = VALUES(data)`,
-        ['about_content', aboutData]
-      );
-      console.log(`✓ Synced about content to database cms_store.`);
-    }
-
-    // Remove obsolete duplicate keys if they exist
+    // Clean up obsolete legacy duplicate keys if any
     await connection.query(`DELETE FROM cms_store WHERE store_key IN ('pages_config', 'hero-slides', 'site-config')`);
-    console.log(`✓ Cleaned up obsolete duplicate keys.`);
 
     await connection.end();
-    console.log("\n✅ All CMS tables synchronized to Hostinger MySQL successfully!");
+    console.log("\n✅ Database verification complete. Live client data protected!");
   } catch (err) {
     console.warn("DB sync warning:", err.message);
-    console.log("Local JSON fallback mode is active.");
   }
 }
 
