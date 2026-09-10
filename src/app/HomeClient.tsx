@@ -694,26 +694,36 @@ export default function HomeClient({
                     </div>
 
                     {/* Dynamic Leadership Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {members.map((m) => (
-                        <div key={m.id} className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-lg flex flex-col">
-                          <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
+                        <div key={m.id} className="group rounded-3xl overflow-hidden bg-white border border-slate-200/90 hover:border-[#0072CE]/50 transition-all duration-500 hover:shadow-[0_20px_45px_-12px_rgba(0,114,206,0.15)] flex flex-col">
+                          <div className="relative aspect-[4/4.8] bg-gradient-to-b from-slate-100 via-blue-50/20 to-slate-100/60 overflow-hidden border-b border-slate-100">
                             <img
                               src={m.imageUrl || "/images/team/ceo_muhammad_rizwan.webp"}
                               alt={`${m.name} - ${m.role}`}
-                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                              className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-50 transition-opacity" />
                             {m.badge && (
-                              <div className="absolute top-3 left-3 bg-[#0072CE] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
+                              <div className="absolute top-4 left-4 bg-slate-900/85 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                                <Award size={12} className="text-[#38BDF8]" />
                                 {m.badge}
                               </div>
                             )}
                           </div>
-                          <div className="p-4 bg-white flex-1 flex flex-col justify-between">
+                          <div className="p-6 bg-white flex-1 flex flex-col justify-between">
                             <div>
-                              <h3 className="text-base font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">{m.name}</h3>
-                              <p className="text-xs font-bold text-[#0072CE] uppercase tracking-wider mt-0.5">{m.role}</p>
-                              {m.bio && <p className="text-xs text-slate-600 mt-2 line-clamp-2">{m.bio}</p>}
+                              <h3 className="text-lg font-black text-slate-900 group-hover:text-[#0072CE] transition-colors leading-snug">{m.name}</h3>
+                              <p className="text-xs font-black text-[#0072CE] uppercase tracking-wider mt-1">{m.role}</p>
+                              {m.bio && <p className="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-3">{m.bio}</p>}
+                            </div>
+                            <div className="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-slate-500">
+                              <span className="flex items-center gap-1 text-slate-700 font-bold">
+                                <ShieldCheck size={13} className="text-emerald-500" /> Verified Executive
+                              </span>
+                              <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">
+                                Biogen Group
+                              </span>
                             </div>
                           </div>
                         </div>

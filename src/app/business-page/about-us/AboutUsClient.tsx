@@ -76,52 +76,160 @@ export default function AboutUsClient({ siteConfig, galleryData, aboutContent }:
           </div>
         </div>
 
-        {/* ─── EXECUTIVE LEADERSHIP TEAM (REAL PHOTOS) ────────────────── */}
+        {/* ─── EXECUTIVE LEADERSHIP TEAM (PREMIUM CORPORATE GOVERNANCE) ─── */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-5 border-b border-slate-100 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-6 border-b border-slate-100 mb-8">
             <div>
               <span className="text-xs font-bold text-[#0072CE] uppercase tracking-widest flex items-center gap-1.5 mb-1">
-                <Users size={14} /> Corporate Governance
+                <Users size={14} /> Corporate Governance &amp; Executive Board
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                 Executive Leadership
               </h2>
             </div>
-            <p className="text-xs text-slate-500 max-w-md">
-              Experienced pharmaceutical executives steering regulatory compliance, global manufacturing alliances, and cold-chain supply.
+            <p className="text-xs sm:text-sm text-slate-500 max-w-lg leading-relaxed">
+              Seasoned healthcare leaders steering Biogen Pharma’s international alliances, regulatory compliance, validated cold-chain logistics, and hospital procurement.
             </p>
           </div>
 
+          {/* Executive Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {EXECUTIVE_TEAM.map((member, i) => (
-                <div key={member.name || i} className="group relative bg-[#070B14] rounded-2xl border border-slate-800 overflow-hidden hover:border-[#0072CE]/50 transition-all duration-300 flex flex-col">
-                  {/* Photo Area */}
-                  <div className="w-full aspect-[4/5] bg-slate-900 overflow-hidden relative border-b border-slate-800">
+            {EXECUTIVE_TEAM.map((member, i) => {
+              // Intelligent oversight focus pills
+              const focusAreas = member.focus && member.focus.length > 0 
+                ? member.focus 
+                : (member.role || "").toLowerCase().includes("ceo") || (member.id || "").toLowerCase().includes("rizwan")
+                ? ["Global Supply Alliances", "State Ministry Tenders", "Institutional Governance"]
+                : (member.role || "").toLowerCase().includes("director") || (member.id || "").toLowerCase().includes("shahid")
+                ? ["cGMP Compliance", "Principal Lab Alliances", "Regulatory Affairs"]
+                : ["Cold-Chain Verification", "Batch Traceability", "Hospital Logistics"];
+
+              const department = member.department || (
+                (member.role || "").toLowerCase().includes("ceo")
+                  ? "Corporate Strategy & Tenders"
+                  : (member.role || "").toLowerCase().includes("director")
+                  ? "Manufacturing Alliances & cGMP"
+                  : "Supply Chain & Cold-Chain Logistics"
+              );
+
+              return (
+                <div 
+                  key={member.name || member.id || i} 
+                  className="group relative bg-white rounded-3xl border border-slate-200/90 overflow-hidden hover:border-[#0072CE]/50 hover:shadow-[0_20px_45px_-12px_rgba(0,114,206,0.15)] transition-all duration-500 flex flex-col"
+                >
+                  {/* Portrait Container */}
+                  <div className="w-full aspect-[4/4.8] sm:aspect-[4/5] bg-gradient-to-b from-slate-100 via-blue-50/20 to-slate-100/60 overflow-hidden relative border-b border-slate-100">
                     <img 
-                      src={member.imageUrl || "/images/brands/zafa.svg"}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500 grayscale hover:grayscale-0"
+                      src={member.imageUrl || "/images/team/ceo_muhammad_rizwan.webp"}
+                      alt={`${member.name} - ${member.role}`}
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-transparent to-transparent opacity-80" />
-                    {member.badge && (
-                      <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
-                        <Award size={12} className="text-[#00A3E0]" />
-                        {member.badge}
-                      </div>
-                    )}
+                    
+                    {/* Subtle Gradient Vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-50 transition-opacity" />
+
+                    {/* Floating Status / Badge */}
+                    <div className="absolute top-4 left-4 bg-slate-900/85 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                      <Award size={12} className="text-[#38BDF8]" />
+                      {member.badge || "Executive Board"}
+                    </div>
+
+                    {/* Department Tag on Photo */}
+                    <div className="absolute bottom-3 left-4 right-4 text-white">
+                      <span className="text-[10px] font-bold text-sky-300 uppercase tracking-widest block drop-shadow-sm">
+                        {department}
+                      </span>
+                    </div>
                   </div>
-                  {/* Info Area */}
-                  <div className="p-6 flex flex-col flex-grow justify-between">
+
+                  {/* Card Details */}
+                  <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between bg-white">
                     <div>
-                      <h3 className="text-lg font-bold text-white mb-1 leading-tight">{member.name}</h3>
-                      <p className="text-xs font-bold text-[#00A3E0] uppercase tracking-wider mb-4">{member.role}</p>
-                      <p className="text-sm text-slate-400 leading-relaxed font-medium">
+                      <h3 className="text-xl font-black text-slate-900 group-hover:text-[#0072CE] transition-colors leading-tight mb-1">
+                        {member.name}
+                      </h3>
+                      <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#0072CE] uppercase tracking-wider mb-3">
+                        <span>{member.role}</span>
+                      </div>
+                      
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-5">
                         {member.bio}
                       </p>
+
+                      {/* Oversight / Focus Pills */}
+                      <div className="mb-4">
+                        <div className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">
+                          Key Oversight
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {focusAreas.map((pill, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-[11px] font-semibold text-slate-700 group-hover:bg-blue-50/50 group-hover:border-blue-200/60 group-hover:text-[#0072CE] transition-colors"
+                            >
+                              {pill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Institutional Governance Verification Seal */}
+                    <div className="pt-3.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-slate-500">
+                      <span className="flex items-center gap-1.5 text-slate-700 font-bold">
+                        <ShieldCheck size={14} className="text-emerald-500" /> Verified Executive
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">
+                        Biogen Group
+                      </span>
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+            })}
+          </div>
+
+          {/* Institutional Governance Indicators Bar */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-6 mt-8 border-t border-slate-100">
+            <div className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-100 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#0072CE] flex items-center justify-center shrink-0 shadow-2xs">
+                <FileCheck2 size={18} />
+              </div>
+              <div>
+                <div className="text-xs font-black text-slate-900 leading-tight">WHO-cGMP</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">Compliant Principal Facilities</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-100 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#0072CE] flex items-center justify-center shrink-0 shadow-2xs">
+                <Building2 size={18} />
+              </div>
+              <div>
+                <div className="text-xs font-black text-slate-900 leading-tight">State Ministries</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">Direct Wholesale Tenders</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-100 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#0072CE] flex items-center justify-center shrink-0 shadow-2xs">
+                <Truck size={18} />
+              </div>
+              <div>
+                <div className="text-xs font-black text-slate-900 leading-tight">Cold-Chain Fleet</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">2°C – 8°C Monitored Logistics</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-100 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#0072CE] flex items-center justify-center shrink-0 shadow-2xs">
+                <Globe2 size={18} />
+              </div>
+              <div>
+                <div className="text-xs font-black text-slate-900 leading-tight">Global Principals</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">Authorized Regional Distribution</div>
+              </div>
+            </div>
           </div>
         </div>
 

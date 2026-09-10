@@ -146,6 +146,9 @@ export interface CMSTeamMember {
   bio: string;
   imageUrl: string;
   badge?: string;
+  department?: string;
+  credentials?: string;
+  focus?: string[];
 }
 
 export interface CMSGalleryItem {
