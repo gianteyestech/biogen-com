@@ -116,15 +116,21 @@ export default function Header({
   const [announcementIdx, setAnnouncementIdx] = useState(0);
   const [fadeAnnounce, setFadeAnnounce] = useState(true);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [recentSearches, setRecentSearches] = useState<string[]>([]);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [hoveredCat, setHoveredCat] = useState<string>("");
-
-  useEffect(() => {
-    if (activeMegaMenu[0] && !hoveredCat) {
-      setHoveredCat(activeMegaMenu[0].id);
+  const [recentSearches, setRecentSearches] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("recentSearches");
+        return saved ? JSON.parse(saved) : [];
+      } catch {
+        return [];
+      }
     }
-  }, [activeMegaMenu, hoveredCat]);
+    return [];
+  });
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [selectedHoveredCat, setSelectedHoveredCat] = useState<string>("");
+  const hoveredCat = selectedHoveredCat || activeMegaMenu[0]?.id || "";
+  const setHoveredCat = setSelectedHoveredCat;
 
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [activeSuggestionIdx, setActiveSuggestionIdx] = useState(-1);
@@ -134,20 +140,6 @@ export default function Header({
   const mobileSearchContainerRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Load recent searches from localStorage on mount
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("recentSearches");
-      if (saved) {
-        try {
-          setRecentSearches(JSON.parse(saved));
-        } catch (e) {
-          console.error(e);
-        }
-      }
-    }
-  }, []);
 
   // Handle Scroll for Sticky Header Shrinking
   useEffect(() => {

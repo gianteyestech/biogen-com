@@ -264,6 +264,7 @@ export async function getCMSSiteConfig(): Promise<CMSSiteConfig> {
 export async function getCMSPagesConfig(): Promise<CMSPagesConfig> {
   const pagesConfig = await getStoreData<CMSPagesConfig>("pages", "pages.json");
   if (pagesConfig && pagesConfig.sections) {
+    let needsSave = false;
     const hasTrust = pagesConfig.sections.some((s) => s.type === "trust-features" || s.id === "trust-features-bar");
     if (!hasTrust) {
       pagesConfig.sections.push({
@@ -274,6 +275,23 @@ export async function getCMSPagesConfig(): Promise<CMSPagesConfig> {
         visible: true,
         order: pagesConfig.sections.length + 1,
       });
+      needsSave = true;
+    }
+
+    const hasLeadership = pagesConfig.sections.some((s) => s.type === "leadership" || s.id === "leadership-delegations");
+    if (!hasLeadership) {
+      pagesConfig.sections.push({
+        id: "leadership-delegations",
+        title: "Behind Biogen Pharma: Leadership & Plant Delegations",
+        type: "leadership",
+        categoryId: "",
+        visible: true,
+        order: pagesConfig.sections.length + 1,
+      });
+      needsSave = true;
+    }
+
+    if (needsSave) {
       saveStoreData("pages", pagesConfig).catch(() => {});
     }
   }

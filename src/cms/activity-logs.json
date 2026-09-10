@@ -1,5 +1,14 @@
 [
   {
+    "id": "log_1789052383177_fhenk",
+    "action": "UPDATE",
+    "entity": "PagesConfig",
+    "entityId": "pages_config_all",
+    "details": "Updated homepage page sections layout",
+    "timestamp": "2026-09-10T14:59:43.177Z",
+    "user": "Admin"
+  },
+  {
     "id": "log_1787395475928_whbu5",
     "action": "UPDATE",
     "entity": "SiteConfig",

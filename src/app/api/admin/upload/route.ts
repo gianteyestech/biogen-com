@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     }
 
     // 4. Generate Shein & Temu Enterprise Filename (Timestamp ID + Product Slug + Size Tag)
-    let originalName = path.basename(file.name, path.extname(file.name)).toLowerCase();
+    const originalName = path.basename(file.name, path.extname(file.name)).toLowerCase();
 
     const isBlobHash = /^file-[0-9a-f]{8,}/i.test(originalName) || /^blob-[0-9a-f]{8,}/i.test(originalName);
 

@@ -231,7 +231,7 @@ export interface CMSSiteConfig {
 export interface CMSPageSection {
   id: string;
   title: string;
-  type: "new" | "featured" | "category" | "circles" | "top-selling" | "deal" | "mini-lists" | "trust-features";
+  type: "new" | "featured" | "category" | "circles" | "top-selling" | "deal" | "mini-lists" | "trust-features" | "leadership";
   categoryId: string;
   visible: boolean;
   order: number;

@@ -13,6 +13,7 @@ const SECTION_TYPES = [
   { value: "mini-lists", label: "Mini Lists (New Formulations, Top Rated, Best Sellers)" },
   { value: "new", label: "New Clinical Arrivals" },
   { value: "category", label: "Specific Department Grid" },
+  { value: "leadership", label: "Institutional Leadership & Plant Delegations" },
 ];
 
 export default function AdminSectionsPage() {

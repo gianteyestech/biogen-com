@@ -6,18 +6,23 @@ import {
   filterProductsByCategory,
   getCMSBrandPartners,
   getCMSSiteConfig,
+  getCMSGallery,
 } from "@/lib/cms";
 import type { CMSProduct } from "@/lib/cms-types";
 import HomeClient from "./HomeClient";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function HomePage() {
-  const [products, categoriesData, heroSlides, siteConfig, pagesConfig, brandPartners] = await Promise.all([
+  const [products, categoriesData, heroSlides, siteConfig, pagesConfig, brandPartners, galleryData] = await Promise.all([
     getCMSProducts(),
     getCMSCategories(),
     getCMSHeroSlides(),
     getCMSSiteConfig(),
     getCMSPagesConfig(),
     getCMSBrandPartners(),
+    getCMSGallery(),
   ]);
 
   const visibleSections = [...pagesConfig.sections]
@@ -46,6 +51,7 @@ export default async function HomePage() {
       siteConfig={siteConfig}
       sections={visibleSections}
       brandPartners={brandPartners}
+      teamMembers={galleryData?.team || []}
     />
   );
 }

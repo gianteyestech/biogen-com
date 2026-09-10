@@ -20,6 +20,7 @@ import type {
   CMSPageSection,
   CMSBrandPartner,
   CMSHeroSlide,
+  CMSTeamMember,
 } from "@/lib/cms-types";
 import { filterProductsByCategory } from "@/lib/cms-types";
 
@@ -42,11 +43,12 @@ interface HomeClientProps {
   sections: SectionWithProducts[];
   brandPartners: CMSBrandPartner[];
   heroSlides: CMSHeroSlide[];
+  teamMembers?: CMSTeamMember[];
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function HomeClient({
-  allProducts, categories, megaMenu, circleCats, heroSlides, siteConfig, sections, brandPartners,
+  allProducts, categories, megaMenu, circleCats, heroSlides, siteConfig, sections, brandPartners, teamMembers = [],
 }: HomeClientProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -640,7 +642,131 @@ export default function HomeClient({
                 );
               }
 
-              // 7. General Dynamic Section
+              // 7. Leadership & Plant Delegations Section
+              if (section.type === "leadership") {
+                const members = teamMembers.length > 0 ? teamMembers : [
+                  {
+                    id: "ceo_muhammad_rizwan",
+                    name: "Muhammad Rizwan",
+                    role: "Chief Executive Officer (CEO)",
+                    imageUrl: "/images/team/ceo_muhammad_rizwan.webp",
+                    badge: "Executive Leadership",
+                    bio: "Directing global pharmaceutical distribution and hospital procurement networks."
+                  },
+                  {
+                    id: "md_muhammad_shahid",
+                    name: "Muhammad Shahid",
+                    role: "Managing Director",
+                    imageUrl: "/images/team/md_muhammad_shahid.webp",
+                    badge: "Operations Director",
+                    bio: "Leading manufacturing partnerships, principal affiliations, and cGMP compliance."
+                  },
+                  {
+                    id: "ops_bilal_shabir",
+                    name: "M. Bilal Shabir",
+                    role: "Operations Manager",
+                    imageUrl: "/images/team/ops_bilal_shabir.webp",
+                    badge: "Cold-Chain & Logistics",
+                    bio: "Managing temperature-controlled warehousing and institutional batch dispatches."
+                  }
+                ];
+
+                return (
+                  <div key={section.id} className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm flex flex-col gap-8 my-4">
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-5 border-b border-slate-100">
+                      <div>
+                        <span className="text-xs font-bold text-[#0072CE] uppercase tracking-widest flex items-center gap-1.5 mb-1">
+                          <ShieldCheck size={14} /> Institutional Governance &amp; Facilities
+                        </span>
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                          {section.title || "Behind Biogen Pharma: Leadership & Plant Delegations"}
+                        </h2>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Verified manufacturing audits, bilateral MOU signings, and executive leadership managing international health supply.
+                        </p>
+                      </div>
+                      <Link
+                        href="/business-page/about-us"
+                        className="text-xs font-bold text-[#0072CE] hover:text-[#005EA6] flex items-center gap-1 self-start sm:self-auto uppercase tracking-wider transition-colors"
+                      >
+                        <span>Explore Full Corporate Profile</span> <ArrowRight size={13} />
+                      </Link>
+                    </div>
+
+                    {/* Dynamic Leadership Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                      {members.map((m) => (
+                        <div key={m.id} className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-lg flex flex-col">
+                          <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
+                            <img
+                              src={m.imageUrl || "/images/team/ceo_muhammad_rizwan.webp"}
+                              alt={`${m.name} - ${m.role}`}
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            />
+                            {m.badge && (
+                              <div className="absolute top-3 left-3 bg-[#0072CE] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
+                                {m.badge}
+                              </div>
+                            )}
+                          </div>
+                          <div className="p-4 bg-white flex-1 flex flex-col justify-between">
+                            <div>
+                              <h3 className="text-base font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">{m.name}</h3>
+                              <p className="text-xs font-bold text-[#0072CE] uppercase tracking-wider mt-0.5">{m.role}</p>
+                              {m.bio && <p className="text-xs text-slate-600 mt-2 line-clamp-2">{m.bio}</p>}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Event & Delegation Highlights Bar */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-blue-100/70 text-[#0072CE] flex items-center justify-center flex-shrink-0">
+                          <FileText size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-slate-900">MOU Alliances</p>
+                          <p className="text-[10px] text-slate-500">B2B Supply Agreements</p>
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-amber-100/70 text-amber-600 flex items-center justify-center flex-shrink-0">
+                          <Award size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-slate-900">Healthcare Honors</p>
+                          <p className="text-[10px] text-slate-500">Distribution Excellence</p>
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-emerald-100/70 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                          <CheckCircle2 size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-slate-900">cGMP Audits</p>
+                          <p className="text-[10px] text-slate-500">Cleanroom Inspected</p>
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-indigo-100/70 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                          <Truck size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-slate-900">Cold-Chain Fleet</p>
+                          <p className="text-[10px] text-slate-500">Direct Transit</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              // 8. General Dynamic Section
               if (!section.products.length) return null;
               return (
                 <div key={section.id} className="flex flex-col gap-4">
@@ -664,134 +790,6 @@ export default function HomeClient({
                 </div>
               );
             })}
-            {/* ── INSTITUTIONAL GOVERNANCE & GLOBAL DELEGATIONS SHOWCASE ── */}
-            <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm flex flex-col gap-8 my-4">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-5 border-b border-slate-100">
-                <div>
-                  <span className="text-xs font-bold text-[#0072CE] uppercase tracking-widest flex items-center gap-1.5 mb-1">
-                    <ShieldCheck size={14} /> Institutional Governance &amp; Facilities
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                    Behind Biogen Pharma: Leadership &amp; Plant Delegations
-                  </h2>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    Verified manufacturing audits, bilateral MOU signings, and executive leadership managing international health supply.
-                  </p>
-                </div>
-                <Link
-                  href="/business-page/about-us"
-                  className="text-xs font-bold text-[#0072CE] hover:text-[#005EA6] flex items-center gap-1 self-start sm:self-auto uppercase tracking-wider transition-colors"
-                >
-                  <span>Explore Full Corporate Profile</span> <ArrowRight size={13} />
-                </Link>
-              </div>
-
-              {/* Leadership Trio */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <div className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-lg flex flex-col">
-                  <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
-                    <img
-                      src="/images/team/ceo_muhammad_rizwan.webp"
-                      alt="Muhammad Rizwan - CEO"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#0072CE] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
-                      Executive Leadership
-                    </div>
-                  </div>
-                  <div className="p-4 bg-white flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-base font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">Muhammad Rizwan</h3>
-                      <p className="text-xs font-bold text-[#0072CE] uppercase tracking-wider mt-0.5">Chief Executive Officer (CEO)</p>
-                      <p className="text-xs text-slate-600 mt-2 line-clamp-2">Directing global pharmaceutical distribution and hospital procurement networks.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-lg flex flex-col">
-                  <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
-                    <img
-                      src="/images/team/md_muhammad_shahid.webp"
-                      alt="Muhammad Shahid - Managing Director"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#0284C7] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
-                      Operations Director
-                    </div>
-                  </div>
-                  <div className="p-4 bg-white flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-base font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">Muhammad Shahid</h3>
-                      <p className="text-xs font-bold text-[#0072CE] uppercase tracking-wider mt-0.5">Managing Director</p>
-                      <p className="text-xs text-slate-600 mt-2 line-clamp-2">Leading manufacturing partnerships, principal affiliations, and cGMP compliance.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="group rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 hover:border-[#0072CE]/60 transition-all duration-300 hover:shadow-lg flex flex-col">
-                  <div className="relative aspect-[4/5] bg-slate-200 overflow-hidden">
-                    <img
-                      src="/images/team/ops_bilal_shabir.webp"
-                      alt="M. Bilal Shabir - Operations Manager"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#10B981] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
-                      Cold-Chain &amp; Logistics
-                    </div>
-                  </div>
-                  <div className="p-4 bg-white flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-base font-black text-slate-900 group-hover:text-[#0072CE] transition-colors">M. Bilal Shabir</h3>
-                      <p className="text-xs font-bold text-[#10B981] uppercase tracking-wider mt-0.5">Operations Manager</p>
-                      <p className="text-xs text-slate-600 mt-2 line-clamp-2">Managing temperature-controlled warehousing and institutional batch dispatches.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Event & Delegation Highlights Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-blue-100/70 text-[#0072CE] flex items-center justify-center flex-shrink-0">
-                    <FileText size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-900">MOU Alliances</p>
-                    <p className="text-[10px] text-slate-500">B2B Supply Agreements</p>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-amber-100/70 text-amber-600 flex items-center justify-center flex-shrink-0">
-                    <Award size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-900">Healthcare Honors</p>
-                    <p className="text-[10px] text-slate-500">Distribution Excellence</p>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-100/70 text-emerald-600 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-900">cGMP Audits</p>
-                    <p className="text-[10px] text-slate-500">Cleanroom Inspected</p>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-indigo-100/70 text-indigo-600 flex items-center justify-center flex-shrink-0">
-                    <Truck size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-900">Cold-Chain Fleet</p>
-                    <p className="text-[10px] text-slate-500">Direct Transit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </div>
